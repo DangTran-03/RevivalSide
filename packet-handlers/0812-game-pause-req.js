@@ -9,13 +9,7 @@ module.exports = {
       const payload = ctx.decryptCopy(packet.payload);
       const isPause = payload.length > 0 ? payload.readUInt8(0) !== 0 : true;
       const isPauseEvent = payload.length > 1 ? payload.readUInt8(1) !== 0 : false;
-      ctx.sendServerGamePacket(
-        socket,
-        ctx.constants.GAME_PAUSE_ACK,
-        ctx.buildGamePauseAckPayload(isPause, isPauseEvent),
-        "battle-manager-pause"
-      );
-      replay.pauseCount += 1;
+      ctx.handleDynamicBattlePause(socket, { isPause, isPauseEvent });
       return true;
     }
 

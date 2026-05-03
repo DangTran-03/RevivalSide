@@ -17,9 +17,13 @@ internal sealed class CombatEngine
     {
         return request.Command switch
         {
+            "warmup" => Warmup(),
             "startBattle" => StartBattle(Read<StartBattleData>(request.Data)),
             "deployStageLineup" => DeployStageLineup(Read<BattleCommandData>(request.Data)),
             "handleDeploy" => HandleDeploy(Read<DeployCommandData>(request.Data)),
+            "handlePause" => HandlePause(Read<PauseCommandData>(request.Data)),
+            "handleUnitSkill" => HandleUnitSkill(Read<UnitSkillCommandData>(request.Data)),
+            "handleShipSkill" => HandleShipSkill(Read<ShipSkillCommandData>(request.Data)),
             "buildSync" => BuildSync(Read<SyncCommandData>(request.Data)),
             "buildInitialSync" => BuildInitialSync(Read<BattleCommandData>(request.Data)),
             "buildRespawnAck" => BuildRespawnAck(Read<RespawnAckCommandData>(request.Data)),
@@ -28,6 +32,13 @@ internal sealed class CombatEngine
             "getResult" => GetResult(Read<BattleCommandData>(request.Data)),
             _ => new HostResponse { Ok = false, Error = $"unknown command: {request.Command}" }
         };
+    }
+
+    private HostResponse Warmup()
+    {
+        return ManagedCombatBridge.TryWarmup(options, out var error)
+            ? new HostResponse { Ok = true }
+            : new HostResponse { Ok = false, Error = error ?? "managed warmup failed" };
     }
 
     private HostResponse StartBattle(StartBattleData data)
@@ -44,12 +55,12 @@ internal sealed class CombatEngine
         {
             StageID = stage.StageId != 0 ? stage.StageId : req.StageID,
             DungeonID = stage.DungeonID != 0 ? stage.DungeonID : req.DungeonID,
-            MapID = stage.MapID != 0 ? stage.MapID : 1064,
+            MapID = stage.MapID != 0 ? stage.MapID : MapIdForStageDungeon(stage.StageId != 0 ? stage.StageId : req.StageID, stage.DungeonID != 0 ? stage.DungeonID : req.DungeonID),
             GameUID = gameUID,
             GameUnitUIDIndex = stage.GameUnitUIDIndex != 0 ? stage.GameUnitUIDIndex : 18,
             DeployableGameUnitUIDGroups = groups.Select(group => group.ToList()).ToList(),
             AssignedGameUnitUIDs = assigned,
-            Tutorial = (stage.StageId != 0 ? stage.StageId : req.StageID) == 11211,
+            Tutorial = IsTutorialStage(stage.StageId != 0 ? stage.StageId : req.StageID),
             UnitPools = BuildUnitPools(stage),
             UsedPooledGameUnitUIDs = stage.InitialUnits.Select(unit => unit.GameUnitUID).Where(uid => uid > 0).ToHashSet()
         };
@@ -81,7 +92,7 @@ internal sealed class CombatEngine
             HydrateStats(unit);
         }
 
-        ManagedCombatBridge.TryStart(options, data, dynamicGame, out var managedError);
+        ManagedCombatBridge.TryStart(options, data, dynamicGame, out var managedGameLoadAck, out var managedError);
         if (dynamicGame.ManagedCombat)
         {
             // Managed combat is the preferred path when the installed
@@ -95,7 +106,8 @@ internal sealed class CombatEngine
             Ok = true,
             Error = managedError,
             DynamicGame = dynamicGame,
-            BattleState = battleState
+            BattleState = battleState,
+            PayloadBase64 = dynamicGame.ManagedCombat ? managedGameLoadAck?.PayloadBase64 : null
         };
     }
 
@@ -197,6 +209,36 @@ internal sealed class CombatEngine
             Packets = packets,
             Deployed = new HostDeployResult { Handled = true, Mode = "battleState", Unit = unit }
         };
+    }
+
+    private HostResponse HandlePause(PauseCommandData data)
+    {
+        if (ManagedCombatBridge.TryHandlePause(data, out var managedResponse, out var managedError))
+        {
+            return managedResponse ?? new HostResponse { Ok = false, Error = managedError ?? "managed pause failed" };
+        }
+
+        return new HostResponse { Ok = false, Error = managedError ?? "managed pause unavailable" };
+    }
+
+    private HostResponse HandleUnitSkill(UnitSkillCommandData data)
+    {
+        if (ManagedCombatBridge.TryHandleUnitSkill(data, out var managedResponse, out var managedError))
+        {
+            return managedResponse ?? new HostResponse { Ok = false, Error = managedError ?? "managed unit skill failed" };
+        }
+
+        return new HostResponse { Ok = false, Error = managedError ?? "managed unit skill unavailable" };
+    }
+
+    private HostResponse HandleShipSkill(ShipSkillCommandData data)
+    {
+        if (ManagedCombatBridge.TryHandleShipSkill(data, out var managedResponse, out var managedError))
+        {
+            return managedResponse ?? new HostResponse { Ok = false, Error = managedError ?? "managed ship skill failed" };
+        }
+
+        return new HostResponse { Ok = false, Error = managedError ?? "managed ship skill unavailable" };
     }
 
     private HostResponse BuildSync(SyncCommandData data)
@@ -427,6 +469,22 @@ internal sealed class CombatEngine
         }
         pools.UnassignedGameUnitUIDs = fallbackUIDs.Order().ToList();
         return pools;
+    }
+
+    private static bool IsTutorialStage(int stageId)
+    {
+        return stageId is 11211 or 11212 or 11213 or 11214;
+    }
+
+    private static int MapIdForStageDungeon(int stageId, int dungeonId)
+    {
+        return (stageId, dungeonId) switch
+        {
+            (11212, _) or (_, 1005) => 1065,
+            (11213, _) or (_, 1006) => 1065,
+            (11214, _) or (_, 1007) => 1066,
+            _ => 1064
+        };
     }
 
     private void Tick(BattleState battleState, double delta)
@@ -748,6 +806,21 @@ internal class BattleCommandData
 internal sealed class DeployCommandData : BattleCommandData
 {
     public RespawnReq? Req { get; set; }
+}
+
+internal sealed class PauseCommandData : BattleCommandData
+{
+    public PauseReq? Req { get; set; }
+}
+
+internal sealed class UnitSkillCommandData : BattleCommandData
+{
+    public UnitSkillReq? Req { get; set; }
+}
+
+internal sealed class ShipSkillCommandData : BattleCommandData
+{
+    public ShipSkillReq? Req { get; set; }
 }
 
 internal sealed class SyncCommandData : BattleCommandData

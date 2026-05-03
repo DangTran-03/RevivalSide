@@ -1,4 +1,4 @@
-const { getTutorialStage } = require("../stages/tutorialStage");
+const { getTutorialStageForRequest } = require("../stages/tutorialStage");
 
 module.exports = {
   packetId: 801,
@@ -6,7 +6,7 @@ module.exports = {
   handle(ctx, socket, packet) {
     ctx.logGameLoadReq(packet.payload);
     const req = ctx.decodeGameLoadReq(packet.payload);
-    const stage = req && Number(req.stageID) === 11211 ? getTutorialStage() : null;
+    const stage = getTutorialStageForRequest(req);
     if (ctx.config.REPLAY_CAPTURED_GAME_FLOW && ctx.capturedGameFlow) {
       ctx.logCapturedClientPacketMatch(packet, 10, "game-load");
       ctx.maybeSendTutorialCutsceneClear(socket, packet.payload);

@@ -1,15 +1,67 @@
-// Single-stage definition for tutorial dungeon 1004.
+// Tutorial stage definitions.
 //
-// These values are intentionally sourced from the captured tutorial flow:
-// - stage/dungeon/map/gameUnitUIDIndex come from the captured GAME_LOAD_ACK (804) template.
-// - initial sync units come from captured tutorial GAME_SYNC (822) packets in the same flow.
-// The GAME_LOAD_ACK builder still preserves the full captured NKMGameData binary layout; this module
-// only supplies known-safe patch values and the unit state used by generated 822 packets.
+// Stage/dungeon/map/event-deck values come from the decrypted gameplay tables:
+// - LUA_STAGE_TEMPLET: 11211..11214 are SST_TUTORIAL.
+// - server-data/dungeons.json: dungeons 1004..1007 and cutscene IDs.
+// - LUA_EVENTDECK_TEMPLET: event decks 1004..1007.
+//
+// Phase 1 also keeps captured GAME_SYNC state because the lightweight fallback
+// simulator still needs a known-good bootstrap. Phases 2-4 are intentionally
+// metadata-only here; the managed combat host hydrates their actual teams and
+// dungeon events from the client tables.
+
+const TUTORIAL_STAGE_CHAIN = Object.freeze([
+  Object.freeze({
+    stageId: 11211,
+    stageStrID: "STAGE_MAINSTREAM_11211",
+    dungeonID: 1004,
+    dungeonStrID: "NKM_DUNGEON_EP_1_ACT_1_1",
+    mapID: 1064,
+    mapStrID: "AB_MAP_GAME_STREET_OPS_NIGHT_SHORT",
+    eventDeckId: 1004,
+    beforeCutscene: "EP1_ACT1_STAGE1_START",
+    afterCutscene: "",
+  }),
+  Object.freeze({
+    stageId: 11212,
+    stageStrID: "STAGE_MAINSTREAM_11212",
+    dungeonID: 1005,
+    dungeonStrID: "NKM_DUNGEON_EP_1_ACT_1_2",
+    mapID: 1065,
+    mapStrID: "AB_MAP_GAME_NEWTOWN_NIGHT_SHORT",
+    eventDeckId: 1005,
+    beforeCutscene: "EP1_ACT1_STAGE2_START",
+    afterCutscene: "",
+  }),
+  Object.freeze({
+    stageId: 11213,
+    stageStrID: "STAGE_MAINSTREAM_11213",
+    dungeonID: 1006,
+    dungeonStrID: "NKM_DUNGEON_EP_1_ACT_1_3",
+    mapID: 1065,
+    mapStrID: "AB_MAP_GAME_NEWTOWN_NIGHT_SHORT",
+    eventDeckId: 1006,
+    beforeCutscene: "EP1_ACT1_STAGE3_START",
+    afterCutscene: "",
+  }),
+  Object.freeze({
+    stageId: 11214,
+    stageStrID: "STAGE_MAINSTREAM_11214",
+    dungeonID: 1007,
+    dungeonStrID: "NKM_DUNGEON_EP_1_ACT_1_4",
+    mapID: 1066,
+    mapStrID: "AB_MAP_GAME_NEWTOWN_NIGHT_MIDDLE",
+    eventDeckId: 1007,
+    beforeCutscene: "EP1_ACT1_STAGE4_START",
+    afterCutscene: "EP1_ACT1_STAGE4_END",
+  }),
+]);
+
+const TUTORIAL_STAGE_BY_STAGE_ID = new Map(TUTORIAL_STAGE_CHAIN.map((stage) => [stage.stageId, stage]));
+const TUTORIAL_STAGE_BY_DUNGEON_ID = new Map(TUTORIAL_STAGE_CHAIN.map((stage) => [stage.dungeonID, stage]));
 
 const TUTORIAL_STAGE = Object.freeze({
-  stageId: 11211,
-  dungeonID: 1004,
-  mapID: 1064,
+  ...TUTORIAL_STAGE_CHAIN[0],
   gameUnitUIDIndex: 18,
   initialGameTime: 4,
   initialRemainGameTime: 180,
@@ -79,6 +131,27 @@ const TUTORIAL_STAGE = Object.freeze({
   ]),
 });
 
+const DEFAULT_TUTORIAL_RUNTIME = Object.freeze({
+  gameUnitUIDIndex: 18,
+  initialGameTime: 4,
+  initialRemainGameTime: 180,
+  respawnCostA1: 10,
+  respawnCostB1: 10,
+  gameState: Object.freeze({
+    state: 3,
+    winTeam: 0,
+    waveId: 1,
+  }),
+  teamA: Object.freeze({
+    units: Object.freeze([]),
+  }),
+  teamB: Object.freeze({
+    units: Object.freeze([]),
+  }),
+  deployableGameUnitUIDGroups: Object.freeze([]),
+  autoDeployUnits: Object.freeze([]),
+});
+
 function cloneUnit(unit, team) {
   return {
     ...unit,
@@ -93,28 +166,77 @@ function cloneUnit(unit, team) {
   };
 }
 
-function getTutorialStage() {
+function cloneStage(stage) {
   return {
-    ...TUTORIAL_STAGE,
-    gameState: { ...TUTORIAL_STAGE.gameState },
+    ...DEFAULT_TUTORIAL_RUNTIME,
+    ...stage,
+    gameState: { ...(stage.gameState || DEFAULT_TUTORIAL_RUNTIME.gameState) },
     teamA: {
-      units: TUTORIAL_STAGE.teamA.units.map((unit) => ({ ...unit })),
+      units: (stage.teamA && stage.teamA.units ? stage.teamA.units : []).map((unit) => ({ ...unit })),
     },
     teamB: {
-      units: TUTORIAL_STAGE.teamB.units.map((unit) => ({ ...unit })),
+      units: (stage.teamB && stage.teamB.units ? stage.teamB.units : []).map((unit) => ({ ...unit })),
     },
-    deployableGameUnitUIDGroups: TUTORIAL_STAGE.deployableGameUnitUIDGroups.map((group) => group.slice()),
-    autoDeployUnits: TUTORIAL_STAGE.autoDeployUnits.map((unit) => ({
+    deployableGameUnitUIDGroups: (stage.deployableGameUnitUIDGroups || []).map((group) => group.slice()),
+    autoDeployUnits: (stage.autoDeployUnits || []).map((unit) => ({
       ...unit,
       gameUnitUIDs: unit.gameUnitUIDs.slice(),
     })),
     initialUnits: [
-      ...TUTORIAL_STAGE.teamA.units.map((unit) => cloneUnit(unit, 1)),
-      ...TUTORIAL_STAGE.teamB.units.map((unit) => cloneUnit(unit, 3)),
+      ...(stage.teamA && stage.teamA.units ? stage.teamA.units : []).map((unit) => cloneUnit(unit, 1)),
+      ...(stage.teamB && stage.teamB.units ? stage.teamB.units : []).map((unit) => cloneUnit(unit, 3)),
     ],
   };
 }
 
+function getTutorialStage(stageId = 11211) {
+  return getTutorialStageByStageId(stageId) || cloneStage(TUTORIAL_STAGE);
+}
+
+function getTutorialStageByStageId(stageId) {
+  const numeric = Number(stageId);
+  if (numeric === 11211) return cloneStage(TUTORIAL_STAGE);
+  const stage = TUTORIAL_STAGE_BY_STAGE_ID.get(numeric);
+  return stage ? cloneStage(stage) : null;
+}
+
+function getTutorialStageByDungeonId(dungeonId) {
+  const stage = TUTORIAL_STAGE_BY_DUNGEON_ID.get(Number(dungeonId));
+  if (!stage) return null;
+  return getTutorialStageByStageId(stage.stageId);
+}
+
+function getTutorialStageForRequest(req) {
+  if (!req) return null;
+  return getTutorialStageByStageId(req.stageID) || getTutorialStageByDungeonId(req.dungeonID);
+}
+
+function isTutorialStageId(stageId) {
+  return TUTORIAL_STAGE_BY_STAGE_ID.has(Number(stageId));
+}
+
+function isTutorialDungeonId(dungeonId) {
+  return TUTORIAL_STAGE_BY_DUNGEON_ID.has(Number(dungeonId));
+}
+
+function mapIdForStageDungeon(stageId, dungeonId) {
+  const stage = TUTORIAL_STAGE_BY_STAGE_ID.get(Number(stageId)) || TUTORIAL_STAGE_BY_DUNGEON_ID.get(Number(dungeonId));
+  return stage ? stage.mapID : 1064;
+}
+
+function stageIdForDungeonId(dungeonId) {
+  const stage = TUTORIAL_STAGE_BY_DUNGEON_ID.get(Number(dungeonId));
+  return stage ? stage.stageId : 0;
+}
+
 module.exports = {
   getTutorialStage,
+  getTutorialStageByStageId,
+  getTutorialStageByDungeonId,
+  getTutorialStageForRequest,
+  isTutorialStageId,
+  isTutorialDungeonId,
+  mapIdForStageDungeon,
+  stageIdForDungeonId,
+  TUTORIAL_STAGE_CHAIN,
 };

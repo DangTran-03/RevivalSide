@@ -21,7 +21,7 @@ function createCombatHandler(options = {}) {
     managedDir: config.COUNTERSIDE_MANAGED_DIR,
     gameplayTablesDir: config.GAMEPLAY_TABLES_DIR,
     dotnetPath: config.CSHARP_COMBAT_HOST_DOTNET,
-    syncIntervalSeconds: Number(config.DYNAMIC_BATTLE_SYNC_INTERVAL_MS || 250) / 1000,
+    syncIntervalSeconds: Number(config.MANAGED_HOST_TICK_INTERVAL_MS || 33) / 1000,
     defaultUnitDamage: options.defaultCombatStats && options.defaultCombatStats.damage,
     defaultUnitAttackRange: options.defaultCombatStats && options.defaultCombatStats.attackRange,
     defaultUnitMoveSpeed: options.defaultCombatStats && options.defaultCombatStats.moveSpeed,
@@ -32,6 +32,10 @@ function createCombatHandler(options = {}) {
     defaultDeployedUnitHp: options.defaultDeployedUnitHp,
   });
   let csharpWarningPrinted = false;
+  if (csharpHost.enabled) {
+    const warmup = csharpHost.request("warmup", {});
+    if (!warmup.ok) warnCsharpFallback(warmup.error);
+  }
   const tickEngine = createTickEngine({
     combatStateId: options.combatStateId,
     defaultCombatStats: options.defaultCombatStats,
@@ -79,6 +83,7 @@ function createCombatHandler(options = {}) {
         initialData.replay.syntheticGameTime = Number(response.battleState.gameTime || 4);
         initialData.replay.battleSim = null;
         initialData.replay.dynamicBattleResultSent = false;
+        initialData.replay.managedGameLoadAckPayload = response.payload || null;
         return response.dynamicGame;
       }
       warnCsharpFallback(response.error);
@@ -124,16 +129,79 @@ function createCombatHandler(options = {}) {
     return deployHandler.handleDeploy(request.replay, request.req);
   }
 
+  function handlePause(request = {}) {
+    const replay = request.replay;
+    const req = request.req;
+    if (!replay || !req) return { handled: false };
+    if (csharpHost.enabled && replay.battleState && replay.dynamicGame && replay.dynamicGame.managedCombat) {
+      const response = csharpHost.request("handlePause", {
+        dynamicGame: replay.dynamicGame,
+        battleState: replay.battleState,
+        req,
+      });
+      if (response.ok) {
+        applyHostState(replay, response);
+        const packets = (response.packets || [])
+          .filter((packet) => packet && packet.packetId && packet.payload)
+          .map((packet) => ({ packetId: packet.packetId, payload: packet.payload, label: packet.label || "managed-pause" }));
+        return {
+          handled: true,
+          packets,
+          ackPayload: packets.find((packet) => packet.packetId === 813)?.payload || null,
+        };
+      }
+      console.log(`[combat-host] managed pause failed: ${summarizeHostError(response.error)}`);
+      return { handled: false };
+    }
+    return { handled: false };
+  }
+
+  function handleUnitSkill(request = {}) {
+    return handleManagedSkill("handleUnitSkill", request, "managed-unit-skill");
+  }
+
+  function handleShipSkill(request = {}) {
+    return handleManagedSkill("handleShipSkill", request, "managed-ship-skill");
+  }
+
+  function handleManagedSkill(command, request, fallbackLabel) {
+    const replay = request.replay;
+    const req = request.req;
+    if (!replay || !req) return { handled: false };
+    if (csharpHost.enabled && replay.battleState && replay.dynamicGame && replay.dynamicGame.managedCombat) {
+      const response = csharpHost.request(command, {
+        dynamicGame: replay.dynamicGame,
+        battleState: replay.battleState,
+        req,
+      });
+      if (response.ok) {
+        applyHostState(replay, response);
+        const packets = (response.packets || [])
+          .filter((packet) => packet && packet.packetId && packet.payload)
+          .map((packet) => ({ packetId: packet.packetId, payload: packet.payload, label: packet.label || fallbackLabel }));
+        return {
+          handled: true,
+          mode: "managed-local-server",
+          packets,
+        };
+      }
+      console.log(`[combat-host] ${command} failed: ${summarizeHostError(response.error)}`);
+      return { handled: false, error: response.error || `${command} failed` };
+    }
+    return { handled: false };
+  }
+
   function tick(delta, battleState) {
     return tickEngine.continueBattleStateUnits(battleState, delta);
   }
 
   function buildSync(data = {}) {
+    const defaultDelta = defaultSyncDelta(data.dynamicGame);
     if (csharpHost.enabled && data.battleState) {
       const response = csharpHost.request("buildSync", {
         dynamicGame: data.dynamicGame,
         battleState: data.battleState,
-        delta: data.delta == null ? 0.5 : Number(data.delta),
+        delta: data.delta == null ? defaultDelta : Number(data.delta),
         skipSimulation: Boolean(data.skipSimulation),
       });
       if (response.ok) {
@@ -150,11 +218,12 @@ function createCombatHandler(options = {}) {
   }
 
   function buildSyncPackets(data = {}) {
+    const defaultDelta = defaultSyncDelta(data.dynamicGame);
     if (csharpHost.enabled && data.battleState) {
       const response = csharpHost.request("buildSync", {
         dynamicGame: data.dynamicGame,
         battleState: data.battleState,
-        delta: data.delta == null ? 0.5 : Number(data.delta),
+        delta: data.delta == null ? defaultDelta : Number(data.delta),
         skipSimulation: Boolean(data.skipSimulation),
       });
       if (response.ok) {
@@ -247,34 +316,109 @@ function createCombatHandler(options = {}) {
   function startBattleLoop(socket, label, callbacks = {}) {
     const replay = socket.session && socket.session.gameReplay;
     if (!replay || replay.dynamicBattleTimer || !config.DYNAMIC_BATTLE_MANAGER) return false;
-    const syncInterval = Number(config.DYNAMIC_BATTLE_SYNC_INTERVAL_MS || 250);
+    const syncInterval =
+      replay.dynamicGame && replay.dynamicGame.managedCombat
+        ? Number(config.MANAGED_HOST_TICK_INTERVAL_MS || 33)
+        : Number(config.DYNAMIC_BATTLE_SYNC_INTERVAL_MS || 33);
+    const managedCombat = Boolean(replay.dynamicGame && replay.dynamicGame.managedCombat);
+    const primeFrames = managedCombat ? Math.max(1, Number(config.MANAGED_HOST_PRIME_FRAMES || 1)) : 1;
     console.log(`[battle-manager:${label}] started interval=${syncInterval}ms`);
-    replay.dynamicBattleTimer = setInterval(() => {
-      if (socket.destroyed) {
-        if (typeof callbacks.stopTimers === "function") callbacks.stopTimers(socket);
-        return;
+    let lastPumpAt = Date.now();
+    let firstPump = true;
+
+    function sendPumpedPackets(packets, pumpOptions = {}) {
+      const endIndex = packets.findIndex((packet) => packet && packet.packetId === constants.GAME_END_NOT);
+      const outboundPackets = endIndex >= 0 ? packets.slice(0, endIndex + 1) : packets;
+      const quietManagedBurst =
+        managedCombat && pumpOptions.dropQuietManagedSync && isQuietManagedSyncBurst(outboundPackets, constants);
+      if (quietManagedBurst) {
+        return { running: true, sent: false, quiet: true };
       }
-      const packets =
-        replay.battleState && replay.dynamicGame
-          ? buildSyncPackets({ dynamicGame: replay.dynamicGame, battleState: replay.battleState, delta: syncInterval / 1000 })
-          : [{ packetId: constants.NPT_GAME_SYNC_DATA_PACK_NOT, payload: buildBattleSimSyncPayload(replay, syncInterval / 1000), label: "battle-manager-sync" }];
-      for (const packet of packets) {
-        callbacks.sendGamePacket(socket, packet.packetId, packet.payload, packet.label || "battle-manager-sync");
+      const canCork = typeof socket.cork === "function" && typeof socket.uncork === "function";
+      if (canCork) socket.cork();
+      try {
+        for (const packet of outboundPackets) {
+          callbacks.sendGamePacket(socket, packet.packetId, packet.payload, packet.label || "battle-manager-sync");
+        }
+      } finally {
+        if (canCork) socket.uncork();
+      }
+      if (endIndex >= 0) {
+        replay.dynamicBattleResultSent = true;
+        if (replay.dynamicBattleTimer) clearInterval(replay.dynamicBattleTimer);
+        replay.dynamicBattleTimer = null;
+        console.log("[battle-manager] managed combat emitted GAME_END_NOT; stopped sync loop");
+        return { running: false, sent: outboundPackets.length > 0 };
       }
       const finishedState = replay.battleState && replay.battleState.finished ? replay.battleState : replay.battleSim;
       if (finishedState && finishedState.finished && !replay.dynamicBattleResultSent) {
         replay.dynamicBattleResultSent = true;
-        clearInterval(replay.dynamicBattleTimer);
+        if (replay.dynamicBattleTimer) clearInterval(replay.dynamicBattleTimer);
         replay.dynamicBattleTimer = null;
         console.log(
           `[battle-manager] result=${finishedState.win ? "win" : "loss"} gameTime=${Number(
             finishedState.gameTime || 0
           ).toFixed(2)}`
         );
+        return { running: false, sent: outboundPackets.length > 0 };
       }
+      return { running: true, sent: outboundPackets.length > 0 };
+    }
+
+    const pump = (pumpOptions = {}) => {
+      if (socket.destroyed) {
+        if (typeof callbacks.stopTimers === "function") callbacks.stopTimers(socket);
+        return { running: false, sent: false };
+      }
+      const now = Date.now();
+      const elapsedSeconds = firstPump ? syncInterval / 1000 : (now - lastPumpAt) / 1000;
+      firstPump = false;
+      lastPumpAt = now;
+      // Managed combat uses wall-clock delta so C# reflection/serialization
+      // stalls do not make the server simulation trail the client. The host
+      // splits this into normal managed frames and drains packets per frame.
+      const delta = managedCombat
+        ? clampValue(elapsedSeconds, 0.001, defaultSyncDelta(replay.dynamicGame) * 3)
+        : clampValue(elapsedSeconds, 0.001, 0.25);
+      const packets =
+        replay.battleState && replay.dynamicGame
+          ? buildSyncPackets({ dynamicGame: replay.dynamicGame, battleState: replay.battleState, delta })
+          : [{ packetId: constants.NPT_GAME_SYNC_DATA_PACK_NOT, payload: buildBattleSimSyncPayload(replay, delta), label: "battle-manager-sync" }];
+      return sendPumpedPackets(packets, pumpOptions);
+    };
+    for (let index = 0; index < primeFrames; index += 1) {
+      const result = pump({ dropQuietManagedSync: managedCombat && index < primeFrames - 1, sync: true });
+      if (!result.running) return true;
+      if (result.sent) break;
+    }
+    replay.dynamicBattleTimer = setInterval(() => {
+      pump();
     }, syncInterval);
     if (typeof replay.dynamicBattleTimer.unref === "function") replay.dynamicBattleTimer.unref();
     return true;
+  }
+
+  function defaultSyncDelta(dynamicGame) {
+    const intervalMs =
+      dynamicGame && dynamicGame.managedCombat
+        ? Number(config.MANAGED_HOST_TICK_INTERVAL_MS || 33)
+        : Number(config.DYNAMIC_BATTLE_SYNC_INTERVAL_MS || 33);
+    return clampValue(intervalMs / 1000, 0.001, 0.25);
+  }
+
+  function clampValue(value, min, max) {
+    return Math.min(max, Math.max(min, Number(value)));
+  }
+
+  function isQuietManagedSyncBurst(packets, packetConstants) {
+    const outbound = (packets || []).filter((packet) => packet && packet.packetId && packet.payload);
+    if (outbound.length === 0) return true;
+    return outbound.every(
+      (packet) =>
+        packet.packetId === packetConstants.NPT_GAME_SYNC_DATA_PACK_NOT &&
+        Buffer.isBuffer(packet.payload) &&
+        packet.payload.length <= 64
+    );
   }
 
   function transitionTutorialReplayToDynamic(replay, endIndex) {
@@ -490,6 +634,9 @@ function createCombatHandler(options = {}) {
   return {
     startBattle,
     handleDeploy,
+    handlePause,
+    handleUnitSkill,
+    handleShipSkill,
     tick,
     buildSync,
     buildGameSync: buildSync,

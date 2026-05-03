@@ -38,7 +38,7 @@ function createBattleStateManager(options = {}) {
       deployableGameUnitUIDGroups: gameUnitGroups.map((group) => group.slice()),
       assignedGameUnitUIDs,
       initialUnitsSent: false,
-      tutorial: Number(activeStage.stageId || req.stageID || 0) === 11211,
+      tutorial: isTutorialStageId(activeStage.stageId || req.stageID),
     };
 
     replay.battleState = {
@@ -341,6 +341,10 @@ function mergeExtractedUnitPools(target, source, team) {
       if (!pool.gameUnitUIDs.includes(uid)) pool.gameUnitUIDs.push(uid);
     }
   }
+}
+
+function isTutorialStageId(stageId) {
+  return [11211, 11212, 11213, 11214].includes(Number(stageId));
 }
 
 module.exports = {

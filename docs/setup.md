@@ -132,13 +132,15 @@ Expected startup lines include:
 [+] Captured HTTP mirror listening on http://127.0.0.1:8088
 ```
 
-Combat sync defaults to roughly 30 Hz:
+Managed combat updates in 33 ms chunks and sends each packet immediately when the host emits it:
 
 ```powershell
 CS_DYNAMIC_BATTLE_SYNC_INTERVAL_MS=33
+CS_MANAGED_HOST_TICK_INTERVAL_MS=33
+CS_MANAGED_HOST_PRIME_FRAMES=1
 ```
 
-Raising this value batches more managed combat frames per network tick and can make combat actions feel delayed or stacked.
+Raising `CS_MANAGED_HOST_TICK_INTERVAL_MS` batches more managed combat frames per host tick, but it also adds visible packet latency. Keep `CS_MANAGED_HOST_PRIME_FRAMES=1` for live play; higher values are only useful for debugging quiet startup frames because they can delay ACK/sync responses. `CS_DYNAMIC_BATTLE_SYNC_INTERVAL_MS` is used by the JS fallback path.
 
 If the C# host cannot start, confirm:
 

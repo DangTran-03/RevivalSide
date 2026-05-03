@@ -11,7 +11,7 @@ module.exports = {
     if (ctx.config.REPLAY_CAPTURED_GAME_FLOW && ctx.capturedGameFlow) {
       if (!replay.loadCompleteReceived) {
         ctx.sendServerGamePacket(socket, ctx.constants.HEART_BIT_ACK, ctx.writeSignedVarLong(time), "heart-bit");
-        console.log("[capture-game] heartbeat before GAME_LOAD_COMPLETE_REQ; deferring game sync replay");
+        console.log("[capture-game] heartbeat before GAME_LOAD_COMPLETE_REQ; deferring combat sync until load complete");
         return true;
       }
       if (ctx.config.DYNAMIC_BATTLE_MANAGER && replay.battleSim) {
@@ -21,23 +21,35 @@ module.exports = {
       if (ctx.config.DYNAMIC_BATTLE_MANAGER && replay.dynamicGame) {
         replay.syntheticGameTime = Math.max(4, Number(replay.syntheticGameTime || 4) + 0.5);
         ctx.sendServerGamePacket(socket, ctx.constants.HEART_BIT_ACK, ctx.writeSignedVarLong(time), "heart-bit");
+        if (replay.dynamicBattleResultSent) {
+          return true;
+        }
         if (replay.dynamicBattleTimer) {
           return true;
         }
         const packets =
           replay.dynamicGame && !replay.dynamicGame.initialUnitsSent
-            ? ctx.buildInitialBattlePackets(replay)
+            ? ctx.ensureGameStartPackets(ctx.buildInitialBattlePackets(replay))
             : ctx.buildGameSyncPackets({
                 battleState: replay.battleState,
                 dynamicGame: replay.dynamicGame,
+                delta:
+                  Number(
+                    replay.dynamicGame && replay.dynamicGame.managedCombat
+                      ? ctx.config.MANAGED_HOST_TICK_INTERVAL_MS || 33
+                      : ctx.config.DYNAMIC_BATTLE_SYNC_INTERVAL_MS || 33
+                  ) / 1000,
                 gameTime: replay.syntheticGameTime,
                 absoluteGameTime: replay.syntheticGameTime,
                 gameStates: replay.heartbeatCount === 1 ? [{ state: 3, winTeam: 0, waveId: 1 }] : [],
               });
-        for (const item of packets) {
-          ctx.sendServerGamePacket(socket, item.packetId, item.payload, item.label || "dynamic-game-sync");
-        }
+        ctx.sendManagedOrImmediatePackets(socket, packets);
         ctx.startDynamicBattleManager(socket, "heart-bit");
+        return true;
+      }
+      if (ctx.config.DYNAMIC_BATTLE_MANAGER) {
+        ctx.sendServerGamePacket(socket, ctx.constants.HEART_BIT_ACK, ctx.writeSignedVarLong(time), "heart-bit");
+        console.log("[combat-host] heartbeat has no dynamic battle state; captured heartbeat replay disabled");
         return true;
       }
       ctx.sendCapturedHeartbeatReply(socket, time, "heart-bit");

@@ -15,8 +15,8 @@ module.exports = {
     if (ctx.config.DYNAMIC_BATTLE_MANAGER && ctx.handleDynamicBattleRespawn(socket, req)) {
       return true;
     }
-    if (ctx.config.DYNAMIC_BATTLE_MANAGER && socket.session.gameReplay.dynamicGame) {
-      console.log("[combat-host] GAME_RESPAWN_REQ not handled by managed combat host; no replay fallback sent");
+    if (ctx.config.DYNAMIC_BATTLE_MANAGER) {
+      console.log("[combat-host] GAME_RESPAWN_REQ not handled by combat host; captured respawn replay disabled");
       return true;
     }
     if (!ctx.sendCapturedGameThroughPacketId(socket, ctx.constants.GAME_RESPAWN_ACK, "game-respawn")) {

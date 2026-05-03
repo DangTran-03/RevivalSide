@@ -19,6 +19,7 @@ public sealed class StageData
     public int StageId { get; set; }
     public int DungeonID { get; set; }
     public int MapID { get; set; }
+    public int EventDeckId { get; set; }
     public int GameUnitUIDIndex { get; set; } = 18;
     public double InitialGameTime { get; set; } = 4;
     public double InitialRemainGameTime { get; set; } = 180;
@@ -108,6 +109,24 @@ public sealed class RespawnReq
     public double RespawnPosX { get; set; }
     public double GameTime { get; set; }
     public double Hp { get; set; }
+}
+
+public sealed class PauseReq
+{
+    public bool IsPause { get; set; }
+    public bool IsPauseEvent { get; set; }
+}
+
+public sealed class UnitSkillReq
+{
+    public int GameUnitUID { get; set; }
+}
+
+public sealed class ShipSkillReq
+{
+    public int GameUnitUID { get; set; }
+    public int ShipSkillID { get; set; }
+    public double SkillPosX { get; set; }
 }
 
 public sealed class UnitState

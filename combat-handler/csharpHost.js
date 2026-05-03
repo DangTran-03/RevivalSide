@@ -84,7 +84,22 @@ function createCsharpCombatHost(options = {}) {
     if (!ensureReady()) {
       return { ok: false, error: lastError || "C# combat host disabled" };
     }
-    const input = JSON.stringify(
+    const input = buildHostInput(command, data, requestOptions);
+    const sharedBuffer = new SharedArrayBuffer(8 + responseBufferBytes);
+    const header = new Int32Array(sharedBuffer, 0, 2);
+    worker.postMessage({ input, sharedBuffer });
+    const waitResult = Atomics.wait(header, 0, 0, timeoutMs);
+    if (waitResult === "timed-out") {
+      lastError = `combat host request timed out after ${timeoutMs}ms`;
+      return { ok: false, error: lastError };
+    }
+    const length = Atomics.load(header, 1);
+    const stdout = Buffer.from(sharedBuffer, 8, length).toString("utf8");
+    return parseHostResponse(stdout);
+  }
+
+  function buildHostInput(command, data, requestOptions = {}) {
+    return JSON.stringify(
       {
         command,
         options: {
@@ -105,16 +120,9 @@ function createCsharpCombatHost(options = {}) {
       },
       jsonReplacer
     );
-    const sharedBuffer = new SharedArrayBuffer(8 + responseBufferBytes);
-    const header = new Int32Array(sharedBuffer, 0, 2);
-    worker.postMessage({ input, sharedBuffer });
-    const waitResult = Atomics.wait(header, 0, 0, timeoutMs);
-    if (waitResult === "timed-out") {
-      lastError = `combat host request timed out after ${timeoutMs}ms`;
-      return { ok: false, error: lastError };
-    }
-    const length = Atomics.load(header, 1);
-    const stdout = Buffer.from(sharedBuffer, 8, length).toString("utf8");
+  }
+
+  function parseHostResponse(stdout) {
     try {
       const response = JSON.parse(stdout);
       reviveFromHost(response);
