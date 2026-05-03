@@ -1,0 +1,768 @@
+using System.Text.Json;
+
+namespace RevivalSide.CombatHost;
+
+internal sealed class CombatEngine
+{
+    private readonly HostOptions options;
+
+    private static readonly CombatStateIds StateIds = new();
+
+    public CombatEngine(HostOptions options)
+    {
+        this.options = options;
+    }
+
+    public HostResponse Handle(HostRequest request)
+    {
+        return request.Command switch
+        {
+            "startBattle" => StartBattle(Read<StartBattleData>(request.Data)),
+            "deployStageLineup" => DeployStageLineup(Read<BattleCommandData>(request.Data)),
+            "handleDeploy" => HandleDeploy(Read<DeployCommandData>(request.Data)),
+            "buildSync" => BuildSync(Read<SyncCommandData>(request.Data)),
+            "buildInitialSync" => BuildInitialSync(Read<BattleCommandData>(request.Data)),
+            "buildRespawnAck" => BuildRespawnAck(Read<RespawnAckCommandData>(request.Data)),
+            "buildSyntheticSync" => BuildSyntheticSync(Read<SyntheticSyncCommandData>(request.Data)),
+            "isFinished" => IsFinished(Read<BattleCommandData>(request.Data)),
+            "getResult" => GetResult(Read<BattleCommandData>(request.Data)),
+            _ => new HostResponse { Ok = false, Error = $"unknown command: {request.Command}" }
+        };
+    }
+
+    private HostResponse StartBattle(StartBattleData data)
+    {
+        var stage = data.Stage ?? new StageData();
+        var req = data.Req ?? new GameLoadReq();
+        var groups = stage.DeployableGameUnitUIDGroups.Count > 0
+            ? stage.DeployableGameUnitUIDGroups
+            : [[5, 6]];
+        var assigned = groups.SelectMany(group => group).Distinct().ToList();
+        var gameUID = data.GameUID != 0 ? data.GameUID : DateTimeOffset.UtcNow.ToUnixTimeMilliseconds() * 10000;
+
+        var dynamicGame = new DynamicGameState
+        {
+            StageID = stage.StageId != 0 ? stage.StageId : req.StageID,
+            DungeonID = stage.DungeonID != 0 ? stage.DungeonID : req.DungeonID,
+            MapID = stage.MapID != 0 ? stage.MapID : 1064,
+            GameUID = gameUID,
+            GameUnitUIDIndex = stage.GameUnitUIDIndex != 0 ? stage.GameUnitUIDIndex : 18,
+            DeployableGameUnitUIDGroups = groups.Select(group => group.ToList()).ToList(),
+            AssignedGameUnitUIDs = assigned,
+            Tutorial = (stage.StageId != 0 ? stage.StageId : req.StageID) == 11211,
+            UnitPools = BuildUnitPools(stage),
+            UsedPooledGameUnitUIDs = stage.InitialUnits.Select(unit => unit.GameUnitUID).Where(uid => uid > 0).ToHashSet()
+        };
+
+        var battleState = new BattleState
+        {
+            StageId = dynamicGame.StageID,
+            GameUID = gameUID,
+            Units = stage.InitialUnits.Select(CloneUnit).ToList(),
+            StartTime = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds(),
+            GameTime = stage.InitialGameTime != 0 ? stage.InitialGameTime : 4,
+            AbsoluteGameTime = stage.InitialGameTime != 0 ? stage.InitialGameTime : 4,
+            RemainGameTime = stage.InitialRemainGameTime != 0 ? stage.InitialRemainGameTime : 180,
+            RespawnCostA1 = stage.RespawnCostA1 == 0 ? 10 : stage.RespawnCostA1,
+            RespawnCostB1 = stage.RespawnCostB1 == 0 ? 10 : stage.RespawnCostB1,
+            GameState = stage.GameState ?? new GameStateSync(),
+            AutoDeployUnits = stage.AutoDeployUnits.Select(CloneAutoDeploy).ToList(),
+            DeployedUnitUIDs = [],
+            PendingDieUnitUIDs = [],
+            PendingDeckSyncs = [],
+            PendingGameStates = [],
+            PendingDungeonEvents = [],
+            RemovedUnitUIDs = []
+        };
+
+        foreach (var unit in battleState.Units)
+        {
+            NormalizeUnit(unit);
+            HydrateStats(unit);
+        }
+
+        ManagedCombatBridge.TryStart(options, data, dynamicGame, out var managedError);
+        if (dynamicGame.ManagedCombat)
+        {
+            // Managed combat is the preferred path when the installed
+            // CounterSide assemblies can hydrate NKCGameServerLocal from the
+            // captured 804. The lightweight state remains as a fallback and as
+            // metadata for the Node side.
+        }
+
+        return new HostResponse
+        {
+            Ok = true,
+            Error = managedError,
+            DynamicGame = dynamicGame,
+            BattleState = battleState
+        };
+    }
+
+    private HostResponse DeployStageLineup(BattleCommandData data)
+    {
+        var dynamicGame = data.DynamicGame ?? new DynamicGameState();
+        var battleState = data.BattleState ?? new BattleState();
+        var deployed = new List<UnitState>();
+        foreach (var unit in battleState.AutoDeployUnits)
+        {
+            if (string.IsNullOrWhiteSpace(unit.UnitUID) || battleState.DeployedUnitUIDs.Contains(unit.UnitUID))
+            {
+                continue;
+            }
+            battleState.DeployedUnitUIDs.Add(unit.UnitUID);
+            foreach (var gameUnitUID in unit.GameUnitUIDs)
+            {
+                var runtime = new UnitState
+                {
+                    SourceUnitUID = unit.UnitUID,
+                    GameUnitUID = gameUnitUID,
+                    Team = 1,
+                    Hp = unit.Hp,
+                    MaxHp = unit.Hp,
+                    X = unit.X,
+                    Z = unit.Z,
+                    SavedPosX = unit.X,
+                    Right = unit.Right,
+                    PlayState = unit.PlayState,
+                    Respawn = true,
+                    StateId = unit.StateId,
+                    StateChangeCount = unit.StateChangeCount,
+                    Seed = unit.Seed == 0 ? 51 : unit.Seed
+                };
+                NormalizeUnit(runtime);
+                HydrateStats(runtime);
+                battleState.Units.Add(runtime);
+                dynamicGame.UsedPooledGameUnitUIDs.Add(gameUnitUID);
+                deployed.Add(runtime);
+            }
+        }
+
+        return new HostResponse
+        {
+            Ok = true,
+            DynamicGame = dynamicGame,
+            BattleState = battleState,
+            Deployed = new HostDeployResult { Handled = true, Mode = "battleState", Spawned = deployed }
+        };
+    }
+
+    private HostResponse HandleDeploy(DeployCommandData data)
+    {
+        if (ManagedCombatBridge.TryHandleDeploy(data, out var managedResponse, out var managedError))
+        {
+            return managedResponse!;
+        }
+        if (data.DynamicGame?.ManagedCombat == true)
+        {
+            return managedResponse ?? new HostResponse { Ok = false, Error = managedError ?? "managed deploy failed" };
+        }
+
+        if (data.BattleState == null || data.DynamicGame == null || data.Req == null)
+        {
+            return new HostResponse { Ok = true, Deployed = new HostDeployResult { Handled = false } };
+        }
+
+        var battleState = data.BattleState;
+        var dynamicGame = data.DynamicGame;
+        NormalizeCollections(battleState, dynamicGame);
+        var unit = DeployRuntimeBattleUnit(dynamicGame, battleState, data.Req);
+        var ackPayload = PacketBuilder.BuildRespawnAck(data.Req.UnitUID, data.Req.AssistUnit);
+        var packets = new List<HostPacket>
+        {
+            new()
+            {
+                PacketId = 817,
+                Label = "csharp-combat-respawn",
+                PayloadBase64 = Convert.ToBase64String(ackPayload)
+            }
+        };
+
+        if (unit != null)
+        {
+            var syncPayload = BuildSyncPayload(battleState, 0, skipSimulation: true);
+            packets.Add(new HostPacket
+            {
+                PacketId = 822,
+                Label = "csharp-combat-deploy-sync",
+                PayloadBase64 = Convert.ToBase64String(syncPayload)
+            });
+        }
+
+        return new HostResponse
+        {
+            Ok = true,
+            DynamicGame = dynamicGame,
+            BattleState = battleState,
+            Packets = packets,
+            Deployed = new HostDeployResult { Handled = true, Mode = "battleState", Unit = unit }
+        };
+    }
+
+    private HostResponse BuildSync(SyncCommandData data)
+    {
+        if (ManagedCombatBridge.TryBuildSync(data, out var managedResponse, out var managedError))
+        {
+            return managedResponse!;
+        }
+        if (data.DynamicGame?.ManagedCombat == true)
+        {
+            return managedResponse ?? new HostResponse { Ok = false, Error = managedError ?? "managed sync failed" };
+        }
+
+        if (data.BattleState == null)
+        {
+            return new HostResponse { Ok = false, Error = "battleState required" };
+        }
+
+        var payload = BuildSyncPayload(data.BattleState, data.Delta ?? options.SyncIntervalSeconds, data.SkipSimulation);
+        return new HostResponse
+        {
+            Ok = true,
+            BattleState = data.BattleState,
+            PayloadBase64 = Convert.ToBase64String(payload)
+        };
+    }
+
+    private HostResponse BuildInitialSync(BattleCommandData data)
+    {
+        if (ManagedCombatBridge.TryBuildInitialSync(data.DynamicGame, data.BattleState, out var managedResponse, out var managedError))
+        {
+            return managedResponse!;
+        }
+        if (data.DynamicGame?.ManagedCombat == true)
+        {
+            return managedResponse ?? new HostResponse { Ok = false, Error = managedError ?? "managed initial sync failed" };
+        }
+
+        var battleState = data.BattleState;
+        if (battleState == null)
+        {
+            return new HostResponse
+            {
+                Ok = true,
+                PayloadBase64 = Convert.ToBase64String(PacketBuilder.BuildSyntheticGameSync(4))
+            };
+        }
+
+        var payload = PacketBuilder.BuildGameSync(battleState);
+        return new HostResponse
+        {
+            Ok = true,
+            BattleState = battleState,
+            PayloadBase64 = Convert.ToBase64String(payload)
+        };
+    }
+
+    private HostResponse BuildRespawnAck(RespawnAckCommandData data)
+    {
+        return new HostResponse
+        {
+            Ok = true,
+            PayloadBase64 = Convert.ToBase64String(PacketBuilder.BuildRespawnAck(data.UnitUID, data.AssistUnit))
+        };
+    }
+
+    private static HostResponse BuildSyntheticSync(SyntheticSyncCommandData data)
+    {
+        return new HostResponse
+        {
+            Ok = true,
+            PayloadBase64 = Convert.ToBase64String(PacketBuilder.BuildSyntheticGameSync(data.GameTime))
+        };
+    }
+
+    private static HostResponse IsFinished(BattleCommandData data)
+    {
+        var state = data.BattleState;
+        return new HostResponse
+        {
+            Ok = true,
+            Result = new HostResult
+            {
+                Finished = state?.Finished == true,
+                Win = state?.Win == true,
+                GameTime = state?.GameTime ?? 0
+            }
+        };
+    }
+
+    private static HostResponse GetResult(BattleCommandData data)
+    {
+        var state = data.BattleState;
+        return new HostResponse
+        {
+            Ok = true,
+            Result = new HostResult
+            {
+                Finished = state?.Finished == true,
+                Win = state?.Win == true,
+                GameTime = state?.GameTime ?? 0
+            },
+            BattleState = state
+        };
+    }
+
+    private byte[] BuildSyncPayload(BattleState battleState, double delta, bool skipSimulation)
+    {
+        NormalizeCollections(battleState, null);
+        var dt = Clamp(delta, 0, 1);
+        battleState.GameTime += dt;
+        battleState.AbsoluteGameTime = (battleState.AbsoluteGameTime == 0 ? battleState.GameTime : battleState.AbsoluteGameTime) + dt;
+        battleState.RemainGameTime = Math.Max(0, (battleState.RemainGameTime == 0 ? 180 : battleState.RemainGameTime) - dt);
+        if (!skipSimulation)
+        {
+            Tick(battleState, dt);
+        }
+        return PacketBuilder.BuildGameSync(battleState);
+    }
+
+    private UnitState? DeployRuntimeBattleUnit(DynamicGameState dynamicGame, BattleState battleState, RespawnReq req)
+    {
+        var pooled = ConsumePooledGameUnitUID(dynamicGame, battleState, req.UnitUID);
+        if (pooled == null) return null;
+        var (gameUnitUID, unitID) = pooled.Value;
+        var hp = Math.Max(1, req.Hp > 0 ? req.Hp : options.DefaultDeployedUnitHp);
+        var x = Clamp(req.RespawnPosX, -3000, 3000);
+        var unit = new UnitState
+        {
+            SourceUnitUID = req.UnitUID,
+            UnitID = unitID != 0 ? unitID : req.UnitID,
+            UnitStrID = req.UnitStrID,
+            GameUnitUID = gameUnitUID,
+            Team = 1,
+            Hp = hp,
+            MaxHp = hp,
+            X = x,
+            Z = 0,
+            SavedPosX = x,
+            Right = true,
+            PlayState = 1,
+            Respawn = true,
+            StateId = StateIds.Idle,
+            StateChangeCount = 1,
+            TargetUID = 0,
+            SubTargetUID = 0,
+            Seed = 51 + gameUnitUID % 40
+        };
+        NormalizeUnit(unit);
+        HydrateStats(unit);
+        battleState.Units.Add(unit);
+        battleState.GameTime = Math.Max(battleState.GameTime, req.GameTime);
+        battleState.AbsoluteGameTime = Math.Max(battleState.AbsoluteGameTime, battleState.GameTime);
+        battleState.PendingDeckSyncs.Add(new DeckSync
+        {
+            Team = 1,
+            UnitDeckIndex = NextDeckSyncIndex(battleState),
+            UnitDeckUID = req.UnitUID,
+            DeckUsedAddUnitUID = req.UnitUID
+        });
+        return unit;
+    }
+
+    private (int GameUnitUID, int UnitID)? ConsumePooledGameUnitUID(DynamicGameState dynamicGame, BattleState battleState, string unitUID)
+    {
+        var used = dynamicGame.UsedPooledGameUnitUIDs.ToHashSet();
+        foreach (var unit in battleState.Units)
+        {
+            if (unit.GameUnitUID > 0) used.Add(unit.GameUnitUID);
+        }
+
+        var key = unitUID ?? "";
+        var preferred = dynamicGame.UnitPools.Ordered.Where(pool => pool.UnitUID == key).ToList();
+        var candidates = preferred.Count > 0 ? preferred : dynamicGame.UnitPools.Ordered;
+        foreach (var pool in candidates)
+        {
+            foreach (var uid in pool.GameUnitUIDs)
+            {
+                if (uid <= 0 || used.Contains(uid)) continue;
+                dynamicGame.UsedPooledGameUnitUIDs.Add(uid);
+                return (uid, pool.UnitID);
+            }
+        }
+
+        foreach (var uid in dynamicGame.UnitPools.UnassignedGameUnitUIDs)
+        {
+            if (uid <= 0 || used.Contains(uid)) continue;
+            dynamicGame.UsedPooledGameUnitUIDs.Add(uid);
+            return (uid, 0);
+        }
+        return null;
+    }
+
+    private static int NextDeckSyncIndex(BattleState battleState)
+    {
+        var count = battleState.DeployCount;
+        battleState.DeployCount = count + 1;
+        return count % 4;
+    }
+
+    private UnitPools BuildUnitPools(StageData stage)
+    {
+        var pools = new UnitPools();
+        foreach (var auto in stage.AutoDeployUnits)
+        {
+            if (string.IsNullOrWhiteSpace(auto.UnitUID) || auto.GameUnitUIDs.Count == 0) continue;
+            pools.Ordered.Add(new UnitPool
+            {
+                UnitUID = auto.UnitUID,
+                GameUnitUIDs = auto.GameUnitUIDs.Distinct().ToList()
+            });
+        }
+
+        var fallbackUIDs = new HashSet<int>();
+        foreach (var group in stage.DeployableGameUnitUIDGroups)
+        {
+            foreach (var uid in group)
+            {
+                if (uid > 4) fallbackUIDs.Add(uid);
+            }
+        }
+        foreach (var pool in pools.Ordered)
+        {
+            foreach (var uid in pool.GameUnitUIDs)
+            {
+                if (uid > 4) fallbackUIDs.Add(uid);
+            }
+        }
+        pools.UnassignedGameUnitUIDs = fallbackUIDs.Order().ToList();
+        return pools;
+    }
+
+    private void Tick(BattleState battleState, double delta)
+    {
+        if (battleState.Finished || battleState.Units.Count == 0) return;
+        var dt = Clamp(delta <= 0 ? options.SyncIntervalSeconds : delta, 0.05, 1);
+        battleState.Units = battleState.Units.Where(unit => unit != null).ToList();
+        foreach (var unit in battleState.Units)
+        {
+            NormalizeUnit(unit);
+            HydrateStats(unit);
+        }
+
+        var liveUnits = battleState.Units.Where(IsLive).ToList();
+        if (liveUnits.Select(unit => unit.Team).Distinct().Count() < 2)
+        {
+            foreach (var unit in liveUnits)
+            {
+                unit.TargetUID = 0;
+                unit.SpeedX = 0;
+                SetUnitState(unit, StateIds.Idle);
+            }
+            CleanupDeadUnits(battleState);
+            SettleOutcome(battleState);
+            return;
+        }
+
+        foreach (var unit in liveUnits.OrderBy(unit => unit.GameUnitUID).ToList())
+        {
+            if (!IsLive(unit)) continue;
+            var target = FindNearestEnemy(unit, battleState.Units);
+            if (target == null)
+            {
+                unit.TargetUID = 0;
+                unit.SpeedX = 0;
+                SetUnitState(unit, StateIds.Idle);
+                continue;
+            }
+
+            var stats = GetStats(unit);
+            var direction = target.X >= unit.X ? 1 : -1;
+            var distance = Math.Abs(target.X - unit.X);
+            unit.TargetUID = target.GameUnitUID;
+            unit.Right = direction > 0;
+            unit.AttackTimer = Math.Max(0, unit.AttackTimer - dt);
+
+            if (distance > stats.AttackRange && stats.MoveSpeed > 0)
+            {
+                var step = Math.Min(stats.MoveSpeed * dt, Math.Max(0, distance - stats.AttackRange));
+                unit.X += direction * step;
+                unit.SpeedX = Math.Abs(stats.MoveSpeed);
+                unit.SavedPosX = unit.X;
+                SetUnitState(unit, StateIds.Move);
+                continue;
+            }
+
+            unit.SpeedX = 0;
+            unit.SavedPosX = unit.X;
+            SetUnitState(unit, StateIds.Attack);
+            if (unit.AttackTimer <= 0)
+            {
+                unit.AttackTimer = stats.AttackCooldown;
+                target.Hp = Math.Max(0, target.Hp - stats.Damage);
+                target.TargetUID = unit.GameUnitUID;
+                if (target.Hp <= 0) MarkDead(target, battleState, unit);
+            }
+        }
+
+        CleanupDeadUnits(battleState);
+        SettleOutcome(battleState);
+    }
+
+    private void NormalizeUnit(UnitState unit)
+    {
+        unit.Team = unit.Team == 0 ? (unit.Right ? 1 : 3) : unit.Team;
+        unit.Hp = Math.Max(0, unit.Hp);
+        unit.MaxHp = Math.Max(1, unit.MaxHp > 0 ? unit.MaxHp : Math.Max(unit.Hp, 1));
+        unit.SavedPosX = unit.SavedPosX == 0 ? unit.X : unit.SavedPosX;
+        unit.PlayState = unit.Hp <= 0 ? 2 : unit.PlayState == 0 ? 1 : unit.PlayState;
+        unit.StateId = unit.StateId == 0 ? StateIds.Idle : unit.StateId;
+        unit.StateChangeCount = unit.StateChangeCount == 0 ? 1 : unit.StateChangeCount;
+        unit.Seed = unit.Seed == 0 ? 51 : unit.Seed;
+    }
+
+    private void HydrateStats(UnitState unit)
+    {
+        if (unit.AttackDamage <= 0) unit.AttackDamage = IsStatic(unit) ? options.StaticUnitDamage : options.DefaultUnitDamage;
+        if (unit.AttackRange <= 0) unit.AttackRange = IsStatic(unit) ? options.StaticUnitAttackRange : options.DefaultUnitAttackRange;
+        if (unit.MoveSpeed <= 0) unit.MoveSpeed = IsStatic(unit) ? 0 : options.DefaultUnitMoveSpeed;
+        if (unit.AttackCooldown <= 0) unit.AttackCooldown = IsStatic(unit) ? options.StaticUnitAttackCooldown : options.DefaultUnitAttackCooldown;
+    }
+
+    private UnitStats GetStats(UnitState unit)
+    {
+        HydrateStats(unit);
+        return new UnitStats(
+            Clamp(unit.AttackDamage, 1, 1000000),
+            Clamp(unit.AttackRange, 1, 6000),
+            Clamp(unit.MoveSpeed, 0, 1000),
+            Clamp(unit.AttackCooldown, 0.2, 30));
+    }
+
+    private static bool IsLive(UnitState unit)
+    {
+        return unit.PlayState != 0 && unit.PlayState != 2 && unit.Hp > 0;
+    }
+
+    private static UnitState? FindNearestEnemy(UnitState unit, IEnumerable<UnitState> units)
+    {
+        UnitState? best = null;
+        var bestDistance = double.PositiveInfinity;
+        foreach (var other in units)
+        {
+            if (!IsLive(other) || other.GameUnitUID == unit.GameUnitUID || other.Team == unit.Team) continue;
+            var distance = Math.Abs(other.X - unit.X);
+            if (distance < bestDistance)
+            {
+                best = other;
+                bestDistance = distance;
+            }
+        }
+        return best;
+    }
+
+    private static void MarkDead(UnitState unit, BattleState battleState, UnitState? attacker)
+    {
+        if (unit.PlayState is 0 or 2) return;
+        unit.Hp = 0;
+        unit.SpeedX = 0;
+        unit.SpeedY = 0;
+        unit.SpeedZ = 0;
+        unit.TargetUID = attacker?.GameUnitUID ?? unit.TargetUID;
+        unit.Respawn = false;
+        unit.DeadTicks = 0;
+        unit.PendingRemove = true;
+        unit.PlayState = 2;
+        SetUnitState(unit, StateIds.Dead);
+    }
+
+    private static void CleanupDeadUnits(BattleState battleState)
+    {
+        var kept = new List<UnitState>();
+        foreach (var unit in battleState.Units)
+        {
+            if (unit.Hp <= 0 || unit.PlayState == 2)
+            {
+                if (unit.PlayState != 2) MarkDead(unit, battleState, null);
+                unit.DeadTicks += 1;
+                unit.SpeedX = 0;
+                unit.Respawn = false;
+                unit.Hp = 0;
+                if (unit.DeadTicks >= 2)
+                {
+                    if (!battleState.RemovedUnitUIDs.Contains(unit.GameUnitUID))
+                    {
+                        battleState.RemovedUnitUIDs.Add(unit.GameUnitUID);
+                        battleState.PendingDieUnitUIDs.Add(unit.GameUnitUID);
+                    }
+                    continue;
+                }
+            }
+            kept.Add(unit);
+        }
+        battleState.Units = kept;
+    }
+
+    private static void SettleOutcome(BattleState battleState)
+    {
+        if (battleState.Finished) return;
+        var live = battleState.Units.Where(IsLive).ToList();
+        var livePlayers = live.Where(unit => unit.Team == 1).ToList();
+        var liveEnemies = live.Where(unit => unit.Team != 1).ToList();
+        if (livePlayers.Count > 0 && liveEnemies.Count == 0)
+        {
+            FinishBattle(battleState, true);
+        }
+        else if (battleState.GameTime > 0 && livePlayers.Count == 0 && liveEnemies.Count > 0)
+        {
+            FinishBattle(battleState, false);
+        }
+        else if (battleState.RemainGameTime <= 0)
+        {
+            FinishBattle(battleState, false);
+        }
+    }
+
+    private static void FinishBattle(BattleState battleState, bool win)
+    {
+        battleState.Finished = true;
+        battleState.Win = win;
+        battleState.GameState = new GameStateSync
+        {
+            State = 4,
+            WinTeam = win ? 1 : 3,
+            WaveId = battleState.GameState?.WaveId > 0 ? battleState.GameState.WaveId : 1
+        };
+        battleState.PendingGameStates.Add(battleState.GameState);
+    }
+
+    private static bool IsStatic(UnitState unit)
+    {
+        var role = unit.Role?.ToLowerInvariant() ?? "";
+        return role is "ship" or "core" || unit.GameUnitUID <= 4;
+    }
+
+    private static void SetUnitState(UnitState unit, int stateId)
+    {
+        if (unit.StateId == stateId) return;
+        unit.StateId = stateId;
+        unit.StateChangeCount = ClampSByte(unit.StateChangeCount + 1);
+    }
+
+    private static int ClampSByte(int value)
+    {
+        if (value > 120) return -120;
+        return value < -120 ? 0 : value;
+    }
+
+    private static double Clamp(double value, double min, double max)
+    {
+        return Math.Min(max, Math.Max(min, double.IsFinite(value) ? value : 0));
+    }
+
+    private static UnitState CloneUnit(UnitState unit)
+    {
+        return new UnitState
+        {
+            SourceUnitUID = unit.SourceUnitUID,
+            UnitID = unit.UnitID,
+            UnitStrID = unit.UnitStrID,
+            GameUnitUID = unit.GameUnitUID,
+            Team = unit.Team,
+            Hp = unit.Hp,
+            MaxHp = unit.MaxHp,
+            X = unit.X,
+            Z = unit.Z,
+            JumpY = unit.JumpY,
+            SavedPosX = unit.SavedPosX,
+            SavedPosY = unit.SavedPosY,
+            Right = unit.Right,
+            PlayState = unit.PlayState,
+            Respawn = unit.Respawn,
+            StateId = unit.StateId,
+            StateChangeCount = unit.StateChangeCount,
+            SpeedX = unit.SpeedX,
+            SpeedY = unit.SpeedY,
+            SpeedZ = unit.SpeedZ,
+            TargetUID = unit.TargetUID,
+            SubTargetUID = unit.SubTargetUID,
+            Seed = unit.Seed,
+            AttackTimer = unit.AttackTimer,
+            AttackDamage = unit.AttackDamage,
+            AttackRange = unit.AttackRange,
+            MoveSpeed = unit.MoveSpeed,
+            AttackCooldown = unit.AttackCooldown,
+            DeadTicks = unit.DeadTicks,
+            PendingRemove = unit.PendingRemove,
+            Role = unit.Role,
+            DamageSpeedXNegative = unit.DamageSpeedXNegative
+        };
+    }
+
+    private static AutoDeployUnit CloneAutoDeploy(AutoDeployUnit unit)
+    {
+        return new AutoDeployUnit
+        {
+            UnitUID = unit.UnitUID,
+            AssistUnit = unit.AssistUnit,
+            GameUnitUIDs = unit.GameUnitUIDs.ToList(),
+            X = unit.X,
+            Z = unit.Z,
+            Hp = unit.Hp,
+            Right = unit.Right,
+            PlayState = unit.PlayState,
+            StateId = unit.StateId,
+            StateChangeCount = unit.StateChangeCount,
+            Seed = unit.Seed
+        };
+    }
+
+    private static void NormalizeCollections(BattleState battleState, DynamicGameState? dynamicGame)
+    {
+        battleState.Units ??= [];
+        battleState.PendingDieUnitUIDs ??= [];
+        battleState.PendingDeckSyncs ??= [];
+        battleState.PendingGameStates ??= [];
+        battleState.PendingDungeonEvents ??= [];
+        battleState.RemovedUnitUIDs ??= [];
+        battleState.DeployedUnitUIDs ??= [];
+        if (dynamicGame != null)
+        {
+            dynamicGame.UnitPools ??= new UnitPools();
+            dynamicGame.UnitPools.Ordered ??= [];
+            dynamicGame.UnitPools.UnassignedGameUnitUIDs ??= [];
+            dynamicGame.UsedPooledGameUnitUIDs ??= [];
+        }
+    }
+
+    private static T Read<T>(JsonElement data) where T : new()
+    {
+        if (data.ValueKind is JsonValueKind.Undefined or JsonValueKind.Null)
+        {
+            return new T();
+        }
+        return data.Deserialize<T>(Json.Options) ?? new T();
+    }
+
+    private sealed record CombatStateIds(int Idle = 12, int Move = 13, int Attack = 45, int Dead = 18);
+
+    private sealed record UnitStats(double Damage, double AttackRange, double MoveSpeed, double AttackCooldown);
+}
+
+internal class BattleCommandData
+{
+    public DynamicGameState? DynamicGame { get; set; }
+    public BattleState? BattleState { get; set; }
+}
+
+internal sealed class DeployCommandData : BattleCommandData
+{
+    public RespawnReq? Req { get; set; }
+}
+
+internal sealed class SyncCommandData : BattleCommandData
+{
+    public double? Delta { get; set; }
+    public bool SkipSimulation { get; set; }
+}
+
+internal sealed class RespawnAckCommandData
+{
+    public string UnitUID { get; set; } = "";
+    public bool AssistUnit { get; set; }
+}
+
+internal sealed class SyntheticSyncCommandData
+{
+    public double GameTime { get; set; }
+}

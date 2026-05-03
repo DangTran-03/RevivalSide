@@ -1,0 +1,216 @@
+const { spawnSync } = require("child_process");
+const crypto = require("crypto");
+const fs = require("fs");
+const path = require("path");
+const { Worker } = require("worker_threads");
+
+// Thin process bridge to the C# combat host.
+//
+// The listener is still synchronous, so this bridge intentionally uses a
+// blocking request API. It is env-gated and falls back to the JS implementation
+// unless CS_CSHARP_COMBAT_HOST=1 is set.
+
+function createCsharpCombatHost(options = {}) {
+  const enabled = Boolean(options.enabled);
+  const projectPath = path.resolve(options.projectPath || path.join(__dirname, "..", "combat-host", "CombatHost.csproj"));
+  const explicitDllPath = options.dllPath ? path.resolve(options.dllPath) : "";
+  const projectDir = path.dirname(projectPath);
+  const timeoutMs = Number(options.timeoutMs || 5000);
+  const managedDir = options.managedDir || "";
+  const gameplayTablesDir = options.gameplayTablesDir || "";
+  const dotnetPath = options.dotnetPath || findPreferredDotnetRuntime(managedDir);
+  const buildDotnetPath = options.buildDotnetPath || process.env.CS_DOTNET_BUILD_PATH || "dotnet";
+  const responseBufferBytes = Number(options.responseBufferBytes || 16 * 1024 * 1024);
+  let ready = false;
+  let lastError = "";
+  let worker = null;
+  let workerDllPath = "";
+
+  function ensureReady() {
+    if (!enabled) return false;
+    const dllPath = resolveHostDllPath();
+    if (ready && worker && workerDllPath === dllPath && fs.existsSync(dllPath)) return true;
+    if (worker && workerDllPath !== dllPath) {
+      worker.terminate();
+      worker = null;
+      ready = false;
+      workerDllPath = "";
+    }
+    if (!fs.existsSync(dllPath)) {
+      const outDir = path.dirname(dllPath);
+      fs.mkdirSync(outDir, { recursive: true });
+      const buildArgs = ["build", projectPath, "--nologo"];
+      if (!explicitDllPath) buildArgs.push(`-p:OutDir=${outDir}${path.sep}`);
+      const build = spawnSync(buildDotnetPath, buildArgs, {
+        encoding: "utf8",
+        timeout: Math.max(timeoutMs, 30000),
+      });
+      if (build.status !== 0) {
+        lastError = (build.stderr || build.stdout || "").trim() || `dotnet build exited ${build.status}`;
+        return false;
+      }
+    }
+    ready = fs.existsSync(dllPath);
+    if (!ready) lastError = `missing combat host dll: ${dllPath}`;
+    if (ready && !worker) {
+      worker = new Worker(path.join(__dirname, "csharpHostWorker.js"), {
+        workerData: { dllPath, dotnetPath },
+      });
+      workerDllPath = dllPath;
+      if (typeof worker.unref === "function") worker.unref();
+      worker.on("error", (err) => {
+        lastError = err.stack || err.message;
+        ready = false;
+        worker = null;
+        workerDllPath = "";
+      });
+      worker.on("exit", (code) => {
+        if (code !== 0) lastError = `C# combat host worker exited ${code}`;
+        ready = false;
+        worker = null;
+        workerDllPath = "";
+      });
+    }
+    return ready;
+  }
+
+  function resolveHostDllPath() {
+    if (explicitDllPath) return explicitDllPath;
+    const stamp = computeCombatHostStamp(projectDir);
+    return path.join(projectDir, "bin", "host-cache", stamp, "CombatHost.dll");
+  }
+
+  function request(command, data, requestOptions = {}) {
+    if (!ensureReady()) {
+      return { ok: false, error: lastError || "C# combat host disabled" };
+    }
+    const input = JSON.stringify(
+      {
+        command,
+        options: {
+          managedDir,
+          gameplayTablesDir,
+          syncIntervalSeconds: Number(options.syncIntervalSeconds || 0.25),
+          defaultUnitDamage: Number(options.defaultUnitDamage || 10),
+          defaultUnitAttackRange: Number(options.defaultUnitAttackRange || 130),
+          defaultUnitMoveSpeed: Number(options.defaultUnitMoveSpeed || 55),
+          defaultUnitAttackCooldown: Number(options.defaultUnitAttackCooldown || 1.2),
+          staticUnitDamage: Number(options.staticUnitDamage || 8),
+          staticUnitAttackRange: Number(options.staticUnitAttackRange || 180),
+          staticUnitAttackCooldown: Number(options.staticUnitAttackCooldown || 1.6),
+          defaultDeployedUnitHp: Number(options.defaultDeployedUnitHp || 1989),
+          ...requestOptions,
+        },
+        data: normalizeForHost(data),
+      },
+      jsonReplacer
+    );
+    const sharedBuffer = new SharedArrayBuffer(8 + responseBufferBytes);
+    const header = new Int32Array(sharedBuffer, 0, 2);
+    worker.postMessage({ input, sharedBuffer });
+    const waitResult = Atomics.wait(header, 0, 0, timeoutMs);
+    if (waitResult === "timed-out") {
+      lastError = `combat host request timed out after ${timeoutMs}ms`;
+      return { ok: false, error: lastError };
+    }
+    const length = Atomics.load(header, 1);
+    const stdout = Buffer.from(sharedBuffer, 8, length).toString("utf8");
+    try {
+      const response = JSON.parse(stdout);
+      reviveFromHost(response);
+      if (!response.ok) lastError = response.error || "combat host request failed";
+      return response;
+    } catch (err) {
+      lastError = `combat host returned invalid JSON: ${err.message}`;
+      return { ok: false, error: lastError };
+    }
+  }
+
+  return {
+    enabled,
+    ensureReady,
+    request,
+    get lastError() {
+      return lastError;
+    },
+  };
+}
+
+function findPreferredDotnetRuntime(managedDir) {
+  if (process.env.CS_DOTNET_PATH) return process.env.CS_DOTNET_PATH;
+  if (managedDir && process.platform === "win32") {
+    const x64Dotnet = "C:\\Program Files\\dotnet\\x64\\dotnet.exe";
+    if (fs.existsSync(x64Dotnet)) return x64Dotnet;
+  }
+  return "dotnet";
+}
+
+function computeCombatHostStamp(projectDir) {
+  const hash = crypto.createHash("sha1");
+  for (const fileName of fs
+    .readdirSync(projectDir)
+    .filter((name) => name.endsWith(".cs") || name.endsWith(".csproj"))
+    .sort()) {
+    const filePath = path.join(projectDir, fileName);
+    const stat = fs.statSync(filePath);
+    if (!stat.isFile()) continue;
+    hash.update(fileName);
+    hash.update("\0");
+    hash.update(fs.readFileSync(filePath));
+    hash.update("\0");
+  }
+  return hash.digest("hex").slice(0, 16);
+}
+
+function normalizeForHost(value) {
+  if (!value || typeof value !== "object") return value;
+  if (Buffer.isBuffer(value)) return value.toString("base64");
+  if (value instanceof Set) return Array.from(value);
+  if (value instanceof Map) return Array.from(value.values()).map(normalizeForHost);
+  if (Array.isArray(value)) return value.map(normalizeForHost);
+
+  const output = {};
+  for (const [key, item] of Object.entries(value)) {
+    if (typeof item === "function") continue;
+    output[key] = normalizeForHost(item);
+  }
+  if (output.unitUID != null) output.unitUID = String(output.unitUID);
+  if (output.sourceUnitUID != null) output.sourceUnitUID = String(output.sourceUnitUID);
+  if (output.unitDeckUID != null) output.unitDeckUID = String(output.unitDeckUID);
+  if (output.deckUsedAddUnitUID != null) output.deckUsedAddUnitUID = String(output.deckUsedAddUnitUID);
+  if (output.deckTombAddUnitUID != null) output.deckTombAddUnitUID = String(output.deckTombAddUnitUID);
+  if (output.nextDeckUnitUID != null) output.nextDeckUnitUID = String(output.nextDeckUnitUID);
+  return output;
+}
+
+function reviveFromHost(response) {
+  if (response.dynamicGame) {
+    const pools = response.dynamicGame.unitPools || {};
+    pools.ordered = pools.ordered || [];
+    pools.unassignedGameUnitUIDs = pools.unassignedGameUnitUIDs || [];
+    pools.byUnitUID = new Map(pools.ordered.map((pool) => [String(pool.unitUID || ""), pool]));
+    response.dynamicGame.unitPools = pools;
+    response.dynamicGame.usedPooledGameUnitUIDs = new Set(response.dynamicGame.usedPooledGameUnitUIDs || []);
+  }
+  if (response.battleState) {
+    response.battleState.deployedUnitUIDs = new Set(response.battleState.deployedUnitUIDs || []);
+    response.battleState.removedUnitUIDs = new Set(response.battleState.removedUnitUIDs || []);
+  }
+  if (response.payloadBase64 != null) response.payload = Buffer.from(response.payloadBase64, "base64");
+  if (Array.isArray(response.packets)) {
+    for (const packet of response.packets) {
+      if (packet.payloadBase64 != null) packet.payload = Buffer.from(packet.payloadBase64, "base64");
+    }
+  }
+}
+
+function jsonReplacer(_key, value) {
+  if (typeof value === "bigint") return value.toString();
+  if (value instanceof Set) return Array.from(value);
+  if (value instanceof Map) return Array.from(value.values());
+  return value;
+}
+
+module.exports = {
+  createCsharpCombatHost,
+};

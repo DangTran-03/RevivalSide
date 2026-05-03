@@ -1,0 +1,14 @@
+{
+  "name": "revivalside",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Local CounterSide revival server research tooling.",
+  "scripts": {
+    "listen": "node cs-listener.js",
+    "check:listener": "node --check cs-listener.js",
+    "check:handlers": "powershell -NoProfile -ExecutionPolicy Bypass -Command \"Get-ChildItem packet-handlers -Filter *.js | ForEach-Object { node --check $_.FullName }\"",
+    "build:combat-host": "dotnet build combat-host/CombatHost.csproj --nologo",
+    "publish:combat-host": "dotnet publish combat-host/CombatHost.csproj -c Release --nologo -o prebuilt/combat-host",
+    "generate:packet-schema": "node tools/generate-packet-schema.js"
+  }
+}

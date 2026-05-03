@@ -1,0 +1,201 @@
+namespace RevivalSide.CombatHost;
+
+public sealed class StartBattleData
+{
+    public GameLoadReq Req { get; set; } = new();
+    public StageData Stage { get; set; } = new();
+    public long GameUID { get; set; }
+    public string GameLoadAckPayloadBase64 { get; set; } = "";
+}
+
+public sealed class GameLoadReq
+{
+    public int StageID { get; set; }
+    public int DungeonID { get; set; }
+}
+
+public sealed class StageData
+{
+    public int StageId { get; set; }
+    public int DungeonID { get; set; }
+    public int MapID { get; set; }
+    public int GameUnitUIDIndex { get; set; } = 18;
+    public double InitialGameTime { get; set; } = 4;
+    public double InitialRemainGameTime { get; set; } = 180;
+    public double RespawnCostA1 { get; set; } = 10;
+    public double RespawnCostB1 { get; set; } = 10;
+    public GameStateSync GameState { get; set; } = new();
+    public List<UnitState> InitialUnits { get; set; } = [];
+    public List<AutoDeployUnit> AutoDeployUnits { get; set; } = [];
+    public List<List<int>> DeployableGameUnitUIDGroups { get; set; } = [];
+}
+
+public sealed class DynamicGameState
+{
+    public int StageID { get; set; }
+    public int DungeonID { get; set; }
+    public int MapID { get; set; }
+    public long GameUID { get; set; }
+    public int GameUnitUIDIndex { get; set; } = 18;
+    public List<List<int>> DeployableGameUnitUIDGroups { get; set; } = [];
+    public List<int> AssignedGameUnitUIDs { get; set; } = [];
+    public bool InitialUnitsSent { get; set; }
+    public bool Tutorial { get; set; }
+    public bool ManagedCombat { get; set; }
+    public string ManagedSessionId { get; set; } = "";
+    public UnitPools UnitPools { get; set; } = new();
+    public HashSet<int> UsedPooledGameUnitUIDs { get; set; } = [];
+}
+
+public sealed class UnitPools
+{
+    public List<UnitPool> Ordered { get; set; } = [];
+    public List<int> UnassignedGameUnitUIDs { get; set; } = [];
+}
+
+public sealed class UnitPool
+{
+    public string UnitUID { get; set; } = "";
+    public int UnitID { get; set; }
+    public List<int> GameUnitUIDs { get; set; } = [];
+}
+
+public sealed class BattleState
+{
+    public int StageId { get; set; }
+    public long GameUID { get; set; }
+    public List<UnitState> Units { get; set; } = [];
+    public long StartTime { get; set; }
+    public double GameTime { get; set; }
+    public double AbsoluteGameTime { get; set; }
+    public double RemainGameTime { get; set; } = 180;
+    public double RespawnCostA1 { get; set; } = 10;
+    public double RespawnCostB1 { get; set; } = 10;
+    public GameStateSync GameState { get; set; } = new();
+    public List<AutoDeployUnit> AutoDeployUnits { get; set; } = [];
+    public HashSet<string> DeployedUnitUIDs { get; set; } = [];
+    public List<int> PendingDieUnitUIDs { get; set; } = [];
+    public List<DeckSync> PendingDeckSyncs { get; set; } = [];
+    public List<GameStateSync> PendingGameStates { get; set; } = [];
+    public List<DungeonEventSync> PendingDungeonEvents { get; set; } = [];
+    public HashSet<int> RemovedUnitUIDs { get; set; } = [];
+    public int DeployCount { get; set; }
+    public bool Finished { get; set; }
+    public bool Win { get; set; }
+}
+
+public sealed class AutoDeployUnit
+{
+    public string UnitUID { get; set; } = "";
+    public bool AssistUnit { get; set; }
+    public List<int> GameUnitUIDs { get; set; } = [];
+    public double X { get; set; }
+    public double Z { get; set; }
+    public double Hp { get; set; } = 1989;
+    public bool Right { get; set; } = true;
+    public int PlayState { get; set; } = 1;
+    public int StateId { get; set; } = 13;
+    public int StateChangeCount { get; set; } = 1;
+    public int Seed { get; set; } = 51;
+}
+
+public sealed class RespawnReq
+{
+    public string UnitUID { get; set; } = "";
+    public int UnitID { get; set; }
+    public string UnitStrID { get; set; } = "";
+    public bool AssistUnit { get; set; }
+    public double RespawnPosX { get; set; }
+    public double GameTime { get; set; }
+    public double Hp { get; set; }
+}
+
+public sealed class UnitState
+{
+    public string SourceUnitUID { get; set; } = "";
+    public int UnitID { get; set; }
+    public string UnitStrID { get; set; } = "";
+    public int GameUnitUID { get; set; }
+    public int Team { get; set; }
+    public double Hp { get; set; }
+    public double MaxHp { get; set; }
+    public double X { get; set; }
+    public double Z { get; set; }
+    public double JumpY { get; set; }
+    public double SavedPosX { get; set; }
+    public double SavedPosY { get; set; }
+    public bool Right { get; set; } = true;
+    public int PlayState { get; set; } = 1;
+    public bool Respawn { get; set; }
+    public int StateId { get; set; } = 12;
+    public int StateChangeCount { get; set; } = 1;
+    public double SpeedX { get; set; }
+    public double SpeedY { get; set; }
+    public double SpeedZ { get; set; }
+    public int TargetUID { get; set; }
+    public int SubTargetUID { get; set; }
+    public int Seed { get; set; } = 51;
+    public double AttackTimer { get; set; }
+    public double AttackDamage { get; set; }
+    public double AttackRange { get; set; }
+    public double MoveSpeed { get; set; }
+    public double AttackCooldown { get; set; }
+    public int DeadTicks { get; set; }
+    public bool PendingRemove { get; set; }
+    public string Role { get; set; } = "";
+    public bool DamageSpeedXNegative { get; set; }
+}
+
+public sealed class BattleSimState
+{
+    public int Tick { get; set; }
+    public double GameTime { get; set; }
+    public double AbsoluteGameTime { get; set; }
+    public double RemainGameTime { get; set; } = 180;
+    public int PlayerUnitCount { get; set; }
+    public int SpawnGroupIndex { get; set; }
+    public List<List<int>> SpawnGroups { get; set; } = [];
+    public double RespawnCostA1 { get; set; } = 10;
+    public double RespawnCostB1 { get; set; } = 10;
+    public double UsedRespawnCostA1 { get; set; }
+    public double UsedRespawnCostB1 { get; set; }
+    public List<DeckSync> PendingDeckSyncs { get; set; } = [];
+    public List<List<int>> PendingDieUnitUIDs { get; set; } = [];
+    public List<GameStateSync> PendingGameStates { get; set; } = [];
+    public bool Finished { get; set; }
+    public bool FinishSent { get; set; }
+    public bool Win { get; set; }
+    public double TargetHp { get; set; } = 2800;
+    public int TargetUID { get; set; } = 2;
+    public double TargetX { get; set; } = 1180;
+    public List<UnitState> Units { get; set; } = [];
+}
+
+public sealed class DeckSync
+{
+    public int Team { get; set; } = 1;
+    public int UnitDeckIndex { get; set; } = -1;
+    public string UnitDeckUID { get; set; } = "-1";
+    public string DeckUsedAddUnitUID { get; set; } = "-1";
+    public int DeckUsedRemoveIndex { get; set; } = -1;
+    public string DeckTombAddUnitUID { get; set; } = "-1";
+    public int AutoRespawnIndex { get; set; } = -1;
+    public string NextDeckUnitUID { get; set; } = "-1";
+}
+
+public sealed class GameStateSync
+{
+    public int State { get; set; } = 3;
+    public int WinTeam { get; set; }
+    public int WaveId { get; set; } = 1;
+}
+
+public sealed class DungeonEventSync
+{
+    public int ActionType { get; set; }
+    public int EventId { get; set; }
+    public int ActionValue { get; set; }
+    public string ActionString { get; set; } = "";
+    public bool Pause { get; set; }
+    public int Team { get; set; }
+}

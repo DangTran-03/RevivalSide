@@ -1,0 +1,65 @@
+# Editor and OS noise
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+Thumbs.db
+Desktop.ini
+
+# Node
+node_modules/
+npm-debug.log*
+
+# .NET build outputs
+**/bin/
+**/obj/
+!prebuilt/
+!prebuilt/**
+
+# Local CounterSide client dumps and proprietary binaries
+Assembly-CSharp/
+Assembly-CSharp.sln
+Assembly-CSharp.zip
+Backups/
+patched-managed/
+*.dnSpy
+
+# Captures and replay fixtures generated from local traffic
+captures/**
+!captures/
+!captures/README.md
+!captures/.gitkeep
+*.pcap
+*.pcapng
+*.packet.bin
+*.payload.bin
+
+# Generated server data, HTTP mirrors, and account state
+server-data/**
+!server-data/
+!server-data/README.md
+!server-data/.gitkeep
+
+# Extracted/decrypted game assets and Lua table outputs
+decrypted-assets/
+extracted-assets/
+gameplay-tables/**
+!gameplay-tables/
+!gameplay-tables/README.md
+!gameplay-tables/.gitkeep
+gameplay-tables*.zip
+gameplay-tables-decompiled/
+gameplay-tables-json/
+
+# Temporary probes and local scratch projects
+tmp*/
+tmp_app_probe.cs
+
+# Nested/optional viewer project outputs
+SpineViewer/
+
+# Third-party tool source checkout/build noise. The jar is tracked instead.
+tools/unluac/
+tools/__pycache__/
+*.pyc
