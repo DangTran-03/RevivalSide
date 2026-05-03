@@ -20,7 +20,7 @@ This repository intentionally does not track client assets, raw packet captures,
 Read [docs/setup.md](docs/setup.md) first. The short version is:
 
 ```powershell
-git clone <repo-url> RevivalSide
+git clone https://github.com/MadlyMoe/RevivalSide.git RevivalSide
 cd RevivalSide
 copy .env.example .env
 npm install
