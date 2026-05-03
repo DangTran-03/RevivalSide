@@ -1,0 +1,141 @@
+[
+  {
+    "method": "GET",
+    "host": "ctsglobal-cdndown.sbside.com",
+    "path": "/server_config/live/ServerInfo_V2.json",
+    "statusCode": 200,
+    "headers": {
+      "Date": "Fri, 01 May 2026 05:52:52 GMT",
+      "Content-Type": "application/json",
+      "Transfer-Encoding": "chunked",
+      "Connection": "keep-alive",
+      "Last-Modified": "Wed, 29 Apr 2026 01:25:12 GMT",
+      "cf-cache-status": "DYNAMIC",
+      "Server": "cloudflare",
+      "X-Powered-By": "ASP.NET",
+      "ETag": "W/\"a76a7b677d7dc1:0\"",
+      "CF-RAY": "9f4c85c8ebbd6689-ORD",
+      "alt-svc": "h3=\":443\"; ma=86400"
+    },
+    "bodyFile": "01_server_config_live_ServerInfo_V2.json.bin",
+    "sourcePath": "/server_config/live/ServerInfo_V2.json?p=78090065504173"
+  },
+  {
+    "method": "GET",
+    "host": "ctsglobal-cdndown.sbside.com",
+    "path": "/patchfiles/StandaloneWindows64/liveVersion.json",
+    "statusCode": 200,
+    "headers": {
+      "Date": "Fri, 01 May 2026 05:52:51 GMT",
+      "Content-Type": "application/json",
+      "Transfer-Encoding": "chunked",
+      "Connection": "keep-alive",
+      "Last-Modified": "Wed, 29 Apr 2026 01:24:41 GMT",
+      "Server": "cloudflare",
+      "X-Powered-By": "ASP.NET",
+      "Vary": "accept-encoding",
+      "Age": "180",
+      "expires": "Sat, 02 May 2026 05:52:51 GMT",
+      "Cache-Control": "public, max-age=86400",
+      "cf-cache-status": "HIT",
+      "ETag": "W/\"59adcef376d7dc1:0\"",
+      "CF-RAY": "9f4c85c2b85c873b-ORD",
+      "alt-svc": "h3=\":443\"; ma=86400"
+    },
+    "bodyFile": "02_patchfiles_StandaloneWindows64_liveVersion.json.bin",
+    "sourcePath": "/patchfiles/StandaloneWindows64/liveVersion.json?p=59534853099293"
+  },
+  {
+    "method": "GET",
+    "host": "ctsglobal-cdndown.sbside.com",
+    "path": "/patchfiles/StandaloneWindows64/STANDALONE_WINDOWS_335533/PatchInfo.json",
+    "statusCode": 200,
+    "headers": {
+      "Date": "Fri, 01 May 2026 05:52:53 GMT",
+      "Content-Type": "application/json",
+      "Transfer-Encoding": "chunked",
+      "Connection": "keep-alive",
+      "Last-Modified": "Tue, 28 Apr 2026 04:36:05 GMT",
+      "Server": "cloudflare",
+      "X-Powered-By": "ASP.NET",
+      "Vary": "accept-encoding",
+      "Age": "16083",
+      "expires": "Sat, 02 May 2026 05:52:53 GMT",
+      "Cache-Control": "public, max-age=86400",
+      "cf-cache-status": "HIT",
+      "etag": "W/\"1d369686c8d6dc1:0\"",
+      "CF-RAY": "9f4c85cc9a3513fb-ORD",
+      "alt-svc": "h3=\":443\"; ma=86400"
+    },
+    "bodyFile": "03_patchfiles_StandaloneWindows64_STANDALONE_WINDOWS_335533_PatchInfo.json.bin",
+    "sourcePath": "/patchfiles/StandaloneWindows64/STANDALONE_WINDOWS_335533/PatchInfo.json"
+  },
+  {
+    "method": "GET",
+    "host": "ctsglobal-cdndown.sbside.com",
+    "path": "/patchfiles/StandaloneWindows64/STANDALONE_WINDOWS_335533/tutorialDungeonResources.json",
+    "statusCode": 200,
+    "headers": {
+      "Date": "Fri, 01 May 2026 05:52:53 GMT",
+      "Content-Type": "application/json",
+      "Transfer-Encoding": "chunked",
+      "Connection": "keep-alive",
+      "Last-Modified": "Tue, 28 Apr 2026 04:38:05 GMT",
+      "Server": "cloudflare",
+      "X-Powered-By": "ASP.NET",
+      "Vary": "accept-encoding",
+      "Age": "81978",
+      "expires": "Sat, 02 May 2026 05:52:53 GMT",
+      "Cache-Control": "public, max-age=86400",
+      "cf-cache-status": "HIT",
+      "etag": "W/\"30e566cec8d6dc1:0\"",
+      "CF-RAY": "9f4c85cb6960e7f4-ORD",
+      "alt-svc": "h3=\":443\"; ma=86400"
+    },
+    "bodyFile": "04_patchfiles_StandaloneWindows64_STANDALONE_WINDOWS_335533_tutorialDungeonResources.json.bin",
+    "sourcePath": "/patchfiles/StandaloneWindows64/STANDALONE_WINDOWS_335533/tutorialDungeonResources.json"
+  },
+  {
+    "method": "GET",
+    "host": "ctsglobal-cdndown.sbside.com",
+    "path": "/patchfiles/ExtraAsset/liveVersion.json",
+    "statusCode": 200,
+    "headers": {
+      "Date": "Fri, 01 May 2026 05:52:52 GMT",
+      "Content-Type": "application/json",
+      "Transfer-Encoding": "chunked",
+      "Connection": "keep-alive",
+      "Last-Modified": "Wed, 29 Apr 2026 01:24:46 GMT",
+      "cf-cache-status": "DYNAMIC",
+      "Server": "cloudflare",
+      "X-Powered-By": "ASP.NET",
+      "ETag": "W/\"2795bef676d7dc1:0\"",
+      "CF-RAY": "9f4c85c40c3f0a26-ORD",
+      "alt-svc": "h3=\":443\"; ma=86400"
+    },
+    "bodyFile": "05_patchfiles_ExtraAsset_liveVersion.json.bin",
+    "sourcePath": "/patchfiles/ExtraAsset/liveVersion.json?p=44051401643689"
+  },
+  {
+    "method": "GET",
+    "host": "ctsglobal-cdndown.sbside.com",
+    "path": "/patchfiles/ExtraAsset/ExtraAsset_335533/PatchInfo.json",
+    "statusCode": 200,
+    "headers": {
+      "Date": "Fri, 01 May 2026 05:52:52 GMT",
+      "Content-Type": "application/json",
+      "Content-Length": "25",
+      "Connection": "keep-alive",
+      "Last-Modified": "Tue, 28 Apr 2026 03:24:56 GMT",
+      "Accept-Ranges": "bytes",
+      "ETag": "\"a6824996bed6dc1:0\"",
+      "Server": "cloudflare",
+      "X-Powered-By": "ASP.NET",
+      "cf-cache-status": "DYNAMIC",
+      "CF-RAY": "9f4c85c65f944227-ORD",
+      "alt-svc": "h3=\":443\"; ma=86400"
+    },
+    "bodyFile": "06_patchfiles_ExtraAsset_ExtraAsset_335533_PatchInfo.json.bin",
+    "sourcePath": "/patchfiles/ExtraAsset/ExtraAsset_335533/PatchInfo.json"
+  }
+]

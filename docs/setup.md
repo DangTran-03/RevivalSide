@@ -1,6 +1,6 @@
 # Setup Guide
 
-This guide assumes Windows, Steam CounterSide, Node.js 20 or newer, .NET 8 SDK, Java, Python 3.11 or newer, and Wireshark if you plan to generate packet fixtures.
+This guide assumes Windows, Steam CounterSide, Node.js 20 or newer, .NET 8 SDK, Java, Python 3.11 or newer, and Wireshark only if you plan to refresh packet fixtures.
 
 ## 1. Clone And Configure
 
@@ -100,11 +100,17 @@ Build compact server indexes:
 py .\tools\cs_build_server_data.py --parsed-root .\gameplay-tables-json\StreamingAssets --out-dir .\server-data
 ```
 
-## 5. Generate Local Packet Fixtures
+## 5. Use Bundled Packet Fixtures
 
-Captured fixtures are local research data and are not committed. Use Wireshark/dumpcap, then extract the relevant TCP streams.
+The repository includes a sanitized fixture bundle that covers the current tutorial path:
 
-Start a broad capture:
+- `server-data/captured-flows/`: HTTP mirror responses needed during boot and tutorial resource loading.
+- `server-data/captured-tcp/`: contents/login TCP fixtures.
+- `server-data/captured-game-flow/`: tutorial game-stream client/server packet fixtures.
+
+Collaborators do not need to make local packet captures to run up to the current tutorial progress point. Raw `.pcap`/`.pcapng` captures are still ignored and should stay local.
+
+Only regenerate these fixtures when you are intentionally updating the replay baseline. Use Wireshark/dumpcap, then extract the relevant TCP streams:
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\tools\watch-counterside-capture.ps1
@@ -117,7 +123,7 @@ node .\tools\extract-cs-pcap-fixtures.js .\captures\your-capture.pcapng .\server
 node .\tools\extract-cs-pcap-fixtures.js .\captures\your-capture.pcapng .\server-data\captured-game-flow game <stream> <client-ip>
 ```
 
-HTTP mirror fixtures live in `server-data/captured-flows`. Keep them local.
+Before committing refreshed fixtures, remove local source paths and personal capture metadata from manifests.
 
 ## 6. Run The Listener
 
@@ -147,7 +153,7 @@ If the C# host cannot start, confirm:
 - `.env` points `CS_COUNTERSIDE_MANAGED_DIR` to a folder containing `Assembly-CSharp.dll`.
 - `.NET 8` is installed.
 - Local gameplay tables were generated.
-- Captured tutorial fixtures exist if you are testing the tutorial flow.
+- The tracked tutorial fixture directories exist if you are testing the tutorial flow.
 
 ## 7. Prebuilt Combat Host
 

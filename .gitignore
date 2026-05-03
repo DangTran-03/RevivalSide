@@ -40,6 +40,12 @@ server-data/**
 !server-data/
 !server-data/README.md
 !server-data/.gitkeep
+!server-data/captured-flows/
+!server-data/captured-flows/**
+!server-data/captured-tcp/
+!server-data/captured-tcp/**
+!server-data/captured-game-flow/
+!server-data/captured-game-flow/**
 
 # Extracted/decrypted game assets and Lua table outputs
 decrypted-assets/

@@ -1,6 +1,6 @@
 # CounterSide Server Data
 
-This folder is for local generated data and replay fixtures. It is ignored by git except for this README and `.gitkeep`.
+This folder holds local generated data plus the sanitized fixture bundle used by the listener. Most generated files here are ignored by git, but the current tutorial fixtures are tracked so collaborators can run up to the shared progress point.
 
 Generated from parsed `StreamingAssets/ab_script*` Lua table bytecode:
 
@@ -11,10 +11,10 @@ Generated from parsed `StreamingAssets/ab_script*` Lua table bytecode:
 - `strings.json`: localized string tables by language code.
 - `table_catalog.json`: every parsed table with relative source path and detected ID fields.
 
-Capture-derived fixtures also live here:
+Tracked capture-derived fixtures:
 
 - `captured-flows/`: HTTP mirror responses.
 - `captured-tcp/`: contents/login TCP fixtures.
 - `captured-game-flow/`: game-stream client/server packet fixtures.
 
-Regenerate all of this from your own client and captures. Do not commit the generated files.
+Regenerate table data from your own client. Do not commit account state, raw captures, full generated table output, or unsanitized fixture manifests.
