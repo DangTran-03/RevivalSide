@@ -1,0 +1,1536 @@
+const {
+  writeString,
+  writeBool,
+  writeVarInt,
+  writeSignedVarInt,
+  writeSignedVarLong,
+  writeNullableObject,
+  writeObjectList,
+  buildRewardData,
+  readSignedVarInt,
+  readSignedVarLong,
+  readString,
+  dateTimeBinaryNow,
+  farFutureDateTimeBinary,
+  statTypeValue,
+  toBigInt,
+} = require("../packet-codec");
+const { RESOURCE_ITEM_IDS } = require("../inventory");
+const { createEmptyReward, mergeReward, grantRewardByType } = require("../reward");
+const {
+  getMiscItemTemplet,
+  getUnitTemplet,
+  getEquipTemplet,
+  getAllEquipRandomStatRecords,
+  getEquipSetOption,
+  getEquipSetOptionIds,
+  getAllEquipSetOptionRecords,
+  getSkinTemplet,
+  getEmoticonTemplet,
+  getAllMiscItemIds,
+  getPlayableUnitIds,
+  getPlayableShipIds,
+  getPlayableOperatorIds,
+  getAllEquipIds,
+  getAllSkinIds,
+  getAllEmoticonIds,
+} = require("../game-data");
+const { validateEquipCustomSubstats } = require("../equipment");
+
+const PACKETS = Object.freeze({
+  POST_LIST_REQ: 1614,
+  POST_LIST_ACK: 1615,
+  POST_RECEIVE_REQ: 1616,
+  POST_RECEIVE_ACK: 1617,
+  POST_ARRIVE_NOT: 1618,
+  PRIVATE_CHAT_REQ: 3800,
+  PRIVATE_CHAT_ACK: 3801,
+  PRIVATE_CHAT_NOT: 3802,
+  PRIVATE_CHAT_LIST_REQ: 3803,
+  PRIVATE_CHAT_LIST_ACK: 3804,
+  PRIVATE_CHAT_ALL_LIST_REQ: 3805,
+  PRIVATE_CHAT_ALL_LIST_ACK: 3806,
+});
+
+const ADMIN_UID = toBigInt(process.env.CS_ADMIN_CHAT_UID || "999999999001");
+const ADMIN_FRIEND_CODE = toBigInt(process.env.CS_ADMIN_FRIEND_CODE || "99999901");
+const ADMIN_NICKNAME = process.env.CS_ADMIN_NICKNAME || "Revival Admin";
+const ADMIN_MAIN_UNIT_ID = Number(process.env.CS_ADMIN_MAIN_UNIT_ID || 1006);
+const ADMIN_MAX_REWARDS_PER_MAIL = Math.max(1, Number(process.env.CS_ADMIN_MAX_REWARDS_PER_MAIL || 80));
+const CHAT_HISTORY_LIMIT = Math.max(10, Number(process.env.CS_ADMIN_CHAT_HISTORY_LIMIT || 100));
+const ADMIN_POST_ID = Number(process.env.CS_ADMIN_POST_ID || 0);
+
+const REWARD_TYPE_ENUM = Object.freeze({
+  RT_NONE: 0,
+  RT_UNIT: 1,
+  RT_SHIP: 2,
+  RT_MISC: 3,
+  RT_RESOURCE: 3,
+  RT_ITEM_MISC: 3,
+  RT_USER_EXP: 4,
+  RT_EQUIP: 5,
+  RT_ITEM_EQUIP: 5,
+  RT_EQUIP_ITEM: 5,
+  RT_MOLD: 6,
+  RT_SKIN: 7,
+  RT_BUFF: 8,
+  RT_EMOTICON: 9,
+  RT_MISSION_POINT: 10,
+  RT_BINGO_TILE: 11,
+  RT_PASS_EXP: 12,
+  RT_OPERATOR: 13,
+});
+
+const CURRENCY_ALIASES = Object.freeze({
+  credit: RESOURCE_ITEM_IDS.CREDIT,
+  credits: RESOURCE_ITEM_IDS.CREDIT,
+  eternium: RESOURCE_ITEM_IDS.ETERNIUM,
+  quartz: RESOURCE_ITEM_IDS.QUARTZ,
+  admincoin: RESOURCE_ITEM_IDS.ADMIN_COIN,
+  admincoins: RESOURCE_ITEM_IDS.ADMIN_COIN,
+  admin_coin: RESOURCE_ITEM_IDS.ADMIN_COIN,
+  coin: RESOURCE_ITEM_IDS.ADMIN_COIN,
+  coins: RESOURCE_ITEM_IDS.ADMIN_COIN,
+});
+
+const DEFAULT_NEWBIE_REWARDS = Object.freeze([
+  { rewardType: "RT_MISC", id: RESOURCE_ITEM_IDS.CREDIT, count: envRewardCount("CS_NEWBIE_CREDIT_REWARD", 100000) },
+  { rewardType: "RT_MISC", id: RESOURCE_ITEM_IDS.ETERNIUM, count: envRewardCount("CS_NEWBIE_ETERNIUM_REWARD", 3000) },
+  { rewardType: "RT_MISC", id: RESOURCE_ITEM_IDS.QUARTZ, count: envRewardCount("CS_NEWBIE_QUARTZ_REWARD", 1000) },
+]);
+
+const DEFAULT_SIGN_IN_REWARDS = Object.freeze([
+  { rewardType: "RT_MISC", id: RESOURCE_ITEM_IDS.CREDIT, count: envRewardCount("CS_SIGN_IN_CREDIT_REWARD", 30000) },
+  { rewardType: "RT_MISC", id: RESOURCE_ITEM_IDS.ETERNIUM, count: envRewardCount("CS_SIGN_IN_ETERNIUM_REWARD", 1000) },
+]);
+const GEAR_STAT_ALIASES = Object.freeze({
+  ATK: "NST_ATK",
+  ATTACK: "NST_ATK",
+  HP: "NST_HP",
+  DEF: "NST_DEF",
+  DEFENSE: "NST_DEF",
+  HIT: "NST_HIT",
+  ACC: "NST_HIT",
+  EVADE: "NST_EVADE",
+  EVA: "NST_EVADE",
+  CRIT: "NST_CRITICAL",
+  CRITICAL: "NST_CRITICAL",
+  CRIT_DMG: "NST_CRITICAL_DAMAGE_RATE",
+  CRITDMG: "NST_CRITICAL_DAMAGE_RATE",
+  CRITICAL_DAMAGE: "NST_CRITICAL_DAMAGE_RATE",
+  ASPD: "NST_ATTACK_SPEED_RATE",
+  ATTACK_SPEED: "NST_ATTACK_SPEED_RATE",
+  CDR: "NST_SKILL_COOL_TIME_REDUCE_RATE",
+  COOLDOWN: "NST_SKILL_COOL_TIME_REDUCE_RATE",
+  SKILL_HASTE: "NST_SKILL_COOL_TIME_REDUCE_RATE",
+  SKILL_DAMAGE: "NST_SKILL_DAMAGE_RATE",
+  SKILL_DMG: "NST_SKILL_DAMAGE_RATE",
+  ULT_DAMAGE: "NST_HYPER_SKILL_DAMAGE_RATE",
+  ULT_DMG: "NST_HYPER_SKILL_DAMAGE_RATE",
+  DAMAGE_REDUCE: "NST_DAMAGE_REDUCE_RATE",
+  DMG_REDUCE: "NST_DAMAGE_REDUCE_RATE",
+  DEF_PEN: "NST_DEF_PENETRATE_RATE",
+  DEF_PENETRATE: "NST_DEF_PENETRATE_RATE",
+});
+function createAdminHandler(packetId, name) {
+  return {
+    packetId,
+    name,
+    handle(ctx, socket, packet) {
+      ctx.socket = socket;
+      const user = getSessionUser(ctx, socket);
+      const request = decodeRequest(ctx, packetId, packet.payload);
+      const result = buildResponse(ctx, socket, user, packetId, request);
+      console.log(`[admin:${name}] ACK packetId=${result.packetId} ${formatRequest(request)}`);
+      if (typeof ctx.sendGameResponse === "function") {
+        ctx.sendGameResponse(socket, packet, result.packetId, result.payload, `admin-${name}`);
+      } else {
+        ctx.sendResponse(socket, packet.sequence, result.packetId, () =>
+          ctx.buildEncryptedPacket(packet.sequence, result.packetId, result.payload)
+        );
+      }
+      for (const notice of result.notices || []) sendServerNotice(ctx, socket, notice.packetId, notice.payload, notice.label);
+      persistUserDb(ctx);
+      return true;
+    },
+  };
+}
+
+function buildResponse(ctx, socket, user, packetId, request) {
+  switch (packetId) {
+    case PACKETS.POST_LIST_REQ:
+      return postListAck(user, request);
+    case PACKETS.POST_RECEIVE_REQ:
+      return postReceiveAck(ctx, user, request);
+    case PACKETS.PRIVATE_CHAT_REQ:
+      return privateChatAck(ctx, user, request);
+    case PACKETS.PRIVATE_CHAT_LIST_REQ:
+      return privateChatListAck(user, request);
+    case PACKETS.PRIVATE_CHAT_ALL_LIST_REQ:
+      return privateChatAllListAck(user);
+    default:
+      return { packetId: packetId + 1, payload: writeSignedVarInt(0) };
+  }
+}
+
+function postListAck(user, request) {
+  const posts = listVisiblePosts(user, request.lastPostIndex);
+  return {
+    packetId: PACKETS.POST_LIST_ACK,
+    payload: Buffer.concat([
+      writeObjectList(posts.map((post) => writeNullableObject(buildPostData(post)))),
+      writeSignedVarInt(countPendingPosts(user)),
+      writeSignedVarInt(0),
+    ]),
+  };
+}
+
+function postReceiveAck(ctx, user, request) {
+  const state = ensureAdminState(user);
+  const postIndex = toBigInt(request.postIndex || 0);
+  const posts =
+    postIndex === 0n
+      ? state.posts.filter((post) => !post.received)
+      : state.posts.filter((post) => !post.received && toBigInt(post.postIndex) === postIndex);
+  const reward = createEmptyReward();
+  for (const post of posts) {
+    mergeReward(reward, grantPostRewards(ctx, user, post));
+    post.received = true;
+    post.receivedAt = String(dateTimeBinaryNow());
+  }
+  return {
+    packetId: PACKETS.POST_RECEIVE_ACK,
+    payload: Buffer.concat([
+      writeSignedVarLong(postIndex),
+      writeNullableObject(buildRewardData(reward)),
+      writeSignedVarInt(countPendingPosts(user)),
+      writeSignedVarInt(0),
+    ]),
+  };
+}
+
+function privateChatAck(ctx, user, request) {
+  const targetUid = toBigInt(request.userUid || ADMIN_UID);
+  const messageText = String(request.message || "").slice(0, 512);
+  const userMessage = appendChatMessage(user, targetUid, buildUserChatMessage(user, messageText, request.emotionId));
+  const notices = [
+    { packetId: PACKETS.PRIVATE_CHAT_NOT, payload: buildPrivateChatNot(userMessage), label: "private-chat-self" },
+  ];
+  if (targetUid === ADMIN_UID || isAdminCommand(messageText)) {
+    const result = handleAdminCommand(ctx, user, messageText);
+    const replyText = result.reply || "Command handled.";
+    const adminMessage = appendChatMessage(user, ADMIN_UID, buildAdminChatMessage(replyText));
+    notices.push({ packetId: PACKETS.PRIVATE_CHAT_NOT, payload: buildPrivateChatNot(adminMessage), label: "private-chat-admin" });
+    if (result.createdPosts > 0) {
+      notices.push({ packetId: PACKETS.POST_ARRIVE_NOT, payload: writeSignedVarInt(result.createdPosts), label: "post-arrive" });
+    }
+  }
+  return {
+    packetId: PACKETS.PRIVATE_CHAT_ACK,
+    payload: Buffer.concat([writeSignedVarInt(0), writeSignedVarLong(toBigInt(userMessage.messageUid))]),
+    notices,
+  };
+}
+
+function privateChatListAck(user, request) {
+  const targetUid = toBigInt(request.userUid || ADMIN_UID);
+  const messages = getChatMessages(user, targetUid);
+  return {
+    packetId: PACKETS.PRIVATE_CHAT_LIST_ACK,
+    payload: Buffer.concat([
+      writeSignedVarInt(0),
+      writeSignedVarLong(targetUid),
+      writeObjectList(messages.map((message) => writeNullableObject(buildChatMessageData(message)))),
+    ]),
+  };
+}
+
+function privateChatAllListAck(user) {
+  const adminListData = buildPrivateChatListData(getAdminProfile(), getLastAdminChatMessage(user));
+  return {
+    packetId: PACKETS.PRIVATE_CHAT_ALL_LIST_ACK,
+    payload: Buffer.concat([
+      writeSignedVarInt(0),
+      writeObjectList([writeNullableObject(adminListData)]),
+      writeVarInt(0),
+    ]),
+  };
+}
+
+function handleAdminCommand(ctx, user, messageText) {
+  const tokens = tokenizeCommand(messageText);
+  if (!tokens.length) return { reply: adminHelpText(), createdPosts: 0 };
+  const pendingResult = maybeHandlePendingGearOverride(user, tokens);
+  if (pendingResult) return pendingResult;
+  if (!isAdminCommand(tokens[0])) return { reply: adminHelpText(), createdPosts: 0 };
+  if (tokens[0].toLowerCase() === "/admin") tokens.shift();
+  const command = String(tokens.shift() || "help").toLowerCase().replace(/^\//, "");
+  if (command === "help" || command === "commands") {
+    const topic = String(tokens.shift() || "").toLowerCase();
+    return { reply: topic === "gear" ? gearHelpText() : adminHelpText(), createdPosts: 0 };
+  }
+  if (command !== "give" && command !== "grant" && command !== "mail") {
+    return { reply: `Unknown admin command: ${command}\n${adminHelpText()}`, createdPosts: 0 };
+  }
+
+  const parsed = parseGiveCommand(tokens, user);
+  if (!parsed.ok) {
+    if (parsed.pendingGearOverride) ensureAdminState(user).pendingGearOverride = parsed.pendingGearOverride;
+    return { reply: parsed.error, createdPosts: 0 };
+  }
+  ensureAdminState(user).pendingGearOverride = null;
+  const posts = createAdminRewardPosts(user, parsed.rewards, parsed.title, parsed.contents);
+  return {
+    reply: `Queued ${parsed.rewards.length} reward line${parsed.rewards.length === 1 ? "" : "s"} in ${posts.length} inbox mail${posts.length === 1 ? "" : "s"}. Open Mail to claim.`,
+    createdPosts: posts.length,
+  };
+}
+
+function parseGiveCommand(tokens, user = null) {
+  if (!tokens.length) return { ok: false, error: adminHelpText() };
+  let kind = String(tokens.shift() || "").toLowerCase();
+  let idText = String(tokens.shift() || "").toLowerCase();
+  let countText = tokens.shift();
+
+  if (kind === "everything") {
+    countText = idText || countText;
+    return buildAllRewards(["items", "skins", "emoticons", "units", "ships", "operators", "gears"], countText);
+  }
+  if (kind === "all") {
+    kind = idText;
+    idText = "all";
+    countText = tokens.shift() || countText;
+  } else if (kind.startsWith("all-")) {
+    kind = kind.slice(4);
+    countText = idText || countText;
+    idText = "all";
+  }
+
+  if (idText === "all") return buildAllRewards([kind], normalizeRewardCount(countText || 1));
+
+  const type = rewardTypeForKind(kind);
+  if (!type) return { ok: false, error: `Unknown reward kind "${kind}".\n${adminHelpText()}` };
+  const id = resolveRewardId(kind, idText);
+  if (!Number.isInteger(id) || id <= 0) return { ok: false, error: `Invalid ${kind} id: ${idText}` };
+  if (!rewardIdExists(type, id) && !(normalizeKind(kind) === "currency" && Object.values(RESOURCE_ITEM_IDS).includes(id))) {
+    return { ok: false, error: `No ${kind} id ${id} exists in local tables.` };
+  }
+  if (normalizeKind(kind) === "gear") return buildGearReward(id, [countText, ...tokens].filter((token) => token != null && token !== ""), user);
+
+  const count = normalizeRewardCount(countText || 1);
+  const rewards = [{ rewardType: type, id, count: clampCountForType(type, count) }];
+  return {
+    ok: true,
+    rewards,
+    title: "Admin Delivery",
+    contents: `Admin queued ${describeReward(rewards[0])}.`,
+  };
+}
+
+function buildGearReward(equipId, rawTokens, user = null) {
+  const tokens = normalizeGearTokens(rawTokens);
+  const count = tokens.length && isCountToken(tokens[0]) ? normalizeRewardCount(tokens.shift()) : 1;
+  const parsed = parseGearOptions(tokens);
+  if (!parsed.ok) return parsed;
+
+  const reward = {
+    rewardType: "RT_EQUIP",
+    id: equipId,
+    count: clampCountForType("RT_EQUIP", count),
+  };
+  if (parsed.gearOptions) reward.gearOptions = parsed.gearOptions;
+
+  const validation = validateEquipCustomSubstats(equipId, parsed.gearOptions.customSubstats || [], {
+    overrideUnsupportedSubstats: parsed.gearOptions.overrideUnsupportedSubstats,
+  });
+  const setValidation = validateGearSetOption(equipId, parsed.gearOptions.setOptionId, {
+    overrideUnsupportedSetBonus: parsed.gearOptions.overrideUnsupportedSetBonus,
+  });
+  if (!setValidation.ok && setValidation.error) return setValidation;
+  if ((!validation.ok && validation.unsupported.length) || setValidation.unsupported) {
+    const overrideReward = {
+      ...reward,
+      gearOptions: {
+        ...parsed.gearOptions,
+      },
+    };
+    if (validation.unsupported.length) overrideReward.gearOptions.overrideUnsupportedSubstats = true;
+    if (setValidation.unsupported) overrideReward.gearOptions.overrideUnsupportedSetBonus = true;
+    const errors = [];
+    if (validation.unsupported.length) errors.push(formatUnsupportedSubstats(validation.unsupported));
+    if (setValidation.unsupported) errors.push(formatUnsupportedSetBonus(setValidation.unsupported));
+    return {
+      ok: false,
+      error: `${errors.join("\n")}\nReply Y to override and force the gear option, or N to cancel.`,
+      pendingGearOverride: {
+        rewards: [overrideReward],
+        title: "Admin Gear Delivery",
+        contents: `Admin queued ${describeReward(overrideReward)} with forced gear options.`,
+      },
+    };
+  }
+
+  if (user) ensureAdminState(user).pendingGearOverride = null;
+  return {
+    ok: true,
+    rewards: [reward],
+    title: "Admin Gear Delivery",
+    contents: `Admin queued ${describeReward(reward)}.`,
+  };
+}
+
+function normalizeGearTokens(tokens) {
+  return (Array.isArray(tokens) ? tokens : [])
+    .flatMap((token) => String(token || "").split(/[;,]/))
+    .map((token) => token.trim())
+    .filter(Boolean);
+}
+
+function isCountToken(token) {
+  return /^\d+$/.test(String(token || "").trim());
+}
+
+function parseGearOptions(tokens) {
+  const gearOptions = { customSubstats: [] };
+  let nextSlot = 1;
+  for (const token of tokens) {
+    const lower = token.toLowerCase();
+    if (["override", "force", "forced"].includes(lower)) {
+      gearOptions.overrideUnsupportedSubstats = true;
+      gearOptions.overrideUnsupportedSetBonus = true;
+      continue;
+    }
+    const overrideMatch = lower.match(/^override=(y|yes|true|1|on)$/);
+    if (overrideMatch) {
+      gearOptions.overrideUnsupportedSubstats = true;
+      gearOptions.overrideUnsupportedSetBonus = true;
+      continue;
+    }
+    const setOption = parseGearSetOptionToken(token);
+    if (setOption) {
+      if (!setOption.ok) return setOption;
+      if (gearOptions.setOptionId) return { ok: false, error: "Duplicate gear set bonus. Use set=... once." };
+      gearOptions.setOptionId = setOption.setOptionId;
+      continue;
+    }
+    const mainStat = parseGearMainStatToken(token);
+    if (mainStat) {
+      if (!mainStat.ok) return mainStat;
+      if (gearOptions.customMainStat && gearOptions.customMainStat.type) {
+        return { ok: false, error: "Duplicate gear main stat. Use main=... once." };
+      }
+      gearOptions.customMainStat = { ...(gearOptions.customMainStat || {}), ...mainStat.mainStat };
+      continue;
+    }
+    const mainLevel = parseGearMainLevelToken(token);
+    if (mainLevel) {
+      if (!mainLevel.ok) return mainLevel;
+      gearOptions.customMainStat = { ...(gearOptions.customMainStat || {}), ...mainLevel.mainStat };
+      continue;
+    }
+    const substat = parseGearSubstatToken(token, nextSlot);
+    if (!substat.ok) return substat;
+    if (gearOptions.customSubstats.some((entry) => Number(entry.slot) === Number(substat.substat.slot))) {
+      return { ok: false, error: `Duplicate gear substat slot ${substat.substat.slot}. Use sub1=... and sub2=... once each.` };
+    }
+    gearOptions.customSubstats.push(substat.substat);
+    nextSlot = Math.max(nextSlot, Number(substat.substat.slot) + 1);
+    if (gearOptions.customSubstats.length > 2) return { ok: false, error: "Gear can only have two custom substats." };
+  }
+  if (gearOptions.customMainStat && !gearOptions.customMainStat.type) {
+    return { ok: false, error: "mainlevel requires a main stat override. Use main=<stat>=<value|max> first." };
+  }
+  return { ok: true, gearOptions };
+}
+
+function parseGearSetOptionToken(token) {
+  const match = String(token || "").trim().match(/^(?:set|setbonus|set_bonus|setoption|set_option|bonus)[:=](.+)$/i);
+  if (!match) return null;
+  const setOptionId = resolveGearSetOptionId(match[1]);
+  if (!Number.isInteger(setOptionId) || setOptionId <= 0) {
+    return { ok: false, error: `Unknown gear set bonus "${match[1]}". Use /help gear for set bonus ids.` };
+  }
+  return { ok: true, setOptionId };
+}
+
+function parseGearMainStatToken(token) {
+  const match = String(token || "").trim().match(/^(?:main|mainstat|main_stat|primary|base)[:=](.+)$/i);
+  if (!match) return null;
+  const parsed = parseGearStatAssignment(match[1], "main stat", { allowDefaultMainStat: true });
+  if (!parsed.ok) return parsed;
+  return {
+    ok: true,
+    mainStat: {
+      type: parsed.type,
+      value: parsed.value,
+      valueKind: parsed.valueKind,
+    },
+  };
+}
+
+function parseGearMainLevelToken(token) {
+  const match = String(token || "").trim().match(/^(?:mainlevel|mainlvl|main_level|main_level_value|mainlevelvalue)[:=](.+)$/i);
+  if (!match) return null;
+  const parsed = parseGearStatValue(match[1], "main level");
+  if (!parsed.ok) return parsed;
+  return {
+    ok: true,
+    mainStat: {
+      levelValue: parsed.value,
+      levelValueKind: parsed.valueKind,
+    },
+  };
+}
+
+function parseGearSubstatToken(token, nextSlot) {
+  let text = String(token || "").trim();
+  let slot = 0;
+  const slotMatch = text.match(/^(?:sub|slot)([12])[:=](.+)$/i);
+  if (slotMatch) {
+    slot = Number(slotMatch[1]);
+    text = slotMatch[2];
+  }
+
+  const parsed = parseGearStatAssignment(text, "substat");
+  if (!parsed.ok) return parsed;
+  return {
+    ok: true,
+    substat: {
+      slot: slot || nextSlot,
+      type: parsed.type,
+      value: parsed.value,
+      valueKind: parsed.valueKind,
+    },
+  };
+}
+
+function parseGearStatAssignment(text, label = "substat", options = {}) {
+  const separator = text.includes("=") ? "=" : text.includes(":") ? ":" : "";
+  if (!separator) {
+    return { ok: false, error: `Invalid gear ${label} "${text}". Use <stat>=<value|max>, like atk=max.` };
+  }
+
+  const parts = text.split(separator);
+  if (parts.length < 2) {
+    return { ok: false, error: `Invalid gear ${label} "${text}". Use <stat>=<value|max>.` };
+  }
+  const statText = parts.shift();
+  const valueText = parts.join(separator);
+  const statType = options.allowDefaultMainStat && isDefaultGearMainStatType(statText) ? "DEFAULT" : resolveGearStatType(statText);
+  if (!statType) return { ok: false, error: `Unknown gear substat type "${statText}". Use /help gear for supported ids.` };
+  const value = parseGearStatValue(valueText, label);
+  if (!value.ok) return value;
+
+  return {
+    ok: true,
+    type: statType,
+    value: value.value,
+    valueKind: value.valueKind,
+  };
+}
+
+function isDefaultGearMainStatType(value) {
+  return ["default", "native", "original"].includes(String(value || "").trim().toLowerCase());
+}
+
+function parseGearStatValue(valueText, label = "substat") {
+  const text = String(valueText || "").trim().toLowerCase();
+  if (text === "max") return { ok: true, valueKind: "max", value: null };
+  const percent = text.endsWith("%");
+  const number = Number(percent ? text.slice(0, -1) : text);
+  if (!Number.isFinite(number)) return { ok: false, error: `Invalid gear ${label} value "${valueText}". Use a number or max.` };
+  return { ok: true, valueKind: "custom", value: percent ? number / 100 : number };
+}
+
+function resolveGearStatType(statText) {
+  const text = String(statText || "").trim().toUpperCase().replace(/[\s-]+/g, "_");
+  if (!text) return "";
+  if (/^-?\d+$/.test(text)) return gearStatTypeFromId(Number(text)) || `NST_${text}`;
+  const alias = GEAR_STAT_ALIASES[text] || GEAR_STAT_ALIASES[text.replace(/^NST_/, "")];
+  if (alias) return alias;
+  return text.startsWith("NST_") ? text : `NST_${text}`;
+}
+
+function gearStatTypeFromId(id) {
+  for (const record of getAllEquipRandomStatRecords()) {
+    const type = String(record && record.m_StatType || "").trim().toUpperCase();
+    if (type && statTypeValue(type) === id) return type;
+  }
+  for (const equipId of getAllEquipIds()) {
+    const record = getEquipTemplet(equipId);
+    const type = String(record && record.STAT_TYPE_1 || "").trim().toUpperCase();
+    if (type && statTypeValue(type) === id) return type;
+  }
+  return "";
+}
+
+function formatUnsupportedSubstats(unsupported) {
+  const first = unsupported[0] || {};
+  const prefix = unsupported.length === 1 ? "Unsupported substat type" : "Unsupported substat types";
+  const list = unsupported.map((entry) => `${entry.type} on sub${entry.slot}`).join(", ");
+  return `${prefix} ${list || first.type || ""}.`;
+}
+
+function validateGearSetOption(equipId, setOptionId, options = {}) {
+  const id = Number(setOptionId || 0);
+  if (!id) return { ok: true, unsupported: null };
+  const setOption = getEquipSetOption(id);
+  if (!setOption) return { ok: false, error: `No gear set bonus id ${id} exists in local tables.` };
+  const templet = getEquipTemplet(equipId);
+  const supported = getEquipSetOptionIds(templet).includes(id);
+  return {
+    ok: supported || options.overrideUnsupportedSetBonus === true,
+    unsupported: supported ? null : { equipId, setOptionId: id, setOption },
+  };
+}
+
+function formatUnsupportedSetBonus(unsupported) {
+  const entry = unsupported || {};
+  return `Unsupported set bonus ${describeGearSetOption(entry.setOption || getEquipSetOption(entry.setOptionId))} on gear ${entry.equipId}.`;
+}
+
+function resolveGearSetOptionId(value) {
+  const text = String(value || "").trim();
+  if (!text) return 0;
+  if (/^\d+$/.test(text)) {
+    const id = Number(text);
+    return getEquipSetOption(id) ? id : 0;
+  }
+  const target = normalizeGearSetAlias(text);
+  if (!target) return 0;
+  const matches = getAllEquipSetOptionRecords()
+    .filter((record) => gearSetAliases(record).includes(target))
+    .sort((a, b) => Number(a.m_EquipSetID) - Number(b.m_EquipSetID));
+  return matches.length ? Number(matches[0].m_EquipSetID) : 0;
+}
+
+function gearSetAliases(record) {
+  const aliases = new Set();
+  const part = Number(record && record.m_EquipSetPart) || 0;
+  const partText = part ? `${part}p` : "";
+  for (const source of [record && record.m_EquipSetStrID, record && record.m_EquipSetName, record && record.m_EquipSetIcon]) {
+    const normalized = normalizeGearSetAlias(source);
+    if (!normalized) continue;
+    aliases.add(normalized);
+    aliases.add(normalized.replace(/^si_/, ""));
+    aliases.add(normalized.replace(/^icon_/, ""));
+    aliases.add(normalized.replace(/^set_/, ""));
+    aliases.add(normalized.replace(/^set_normal_/, ""));
+  }
+  const effects = gearSetEffects(record);
+  for (const effect of effects) {
+    for (const statAlias of gearStatAliasesForType(effect.type)) {
+      aliases.add(statAlias);
+      if (partText) {
+        aliases.add(`${partText}_${statAlias}`);
+        aliases.add(`${statAlias}_${partText}`);
+      }
+    }
+  }
+  return Array.from(aliases).filter(Boolean);
+}
+
+function normalizeGearSetAlias(value) {
+  return String(value || "")
+    .trim()
+    .toLowerCase()
+    .replace(/^nst_/, "")
+    .replace(/[^a-z0-9]+/g, "_")
+    .replace(/^_+|_+$/g, "");
+}
+
+function gearStatAliasesForType(type) {
+  const normalized = resolveGearStatType(type);
+  const aliases = new Set([normalizeGearSetAlias(normalized)]);
+  for (const [alias, target] of Object.entries(GEAR_STAT_ALIASES)) {
+    if (target === normalized) aliases.add(normalizeGearSetAlias(alias));
+  }
+  const shorthand = normalizeGearSetAlias(normalized)
+    .replace(/_rate$/, "")
+    .replace(/^role_type_/, "")
+    .replace(/^unit_type_/, "")
+    .replace(/^move_type_/, "")
+    .replace(/_damage$/, "_dmg")
+    .replace(/_reduce$/, "_res");
+  aliases.add(shorthand);
+  return Array.from(aliases).filter(Boolean);
+}
+
+function maybeHandlePendingGearOverride(user, tokens) {
+  const answer = String(tokens[0] || "").trim().toLowerCase();
+  if (!["y", "yes", "n", "no"].includes(answer)) return null;
+  const state = ensureAdminState(user);
+  const pending = state.pendingGearOverride;
+  if (!pending || !Array.isArray(pending.rewards) || !pending.rewards.length) return null;
+  state.pendingGearOverride = null;
+  if (answer === "n" || answer === "no") {
+    return { reply: "Cancelled forced gear substat override.", createdPosts: 0 };
+  }
+  const posts = createAdminRewardPosts(user, pending.rewards, pending.title, pending.contents);
+  return {
+    reply: `Queued ${pending.rewards.length} forced gear reward line${pending.rewards.length === 1 ? "" : "s"} in ${posts.length} inbox mail${posts.length === 1 ? "" : "s"}. Open Mail to claim.`,
+    createdPosts: posts.length,
+  };
+}
+
+function buildAllRewards(kinds, countText) {
+  const count = normalizeRewardCount(countText || 1);
+  const rewards = [];
+  for (const rawKind of kinds) {
+    const kind = normalizeAllKind(rawKind);
+    const type = rewardTypeForKind(kind);
+    const ids = idsForKind(kind);
+    if (!type || !ids.length) return { ok: false, error: `No ids available for "${rawKind}".` };
+    for (const id of ids) rewards.push({ rewardType: type, id, count: clampCountForType(type, count) });
+  }
+  return {
+    ok: true,
+    rewards,
+    title: "Admin Bulk Delivery",
+    contents: `Admin queued ${rewards.length} reward line${rewards.length === 1 ? "" : "s"}.`,
+  };
+}
+
+function createAdminRewardPosts(user, rewards, title, contents) {
+  const state = ensureAdminState(user);
+  const chunks = [];
+  for (let index = 0; index < rewards.length; index += ADMIN_MAX_REWARDS_PER_MAIL) {
+    chunks.push(rewards.slice(index, index + ADMIN_MAX_REWARDS_PER_MAIL));
+  }
+  const posts = [];
+  for (const chunk of chunks) {
+    const postIndex = allocatePostIndex(state);
+    const post = {
+      postId: ADMIN_POST_ID,
+      postIndex: postIndex.toString(),
+      title: title || "Admin Delivery",
+      contents: contents || summarizeRewards(chunk),
+      sendDate: String(dateTimeBinaryNow()),
+      expirationDate: String(farFutureDateTimeBinary()),
+      rewards: chunk.map(normalizeRewardSpec).filter(Boolean),
+      received: false,
+    };
+    state.posts.push(post);
+    posts.push(post);
+  }
+  return posts;
+}
+
+function ensureLoginRewardPosts(user, options = {}) {
+  if (!user || typeof user !== "object") return 0;
+  const state = ensureAdminState(user);
+  state.loginRewards =
+    state.loginRewards && typeof state.loginRewards === "object" && !Array.isArray(state.loginRewards)
+      ? state.loginRewards
+      : {};
+
+  const rewardState = state.loginRewards;
+  const now = options.now instanceof Date ? options.now : new Date();
+  const dateKey = normalizeDateKey(options.dateKey || now);
+  let createdPosts = 0;
+
+  if (process.env.CS_DISABLE_NEWBIE_REWARD_MAIL !== "1" && !rewardState.newbieQueued) {
+    const rewards = configuredRewardList("CS_NEWBIE_REWARDS", DEFAULT_NEWBIE_REWARDS);
+    if (rewards.length) {
+      createdPosts += createAdminRewardPosts(
+        user,
+        rewards,
+        process.env.CS_NEWBIE_REWARD_TITLE || "New Administrator Support",
+        process.env.CS_NEWBIE_REWARD_CONTENTS || "Welcome aboard. These supplies have been delivered to help your company get started."
+      ).length;
+      rewardState.newbieQueued = true;
+      rewardState.newbieQueuedAt = now.toISOString();
+    }
+  }
+
+  if (process.env.CS_DISABLE_SIGN_IN_REWARD_MAIL !== "1" && rewardState.lastSignInDate !== dateKey) {
+    const rewards = configuredRewardList("CS_SIGN_IN_REWARDS", DEFAULT_SIGN_IN_REWARDS);
+    if (rewards.length) {
+      createdPosts += createAdminRewardPosts(
+        user,
+        rewards,
+        process.env.CS_SIGN_IN_REWARD_TITLE || "Daily Sign-In Reward",
+        process.env.CS_SIGN_IN_REWARD_CONTENTS || "Thanks for checking in today. Your daily supplies are ready to claim."
+      ).length;
+      rewardState.lastSignInDate = dateKey;
+      rewardState.lastSignInQueuedAt = now.toISOString();
+    }
+  }
+
+  return createdPosts;
+}
+
+function grantPostRewards(ctx, user, post) {
+  const total = createEmptyReward();
+  const regDate = ctx && ctx.dateTimeBinaryNow ? ctx.dateTimeBinaryNow() : dateTimeBinaryNow();
+  for (const reward of post && Array.isArray(post.rewards) ? post.rewards : []) {
+    const options = {
+      expandPackages: true,
+      regDate,
+    };
+    const gearOptions = normalizeRewardType(reward.rewardType) === "RT_EQUIP" ? normalizeGearRewardOptions(reward.gearOptions) : null;
+    if (gearOptions) Object.assign(options, gearOptions);
+    mergeReward(
+      total,
+      grantRewardByType(ctx, user, reward.rewardType, reward.id, reward.count, reward.count, 0, options)
+    );
+  }
+  return total;
+}
+
+function buildPostData(post) {
+  return Buffer.concat([
+    writeSignedVarInt(Number(post.postId || ADMIN_POST_ID) || 0),
+    writeSignedVarLong(toBigInt(post.postIndex || 0)),
+    writeString(post.title || "Admin Delivery"),
+    writeString(post.contents || summarizeRewards(post.rewards || [])),
+    writeInt64FromStoredDate(post.sendDate),
+    writeObjectList((post.rewards || []).map((reward) => writeNullableObject(buildRewardInfoData(reward)))),
+    writeInt64FromStoredDate(post.expirationDate || farFutureDateTimeBinary()),
+  ]);
+}
+
+function buildRewardInfoData(reward) {
+  const spec = normalizeRewardSpec(reward) || {};
+  return Buffer.concat([
+    writeSignedVarInt(REWARD_TYPE_ENUM[spec.rewardType] != null ? REWARD_TYPE_ENUM[spec.rewardType] : 0),
+    writeSignedVarInt(0),
+    writeSignedVarInt(Number(spec.id || 0) || 0),
+    writeSignedVarInt(Number(spec.count || 1) || 1),
+  ]);
+}
+
+function buildPrivateChatNot(message) {
+  return writeNullableObject(buildChatMessageData(message));
+}
+
+function buildPrivateChatListData(profile, lastMessage) {
+  return Buffer.concat([
+    writeNullableObject(buildCommonProfileData(profile)),
+    writeNullableObject(buildChatMessageData(lastMessage || buildAdminChatMessage("Admin console ready. Type /help."))),
+  ]);
+}
+
+function buildChatMessageData(message) {
+  const data = message || buildAdminChatMessage("Admin console ready. Type /help.");
+  return Buffer.concat([
+    writeSignedVarLong(toBigInt(data.messageUid || 0)),
+    writeSignedVarInt(Number(data.messageType || 0) || 0),
+    writeNullableObject(buildCommonProfileData(data.profile || getAdminProfile())),
+    writeSignedVarInt(Number(data.emotionId || 0) || 0),
+    writeString(data.message || ""),
+    writeInt64FromStoredDate(data.createdAt || dateTimeBinaryNow()),
+    writeSignedVarLong(toBigInt(data.typeParam || 0)),
+    writeBool(Boolean(data.blocked)),
+  ]);
+}
+
+function buildCommonProfileData(profile) {
+  const data = profile || {};
+  return Buffer.concat([
+    writeSignedVarLong(toBigInt(data.userUid || 0)),
+    writeSignedVarLong(toBigInt(data.friendCode || 0)),
+    writeString(data.nickname || ""),
+    writeSignedVarInt(Number(data.level || 1) || 1),
+    writeSignedVarInt(Number(data.mainUnitId || 0) || 0),
+    writeSignedVarInt(Number(data.mainUnitSkinId || 0) || 0),
+    writeSignedVarInt(Number(data.frameId || 0) || 0),
+    writeSignedVarInt(Number(data.mainUnitTacticLevel || 0) || 0),
+    writeSignedVarInt(Number(data.titleId || 0) || 0),
+  ]);
+}
+
+function buildUserChatMessage(user, message, emotionId = 0) {
+  const state = ensureAdminState(user);
+  return {
+    messageUid: allocateMessageUid(state).toString(),
+    messageType: 0,
+    profile: getUserProfile(user),
+    emotionId: Number(emotionId || 0) || 0,
+    message,
+    createdAt: String(dateTimeBinaryNow()),
+    typeParam: "0",
+    blocked: false,
+  };
+}
+
+function buildAdminChatMessage(message) {
+  return {
+    messageUid: "0",
+    messageType: 0,
+    profile: getAdminProfile(),
+    emotionId: 0,
+    message,
+    createdAt: String(dateTimeBinaryNow()),
+    typeParam: "0",
+    blocked: false,
+  };
+}
+
+function appendChatMessage(user, roomUid, message) {
+  const state = ensureAdminState(user);
+  const roomKey = String(toBigInt(roomUid));
+  state.chats[roomKey] = Array.isArray(state.chats[roomKey]) ? state.chats[roomKey] : [];
+  const stored = {
+    ...message,
+    messageUid: message.messageUid === "0" ? allocateMessageUid(state).toString() : String(message.messageUid),
+  };
+  state.chats[roomKey].push(stored);
+  if (state.chats[roomKey].length > CHAT_HISTORY_LIMIT) {
+    state.chats[roomKey] = state.chats[roomKey].slice(-CHAT_HISTORY_LIMIT);
+  }
+  return stored;
+}
+
+function getChatMessages(user, roomUid) {
+  ensureAdminWelcome(user);
+  const state = ensureAdminState(user);
+  return (state.chats[String(toBigInt(roomUid))] || []).slice(-CHAT_HISTORY_LIMIT);
+}
+
+function getLastAdminChatMessage(user) {
+  const messages = getChatMessages(user, ADMIN_UID);
+  return messages[messages.length - 1] || buildAdminChatMessage("Admin console ready. Type /help.");
+}
+
+function ensureAdminWelcome(user) {
+  const state = ensureAdminState(user);
+  const roomKey = ADMIN_UID.toString();
+  state.chats[roomKey] = Array.isArray(state.chats[roomKey]) ? state.chats[roomKey] : [];
+  if (state.chats[roomKey].length) return;
+  appendChatMessage(user, ADMIN_UID, buildAdminChatMessage("Admin console ready. Type /help for commands."));
+}
+
+function ensureAdminState(user) {
+  if (!user || typeof user !== "object") return { posts: [], chats: {}, nextPostIndex: "1", nextMessageUid: "1" };
+  user.admin = user.admin && typeof user.admin === "object" ? user.admin : {};
+  user.admin.posts = Array.isArray(user.admin.posts) ? user.admin.posts : [];
+  user.admin.chats = user.admin.chats && typeof user.admin.chats === "object" ? user.admin.chats : {};
+  user.admin.loginRewards =
+    user.admin.loginRewards && typeof user.admin.loginRewards === "object" && !Array.isArray(user.admin.loginRewards)
+      ? user.admin.loginRewards
+      : {};
+  user.admin.nextPostIndex = String(toBigInt(user.admin.nextPostIndex || 1, 1n));
+  user.admin.nextMessageUid = String(toBigInt(user.admin.nextMessageUid || 1, 1n));
+  user.admin.posts = user.admin.posts.map(normalizePost).filter(Boolean);
+  return user.admin;
+}
+
+function normalizePost(post) {
+  if (!post || typeof post !== "object") return null;
+  const postIndex = toBigInt(post.postIndex || 0);
+  if (postIndex <= 0n) return null;
+  return {
+    postId: Number(post.postId || ADMIN_POST_ID) || 0,
+    postIndex: postIndex.toString(),
+    title: String(post.title || "Admin Delivery"),
+    contents: String(post.contents || ""),
+    sendDate: String(toBigInt(post.sendDate || dateTimeBinaryNow())),
+    expirationDate: String(toBigInt(post.expirationDate || farFutureDateTimeBinary())),
+    rewards: (Array.isArray(post.rewards) ? post.rewards : []).map(normalizeRewardSpec).filter(Boolean),
+    received: Boolean(post.received),
+    receivedAt: post.receivedAt ? String(post.receivedAt) : undefined,
+  };
+}
+
+function normalizeRewardSpec(reward) {
+  if (!reward || typeof reward !== "object") return null;
+  const rewardType = normalizeRewardType(reward.rewardType);
+  const id = Number(reward.id || reward.rewardId || reward.ID || 0);
+  const count = normalizeRewardCount(reward.count || reward.Count || 1);
+  if (!rewardType || !Number.isInteger(id) || id <= 0 || count <= 0) return null;
+  const spec = { rewardType, id, count };
+  if (rewardType === "RT_EQUIP") {
+    const gearOptions = normalizeGearRewardOptions(reward.gearOptions || reward.options || reward.equipOptions);
+    if (gearOptions) spec.gearOptions = gearOptions;
+  }
+  return spec;
+}
+
+function normalizeGearRewardOptions(options) {
+  if (!options || typeof options !== "object") return null;
+  const normalized = {};
+  const setOptionId = Number(options.setOptionId || options.setId || options.equipSetId || options.setBonusId || 0);
+  if (Number.isInteger(setOptionId) && setOptionId > 0) normalized.setOptionId = setOptionId;
+  const customMainStat = normalizeGearRewardMainStat(options.customMainStat || options.mainStat);
+  if (customMainStat) normalized.customMainStat = customMainStat;
+  const customSubstats = (Array.isArray(options.customSubstats) ? options.customSubstats : [])
+    .map((substat, index) => normalizeGearRewardSubstat(substat, index + 1))
+    .filter(Boolean)
+    .slice(0, 2);
+  if (customSubstats.length) normalized.customSubstats = customSubstats;
+  if (options.overrideUnsupportedSubstats === true || options.forceUnsupportedSubstats === true) {
+    normalized.overrideUnsupportedSubstats = true;
+  }
+  if (options.overrideUnsupportedSetBonus === true || options.forceUnsupportedSetBonus === true) {
+    normalized.overrideUnsupportedSetBonus = true;
+  }
+  return Object.keys(normalized).length ? normalized : null;
+}
+
+function normalizeGearRewardMainStat(mainStat) {
+  if (!mainStat || typeof mainStat !== "object") return null;
+  const rawType = mainStat.type || mainStat.statType || mainStat.m_StatType;
+  const type = isDefaultGearMainStatType(rawType) || String(rawType || "").toUpperCase() === "DEFAULT"
+    ? "DEFAULT"
+    : resolveGearStatType(rawType);
+  if (!type) return null;
+  const valueKind = String(mainStat.valueKind || "").toLowerCase() === "max" ? "max" : "custom";
+  const sourceValue = mainStat.value != null ? mainStat.value : mainStat.statValue;
+  const value = valueKind === "max" ? null : Number(sourceValue);
+  if (valueKind !== "max" && !Number.isFinite(value)) return null;
+  const normalized = { type, valueKind, value };
+  const levelValueKind = String(mainStat.levelValueKind || "").toLowerCase() === "max" ? "max" : "custom";
+  const sourceLevelValue =
+    mainStat.levelValue != null
+      ? mainStat.levelValue
+      : mainStat.statLevelValue != null
+        ? mainStat.statLevelValue
+        : mainStat.levelupValue;
+  if (levelValueKind === "max") {
+    normalized.levelValueKind = "max";
+    normalized.levelValue = null;
+  } else if (sourceLevelValue != null) {
+    const levelValue = Number(sourceLevelValue);
+    if (Number.isFinite(levelValue)) {
+      normalized.levelValueKind = "custom";
+      normalized.levelValue = levelValue;
+    }
+  }
+  return normalized;
+}
+
+function normalizeGearRewardSubstat(substat, fallbackSlot) {
+  if (!substat || typeof substat !== "object") return null;
+  const slot = Number(substat.slot || substat.Slot || fallbackSlot);
+  if (slot !== 1 && slot !== 2) return null;
+  const type = resolveGearStatType(substat.type || substat.statType || substat.m_StatType);
+  if (!type) return null;
+  const valueKind = String(substat.valueKind || "").toLowerCase() === "max" ? "max" : "custom";
+  const sourceValue = substat.value != null ? substat.value : substat.statValue;
+  const value = valueKind === "max" ? null : Number(sourceValue);
+  if (valueKind !== "max" && !Number.isFinite(value)) return null;
+  const normalized = { slot, type, valueKind, value };
+  const levelValue = Number(substat.levelValue != null ? substat.levelValue : substat.statLevelValue);
+  if (Number.isFinite(levelValue)) normalized.levelValue = levelValue;
+  return normalized;
+}
+
+function configuredRewardList(envName, fallback) {
+  const parsed = parseConfiguredRewardList(process.env[envName]);
+  const source = parsed.length ? parsed : fallback;
+  return source.map(normalizeConfiguredReward).filter(Boolean);
+}
+
+function parseConfiguredRewardList(value) {
+  const text = String(value || "").trim();
+  if (!text) return [];
+  if (text.startsWith("[")) {
+    try {
+      const parsed = JSON.parse(text);
+      return Array.isArray(parsed) ? parsed : [];
+    } catch (err) {
+      console.log(`[admin] ignored ${text.slice(0, 32)} reward config: ${err.message}`);
+      return [];
+    }
+  }
+  return text
+    .split(/[;,]/)
+    .map((entry) => parseRewardToken(entry))
+    .filter(Boolean);
+}
+
+function parseRewardToken(entry) {
+  const parts = String(entry || "")
+    .split(":")
+    .map((part) => part.trim())
+    .filter(Boolean);
+  if (parts.length < 2) return null;
+  if (parts.length === 2) return { kind: "currency", id: parts[0], count: parts[1] };
+  return { kind: parts[0], id: parts[1], count: parts[2] };
+}
+
+function normalizeConfiguredReward(value) {
+  const source = value && typeof value === "object" ? value : {};
+  if (source.rewardType) return validateConfiguredReward(normalizeRewardSpec(source));
+
+  const kind = source.kind || source.type || "currency";
+  const rewardType = normalizeRewardType(kind) || rewardTypeForKind(kind);
+  const id = resolveRewardId(kind, source.id || source.rewardId || source.ID);
+  return validateConfiguredReward(normalizeRewardSpec({ rewardType, id, count: source.count || source.Count || 1 }));
+}
+
+function validateConfiguredReward(reward) {
+  if (!reward) return null;
+  if (rewardIdExists(reward.rewardType, reward.id)) return reward;
+  if (reward.rewardType === "RT_MISC" && Object.values(RESOURCE_ITEM_IDS).includes(reward.id)) return reward;
+  console.log(`[admin] skipped configured reward with missing local table entry: ${describeReward(reward)}`);
+  return null;
+}
+
+function envRewardCount(name, fallback) {
+  const value = Number(process.env[name]);
+  return Number.isFinite(value) && value > 0 ? Math.trunc(value) : fallback;
+}
+
+function normalizeDateKey(value) {
+  if (value instanceof Date) return formatLocalDateKey(value);
+  const text = String(value || "");
+  if (/^\d{4}-\d{2}-\d{2}$/.test(text)) return text;
+  const date = new Date(text);
+  return Number.isNaN(date.getTime()) ? formatLocalDateKey(new Date()) : formatLocalDateKey(date);
+}
+
+function formatLocalDateKey(date) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
+
+function listVisiblePosts(user, lastPostIndex = 0) {
+  const last = toBigInt(lastPostIndex || 0);
+  return ensureAdminState(user).posts
+    .filter((post) => !post.received)
+    .filter((post) => last <= 0n || toBigInt(post.postIndex) > last)
+    .sort((a, b) => Number(toBigInt(a.postIndex) - toBigInt(b.postIndex)))
+    .slice(0, 50);
+}
+
+function countPendingPosts(user) {
+  return ensureAdminState(user).posts.filter((post) => !post.received).length;
+}
+
+function allocatePostIndex(state) {
+  let next = toBigInt(state.nextPostIndex || 1, 1n);
+  const used = new Set((state.posts || []).map((post) => String(toBigInt(post.postIndex))));
+  while (used.has(next.toString())) next += 1n;
+  state.nextPostIndex = (next + 1n).toString();
+  return next;
+}
+
+function allocateMessageUid(state) {
+  const next = toBigInt(state.nextMessageUid || 1, 1n);
+  state.nextMessageUid = (next + 1n).toString();
+  return next;
+}
+
+function getAdminProfile() {
+  return {
+    userUid: ADMIN_UID.toString(),
+    friendCode: ADMIN_FRIEND_CODE.toString(),
+    nickname: ADMIN_NICKNAME,
+    level: 99,
+    mainUnitId: ADMIN_MAIN_UNIT_ID,
+    mainUnitSkinId: 0,
+    frameId: 0,
+    mainUnitTacticLevel: 0,
+    titleId: 0,
+  };
+}
+
+function getUserProfile(user) {
+  return {
+    userUid: String(toBigInt(user && user.userUid || 0)),
+    friendCode: String(toBigInt(user && user.friendCode || 0)),
+    nickname: String((user && user.nickname) || "LocalAdmin"),
+    level: Number((user && user.level) || 1) || 1,
+    mainUnitId: Number((user && user.mainUnitId) || 0),
+    mainUnitSkinId: Number((user && user.mainUnitSkinId) || 0),
+    frameId: Number((user && user.frameId) || 0),
+    mainUnitTacticLevel: Number((user && user.mainUnitTacticLevel) || 0),
+    titleId: Number((user && user.titleId) || 0),
+  };
+}
+
+function rewardTypeForKind(kind) {
+  switch (normalizeKind(kind)) {
+    case "currency":
+    case "item":
+      return "RT_MISC";
+    case "unit":
+      return "RT_UNIT";
+    case "ship":
+      return "RT_SHIP";
+    case "operator":
+      return "RT_OPERATOR";
+    case "gear":
+      return "RT_EQUIP";
+    case "skin":
+      return "RT_SKIN";
+    case "emoticon":
+      return "RT_EMOTICON";
+    default:
+      return "";
+  }
+}
+
+function normalizeKind(kind) {
+  const value = String(kind || "").toLowerCase().replace(/[_\s-]+/g, "");
+  if (["currency", "curr", "resource", "resources", "money"].includes(value)) return "currency";
+  if (["item", "items", "misc", "miscitem", "miscitems"].includes(value)) return "item";
+  if (["unit", "units", "character", "characters", "employee", "employees"].includes(value)) return "unit";
+  if (["ship", "ships"].includes(value)) return "ship";
+  if (["operator", "operators", "op", "ops"].includes(value)) return "operator";
+  if (["gear", "gears", "equip", "equips", "equipment"].includes(value)) return "gear";
+  if (["skin", "skins"].includes(value)) return "skin";
+  if (["emoticon", "emoticons", "emote", "emotes"].includes(value)) return "emoticon";
+  return value;
+}
+
+function normalizeAllKind(kind) {
+  return normalizeKind(kind);
+}
+
+function resolveRewardId(kind, idText) {
+  const normalizedKind = normalizeKind(kind);
+  const text = String(idText || "").toLowerCase().replace(/[\s-]+/g, "_");
+  if (normalizedKind === "currency" && CURRENCY_ALIASES[text] != null) return CURRENCY_ALIASES[text];
+  return Number(idText);
+}
+
+function idsForKind(kind) {
+  switch (normalizeKind(kind)) {
+    case "currency":
+      return Object.values(RESOURCE_ITEM_IDS);
+    case "item":
+      return getAllMiscItemIds();
+    case "unit":
+      return getPlayableUnitIds();
+    case "ship":
+      return getPlayableShipIds();
+    case "operator":
+      return getPlayableOperatorIds();
+    case "gear":
+      return getAllEquipIds();
+    case "skin":
+      return getAllSkinIds();
+    case "emoticon":
+      return getAllEmoticonIds();
+    default:
+      return [];
+  }
+}
+
+function rewardIdExists(rewardType, id) {
+  switch (normalizeRewardType(rewardType)) {
+    case "RT_MISC":
+      return Boolean(getMiscItemTemplet(id));
+    case "RT_UNIT":
+    case "RT_SHIP":
+    case "RT_OPERATOR":
+      return Boolean(getUnitTemplet(id));
+    case "RT_EQUIP":
+      return Boolean(getEquipTemplet(id));
+    case "RT_SKIN":
+      return Boolean(getSkinTemplet(id));
+    case "RT_EMOTICON":
+      return Boolean(getEmoticonTemplet(id));
+    default:
+      return false;
+  }
+}
+
+function normalizeRewardType(type) {
+  const value = String(type || "").toUpperCase();
+  if (value === "RT_ITEM_MISC" || value === "RT_RESOURCE") return "RT_MISC";
+  if (value === "RT_ITEM_EQUIP" || value === "RT_EQUIP_ITEM") return "RT_EQUIP";
+  return REWARD_TYPE_ENUM[value] != null ? value : "";
+}
+
+function clampCountForType(rewardType, count) {
+  const value = normalizeRewardCount(count);
+  if (rewardType === "RT_SKIN" || rewardType === "RT_EMOTICON") return 1;
+  return value;
+}
+
+function normalizeRewardCount(value) {
+  const count = Number(value == null || value === "" ? 1 : value);
+  if (!Number.isFinite(count) || count <= 0) return 1;
+  return Math.max(1, Math.min(1000000000, Math.trunc(count)));
+}
+
+function describeReward(reward) {
+  return `${reward.rewardType}:${reward.id} x${reward.count}`;
+}
+
+function summarizeRewards(rewards) {
+  const list = Array.isArray(rewards) ? rewards : [];
+  const shown = list.slice(0, 8).map(describeReward).join(", ");
+  return shown + (list.length > 8 ? `, and ${list.length - 8} more` : "");
+}
+
+function gearHelpText() {
+  const mainRows = buildGearMainStatHelpRows();
+  const rows = buildGearSubstatHelpRows();
+  const setRows = buildGearSetBonusHelpRows();
+  return [
+    "Gear main stats:",
+    ...mainRows.map((row) => `${row.id} ${row.type} min=${formatHelpStatValue(row.min)} max=${formatHelpStatValue(row.max)} levelMin=${formatHelpStatValue(row.levelMin)} levelMax=${formatHelpStatValue(row.levelMax)}`),
+    "",
+    "Gear substats:",
+    "Global min/max is across all random-stat groups; each gear can support a narrower range.",
+    ...rows.map((row) => `${row.id} ${row.type} min=${formatHelpStatValue(row.min)} max=${formatHelpStatValue(row.max)}`),
+    "",
+    "Gear set bonuses:",
+    ...setRows.map((row) => `${row.id} ${row.name} parts=${row.parts} ${row.effects}`),
+    "",
+    "Usage:",
+    "/give gear <gearId> [count] [set=<setId|alias>] [main=<stat>=<value|max>] [mainlevel=<value|max>] [substat=value|max] [substat=value|max]",
+    "/give gear <gearId> set=hit main=default=max mainlevel=max sub1=7=max sub2=13=0.10",
+    "/give gear <gearId> set=221200 main=NST_HP=2279 sub1=NST_CRITICAL_DAMAGE_RATE=max sub2=NST_SKILL_COOL_TIME_REDUCE_RATE=0.10",
+    "Use main=default=max to keep the gear's native main stat type and use its native value.",
+    "Aliases include atk, hp, def, crit, crit_dmg, aspd, cdr, skill_dmg, ult_dmg.",
+    "Unsupported stats or set bonuses will ask for Y/N; Y forces the gear option.",
+  ].join("\n");
+}
+
+function buildGearMainStatHelpRows() {
+  const rows = new Map();
+  for (const equipId of getAllEquipIds()) {
+    const record = getEquipTemplet(equipId);
+    const type = resolveGearStatType(record && record.STAT_TYPE_1);
+    if (!type) continue;
+    const min = numberOrNull(record && record.STAT_VALUE_1);
+    const max = numberOrNull(record && record.STAT_VALUE_1);
+    const levelMin = numberOrNull(record && record.STAT_LEVELUP_VALUE_1);
+    const levelMax = numberOrNull(record && record.STAT_LEVELUP_VALUE_1);
+    const existing = rows.get(type);
+    if (!existing) {
+      rows.set(type, { type, id: statTypeValue(type), min, max, levelMin, levelMax });
+      continue;
+    }
+    if (min != null) existing.min = existing.min != null ? Math.min(existing.min, min) : min;
+    if (max != null) existing.max = existing.max != null ? Math.max(existing.max, max) : max;
+    if (levelMin != null) existing.levelMin = existing.levelMin != null ? Math.min(existing.levelMin, levelMin) : levelMin;
+    if (levelMax != null) existing.levelMax = existing.levelMax != null ? Math.max(existing.levelMax, levelMax) : levelMax;
+  }
+  return Array.from(rows.values()).sort((a, b) => (a.id - b.id) || a.type.localeCompare(b.type));
+}
+
+function buildGearSubstatHelpRows() {
+  const rows = new Map();
+  for (const record of getAllEquipRandomStatRecords()) {
+    const type = resolveGearStatType(record && record.m_StatType);
+    if (!type) continue;
+    const min = recordStatMinValue(record);
+    const max = recordStatMaxValue(record);
+    const existing = rows.get(type);
+    if (!existing) {
+      rows.set(type, { type, id: statTypeValue(type), min, max });
+      continue;
+    }
+    if (Number.isFinite(min)) existing.min = Number.isFinite(existing.min) ? Math.min(existing.min, min) : min;
+    if (Number.isFinite(max)) existing.max = Number.isFinite(existing.max) ? Math.max(existing.max, max) : max;
+  }
+  return Array.from(rows.values()).sort((a, b) => (a.id - b.id) || a.type.localeCompare(b.type));
+}
+
+function buildGearSetBonusHelpRows() {
+  return getAllEquipSetOptionRecords()
+    .map((record) => ({
+      id: Number(record && record.m_EquipSetID) || 0,
+      name: gearSetHelpName(record),
+      parts: Number(record && record.m_EquipSetPart) || 0,
+      effects: formatGearSetEffects(record),
+    }))
+    .filter((row) => row.id > 0)
+    .sort((a, b) => a.id - b.id);
+}
+
+function gearSetHelpName(record) {
+  const raw = String(record && (record.m_EquipSetStrID || record.m_EquipSetName || "") || "");
+  return raw
+    .replace(/^SI_/, "")
+    .replace(/^SET_NORMAL_/, "")
+    .replace(/^SET_/, "")
+    .replace(/_/g, " ");
+}
+
+function describeGearSetOption(record) {
+  if (!record) return "unknown";
+  return `${Number(record.m_EquipSetID) || 0} ${gearSetHelpName(record)} parts=${Number(record.m_EquipSetPart) || 0} ${formatGearSetEffects(record)}`;
+}
+
+function formatGearSetEffects(record) {
+  const effects = gearSetEffects(record);
+  return effects.length ? effects.map((effect) => `${effect.type} ${formatGearSetEffectValue(effect.value)}`).join(", ") : "no effect";
+}
+
+function gearSetEffects(record) {
+  const effects = [];
+  for (let index = 1; index <= 2; index += 1) {
+    const type = resolveGearStatType(record && record[`m_StatType_${index}`]);
+    if (!type) continue;
+    const valueSource = record[`m_StatValue_${index}`] != null ? record[`m_StatValue_${index}`] : record[`m_StatRate_${index}`];
+    const value = Number(valueSource);
+    if (!Number.isFinite(value)) continue;
+    effects.push({ type, value });
+  }
+  return effects;
+}
+
+function formatGearSetEffectValue(value) {
+  const number = Number(value);
+  if (!Number.isFinite(number)) return "0";
+  if (Math.abs(number) > 0 && Math.abs(number) <= 1) return `${Number((number * 100).toFixed(3))}%`;
+  return formatHelpStatValue(number);
+}
+
+function recordStatMinValue(record) {
+  const value = Number(record && (record.m_MinStatValue != null ? record.m_MinStatValue : record.m_MinStat));
+  return Number.isFinite(value) ? value : 0;
+}
+
+function recordStatMaxValue(record) {
+  const value = Number(record && (record.m_MaxStatValue != null ? record.m_MaxStatValue : record.m_MaxStat));
+  return Number.isFinite(value) ? value : recordStatMinValue(record);
+}
+
+function numberOrNull(value) {
+  const number = Number(value);
+  return Number.isFinite(number) ? number : null;
+}
+
+function formatHelpStatValue(value) {
+  const number = Number(value);
+  if (!Number.isFinite(number)) return "0";
+  if (Number.isInteger(number)) return String(number);
+  return String(Number(number.toFixed(6)));
+}
+
+function adminHelpText() {
+  return [
+    "Admin commands:",
+    "/give currency <credits|eternium|quartz|admincoins|id> <count>",
+    "/give item <id> <count>",
+    "/give unit <id> [count]",
+    "/give ship <id> [count]",
+    "/give operator <id> [count]",
+    "/give gear <id> [count] [set=<setId|alias>] [main=<stat>=<value|max>] [substat=value|max] [substat=value|max]",
+    "/help gear",
+    "/give skin <id>",
+    "/give emoticon <id>",
+    "/give all items|units|ships|operators|gears|skins|emoticons [count]",
+    "/give everything [count]",
+    "Rewards are delivered to Mail and granted when claimed.",
+  ].join("\n");
+}
+
+function isAdminCommand(message) {
+  const text = String(message || "").trim().toLowerCase();
+  return text.startsWith("/admin") || text.startsWith("/give") || text.startsWith("/grant") || text.startsWith("/mail") || text === "/help";
+}
+
+function tokenizeCommand(input) {
+  const tokens = [];
+  const regex = /"([^"]*)"|'([^']*)'|(\S+)/g;
+  let match;
+  while ((match = regex.exec(String(input || "")))) tokens.push(match[1] || match[2] || match[3] || "");
+  if (tokens[0] && tokens[0].toLowerCase() === "/help") return ["/admin", "help", ...tokens.slice(1)];
+  return tokens;
+}
+
+function decodeRequest(ctx, packetId, encryptedPayload) {
+  const payload = safeDecrypt(ctx, encryptedPayload);
+  let offset = 0;
+  const takeInt = () => {
+    const read = readSignedVarInt(payload, offset);
+    offset = read.offset;
+    return read.value;
+  };
+  const takeLong = () => {
+    const read = readSignedVarLong(payload, offset);
+    offset = read.offset;
+    return read.value;
+  };
+  const takeString = () => {
+    const read = readString(payload, offset);
+    offset = read.offset;
+    return read.value;
+  };
+  try {
+    switch (packetId) {
+      case PACKETS.POST_LIST_REQ:
+        return { lastPostIndex: takeLong() };
+      case PACKETS.POST_RECEIVE_REQ:
+        return { postIndex: takeLong() };
+      case PACKETS.PRIVATE_CHAT_REQ:
+        return { userUid: takeLong(), emotionId: takeInt(), message: takeString() };
+      case PACKETS.PRIVATE_CHAT_LIST_REQ:
+        return { userUid: takeLong() };
+      default:
+        return {};
+    }
+  } catch (err) {
+    console.log(`[admin] request decode failed packetId=${packetId}: ${err.message}`);
+    return {};
+  }
+}
+
+function safeDecrypt(ctx, payload) {
+  try {
+    return ctx.decryptCopy(payload);
+  } catch (_) {
+    return Buffer.alloc(0);
+  }
+}
+
+function sendServerNotice(ctx, socket, packetId, payload, label = "admin-not") {
+  if (!socket || socket.destroyed || !ctx || typeof ctx.buildEncryptedPacket !== "function") return;
+  const session = socket.session || (socket.session = {});
+  const replay = session.gameReplay;
+  let sequence;
+  if (replay && Number.isFinite(Number(replay.nextServerSequence))) {
+    sequence = Number(replay.nextServerSequence);
+    replay.nextServerSequence = sequence + 1;
+  } else {
+    sequence = Number(session.adminServerSequence || 1);
+    session.adminServerSequence = sequence + 1;
+  }
+  const packet = ctx.buildEncryptedPacket(sequence, packetId, payload || Buffer.alloc(0));
+  socket.write(packet);
+  console.log(`[admin:${label}] NOT packetId=${packetId} sequence=${sequence} payloadSize=${(payload || Buffer.alloc(0)).length}`);
+}
+
+function writeInt64FromStoredDate(value) {
+  return Buffer.from(writeInt64Buffer(toBigInt(value || dateTimeBinaryNow())));
+}
+
+function writeInt64Buffer(value) {
+  const buffer = Buffer.alloc(8);
+  buffer.writeBigInt64LE(toBigInt(value), 0);
+  return buffer;
+}
+
+function getSessionUser(ctx, socket) {
+  if (socket && socket.session && socket.session.user) return socket.session.user;
+  const user = ctx && typeof ctx.createEphemeralUser === "function" ? ctx.createEphemeralUser() : {};
+  if (socket && socket.session) socket.session.user = user;
+  return user;
+}
+
+function persistUserDb(ctx) {
+  if (ctx && (!ctx.config || ctx.config.USE_LOCAL_USER_DB) && typeof ctx.saveUserDb === "function") ctx.saveUserDb();
+}
+
+function formatRequest(request) {
+  if (!request || typeof request !== "object") return "";
+  if (request.message) return `message=${JSON.stringify(String(request.message).slice(0, 80))}`;
+  if (request.postIndex != null) return `postIndex=${request.postIndex}`;
+  if (request.lastPostIndex != null) return `lastPostIndex=${request.lastPostIndex}`;
+  if (request.userUid != null) return `userUid=${request.userUid}`;
+  return "";
+}
+
+module.exports = {
+  PACKETS,
+  ADMIN_UID,
+  createAdminHandler,
+  ensureAdminState,
+  ensureLoginRewardPosts,
+  createAdminRewardPosts,
+  handleAdminCommand,
+  buildPostData,
+  buildChatMessageData,
+};

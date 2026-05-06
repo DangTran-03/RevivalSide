@@ -29,6 +29,40 @@ public sealed class StageData
     public List<UnitState> InitialUnits { get; set; } = [];
     public List<AutoDeployUnit> AutoDeployUnits { get; set; } = [];
     public List<List<int>> DeployableGameUnitUIDGroups { get; set; } = [];
+    public PlayerDeckData? PlayerDeck { get; set; }
+}
+
+public sealed class PlayerDeckData
+{
+    public string UserUid { get; set; } = "0";
+    public string Nickname { get; set; } = "";
+    public int UserLevel { get; set; } = 1;
+    public int DeckType { get; set; } = 1;
+    public int DeckIndex { get; set; }
+    public int LeaderIndex { get; set; } = -1;
+    public string LeaderUnitUid { get; set; } = "0";
+    public string ShipUid { get; set; } = "0";
+    public int ShipUnitId { get; set; }
+    public int ShipLevel { get; set; } = 1;
+    public int ShipSkinId { get; set; }
+    public string OperatorUid { get; set; } = "0";
+    public int OperatorId { get; set; }
+    public int OperatorLevel { get; set; } = 1;
+    public List<PlayerUnitData> Units { get; set; } = [];
+}
+
+public sealed class PlayerUnitData
+{
+    public int SlotIndex { get; set; }
+    public string UnitUid { get; set; } = "0";
+    public int UnitId { get; set; }
+    public int Level { get; set; } = 1;
+    public int SkinId { get; set; }
+    public int LimitBreakLevel { get; set; }
+    public int TacticLevel { get; set; }
+    public int TacticGroup { get; set; }
+    public List<int> SkillLevels { get; set; } = [];
+    public List<string> EquipItemUids { get; set; } = [];
 }
 
 public sealed class DynamicGameState
@@ -44,6 +78,9 @@ public sealed class DynamicGameState
     public bool Tutorial { get; set; }
     public bool ManagedCombat { get; set; }
     public string ManagedSessionId { get; set; } = "";
+    public int? GameSpeedType { get; set; }
+    public int? AutoSkillType { get; set; }
+    public bool? AutoRespawnEnabled { get; set; }
     public UnitPools UnitPools { get; set; } = new();
     public HashSet<int> UsedPooledGameUnitUIDs { get; set; } = [];
 }
@@ -58,6 +95,9 @@ public sealed class UnitPool
 {
     public string UnitUID { get; set; } = "";
     public int UnitID { get; set; }
+    public int TacticLevel { get; set; }
+    public int TacticGroup { get; set; }
+    public double Cost { get; set; }
     public List<int> GameUnitUIDs { get; set; } = [];
 }
 
@@ -83,6 +123,9 @@ public sealed class BattleState
     public int DeployCount { get; set; }
     public bool Finished { get; set; }
     public bool Win { get; set; }
+    public int? GameSpeedType { get; set; }
+    public int? AutoSkillType { get; set; }
+    public bool? AutoRespawnEnabled { get; set; }
 }
 
 public sealed class AutoDeployUnit
@@ -159,6 +202,13 @@ public sealed class UnitState
     public double AttackRange { get; set; }
     public double MoveSpeed { get; set; }
     public double AttackCooldown { get; set; }
+    public int TacticLevel { get; set; }
+    public int TacticGroup { get; set; }
+    public double DamageReduceRate { get; set; }
+    public double CostReturnRate { get; set; }
+    public double Cost { get; set; }
+    public bool CostReturnApplied { get; set; }
+    public bool TacticStatsApplied { get; set; }
     public int DeadTicks { get; set; }
     public bool PendingRemove { get; set; }
     public string Role { get; set; } = "";

@@ -3,7 +3,10 @@ module.exports = {
   name: "CUTSCENE_DUNGEON_CLEAR_REQ",
   handle(ctx, socket, packet) {
     const dungeonId = ctx.resolveCutsceneClearDungeonId(socket, ctx.readCutsceneDungeonReq(packet.payload));
+    ctx.recordPersistentCutsceneView(socket, dungeonId);
+    ctx.recordGameplayUnlockClear(socket, dungeonId);
     ctx.recordTutorialCutsceneClear(socket, dungeonId);
+    ctx.recordEpisode1DungeonClear(socket, dungeonId);
     if (ctx.config.REPLAY_CAPTURED_GAME_FLOW && ctx.capturedGameFlow) {
       ctx.sendServerGamePacket(
         socket,
@@ -13,8 +16,12 @@ module.exports = {
       );
       return true;
     }
-    ctx.sendResponse(socket, packet.sequence, ctx.constants.CUTSCENE_DUNGEON_CLEAR_ACK, () =>
-      ctx.buildEncryptedPacket(packet.sequence, ctx.constants.CUTSCENE_DUNGEON_CLEAR_ACK, ctx.buildCutsceneDungeonClearAckPayload(dungeonId))
+    ctx.sendGameResponse(
+      socket,
+      packet,
+      ctx.constants.CUTSCENE_DUNGEON_CLEAR_ACK,
+      ctx.buildCutsceneDungeonClearAckPayload(dungeonId),
+      `cutscene-clear dungeonID=${dungeonId}`
     );
     return true;
   },

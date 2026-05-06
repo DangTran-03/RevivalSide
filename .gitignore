@@ -4,6 +4,7 @@
 .idea/
 *.user
 *.suo
+.env
 Thumbs.db
 Desktop.ini
 

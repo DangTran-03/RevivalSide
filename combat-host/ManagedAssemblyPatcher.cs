@@ -44,7 +44,11 @@ internal static class ManagedAssemblyPatcher
         PatchLuaLoader(module);
         PatchUnityLogging(module);
         PatchNoOp(module, "NKC.NKCMain", "NKCInitLocalContentsVersion");
+        PatchNoOp(module, "NKM.NKMContentsVersionManager", "LoadDefaultVersion");
+        PatchBoolReturn(module, "NKM.NKMContentsVersionManager", "SetCurrent", true);
         PatchBoolReturn(module, "NKC.NKCMain", "IsSafeMode", false);
+        PatchNoOp(module, "NKM.Templet.Office.NKMOfficeGradeTemplet", "LoadFromLua");
+        PatchNoOp(module, "NKM.NKMGameTeamDeckData", "InitRespawnLimitCount");
         PatchNoOp(module, "NKM.NKMItemManager", "LoadFromLUA_ITEM_MISC");
         PatchNoOp(module, "NKM.NKMItemManager", "CheckValidation");
         PatchBoolReturn(module, "NKM.NKMItemManager", "LoadFromLua_Random_Mold_Box", false);

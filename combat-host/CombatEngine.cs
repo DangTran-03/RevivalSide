@@ -7,6 +7,28 @@ internal sealed class CombatEngine
     private readonly HostOptions options;
 
     private static readonly CombatStateIds StateIds = new();
+    private const double StatRateScale = 10000.0;
+    private static readonly Dictionary<int, TacticRecord[]> TacticUpdateStats = new()
+    {
+        [0] =
+        [
+            new("NST_ATTACK_DAMAGE_MODIFY_G2", 400),
+            new("NST_DAMAGE_REDUCE_RATE", 400),
+            new("NST_COST_RETURN_RATE", 400),
+            new("NST_ATTACK_DAMAGE_MODIFY_G2", 200),
+            new("NST_DAMAGE_REDUCE_RATE", 200),
+            new("NST_COST_RETURN_RATE", 200)
+        ],
+        [1] =
+        [
+            new("NST_DAMAGE_REDUCE_RATE", 400),
+            new("NST_DAMAGE_REDUCE_RATE", 400),
+            new("NST_COST_RETURN_RATE", 400),
+            new("NST_DAMAGE_REDUCE_RATE", 200),
+            new("NST_DAMAGE_REDUCE_RATE", 200),
+            new("NST_COST_RETURN_RATE", 200)
+        ]
+    };
 
     public CombatEngine(HostOptions options)
     {
@@ -30,6 +52,12 @@ internal sealed class CombatEngine
             "buildSyntheticSync" => BuildSyntheticSync(Read<SyntheticSyncCommandData>(request.Data)),
             "isFinished" => IsFinished(Read<BattleCommandData>(request.Data)),
             "getResult" => GetResult(Read<BattleCommandData>(request.Data)),
+            "validatePacket" => ValidatePacket(Read<PacketValidationData>(request.Data)),
+            "inspectGameLoadAck" => InspectGameLoadAck(Read<PacketValidationData>(request.Data)),
+            "inspectGameLoadCompleteAck" => InspectGameLoadCompleteAck(Read<PacketValidationData>(request.Data)),
+            "inspectGameSync" => InspectGameSync(Read<PacketValidationData>(request.Data)),
+            "mergeJoinLobbyAck" => MergeJoinLobbyAck(Read<JoinLobbyMergeData>(request.Data)),
+            "normalizeJoinLobbyAck" => NormalizeJoinLobbyAck(Read<JoinLobbyNormalizeData>(request.Data)),
             _ => new HostResponse { Ok = false, Error = $"unknown command: {request.Command}" }
         };
     }
@@ -39,6 +67,48 @@ internal sealed class CombatEngine
         return ManagedCombatBridge.TryWarmup(options, out var error)
             ? new HostResponse { Ok = true }
             : new HostResponse { Ok = false, Error = error ?? "managed warmup failed" };
+    }
+
+    private HostResponse ValidatePacket(PacketValidationData data)
+    {
+        return ManagedCombatBridge.TryValidatePacket(options, data, out var response, out var error)
+            ? response ?? new HostResponse { Ok = true }
+            : new HostResponse { Ok = false, Error = error ?? "managed packet validation failed" };
+    }
+
+    private HostResponse InspectGameLoadAck(PacketValidationData data)
+    {
+        return ManagedCombatBridge.TryInspectGameLoadAck(options, data, out var response, out var error)
+            ? response ?? new HostResponse { Ok = true }
+            : new HostResponse { Ok = false, Error = error ?? "managed GAME_LOAD_ACK inspection failed" };
+    }
+
+    private HostResponse InspectGameLoadCompleteAck(PacketValidationData data)
+    {
+        return ManagedCombatBridge.TryInspectGameLoadCompleteAck(options, data, out var response, out var error)
+            ? response ?? new HostResponse { Ok = true }
+            : new HostResponse { Ok = false, Error = error ?? "managed GAME_LOAD_COMPLETE_ACK inspection failed" };
+    }
+
+    private HostResponse InspectGameSync(PacketValidationData data)
+    {
+        return ManagedCombatBridge.TryInspectGameSync(options, data, out var response, out var error)
+            ? response ?? new HostResponse { Ok = true }
+            : new HostResponse { Ok = false, Error = error ?? "managed GAME_SYNC inspection failed" };
+    }
+
+    private HostResponse MergeJoinLobbyAck(JoinLobbyMergeData data)
+    {
+        return ManagedCombatBridge.TryMergeJoinLobbyAck(options, data, out var response, out var error)
+            ? response ?? new HostResponse { Ok = true }
+            : new HostResponse { Ok = false, Error = error ?? "managed lobby merge failed" };
+    }
+
+    private HostResponse NormalizeJoinLobbyAck(JoinLobbyNormalizeData data)
+    {
+        return ManagedCombatBridge.TryNormalizeJoinLobbyAck(options, data, out var response, out var error)
+            ? response ?? new HostResponse { Ok = true }
+            : new HostResponse { Ok = false, Error = error ?? "managed lobby normalize failed" };
     }
 
     private HostResponse StartBattle(StartBattleData data)
@@ -363,13 +433,13 @@ internal sealed class CombatEngine
     {
         var pooled = ConsumePooledGameUnitUID(dynamicGame, battleState, req.UnitUID);
         if (pooled == null) return null;
-        var (gameUnitUID, unitID) = pooled.Value;
+        var (gameUnitUID, pool) = pooled.Value;
         var hp = Math.Max(1, req.Hp > 0 ? req.Hp : options.DefaultDeployedUnitHp);
         var x = Clamp(req.RespawnPosX, -3000, 3000);
         var unit = new UnitState
         {
             SourceUnitUID = req.UnitUID,
-            UnitID = unitID != 0 ? unitID : req.UnitID,
+            UnitID = pool?.UnitID > 0 ? pool.UnitID : req.UnitID,
             UnitStrID = req.UnitStrID,
             GameUnitUID = gameUnitUID,
             Team = 1,
@@ -385,7 +455,10 @@ internal sealed class CombatEngine
             StateChangeCount = 1,
             TargetUID = 0,
             SubTargetUID = 0,
-            Seed = 51 + gameUnitUID % 40
+            Seed = 51 + gameUnitUID % 40,
+            TacticLevel = pool?.TacticLevel ?? 0,
+            TacticGroup = pool?.TacticGroup ?? 0,
+            Cost = pool?.Cost ?? 0
         };
         NormalizeUnit(unit);
         HydrateStats(unit);
@@ -402,7 +475,7 @@ internal sealed class CombatEngine
         return unit;
     }
 
-    private (int GameUnitUID, int UnitID)? ConsumePooledGameUnitUID(DynamicGameState dynamicGame, BattleState battleState, string unitUID)
+    private (int GameUnitUID, UnitPool? Pool)? ConsumePooledGameUnitUID(DynamicGameState dynamicGame, BattleState battleState, string unitUID)
     {
         var used = dynamicGame.UsedPooledGameUnitUIDs.ToHashSet();
         foreach (var unit in battleState.Units)
@@ -419,7 +492,7 @@ internal sealed class CombatEngine
             {
                 if (uid <= 0 || used.Contains(uid)) continue;
                 dynamicGame.UsedPooledGameUnitUIDs.Add(uid);
-                return (uid, pool.UnitID);
+                return (uid, pool);
             }
         }
 
@@ -427,7 +500,7 @@ internal sealed class CombatEngine
         {
             if (uid <= 0 || used.Contains(uid)) continue;
             dynamicGame.UsedPooledGameUnitUIDs.Add(uid);
-            return (uid, 0);
+            return (uid, null);
         }
         return null;
     }
@@ -442,6 +515,26 @@ internal sealed class CombatEngine
     private UnitPools BuildUnitPools(StageData stage)
     {
         var pools = new UnitPools();
+        if (stage.PlayerDeck?.Units.Count > 0)
+        {
+            for (var index = 0; index < stage.PlayerDeck.Units.Count; index++)
+            {
+                var unit = stage.PlayerDeck.Units[index];
+                if (string.IsNullOrWhiteSpace(unit.UnitUid)) continue;
+                var group = index < stage.DeployableGameUnitUIDGroups.Count
+                    ? stage.DeployableGameUnitUIDGroups[index]
+                    : [];
+                if (group.Count == 0) continue;
+                pools.Ordered.Add(new UnitPool
+                {
+                    UnitUID = unit.UnitUid,
+                    UnitID = unit.UnitId,
+                    TacticLevel = Math.Clamp(unit.TacticLevel, 0, 6),
+                    TacticGroup = unit.TacticGroup,
+                    GameUnitUIDs = group.Distinct().ToList()
+                });
+            }
+        }
         foreach (var auto in stage.AutoDeployUnits)
         {
             if (string.IsNullOrWhiteSpace(auto.UnitUID) || auto.GameUnitUIDs.Count == 0) continue;
@@ -483,6 +576,13 @@ internal sealed class CombatEngine
             (11212, _) or (_, 1005) => 1065,
             (11213, _) or (_, 1006) => 1065,
             (11214, _) or (_, 1007) => 1066,
+            (11222, _) or (11223, _) or (11224, _) or (11225, _) or
+            (11231, _) or (11232, _) or (11233, _) or (11234, _) or
+            (_, 1001211) or (_, 1001221) or (_, 1001231) or (_, 1001241) or
+            (_, 1001311) or (_, 1001321) or (_, 1001332) or (_, 1001341) => 1010,
+            (11241, _) or (11242, _) or (11243, _) or (11244, _) or
+            (_, 1001411) or (_, 1001421) or (_, 1001431) or (_, 1001441) => 1036,
+            (11235, _) or (11245, _) or (_, 10104) or (_, 10105) => 0,
             _ => 1064
         };
     }
@@ -547,7 +647,7 @@ internal sealed class CombatEngine
             if (unit.AttackTimer <= 0)
             {
                 unit.AttackTimer = stats.AttackCooldown;
-                target.Hp = Math.Max(0, target.Hp - stats.Damage);
+                target.Hp = Math.Max(0, target.Hp - ApplyDamageReduction(target, stats.Damage));
                 target.TargetUID = unit.GameUnitUID;
                 if (target.Hp <= 0) MarkDead(target, battleState, unit);
             }
@@ -575,6 +675,7 @@ internal sealed class CombatEngine
         if (unit.AttackRange <= 0) unit.AttackRange = IsStatic(unit) ? options.StaticUnitAttackRange : options.DefaultUnitAttackRange;
         if (unit.MoveSpeed <= 0) unit.MoveSpeed = IsStatic(unit) ? 0 : options.DefaultUnitMoveSpeed;
         if (unit.AttackCooldown <= 0) unit.AttackCooldown = IsStatic(unit) ? options.StaticUnitAttackCooldown : options.DefaultUnitAttackCooldown;
+        ApplyTacticUpdateStats(unit);
     }
 
     private UnitStats GetStats(UnitState unit)
@@ -584,7 +685,70 @@ internal sealed class CombatEngine
             Clamp(unit.AttackDamage, 1, 1000000),
             Clamp(unit.AttackRange, 1, 6000),
             Clamp(unit.MoveSpeed, 0, 1000),
-            Clamp(unit.AttackCooldown, 0.2, 30));
+            Clamp(unit.AttackCooldown, 0.2, 30),
+            Clamp(unit.DamageReduceRate, 0, 9000),
+            Clamp(unit.CostReturnRate, 0, StatRateScale));
+    }
+
+    private static void ApplyTacticUpdateStats(UnitState unit)
+    {
+        var tacticLevel = Math.Clamp(unit.TacticLevel, 0, 6);
+        if (tacticLevel <= 0) return;
+        var records = TacticUpdateStats.TryGetValue(unit.TacticGroup, out var groupRecords)
+            ? groupRecords
+            : TacticUpdateStats[0];
+        double damageModifyRate = 0;
+        double damageReduceRate = 0;
+        double costReturnRate = 0;
+        for (var index = 0; index < Math.Min(tacticLevel, records.Length); index++)
+        {
+            var record = records[index];
+            switch (record.StatType)
+            {
+                case "NST_ATTACK_DAMAGE_MODIFY_G2":
+                    damageModifyRate += record.StatValue;
+                    break;
+                case "NST_DAMAGE_REDUCE_RATE":
+                    damageReduceRate += record.StatValue;
+                    break;
+                case "NST_COST_RETURN_RATE":
+                    costReturnRate += record.StatValue;
+                    break;
+            }
+        }
+
+        if (!unit.TacticStatsApplied)
+        {
+            if (damageModifyRate > 0) unit.AttackDamage *= 1 + damageModifyRate / StatRateScale;
+            unit.TacticStatsApplied = true;
+        }
+        unit.DamageReduceRate = Math.Max(unit.DamageReduceRate, damageReduceRate);
+        unit.CostReturnRate = Math.Max(unit.CostReturnRate, costReturnRate);
+    }
+
+    private static double ApplyDamageReduction(UnitState target, double damage)
+    {
+        ApplyTacticUpdateStats(target);
+        var rate = Clamp(target.DamageReduceRate, 0, 9000);
+        return Math.Max(1, damage * (1 - rate / StatRateScale));
+    }
+
+    private static void ApplyCostReturn(UnitState unit, BattleState battleState)
+    {
+        if (unit.CostReturnApplied) return;
+        ApplyTacticUpdateStats(unit);
+        unit.CostReturnApplied = true;
+        var rate = Clamp(unit.CostReturnRate, 0, StatRateScale);
+        if (rate <= 0 || unit.Cost <= 0) return;
+        var refund = unit.Cost * (rate / StatRateScale);
+        if (unit.Team == 1)
+        {
+            battleState.RespawnCostA1 = Clamp(battleState.RespawnCostA1 + refund, 0, 10);
+        }
+        else
+        {
+            battleState.RespawnCostB1 = Clamp(battleState.RespawnCostB1 + refund, 0, 10);
+        }
     }
 
     private static bool IsLive(UnitState unit)
@@ -622,6 +786,7 @@ internal sealed class CombatEngine
         unit.PendingRemove = true;
         unit.PlayState = 2;
         SetUnitState(unit, StateIds.Dead);
+        ApplyCostReturn(unit, battleState);
     }
 
     private static void CleanupDeadUnits(BattleState battleState)
@@ -657,7 +822,7 @@ internal sealed class CombatEngine
         var live = battleState.Units.Where(IsLive).ToList();
         var livePlayers = live.Where(unit => unit.Team == 1).ToList();
         var liveEnemies = live.Where(unit => unit.Team != 1).ToList();
-        if (livePlayers.Count > 0 && liveEnemies.Count == 0)
+        if (liveEnemies.Count == 0)
         {
             FinishBattle(battleState, true);
         }
@@ -740,6 +905,13 @@ internal sealed class CombatEngine
             AttackRange = unit.AttackRange,
             MoveSpeed = unit.MoveSpeed,
             AttackCooldown = unit.AttackCooldown,
+            TacticLevel = unit.TacticLevel,
+            TacticGroup = unit.TacticGroup,
+            DamageReduceRate = unit.DamageReduceRate,
+            CostReturnRate = unit.CostReturnRate,
+            Cost = unit.Cost,
+            CostReturnApplied = unit.CostReturnApplied,
+            TacticStatsApplied = unit.TacticStatsApplied,
             DeadTicks = unit.DeadTicks,
             PendingRemove = unit.PendingRemove,
             Role = unit.Role,
@@ -794,7 +966,15 @@ internal sealed class CombatEngine
 
     private sealed record CombatStateIds(int Idle = 12, int Move = 13, int Attack = 45, int Dead = 18);
 
-    private sealed record UnitStats(double Damage, double AttackRange, double MoveSpeed, double AttackCooldown);
+    private sealed record UnitStats(
+        double Damage,
+        double AttackRange,
+        double MoveSpeed,
+        double AttackCooldown,
+        double DamageReduceRate,
+        double CostReturnRate);
+
+    private sealed record TacticRecord(string StatType, double StatValue);
 }
 
 internal class BattleCommandData

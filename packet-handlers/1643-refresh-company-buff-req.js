@@ -13,9 +13,7 @@ module.exports = {
       ctx.sendServerGamePacket(socket, REFRESH_COMPANY_BUFF_ACK, payload, "refresh-company-buff");
       return true;
     }
-    ctx.sendResponse(socket, packet.sequence, REFRESH_COMPANY_BUFF_ACK, () =>
-      ctx.buildEncryptedPacket(packet.sequence, REFRESH_COMPANY_BUFF_ACK, payload)
-    );
+    ctx.sendGameResponse(socket, packet, REFRESH_COMPANY_BUFF_ACK, payload, "refresh-company-buff");
     return true;
   },
 };

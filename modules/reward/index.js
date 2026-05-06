@@ -1,0 +1,370 @@
+const { grantMiscItem, grantSkin, grantEmoticon, toBigInt } = require("../inventory");
+const {
+  getMiscItemTemplet,
+  getRandomBoxRewards,
+  getCustomPackageRewards,
+  getAcqPackageRewards,
+  getUnitTemplet,
+} = require("../game-data");
+const { grantUnit, grantOperator } = require("../unit");
+const { grantEquipItem } = require("../equipment");
+
+const FALLBACK_RESOURCE_ITEM_ID = Number(process.env.CS_SHOP_FALLBACK_REWARD_ITEM_ID || 1);
+const FALLBACK_RESOURCE_COUNT = BigInt(process.env.CS_SHOP_FALLBACK_REWARD_COUNT || 1000);
+const MAX_REWARD_EXPANSION_DEPTH = 8;
+
+function createEmptyReward() {
+  return {
+    miscItems: [],
+    skinIds: [],
+    emoticonIds: [],
+    units: [],
+    operators: [],
+    equips: [],
+  };
+}
+
+function mergeReward(target, source) {
+  const result = target || createEmptyReward();
+  const incoming = source || createEmptyReward();
+  for (const key of ["miscItems", "skinIds", "emoticonIds", "units", "operators", "equips"]) {
+    if (!Array.isArray(result[key])) result[key] = [];
+    if (Array.isArray(incoming[key])) result[key].push(...incoming[key]);
+  }
+  return result;
+}
+
+function grantRewardByType(ctx, user, rewardType, rewardId, value = 1, freeValue = null, paidValue = 0, options = {}) {
+  const reward = createEmptyReward();
+  const type = String(rewardType || "");
+  const id = Number(rewardId);
+  const count = toBigInt(value == null ? 1 : value, 1n);
+  const free = freeValue == null ? count : toBigInt(freeValue, count);
+  const paid = toBigInt(paidValue || 0, 0n);
+  const regDate = options.regDate || (ctx && ctx.dateTimeBinaryNow ? ctx.dateTimeBinaryNow() : 0n);
+
+  if (!Number.isInteger(id) || id <= 0) return reward;
+
+  if (type === "RT_MISC" || type === "RT_ITEM_MISC" || type === "RT_RESOURCE") {
+    if (options.expandPackages !== false) {
+      const expanded = expandMiscItemReward(ctx, user, id, Number(count > 0n ? count : 1n), {
+        ...options,
+        depth: Number(options.depth || 0),
+        regDate,
+      });
+      if (expanded) return expanded;
+    }
+    const granted = grantMiscItem(user, id, free, paid, { regDate });
+    if (granted) reward.miscItems.push(granted);
+  } else if (type === "RT_UNIT" || type === "RT_SHIP") {
+    const unitOptions = buildSelectorUnitGrantOptions(type, id, options);
+    for (let index = 0; index < Math.max(1, Number(count) || 1); index += 1) {
+      const unit = grantUnit(user, id, { regDate, fromContract: options.fromContract !== false, ...unitOptions });
+      if (unit) reward.units.push(unit);
+    }
+  } else if (type === "RT_OPERATOR") {
+    for (let index = 0; index < Math.max(1, Number(count) || 1); index += 1) {
+      const operator = grantOperator(user, id, { regDate, fromContract: options.fromContract !== false });
+      if (operator) reward.operators.push(operator);
+    }
+  } else if (type === "RT_EQUIP" || type === "RT_ITEM_EQUIP" || type === "RT_EQUIP_ITEM") {
+    for (let index = 0; index < Math.max(1, Number(count) || 1); index += 1) {
+      const equip = grantEquipItem(user, id, { ...options, regDate, cursor: index });
+      if (equip) reward.equips.push(equip);
+    }
+  } else if (type === "RT_SKIN") {
+    const skinId = grantSkin(user, id);
+    if (skinId) reward.skinIds.push(skinId);
+  } else if (type === "RT_EMOTICON") {
+    const emoticonId = grantEmoticon(user, id);
+    if (emoticonId) reward.emoticonIds.push(emoticonId);
+  } else {
+    const granted = grantMiscItem(user, FALLBACK_RESOURCE_ITEM_ID, FALLBACK_RESOURCE_COUNT, 0n, { regDate });
+    if (granted) reward.miscItems.push(granted);
+  }
+
+  return reward;
+}
+
+function expandMiscItemReward(ctx, user, itemId, count = 1, options = {}) {
+  const depth = Number(options.depth || 0);
+  if (depth >= MAX_REWARD_EXPANSION_DEPTH) return null;
+
+  const item = getMiscItemTemplet(itemId);
+  if (!item) return null;
+
+  const type = String(item.m_ItemMiscType || "");
+  const groupId = Number(item.m_RewardGroupID || 0);
+  const regDate = options.regDate || (ctx && ctx.dateTimeBinaryNow ? ctx.dateTimeBinaryNow() : 0n);
+  const total = createEmptyReward();
+
+  if (type === "IMT_CONTRACT") {
+    const contractId = Number(item.m_typeValue || item.m_RewardGroupID || 0);
+    const { openMiscContract } = require("../contract");
+    for (let index = 0; index < Math.max(1, count); index += 1) {
+      mergeReward(total, openMiscContract(ctx, user, contractId || itemId, { sourceMiscItemId: itemId, regDate }).reward);
+    }
+    return total;
+  }
+
+  if (type === "IMT_CUSTOM_PACKAGE") {
+    const groups = normalizeNumberList(item.m_CustomRewardGroupID);
+    for (let index = 0; index < Math.max(1, count); index += 1) {
+      for (const customGroupId of groups) {
+        const records = getCustomPackageRewards(customGroupId);
+        for (const record of records) {
+          mergeReward(total, grantRewardRecord(ctx, user, record, { ...options, depth: depth + 1, regDate, sourceItem: item }));
+        }
+      }
+    }
+    return total;
+  }
+
+  if (type === "IMT_PACKAGE" && groupId > 0) {
+    for (let index = 0; index < Math.max(1, count); index += 1) {
+      const packageRows = getAcqPackageRewards(itemId);
+      if (packageRows.length) {
+        for (const record of packageRows) mergeReward(total, grantAcqPackageRecord(ctx, user, record, { ...options, depth: depth + 1, regDate }));
+      }
+      const records = getRandomBoxRewards(groupId);
+      for (const record of records) {
+        mergeReward(total, grantRewardRecord(ctx, user, record, { ...options, depth: depth + 1, regDate, sourceItem: item }));
+      }
+    }
+    return total;
+  }
+
+  if (type === "IMT_RANDOMBOX" && groupId > 0) {
+    for (let index = 0; index < Math.max(1, count); index += 1) {
+      const selected = pickWeightedRecord(getRandomBoxRewards(groupId), user, groupId);
+      if (selected) mergeReward(total, grantRewardRecord(ctx, user, selected, { ...options, depth: depth + 1, regDate, sourceItem: item }));
+    }
+    return total;
+  }
+
+  if (type.startsWith("IMT_CHOICE_") && groupId > 0) {
+    if (!options.openChoiceItems) return null;
+    const selected = resolveChoiceRewardRecord(itemId, options.rewardId || options.choiceRewardId || 0);
+    if (!selected) return null;
+    for (let index = 0; index < Math.max(1, count); index += 1) {
+      mergeReward(total, grantRewardRecord(ctx, user, selected, { ...options, depth: depth + 1, regDate, sourceItem: item }));
+    }
+    return total;
+  }
+
+  return null;
+}
+
+function grantChoiceItemReward(ctx, user, itemId, rewardId, count = 1, options = {}) {
+  const total = createEmptyReward();
+  const selected = resolveChoiceRewardRecord(itemId, rewardId);
+  if (!selected) return total;
+  const sourceItem = getMiscItemTemplet(itemId);
+  const regDate = options.regDate || (ctx && ctx.dateTimeBinaryNow ? ctx.dateTimeBinaryNow() : 0n);
+  for (let index = 0; index < Math.max(1, Number(count) || 1); index += 1) {
+    mergeReward(
+      total,
+      grantRewardRecord(ctx, user, selected, {
+        ...options,
+        depth: Number(options.depth || 0),
+        regDate,
+        cursor: index,
+        sourceItem,
+      })
+    );
+  }
+  return total;
+}
+
+function resolveChoiceRewardRecord(itemId, rewardId = 0) {
+  const requestedId = Number(rewardId || 0);
+  const records = getChoiceRewardRecords(itemId);
+  if (!records.length) return null;
+  if (requestedId > 0) {
+    const matched = records.find((record) => Number(record && record.m_RewardID) === requestedId);
+    if (matched) return matched;
+  }
+  return records[0];
+}
+
+function getChoiceRewardRecords(itemId) {
+  const item = getMiscItemTemplet(itemId);
+  if (!item) return [];
+  const type = String(item.m_ItemMiscType || "");
+  if (!type.startsWith("IMT_CHOICE_")) return [];
+  const expectedTypes = getChoiceRewardTypes(type);
+  const groupIds = Array.from(
+    new Set([
+      ...normalizeNumberList(item.m_RewardGroupID),
+      ...normalizeNumberList(item.m_CustomRewardGroupID),
+    ])
+  );
+  const records = [];
+  for (const groupId of groupIds) {
+    records.push(...getRandomBoxRewards(groupId));
+    records.push(...getCustomPackageRewards(groupId));
+  }
+  return records
+    .filter((record) => {
+      if (!record || !record.m_RewardID) return false;
+      if (!expectedTypes.length) return true;
+      return expectedTypes.includes(normalizeRewardType(record.m_RewardType));
+    })
+    .sort(compareChoiceRecords);
+}
+
+function getChoiceRewardTypes(itemMiscType) {
+  switch (String(itemMiscType || "")) {
+    case "IMT_CHOICE_UNIT":
+      return ["RT_UNIT"];
+    case "IMT_CHOICE_SHIP":
+      return ["RT_SHIP"];
+    case "IMT_CHOICE_OPERATOR":
+      return ["RT_OPERATOR"];
+    case "IMT_CHOICE_EQUIP":
+      return ["RT_EQUIP"];
+    case "IMT_CHOICE_SKIN":
+      return ["RT_SKIN"];
+    case "IMT_CHOICE_MISC":
+      return ["RT_MISC", "RT_RESOURCE"];
+    default:
+      return [];
+  }
+}
+
+function normalizeRewardType(rewardType) {
+  const type = String(rewardType || "");
+  if (type === "RT_ITEM_MISC") return "RT_MISC";
+  if (type === "RT_ITEM_EQUIP" || type === "RT_EQUIP_ITEM") return "RT_EQUIP";
+  return type;
+}
+
+function compareChoiceRecords(left, right) {
+  const leftOrder = Number(left && (left.m_OrderList || left.m_Order || left.m_Index || 0)) || 0;
+  const rightOrder = Number(right && (right.m_OrderList || right.m_Order || right.m_Index || 0)) || 0;
+  if (leftOrder !== rightOrder) return leftOrder - rightOrder;
+  return Number(left && left.m_RewardID) - Number(right && right.m_RewardID);
+}
+
+function grantRewardRecord(ctx, user, record, options = {}) {
+  if (!record) return createEmptyReward();
+  return grantRewardByType(
+    ctx,
+    user,
+    record.m_RewardType,
+    record.m_RewardID,
+    record.m_RewardValue != null ? record.m_RewardValue : record.m_Quantity_Min || record.m_FreeQuantity_Min || 1,
+    record.m_FreeValue != null ? record.m_FreeValue : record.m_FreeQuantity_Min,
+    record.m_PaidValue != null ? record.m_PaidValue : record.m_PaidQuantity_Min || 0,
+    { ...options, rewardRecord: record }
+  );
+}
+
+function grantAcqPackageRecord(ctx, user, record, options = {}) {
+  const reward = createEmptyReward();
+  for (let index = 1; index <= 8; index += 1) {
+    const type = record[`m_RewardType_${index}`];
+    const id = record[`m_RewardID_${index}`];
+    if (!type || !id) continue;
+    mergeReward(
+      reward,
+      grantRewardByType(
+        ctx,
+        user,
+        type,
+        id,
+        record[`m_RewardValue_${index}`] || 1,
+        record[`m_FreeValue_${index}`],
+        record[`m_PaidValue_${index}`] || 0,
+        { ...options, rewardRecord: record }
+      )
+    );
+  }
+  return reward;
+}
+
+function pickWeightedRecord(records, user, groupId) {
+  const list = Array.isArray(records) ? records.filter(Boolean) : [];
+  if (!list.length) return null;
+  const totalWeight = list.reduce((sum, record) => sum + Math.max(0, Number(record.m_Ratio || 1)), 0);
+  if (totalWeight <= 0) return list[0];
+
+  const cursorRoot = user || {};
+  cursorRoot.localRewardCursors =
+    cursorRoot.localRewardCursors && typeof cursorRoot.localRewardCursors === "object" ? cursorRoot.localRewardCursors : {};
+  const key = String(groupId || "default");
+  const cursor = Number(cursorRoot.localRewardCursors[key] || 0);
+  cursorRoot.localRewardCursors[key] = cursor + 1;
+  let target = cursor % totalWeight;
+  for (const record of list) {
+    target -= Math.max(0, Number(record.m_Ratio || 1));
+    if (target < 0) return record;
+  }
+  return list[0];
+}
+
+function normalizeNumberList(value) {
+  if (Array.isArray(value)) return value.map(Number).filter((entry) => Number.isInteger(entry) && entry > 0);
+  const number = Number(value);
+  return Number.isInteger(number) && number > 0 ? [number] : [];
+}
+
+function buildSelectorUnitGrantOptions(rewardType, rewardId, options = {}) {
+  const sourceItem = options.sourceItem || getMiscItemTemplet(options.sourceItemId || options.itemId || 0) || {};
+  const rewardRecord = options.rewardRecord || {};
+  const text = [
+    sourceItem.m_ItemMiscType,
+    sourceItem.m_ItemMiscStrID,
+    sourceItem.m_ItemMiscName,
+    sourceItem.m_ItemMiscDesc,
+    rewardRecord.m_RewardGroupStrID,
+    rewardRecord.m_RewardStrID,
+  ]
+    .filter(Boolean)
+    .join(" ")
+    .toUpperCase();
+  const type = String(rewardType || "");
+  const unitTemplet = getUnitTemplet(rewardId) || {};
+  const isShip = type === "RT_SHIP" || String(unitTemplet.m_NKM_UNIT_TYPE || "") === "NUT_SHIP";
+  const isAwakenedSelector = !isShip && (unitTemplet.m_bAwaken === true || /\bASSR\b|AWAKEN|CLASSIFIED/.test(text));
+  const level = inferSelectorLevel(text, isShip);
+  const hasMaxMarker = /\bMAX\b|_MAX|MAX_/.test(text);
+  const shouldMaxGrowth = hasMaxMarker || isAwakenedSelector || (isShip ? level >= 130 : level >= 110);
+  if (level <= 0 && !hasMaxMarker && !isAwakenedSelector) return {};
+
+  const grantOptions = {};
+  if (level > 0) {
+    grantOptions.level = level;
+    grantOptions.maxLevelOverride = level;
+  } else if (isShip) {
+    grantOptions.level = 130;
+    grantOptions.maxLevelOverride = 130;
+  } else {
+    grantOptions.level = 110;
+    grantOptions.maxLevelOverride = 110;
+  }
+  if (shouldMaxGrowth) {
+    grantOptions.limitBreakLevel = 6;
+    grantOptions.skillLevels = [5, 5, 5, 5, 5];
+  }
+  return grantOptions;
+}
+
+function inferSelectorLevel(text, isShip) {
+  const levelMatch = String(text || "").match(/(?:LV|LEVEL)[^0-9]{0,8}([0-9]{2,3})/);
+  if (levelMatch) return Number(levelMatch[1]) || 0;
+  return 0;
+}
+
+module.exports = {
+  FALLBACK_RESOURCE_ITEM_ID,
+  FALLBACK_RESOURCE_COUNT,
+  createEmptyReward,
+  mergeReward,
+  grantRewardByType,
+  grantRewardRecord,
+  grantChoiceItemReward,
+  resolveChoiceRewardRecord,
+  getChoiceRewardRecords,
+  expandMiscItemReward,
+};

@@ -39,6 +39,7 @@ function createBattleStateManager(options = {}) {
       assignedGameUnitUIDs,
       initialUnitsSent: false,
       tutorial: isTutorialStageId(activeStage.stageId || req.stageID),
+      playerDeck: activeStage.playerDeck || null,
     };
 
     replay.battleState = {
@@ -63,7 +64,7 @@ function createBattleStateManager(options = {}) {
 
     for (const unit of replay.battleState.units) tick.hydrateBattleUnitStats(unit);
     replay.dynamicGame.gameUID = gameUID;
-    replay.tutorialReplayPhase = replay.dynamicGame.tutorial ? "captured-bootstrap" : "dynamic";
+    replay.tutorialReplayPhase = "dynamic";
     replay.syntheticGameTime = replay.battleState.gameTime;
     replay.battleSim = null;
     replay.dynamicBattleResultSent = false;

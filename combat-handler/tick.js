@@ -3,6 +3,26 @@
 // This file has no socket or packet-routing knowledge. It mutates battleState in
 // place, and syncBuilder serializes the resulting state into GAME_SYNC (822).
 
+const STAT_RATE_SCALE = 10000;
+const TACTIC_UPDATE_STATS = Object.freeze({
+  0: Object.freeze([
+    Object.freeze({ statType: "NST_ATTACK_DAMAGE_MODIFY_G2", statValue: 400 }),
+    Object.freeze({ statType: "NST_DAMAGE_REDUCE_RATE", statValue: 400 }),
+    Object.freeze({ statType: "NST_COST_RETURN_RATE", statValue: 400 }),
+    Object.freeze({ statType: "NST_ATTACK_DAMAGE_MODIFY_G2", statValue: 200 }),
+    Object.freeze({ statType: "NST_DAMAGE_REDUCE_RATE", statValue: 200 }),
+    Object.freeze({ statType: "NST_COST_RETURN_RATE", statValue: 200 }),
+  ]),
+  1: Object.freeze([
+    Object.freeze({ statType: "NST_DAMAGE_REDUCE_RATE", statValue: 400 }),
+    Object.freeze({ statType: "NST_DAMAGE_REDUCE_RATE", statValue: 400 }),
+    Object.freeze({ statType: "NST_COST_RETURN_RATE", statValue: 400 }),
+    Object.freeze({ statType: "NST_DAMAGE_REDUCE_RATE", statValue: 200 }),
+    Object.freeze({ statType: "NST_DAMAGE_REDUCE_RATE", statValue: 200 }),
+    Object.freeze({ statType: "NST_COST_RETURN_RATE", statValue: 200 }),
+  ]),
+});
+
 function createTickEngine(options = {}) {
   const combatStateId = options.combatStateId || {
     IDLE: 12,
@@ -81,7 +101,7 @@ function createTickEngine(options = {}) {
       setBattleUnitState(unit, combatStateId.ATTACK);
       if (unit.attackTimer <= 0) {
         unit.attackTimer = stats.attackCooldown;
-        target.hp = Math.max(0, Number(target.hp || 0) - stats.damage);
+        target.hp = Math.max(0, Number(target.hp || 0) - applyDamageReduction(target, stats.damage));
         target.targetUID = unit.gameUnitUID || 0;
         if (target.hp <= 0) markContinuationUnitDead(target, battleState, unit);
       }
@@ -97,7 +117,7 @@ function createTickEngine(options = {}) {
     const livePlayers = liveUnits.filter((unit) => unit.team === 1);
     const liveEnemies = liveUnits.filter((unit) => unit.team !== 1);
     const elapsed = Number(battleState.gameTime || 0);
-    if (livePlayers.length > 0 && liveEnemies.length === 0) {
+    if (liveEnemies.length === 0) {
       finishBattleState(battleState, true);
     } else if (elapsed > 0 && livePlayers.length === 0 && liveEnemies.length > 0) {
       finishBattleState(battleState, false);
@@ -108,8 +128,11 @@ function createTickEngine(options = {}) {
 
   function finishBattleState(battleState, win) {
     battleState.finished = true;
+    battleState.Finished = true;
     battleState.win = Boolean(win);
+    battleState.Win = Boolean(win);
     battleState.gameState = { state: 4, winTeam: win ? 1 : 3, waveId: battleState.gameState ? battleState.gameState.waveId || 1 : 1 };
+    battleState.GameState = { State: 4, WinTeam: win ? 1 : 3, WaveId: battleState.gameState ? battleState.gameState.waveId || 1 : 1 };
     if (!Array.isArray(battleState.pendingGameStates)) battleState.pendingGameStates = [];
     battleState.pendingGameStates.push(battleState.gameState);
   }
@@ -161,6 +184,7 @@ function createTickEngine(options = {}) {
     unit.pendingRemove = true;
     unit.playState = 2;
     setBattleUnitState(unit, combatStateId.DEAD);
+    applyCostReturn(unit, battleState);
     if (battleState) battleState.lastDeadUnitUID = unit.gameUnitUID;
   }
 
@@ -196,7 +220,10 @@ function createTickEngine(options = {}) {
       attackRange: finiteNumber(unit.attackRange) || (tableStats ? tableStats.attackRange : baseStats.attackRange),
       moveSpeed: isStaticBattleUnit(unit) ? 0 : finiteNumber(unit.moveSpeed) || (tableStats ? tableStats.moveSpeed : baseStats.moveSpeed),
       attackCooldown: finiteNumber(unit.attackCooldown) || (tableStats ? tableStats.attackCooldown : baseStats.attackCooldown),
+      damageReduceRate: finiteNumber(unit.damageReduceRate),
+      costReturnRate: finiteNumber(unit.costReturnRate),
     };
+    applyTacticUpdateStats(unit, unit.combatStats);
     if (tableStats && (!unit.maxHp || unit.maxHp <= 1)) unit.maxHp = Math.max(1, tableStats.hp || unit.maxHp || unit.hp || 1);
     return unit.combatStats;
   }
@@ -208,7 +235,61 @@ function createTickEngine(options = {}) {
       attackRange: clamp(finiteNumber(stats.attackRange) || defaultCombatStats.attackRange, 1, 6000),
       moveSpeed: clamp(finiteNumber(stats.moveSpeed), 0, 1000),
       attackCooldown: clamp(finiteNumber(stats.attackCooldown) || defaultCombatStats.attackCooldown, 0.2, 30),
+      damageReduceRate: clamp(finiteNumber(stats.damageReduceRate), 0, 9000),
+      costReturnRate: clamp(finiteNumber(stats.costReturnRate), 0, STAT_RATE_SCALE),
     };
+  }
+
+  function applyTacticUpdateStats(unit, stats) {
+    const tacticLevel = clamp(Math.trunc(readUnitNumber(unit, "tacticLevel", "TacticLevel")), 0, 6);
+    if (!unit || !stats || tacticLevel <= 0) return;
+    const tacticGroup = readUnitNumber(unit, "tacticGroup", "TacticGroup");
+    const records = TACTIC_UPDATE_STATS[tacticGroup] || TACTIC_UPDATE_STATS[0] || [];
+    let damageModifyRate = 0;
+    let damageReduceRate = 0;
+    let costReturnRate = 0;
+    for (let index = 0; index < Math.min(tacticLevel, records.length); index += 1) {
+      const record = records[index];
+      switch (record.statType) {
+        case "NST_ATTACK_DAMAGE_MODIFY_G2":
+          damageModifyRate += finiteNumber(record.statValue);
+          break;
+        case "NST_DAMAGE_REDUCE_RATE":
+          damageReduceRate += finiteNumber(record.statValue);
+          break;
+        case "NST_COST_RETURN_RATE":
+          costReturnRate += finiteNumber(record.statValue);
+          break;
+        default:
+          break;
+      }
+    }
+    if (damageModifyRate > 0) stats.damage *= 1 + damageModifyRate / STAT_RATE_SCALE;
+    stats.damageReduceRate = Math.max(finiteNumber(stats.damageReduceRate), damageReduceRate);
+    stats.costReturnRate = Math.max(finiteNumber(stats.costReturnRate), costReturnRate);
+    unit.damageReduceRate = stats.damageReduceRate;
+    unit.costReturnRate = stats.costReturnRate;
+  }
+
+  function applyDamageReduction(target, damage) {
+    const targetStats = hydrateBattleUnitStats(target) || defaultCombatStats;
+    const rate = clamp(finiteNumber(targetStats.damageReduceRate ?? target.damageReduceRate), 0, 9000);
+    return Math.max(1, finiteNumber(damage) * (1 - rate / STAT_RATE_SCALE));
+  }
+
+  function applyCostReturn(unit, battleState) {
+    if (!unit || !battleState || unit.costReturnApplied) return;
+    const stats = hydrateBattleUnitStats(unit) || defaultCombatStats;
+    const rate = clamp(finiteNumber(stats.costReturnRate ?? unit.costReturnRate), 0, STAT_RATE_SCALE);
+    const cost = finiteNumber(unit.cost ?? unit.deployCost ?? unit.respawnCost);
+    unit.costReturnApplied = true;
+    if (rate <= 0 || cost <= 0) return;
+    const refund = cost * (rate / STAT_RATE_SCALE);
+    if (unit.team === 1) {
+      battleState.respawnCostA1 = clamp(finiteNumber(battleState.respawnCostA1) + refund, 0, 10);
+    } else {
+      battleState.respawnCostB1 = clamp(finiteNumber(battleState.respawnCostB1) + refund, 0, 10);
+    }
   }
 
   function findGameplayUnitStats(unit) {
@@ -233,6 +314,16 @@ function createTickEngine(options = {}) {
     return role === "ship" || role === "core" || Number((unit && unit.gameUnitUID) || 0) <= 4;
   }
 
+  function readUnitNumber(unit, ...keys) {
+    if (!unit) return 0;
+    for (const key of keys) {
+      if (unit[key] == null || unit[key] === "") continue;
+      const number = Number(unit[key]);
+      if (Number.isFinite(number)) return number;
+    }
+    return 0;
+  }
+
   function setBattleUnitState(unit, stateId) {
     if (unit.stateId !== stateId) {
       unit.stateId = stateId;
@@ -251,6 +342,9 @@ function createTickEngine(options = {}) {
     cleanupDeadBattleUnits,
     hydrateBattleUnitStats,
     getUnitCombatStats,
+    applyTacticUpdateStats,
+    applyDamageReduction,
+    applyCostReturn,
     findGameplayUnitStats,
     isStaticBattleUnit,
     setBattleUnitState,

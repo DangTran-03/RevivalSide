@@ -14,9 +14,7 @@ module.exports = {
       ctx.sendServerGamePacket(socket, GAME_OPTION_CHANGE_ACK, payload, "game-option-change");
       return true;
     }
-    ctx.sendResponse(socket, packet.sequence, GAME_OPTION_CHANGE_ACK, () =>
-      ctx.buildEncryptedPacket(packet.sequence, GAME_OPTION_CHANGE_ACK, payload)
-    );
+    ctx.sendGameResponse(socket, packet, GAME_OPTION_CHANGE_ACK, payload, "game-option-change");
     return true;
   },
 };

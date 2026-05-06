@@ -1,3 +1,7 @@
+const { ensureLoginRewardPosts } = require("../modules/admin");
+const { ensureAttendanceRewardPosts } = require("../modules/attendance");
+const { applyLocalAccountCleanup } = require("../modules/local-cleanup");
+
 module.exports = {
   packetId: 231,
   name: "STEAM_LOGIN_REQ",
@@ -10,9 +14,18 @@ module.exports = {
       ctx.issueUserTokens(user, loginReq.accessToken);
       socket.session.user = user;
       ctx.setLastEffectiveAccessToken(user.accessToken || "");
+      ctx.prepareTutorialLogin(user);
+      const cleanup = applyLocalAccountCleanup(user, ctx.config);
+      const rewardPosts = ensureLoginRewardPosts(user);
+      const attendancePosts = ensureAttendanceRewardPosts(user);
       ctx.saveUserDb();
+      if (cleanup.changed) {
+        console.log(
+          `[user-db] cleanup uid=${user.userUid} unitsLevel1=${cleanup.unitsLevel1} gearUnenhanced=${cleanup.gearUnenhanced} shipsLevel1=${cleanup.shipsLevel1} operatorsLevel1=${cleanup.operatorsLevel1}`
+        );
+      }
       console.log(
-        `[user-db] login uid=${user.userUid} friendCode=${user.friendCode} nickname=${JSON.stringify(user.nickname)} tokenLen=${(user.accessToken || "").length}`
+        `[user-db] login uid=${user.userUid} friendCode=${user.friendCode} nickname=${JSON.stringify(user.nickname)} loginKey=${JSON.stringify(user.steamLoginKey || user.steamAccountId || "")} tokenLen=${(user.accessToken || "").length} inboxRewardPosts=${rewardPosts + attendancePosts}`
       );
     }
 

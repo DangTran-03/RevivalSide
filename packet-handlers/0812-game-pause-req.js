@@ -2,8 +2,6 @@ module.exports = {
   packetId: 812,
   name: "GAME_PAUSE_REQ",
   handle(ctx, socket, packet) {
-    if (!ctx.config.REPLAY_CAPTURED_GAME_FLOW || !ctx.capturedGameFlow) return false;
-
     const replay = socket.session.gameReplay;
     if (ctx.config.DYNAMIC_BATTLE_MANAGER) {
       const payload = ctx.decryptCopy(packet.payload);
@@ -12,6 +10,7 @@ module.exports = {
       ctx.handleDynamicBattlePause(socket, { isPause, isPauseEvent });
       return true;
     }
+    if (!ctx.config.REPLAY_CAPTURED_GAME_FLOW || !ctx.capturedGameFlow) return false;
 
     if (ctx.peekCapturedGamePacketId(socket) === ctx.constants.HEART_BIT_ACK) {
       console.log(

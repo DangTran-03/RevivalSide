@@ -28,6 +28,9 @@ public sealed class HostResponse
 {
     public bool Ok { get; set; }
     public string? Error { get; set; }
+    public string? Summary { get; set; }
+    public string? PacketType { get; set; }
+    public int? SerializedPayloadSize { get; set; }
     public DynamicGameState? DynamicGame { get; set; }
     public BattleState? BattleState { get; set; }
     public BattleSimState? BattleSim { get; set; }
@@ -57,4 +60,21 @@ public sealed class HostResult
     public bool Finished { get; set; }
     public bool Win { get; set; }
     public double GameTime { get; set; }
+}
+
+public sealed class PacketValidationData
+{
+    public int PacketId { get; set; }
+    public string PayloadBase64 { get; set; } = "";
+}
+
+public sealed class JoinLobbyMergeData
+{
+    public string OfficialPayloadBase64 { get; set; } = "";
+    public string LocalPayloadBase64 { get; set; } = "";
+}
+
+public sealed class JoinLobbyNormalizeData
+{
+    public string LocalPayloadBase64 { get; set; } = "";
 }

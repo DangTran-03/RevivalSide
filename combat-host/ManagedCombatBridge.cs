@@ -21,12 +21,83 @@ internal static class ManagedCombatBridge
     private const int GameShipSkillAck = 819;
     private const int GameSync = 822;
     private const int GameUseUnitSkillAck = 830;
+    private const int JoinLobbyAck = 205;
     private const float ManagedFrameDelta = 0.033333335f;
     private const int ManagedMaxCatchUpFrames = 3;
     private const int ManagedActionPrimeFrames = 1;
     private const int QuietGameSyncPayloadBytes = 64;
 
     private static readonly Dictionary<string, ManagedCombatSession> Sessions = new();
+    private static readonly string[] LocalJoinLobbyFields =
+    [
+        "errorCode",
+        "friendCode",
+        "lobbyData",
+        "gameData",
+        "warfareGameData",
+        "utcTime",
+        "utcOffset",
+        "lastCreditSupplyTakeTime",
+        "lastEterniumSupplyTakeTime",
+        "pvpPointChargeTime",
+        "contractState",
+        "contractBonusState",
+        "selectableContractState",
+        "stagePlayDataList",
+        "reconnectKey",
+        "unlockedStageIds",
+        "phaseClearDataList",
+        "phaseModeState",
+        "completedUnitMissions",
+        "rewardEnableUnitMissions",
+        "userProfileData",
+        "lastPlayInfo",
+        "customPickupContracts"
+    ];
+    private static readonly string[] LocalJoinLobbyUserDataFields =
+    [
+        "m_UserUID",
+        "m_FriendCode",
+        "m_UserNickName",
+        "m_UserLevel",
+        "m_lUserLevelEXP",
+        "m_eAuthLevel",
+        "m_NKMUserDateData",
+        "m_InventoryData",
+        "m_ArmyData",
+        "m_UserOption",
+        "m_dicNKMDungeonClearData",
+        "m_dicNKMWarfareClearData",
+        "m_ShopData",
+        "m_MissionData",
+        "m_dicNKMCounterCaseData",
+        "m_dicEpisodeCompleteData",
+        "m_companyBuffDataList",
+        "backGroundInfo"
+    ];
+
+    private static void CopyField(ManagedRuntime runtime, object source, object target, string fieldName)
+    {
+        runtime.SetField(target, fieldName, runtime.GetField(source, fieldName));
+    }
+
+    private static void MergeJoinLobbyUserData(ManagedRuntime runtime, object localPacket, object officialPacket)
+    {
+        var localUserData = runtime.GetField(localPacket, "userData");
+        if (localUserData == null) return;
+
+        var officialUserData = runtime.GetField(officialPacket, "userData");
+        if (officialUserData == null)
+        {
+            runtime.SetField(officialPacket, "userData", localUserData);
+            return;
+        }
+
+        foreach (var fieldName in LocalJoinLobbyUserDataFields)
+        {
+            CopyField(runtime, localUserData, officialUserData, fieldName);
+        }
+    }
 
     public static bool TryWarmup(HostOptions options, out string? error)
     {
@@ -54,6 +125,272 @@ internal static class ManagedCombatBridge
         }
     }
 
+    public static bool TryValidatePacket(
+        HostOptions options,
+        PacketValidationData data,
+        out HostResponse? response,
+        out string? error)
+    {
+        response = null;
+        error = null;
+        if (string.IsNullOrWhiteSpace(options.ManagedDir))
+        {
+            error = "managed dir required";
+            return false;
+        }
+
+        var runtime = ManagedRuntime.TryLoad(options.ManagedDir, options.GameplayTablesDir, out error);
+        if (runtime == null)
+        {
+            return false;
+        }
+
+        try
+        {
+            var payload = Convert.FromBase64String(data.PayloadBase64 ?? "");
+            var packet = runtime.DeserializePacket(data.PacketId, payload);
+            var serialized = runtime.SerializePacket(packet, data.PacketId, "validate");
+            response = new HostResponse
+            {
+                Ok = true,
+                PacketType = packet.GetType().FullName,
+                SerializedPayloadSize = Convert.FromBase64String(serialized.PayloadBase64).Length
+            };
+            return true;
+        }
+        catch (Exception ex)
+        {
+            error = ex.ToString();
+            response = new HostResponse { Ok = false, Error = error };
+            return false;
+        }
+    }
+
+    public static bool TryInspectGameLoadAck(
+        HostOptions options,
+        PacketValidationData data,
+        out HostResponse? response,
+        out string? error)
+    {
+        response = null;
+        error = null;
+        if (string.IsNullOrWhiteSpace(options.ManagedDir))
+        {
+            error = "managed dir required";
+            return false;
+        }
+
+        var runtime = ManagedRuntime.TryLoad(options.ManagedDir, options.GameplayTablesDir, out error);
+        if (runtime == null)
+        {
+            return false;
+        }
+
+        try
+        {
+            runtime.InitializeClientTables();
+            var payload = Convert.FromBase64String(data.PayloadBase64 ?? "");
+            var packet = runtime.DeserializePacket(data.PacketId == 0 ? GameLoadAck : data.PacketId, payload);
+            response = new HostResponse
+            {
+                Ok = true,
+                PacketType = packet.GetType().FullName,
+                SerializedPayloadSize = payload.Length,
+                Summary = runtime.DescribeGameLoadAck(packet)
+            };
+            return true;
+        }
+        catch (Exception ex)
+        {
+            error = ex.ToString();
+            response = new HostResponse { Ok = false, Error = error };
+            return false;
+        }
+    }
+
+    public static bool TryInspectGameSync(
+        HostOptions options,
+        PacketValidationData data,
+        out HostResponse? response,
+        out string? error)
+    {
+        response = null;
+        error = null;
+        if (string.IsNullOrWhiteSpace(options.ManagedDir))
+        {
+            error = "managed dir required";
+            return false;
+        }
+
+        var runtime = ManagedRuntime.TryLoad(options.ManagedDir, options.GameplayTablesDir, out error);
+        if (runtime == null)
+        {
+            return false;
+        }
+
+        try
+        {
+            runtime.InitializeClientTables();
+            var payload = Convert.FromBase64String(data.PayloadBase64 ?? "");
+            var packet = runtime.DeserializePacket(data.PacketId == 0 ? GameSync : data.PacketId, payload);
+            response = new HostResponse
+            {
+                Ok = true,
+                PacketType = packet.GetType().FullName,
+                SerializedPayloadSize = payload.Length,
+                Summary = runtime.DescribeGameSync(packet)
+            };
+            return true;
+        }
+        catch (Exception ex)
+        {
+            error = ex.ToString();
+            response = new HostResponse { Ok = false, Error = error };
+            return false;
+        }
+    }
+
+    public static bool TryInspectGameLoadCompleteAck(
+        HostOptions options,
+        PacketValidationData data,
+        out HostResponse? response,
+        out string? error)
+    {
+        response = null;
+        error = null;
+        if (string.IsNullOrWhiteSpace(options.ManagedDir))
+        {
+            error = "managed dir required";
+            return false;
+        }
+
+        var runtime = ManagedRuntime.TryLoad(options.ManagedDir, options.GameplayTablesDir, out error);
+        if (runtime == null)
+        {
+            return false;
+        }
+
+        try
+        {
+            runtime.InitializeClientTables();
+            var payload = Convert.FromBase64String(data.PayloadBase64 ?? "");
+            var packet = runtime.DeserializePacket(data.PacketId == 0 ? GameLoadCompleteAck : data.PacketId, payload);
+            response = new HostResponse
+            {
+                Ok = true,
+                PacketType = packet.GetType().FullName,
+                SerializedPayloadSize = payload.Length,
+                Summary = runtime.DescribeGameLoadCompleteAck(packet)
+            };
+            return true;
+        }
+        catch (Exception ex)
+        {
+            error = ex.ToString();
+            response = new HostResponse { Ok = false, Error = error };
+            return false;
+        }
+    }
+
+    public static bool TryMergeJoinLobbyAck(
+        HostOptions options,
+        JoinLobbyMergeData data,
+        out HostResponse? response,
+        out string? error)
+    {
+        response = null;
+        error = null;
+        if (string.IsNullOrWhiteSpace(options.ManagedDir))
+        {
+            error = "managed dir required";
+            return false;
+        }
+
+        var runtime = ManagedRuntime.TryLoad(options.ManagedDir, options.GameplayTablesDir, out error);
+        if (runtime == null)
+        {
+            return false;
+        }
+
+        try
+        {
+            var official = runtime.DeserializePacket(JoinLobbyAck, Convert.FromBase64String(data.OfficialPayloadBase64 ?? ""));
+            var local = runtime.DeserializePacket(JoinLobbyAck, Convert.FromBase64String(data.LocalPayloadBase64 ?? ""));
+
+            foreach (var fieldName in LocalJoinLobbyFields)
+            {
+                CopyField(runtime, local, official, fieldName);
+            }
+            MergeJoinLobbyUserData(runtime, local, official);
+
+            var serialized = runtime.SerializePacket(official, JoinLobbyAck, "merged-join-lobby");
+            response = new HostResponse
+            {
+                Ok = true,
+                PacketType = official.GetType().FullName,
+                PayloadBase64 = serialized.PayloadBase64,
+                SerializedPayloadSize = Convert.FromBase64String(serialized.PayloadBase64).Length
+            };
+            return true;
+        }
+        catch (Exception ex)
+        {
+            error = ex.ToString();
+            response = new HostResponse { Ok = false, Error = error };
+            return false;
+        }
+    }
+
+    public static bool TryNormalizeJoinLobbyAck(
+        HostOptions options,
+        JoinLobbyNormalizeData data,
+        out HostResponse? response,
+        out string? error)
+    {
+        response = null;
+        error = null;
+        if (string.IsNullOrWhiteSpace(options.ManagedDir))
+        {
+            error = "managed dir required";
+            return false;
+        }
+
+        var runtime = ManagedRuntime.TryLoad(options.ManagedDir, options.GameplayTablesDir, out error);
+        if (runtime == null)
+        {
+            return false;
+        }
+
+        try
+        {
+            var local = runtime.DeserializePacket(JoinLobbyAck, Convert.FromBase64String(data.LocalPayloadBase64 ?? ""));
+            var normalized = runtime.Create("ClientPacket.Account.NKMPacket_JOIN_LOBBY_ACK");
+            runtime.SetField(normalized, "userData", runtime.Create("NKM.NKMUserData"));
+
+            foreach (var fieldName in LocalJoinLobbyFields)
+            {
+                CopyField(runtime, local, normalized, fieldName);
+            }
+            MergeJoinLobbyUserData(runtime, local, normalized);
+
+            var serialized = runtime.SerializePacket(normalized, JoinLobbyAck, "normalized-join-lobby");
+            response = new HostResponse
+            {
+                Ok = true,
+                PacketType = normalized.GetType().FullName,
+                PayloadBase64 = serialized.PayloadBase64,
+                SerializedPayloadSize = Convert.FromBase64String(serialized.PayloadBase64).Length
+            };
+            return true;
+        }
+        catch (Exception ex)
+        {
+            error = ex.ToString();
+            response = new HostResponse { Ok = false, Error = error };
+            return false;
+        }
+    }
+
     public static bool TryStart(
         HostOptions options,
         StartBattleData data,
@@ -63,7 +400,7 @@ internal static class ManagedCombatBridge
     {
         gameLoadAck = null;
         error = null;
-        if (string.IsNullOrWhiteSpace(options.ManagedDir) || string.IsNullOrWhiteSpace(data.GameLoadAckPayloadBase64))
+        if (string.IsNullOrWhiteSpace(options.ManagedDir))
         {
             return false;
         }
@@ -76,15 +413,22 @@ internal static class ManagedCombatBridge
 
         try
         {
-            var gameLoadAckTemplate = runtime.DeserializePacket(GameLoadAck, Convert.FromBase64String(data.GameLoadAckPayloadBase64));
-            var gameData = runtime.GetField(gameLoadAckTemplate, "gameData");
+            runtime.InitializeClientTables();
+            object? gameData = null;
+            if (!string.IsNullOrWhiteSpace(data.GameLoadAckPayloadBase64))
+            {
+                var gameLoadAckTemplate = runtime.DeserializePacket(GameLoadAck, Convert.FromBase64String(data.GameLoadAckPayloadBase64));
+                gameData = runtime.GetField(gameLoadAckTemplate, "gameData");
+            }
+            else
+            {
+                gameData = runtime.BuildGameData(data, dynamicGame);
+            }
             if (gameData == null)
             {
                 error = "managed GAME_LOAD_ACK contained null gameData";
                 return false;
             }
-
-            runtime.InitializeClientTables();
 
             var server = runtime.Create("NKC.NKCGameServerLocal");
             runtime.Invoke(server, "EndGame");
@@ -100,11 +444,13 @@ internal static class ManagedCombatBridge
             }
             runtime.ApplyTutorialGameType(gameData, dynamicGame.DungeonID);
             var eventDeckId = data.Stage?.EventDeckId ?? dynamicGame.DungeonID;
-            if (ShouldApplyEventDeck(dynamicGame.StageID, dynamicGame.DungeonID, eventDeckId))
+            var usesEventDeck = ShouldApplyEventDeck(dynamicGame.StageID, dynamicGame.DungeonID, eventDeckId);
+            var usesTutorialEventDeck = ShouldApplyTutorialEventDeckTeamA(dynamicGame.StageID, dynamicGame.DungeonID, eventDeckId);
+            if (usesEventDeck)
             {
                 runtime.ApplyEventDeckTeamA(gameData, eventDeckId);
             }
-            else if (ShouldApplyTutorialEventDeckTeamA(dynamicGame.StageID, dynamicGame.DungeonID, eventDeckId))
+            else if (usesTutorialEventDeck)
             {
                 runtime.ApplyTutorialEventDeckTeamA(gameData, eventDeckId);
             }
@@ -115,24 +461,33 @@ internal static class ManagedCombatBridge
             {
                 return false;
             }
+            runtime.ApplyPlayerIdentityRuntimeData(runtimeData, data.Stage?.PlayerDeck);
             runtime.PrepareGameDataForLocalServer(gameData);
+            if (!usesEventDeck && !usesTutorialEventDeck)
+            {
+                runtime.ApplyPlayerDeckTeamA(gameData, data.Stage?.PlayerDeck, dynamicGame.StageID, dynamicGame.DungeonID);
+            }
             runtime.RefreshTutorialTeamADeck(gameData, dynamicGame.StageID, dynamicGame.DungeonID);
+            runtime.ApplyPlayerIdentityTeamA(gameData, data.Stage?.PlayerDeck);
             runtime.ApplyTutorialGameType(gameData, dynamicGame.DungeonID);
             runtime.Invoke(server, "SetGameData", gameData);
             if (runtimeData != null)
             {
+                runtime.ApplyPlayerIdentityRuntimeData(runtimeData, data.Stage?.PlayerDeck);
                 runtime.Invoke(server, "SetGameRuntimeData", runtimeData);
             }
             runtime.SuppressPlayerDynamicRespawns(server, gameData);
+            runtime.ApplyPlayerIdentityTeamA(gameData, data.Stage?.PlayerDeck);
+            runtime.ClearTeamAUnitOwnersForGameLoadAck(gameData);
             runtime.ApplyTutorialGameType(gameData, dynamicGame.DungeonID);
             // The Unity client builds its unit pool from GAME_LOAD_ACK. Send the
             // same gameData that NKCGameServerLocal just mutated so runtime
             // gameUnitUIDs resolve to the same unit/team on both sides.
             gameLoadAck = runtime.BuildGameLoadAck(gameData);
-            runtime.ClearClientQueue();
+            var setupPackets = runtime.DrainClientPackets($"managed-setup-{dynamicGame.GameUID}");
 
             var sessionId = dynamicGame.GameUID.ToString(CultureInfo.InvariantCulture);
-            Sessions[sessionId] = new ManagedCombatSession(sessionId, runtime, server);
+            Sessions[sessionId] = new ManagedCombatSession(sessionId, runtime, server, setupPackets);
             dynamicGame.ManagedSessionId = sessionId;
             dynamicGame.ManagedCombat = true;
             return true;
@@ -147,17 +502,15 @@ internal static class ManagedCombatBridge
     private static bool ShouldApplyEventDeck(int stageId, int dungeonId, int eventDeckId)
     {
         if (eventDeckId <= 0) return false;
-        // Tutorial GAME_LOAD_ACK starts from the captured official 804. Rebuilding
-        // tutorial event decks here can throw when the local table set is missing
-        // ship limit-break metadata, and it also mutates tutorial deck layout that
-        // the client scripts expect. Keep the captured/team data and let
-        // NKMDungeonManager.MakeGameTeamData hydrate dungeon-side runtime data.
+        // Tutorial loads are now built from local tables in BuildGameData.
+        // Keep normal event-deck rebuilding out of tutorial so the specialized
+        // tutorial hydrator can own Team A consistently.
         return !IsTutorialStage(stageId) && !IsTutorialDungeon(dungeonId);
     }
 
     private static bool ShouldApplyTutorialEventDeckTeamA(int stageId, int dungeonId, int eventDeckId)
     {
-        if (eventDeckId <= 1004 || eventDeckId > 1007) return false;
+        if (eventDeckId < 1004 || eventDeckId > 1007) return false;
         return IsTutorialStage(stageId) || IsTutorialDungeon(dungeonId);
     }
 
@@ -186,10 +539,13 @@ internal static class ManagedCombatBridge
         try
         {
             var packets = new List<HostPacket>();
+            session.ApplyRuntimeControls(dynamicGame);
             if (!session.Started)
             {
                 packets.Add(session.BuildLoadCompleteAck());
                 session.Start();
+                packets.AddRange(session.DrainQueuedPackets("managed-game-start"));
+                packets.AddRange(session.DrainSetupPackets());
             }
 
             // Tutorial phases carry dungeon events and UI triggers in the sync
@@ -233,6 +589,7 @@ internal static class ManagedCombatBridge
 
         try
         {
+            session.ApplyRuntimeControls(data.DynamicGame);
             session.EnsureStarted();
             var packets = session.HandleDeploy(data.Req);
             response = new HostResponse
@@ -384,6 +741,7 @@ internal static class ManagedCombatBridge
 
         try
         {
+            session.ApplyRuntimeControls(data.DynamicGame);
             session.EnsureStarted();
             // Keep managed sync frame-based, but do not let reflection/packet
             // serialization stalls make the server simulation run slower than
@@ -444,21 +802,52 @@ internal static class ManagedCombatBridge
         private readonly string sessionId;
         private readonly ManagedRuntime runtime;
         private readonly object server;
+        private readonly List<HostPacket> setupPackets;
         private bool finishStateFlushedWithGameEnd;
 
-        public ManagedCombatSession(string sessionId, ManagedRuntime runtime, object server)
+        public ManagedCombatSession(string sessionId, ManagedRuntime runtime, object server, List<HostPacket> setupPackets)
         {
             this.sessionId = sessionId;
             this.runtime = runtime;
             this.server = server;
+            this.setupPackets = setupPackets;
         }
 
         public bool Started { get; private set; }
+
+        public void ApplyRuntimeControls(DynamicGameState? dynamicGame)
+        {
+            if (dynamicGame == null) return;
+            var runtimeData = runtime.Invoke(server, "GetGameRuntimeData");
+            if (runtimeData == null) return;
+
+            if (dynamicGame.GameSpeedType.HasValue)
+            {
+                runtime.SetField(runtimeData, "m_NKM_GAME_SPEED_TYPE", ClampControlEnum(dynamicGame.GameSpeedType.Value, 0, 5));
+            }
+
+            var runtimeTeamA = runtime.GetField(runtimeData, "m_NKMGameRuntimeTeamDataA");
+            if (runtimeTeamA == null) return;
+            if (dynamicGame.AutoSkillType.HasValue)
+            {
+                runtime.SetField(runtimeTeamA, "m_NKM_GAME_AUTO_SKILL_TYPE", ClampControlEnum(dynamicGame.AutoSkillType.Value, 0, 1));
+            }
+            if (dynamicGame.AutoRespawnEnabled.HasValue)
+            {
+                runtime.SetField(runtimeTeamA, "m_bAutoRespawn", dynamicGame.AutoRespawnEnabled.Value);
+            }
+        }
+
+        private static int ClampControlEnum(int value, int min, int max)
+        {
+            return Math.Max(min, Math.Min(max, value));
+        }
 
         public HostPacket BuildLoadCompleteAck()
         {
             var packet = runtime.Create("ClientPacket.Game.NKMPacket_GAME_LOAD_COMPLETE_ACK");
             runtime.SetField(packet, "gameRuntimeData", runtime.Invoke(server, "GetGameRuntimeData"));
+            runtime.SetField(packet, "rewardMultiply", 1);
             return runtime.SerializePacket(packet, GameLoadCompleteAck, "managed-load-complete");
         }
 
@@ -467,6 +856,19 @@ internal static class ManagedCombatBridge
             if (Started) return;
             runtime.Invoke(server, "StartGame", false);
             Started = true;
+        }
+
+        public List<HostPacket> DrainSetupPackets()
+        {
+            if (setupPackets.Count == 0) return [];
+            var output = setupPackets.ToList();
+            setupPackets.Clear();
+            return output;
+        }
+
+        public List<HostPacket> DrainQueuedPackets(string label)
+        {
+            return runtime.DrainClientPackets(label);
         }
 
         public void EnsureStarted()
@@ -643,7 +1045,7 @@ internal static class ManagedCombatBridge
             var output = new List<HostPacket>();
             for (var index = 0; index < frameCount; index += 1)
             {
-                runtime.Invoke(server, "Update", frameDelta);
+                runtime.Invoke(server, "Update", ScaleFrameDeltaForRuntimeSpeed(frameDelta));
                 var framePackets = runtime.DrainClientPackets($"managed-session-{sessionId}");
                 if (!finishStateFlushedWithGameEnd && framePackets.Any(packet => packet.PacketId == GameEnd))
                 {
@@ -653,6 +1055,34 @@ internal static class ManagedCombatBridge
                 output.AddRange(framePackets);
             }
             return output;
+        }
+
+        private float ScaleFrameDeltaForRuntimeSpeed(float frameDelta)
+        {
+            try
+            {
+                var runtimeData = runtime.Invoke(server, "GetGameRuntimeData");
+                var speedType = Convert.ToInt32(runtime.GetField(runtimeData!, "m_NKM_GAME_SPEED_TYPE") ?? 0, CultureInfo.InvariantCulture);
+                return frameDelta * SpeedScaleForType(speedType);
+            }
+            catch
+            {
+                return frameDelta;
+            }
+        }
+
+        private static float SpeedScaleForType(int speedType)
+        {
+            return speedType switch
+            {
+                0 => 1.1f,
+                1 => 1.5f,
+                2 => 2.2f,
+                3 => 0.6f,
+                4 => 11f,
+                5 => 80f,
+                _ => 1f
+            };
         }
 
         private List<HostPacket> FlushFinishStateSync()
@@ -699,6 +1129,7 @@ internal static class ManagedCombatBridge
         private readonly FieldInfo messageIdField;
         private readonly FieldInfo messageParamField;
         private bool clientTablesInitialized;
+        private bool eventDeckTablesInitialized;
 
         private ManagedRuntime(string managedDir, string gameplayTablesDir)
         {
@@ -782,7 +1213,23 @@ internal static class ManagedCombatBridge
             if (clientTablesInitialized) return;
             var nkcMainType = GetType("NKC.NKCMain");
             nkcMainType.GetMethod("NKCInit", BindingFlags.Public | BindingFlags.Static)!.Invoke(null, null);
+            LoadOptionalStaticTable("NKM.NKMTacticUpdateTemplet", "LoadFromLua");
             clientTablesInitialized = true;
+        }
+
+        private void LoadOptionalStaticTable(string typeName, string methodName)
+        {
+            try
+            {
+                GetType(typeName)
+                    .GetMethod(methodName, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static, null, Type.EmptyTypes, null)
+                    ?.Invoke(null, null);
+            }
+            catch
+            {
+                // Optional combat support tables should not block startup; the
+                // managed bridge can still fall back if a table is unavailable.
+            }
         }
 
         public void PrepareGameDataForLocalServer(object gameData)
@@ -803,12 +1250,11 @@ internal static class ManagedCombatBridge
 
         public void ApplyTutorialGameType(object gameData, int dungeonId)
         {
-            if (!IsTutorialDungeon(dungeonId)) return;
-
-            // Client-side tutorial chaining is gated on NKMGameData.GetGameType()
-            // being NGT_TUTORIAL after battle end. NKCGameServerLocal can mutate
-            // prepared game data, so pin this value around each preparation step.
-            SetField(gameData, "m_NKM_GAME_TYPE", Enum.Parse(GetType("NKM.NKM_GAME_TYPE"), "NGT_TUTORIAL"));
+            // Captured 804 starts as a tutorial payload. Pin the type each time
+            // NKCGameServerLocal mutates gameData so normal Episode 1 stages do
+            // not inherit tutorial result flow.
+            var gameTypeName = IsTutorialDungeon(dungeonId) ? "NGT_TUTORIAL" : "NGT_DUNGEON";
+            SetField(gameData, "m_NKM_GAME_TYPE", Enum.Parse(GetType("NKM.NKM_GAME_TYPE"), gameTypeName));
         }
 
         private static bool IsTutorialDungeon(int dungeonId)
@@ -822,7 +1268,7 @@ internal static class ManagedCombatBridge
             // MakeEventDeckShipData path can fail when local ship level-break
             // tables are incomplete, so hydrate Team A with the event-deck NPC
             // units directly and keep/replace the ship only when that is safe.
-            if (eventDeckId <= 1004 || eventDeckId > 1007) return;
+            if (eventDeckId < 1004 || eventDeckId > 1007) return;
 
             var teamA = GetField(gameData, "m_NKMGameTeamDataA");
             if (teamA == null) return;
@@ -831,7 +1277,7 @@ internal static class ManagedCombatBridge
             var eventDeckTemplet = GetEventDeckTemplet(dungeonManagerType, eventDeckId);
             if (eventDeckTemplet == null) return;
 
-            ApplyTutorialEventDeckShip(teamA, dungeonManagerType, eventDeckTemplet);
+            ApplyEventDeckShip(teamA, dungeonManagerType, eventDeckTemplet);
             ApplyEventDeckUnits(teamA, dungeonManagerType, eventDeckTemplet);
             RefreshTeamDeck(gameData, teamA, resetDeck: true);
         }
@@ -857,71 +1303,158 @@ internal static class ManagedCombatBridge
             var eventDeckTemplet = GetEventDeckTemplet(dungeonManagerType, eventDeckId);
             if (eventDeckTemplet == null) return;
 
-            var eventDeckData = Create("NKM.NKMEventDeckData");
-            var inventoryData = Create("NKM.NKMInventoryData");
-            var teamType = GetType("NKM.NKM_TEAM_TYPE");
-            var teamA1 = Enum.Parse(teamType, "NTT_A1");
+            ApplyEventDeckShip(teamA, dungeonManagerType, eventDeckTemplet);
+            ApplyEventDeckUnits(teamA, dungeonManagerType, eventDeckTemplet);
+            RefreshTeamDeck(gameData, teamA, resetDeck: true);
+        }
 
-            var makeShip = dungeonManagerType.GetMethod(
-                "MakeEventDeckShipData",
-                BindingFlags.Public | BindingFlags.Static,
-                null,
-                [
-                    GetType("NKM.NKMArmyData"),
-                    eventDeckTemplet.GetType(),
-                    GetType("NKM.NKMDeckCondition"),
-                    eventDeckData.GetType(),
-                    teamType,
-                    typeof(bool)
-                ],
-                null);
-            var ship = makeShip?.Invoke(null, [null, eventDeckTemplet, null, eventDeckData, teamA1, false]);
-            SetField(teamA, "m_MainShip", ship);
+        public void ApplyPlayerDeckTeamA(object gameData, PlayerDeckData? playerDeck, int stageId, int dungeonId)
+        {
+            if (playerDeck == null || playerDeck.Units.Count == 0) return;
+            if (IsTutorialDungeon(dungeonId) || stageId is 11211 or 11212 or 11213 or 11214) return;
 
-            var makeUnits = dungeonManagerType.GetMethod(
-                "MakeEventDeckUnitDataList",
-                BindingFlags.Public | BindingFlags.Static,
-                null,
-                [
-                    GetType("NKM.NKMArmyData"),
-                    eventDeckTemplet.GetType(),
-                    GetType("NKM.NKMDeckCondition"),
-                    eventDeckData.GetType(),
-                    inventoryData.GetType(),
-                    teamType,
-                    typeof(bool)
-                ],
-                null);
-            var gameUnitDataList = makeUnits?.Invoke(null, [null, eventDeckTemplet, null, eventDeckData, inventoryData, teamA1, false]);
+            var teamA = GetField(gameData, "m_NKMGameTeamDataA");
+            if (teamA == null) return;
+
+            var userUid = ParseLong(playerDeck.UserUid);
+            SetField(teamA, "m_eNKM_TEAM_TYPE", Enum.Parse(GetType("NKM.NKM_TEAM_TYPE"), "NTT_A1"));
+            SetField(teamA, "m_user_uid", userUid);
+            SetField(teamA, "m_UserLevel", Math.Max(1, playerDeck.UserLevel));
+            SetField(teamA, "m_UserNickname", playerDeck.Nickname ?? "");
+
+            if (playerDeck.ShipUnitId > 0)
+            {
+                var shipUid = ParseLong(playerDeck.ShipUid);
+                if (shipUid <= 0) shipUid = userUid > 0 ? userUid + 1 : 1;
+                SetField(teamA, "m_MainShip", CreateBasicUnit(
+                    playerDeck.ShipUnitId,
+                    shipUid,
+                    Math.Max(1, playerDeck.ShipLevel),
+                    playerDeck.ShipSkinId,
+                    0,
+                    0,
+                    userUid,
+                    null,
+                    null));
+            }
+
+            ClearCollectionField(teamA, "m_listUnitData");
+            ClearCollectionField(teamA, "m_listAssistUnitData");
+            ClearCollectionField(teamA, "m_listEvevtUnitData");
+            ClearCollectionField(teamA, "m_listOperatorUnitData");
+            ClearCollectionField(teamA, "m_listDynamicRespawnUnitData");
+            ClearCollectionField(teamA, "m_ItemEquipData");
+
             var unitList = GetField(teamA, "m_listUnitData");
-            unitList?.GetType().GetMethod("Clear", BindingFlags.Public | BindingFlags.Instance)?.Invoke(unitList, null);
-
             long firstUnitUid = 0;
-            if (gameUnitDataList is IEnumerable units)
+            foreach (var unitData in playerDeck.Units.OrderBy(unit => unit.SlotIndex))
             {
-                var add = unitList?.GetType().GetMethod("Add", BindingFlags.Public | BindingFlags.Instance);
-                foreach (var gameUnitData in units)
-                {
-                    var unit = GetField(gameUnitData, "unit");
-                    if (unit == null) continue;
-                    add?.Invoke(unitList, [unit]);
-                    if (firstUnitUid == 0)
-                    {
-                        firstUnitUid = Convert.ToInt64(GetField(unit, "m_UnitUID"), CultureInfo.InvariantCulture);
-                    }
-                }
+                var unitUid = ParseLong(unitData.UnitUid);
+                if (unitData.UnitId <= 0 || unitUid <= 0) continue;
+                var unit = CreateBasicUnit(
+                    unitData.UnitId,
+                    unitUid,
+                    Math.Max(1, unitData.Level),
+                    unitData.SkinId,
+                    unitData.TacticLevel,
+                    unitData.LimitBreakLevel,
+                    userUid,
+                    unitData.SkillLevels,
+                    unitData.EquipItemUids.Select(ParseLong));
+                AddCollectionItem(unitList, unit);
+                if (firstUnitUid <= 0) firstUnitUid = unitUid;
             }
 
-            if (firstUnitUid > 0)
-            {
-                SetField(teamA, "m_LeaderUnitUID", firstUnitUid);
-            }
+            var leaderUid = ParseLong(playerDeck.LeaderUnitUid);
+            if (leaderUid <= 0) leaderUid = firstUnitUid;
+            if (leaderUid > 0) SetField(teamA, "m_LeaderUnitUID", leaderUid);
 
             RefreshTeamDeck(gameData, teamA, resetDeck: true);
         }
 
+        public void ApplyPlayerIdentityTeamA(object gameData, PlayerDeckData? playerDeck)
+        {
+            if (playerDeck == null) return;
+            var userUid = ParseLong(playerDeck.UserUid);
+            if (userUid <= 0) return;
+
+            var teamA = GetField(gameData, "m_NKMGameTeamDataA");
+            if (teamA == null) return;
+
+            SetField(teamA, "m_eNKM_TEAM_TYPE", Enum.Parse(GetType("NKM.NKM_TEAM_TYPE"), "NTT_A1"));
+            SetField(teamA, "m_user_uid", userUid);
+            SetField(teamA, "m_UserLevel", Math.Max(1, playerDeck.UserLevel));
+            SetField(teamA, "m_UserNickname", playerDeck.Nickname ?? "");
+        }
+
+        public void ApplyPlayerIdentityRuntimeData(object? runtimeData, PlayerDeckData? playerDeck)
+        {
+            if (runtimeData == null || playerDeck == null) return;
+            var userUid = ParseLong(playerDeck.UserUid);
+            if (userUid <= 0) return;
+
+            SetField(runtimeData, "m_NKM_GAME_SPEED_TYPE", 0);
+            var runtimeTeamA = GetField(runtimeData, "m_NKMGameRuntimeTeamDataA");
+            if (runtimeTeamA == null) return;
+            SetField(runtimeTeamA, "m_UserUID", userUid);
+            SetField(runtimeTeamA, "m_bAutoRespawn", false);
+            SetField(runtimeTeamA, "m_NKM_GAME_AUTO_SKILL_TYPE", 1);
+        }
+
+        public void ClearTeamAUnitOwnersForGameLoadAck(object gameData)
+        {
+            var teamA = GetField(gameData, "m_NKMGameTeamDataA");
+            if (teamA == null) return;
+
+            ClearUnitOwner(GetField(teamA, "m_MainShip"));
+            foreach (var listField in new[] { "m_listUnitData", "m_listAssistUnitData", "m_listEvevtUnitData", "m_listEnvUnitData", "m_listOperatorUnitData" })
+            {
+                if (GetField(teamA, listField) is not IEnumerable units) continue;
+                foreach (var unit in units)
+                {
+                    ClearUnitOwner(unit);
+                }
+            }
+        }
+
+        private void ClearUnitOwner(object? unitData)
+        {
+            if (unitData == null) return;
+            SetField(unitData, "m_UserUID", 0L);
+        }
+
+        public object BuildGameData(StartBattleData data, DynamicGameState dynamicGame)
+        {
+            var gameData = Create("NKM.NKMGameData");
+            SetField(gameData, "m_GameUID", dynamicGame.GameUID);
+            SetField(gameData, "m_GameUnitUIDIndex", (short)0);
+            SetField(gameData, "m_bLocal", false);
+            SetField(gameData, "m_DungeonID", dynamicGame.DungeonID);
+            SetField(gameData, "m_MapID", dynamicGame.MapID);
+            SetField(gameData, "m_TeamASupply", (byte)2);
+            SetField(gameData, "m_bBossDungeon", false);
+            ApplyTutorialGameType(gameData, dynamicGame.DungeonID);
+
+            var eventDeckId = data.Stage?.EventDeckId ?? dynamicGame.DungeonID;
+            if (ShouldApplyTutorialEventDeckTeamA(dynamicGame.StageID, dynamicGame.DungeonID, eventDeckId))
+            {
+                ApplyTutorialEventDeckTeamA(gameData, eventDeckId);
+            }
+            else if (ShouldApplyEventDeck(dynamicGame.StageID, dynamicGame.DungeonID, eventDeckId))
+            {
+                ApplyEventDeckTeamA(gameData, eventDeckId);
+            }
+            else
+            {
+                ApplyPlayerDeckTeamA(gameData, data.Stage?.PlayerDeck, dynamicGame.StageID, dynamicGame.DungeonID);
+            }
+
+            return gameData;
+        }
+
         private object? GetEventDeckTemplet(Type dungeonManagerType, int eventDeckId)
         {
+            EnsureEventDeckTablesLoaded(dungeonManagerType);
             var getEventDeck = dungeonManagerType.GetMethod(
                 "GetEventDeckTemplet",
                 BindingFlags.Public | BindingFlags.Static,
@@ -931,7 +1464,16 @@ internal static class ManagedCombatBridge
             return getEventDeck?.Invoke(null, [eventDeckId]);
         }
 
-        private void ApplyTutorialEventDeckShip(object teamA, Type dungeonManagerType, object eventDeckTemplet)
+        private void EnsureEventDeckTablesLoaded(Type dungeonManagerType)
+        {
+            if (eventDeckTablesInitialized) return;
+            dungeonManagerType
+                .GetMethod("LoadFromLUA_EventDeckInfo", BindingFlags.Public | BindingFlags.Static, null, Type.EmptyTypes, null)
+                ?.Invoke(null, null);
+            eventDeckTablesInitialized = true;
+        }
+
+        private void ApplyEventDeckShip(object teamA, Type dungeonManagerType, object eventDeckTemplet)
         {
             object? shipSlot = null;
             int unitId = 0;
@@ -971,7 +1513,7 @@ internal static class ManagedCombatBridge
             {
                 if (unitId <= 0 || npcUid <= 0) return;
                 // If local ship limit-break tables are incomplete, build just
-                // the serialized unit shell the client needs for tutorial load.
+                // the serialized unit shell the client needs for game load.
                 var ship = CreateBasicTutorialUnit(unitId, npcUid, level, skinId, tacticLevel);
                 SetField(teamA, "m_MainShip", ship);
             }
@@ -979,12 +1521,47 @@ internal static class ManagedCombatBridge
 
         private object CreateBasicTutorialUnit(int unitId, long unitUid, int level, int skinId, int tacticLevel)
         {
+            return CreateBasicUnit(unitId, unitUid, level, skinId, tacticLevel, 0, 0, null, null);
+        }
+
+        private object CreateBasicUnit(
+            int unitId,
+            long unitUid,
+            int level,
+            int skinId,
+            int tacticLevel,
+            int limitBreakLevel,
+            long userUid,
+            IEnumerable<int>? skillLevels,
+            IEnumerable<long>? equipItemUids)
+        {
             var unit = Create("NKM.NKMUnitData");
+            if (userUid > 0) SetField(unit, "m_UserUID", userUid);
             SetField(unit, "m_UnitID", unitId);
             SetField(unit, "m_UnitUID", unitUid);
             SetField(unit, "m_UnitLevel", level);
             SetField(unit, "m_SkinID", skinId);
+            SetField(unit, "m_LimitBreakLevel", Math.Max(0, limitBreakLevel));
+            SetField(unit, "m_bLock", false);
             SetField(unit, "tacticLevel", tacticLevel);
+            FindMethodByName(unit.GetType(), "FillSkillLevelByUnitID")?.Invoke(unit, [unitId]);
+
+            if (skillLevels != null)
+            {
+                var skills = skillLevels.Take(5).Select(value => Math.Max(0, value)).ToArray();
+                if (skills.Length < 5) skills = skills.Concat(Enumerable.Repeat(1, 5 - skills.Length)).ToArray();
+                SetField(unit, "m_aUnitSkillLevel", skills);
+            }
+
+            if (equipItemUids != null)
+            {
+                // Combat stat hydration dereferences every UID in m_EquipItemList
+                // through NKMGameTeamData.m_ItemEquipData. Until the local deck
+                // bridge serializes full NKMEquipItemData objects, keep these
+                // slots empty so maxed/equipped units do not hand managed combat
+                // dangling equipment references.
+                SetField(unit, "m_EquipItemList", Enumerable.Repeat(0L, 4).ToArray());
+            }
             return unit;
         }
 
@@ -1054,9 +1631,18 @@ internal static class ManagedCombatBridge
                 null);
             shuffle?.Invoke(gameData, [teamData]);
 
-            gameData.GetType()
-                .GetMethod("InitRespawnLimitCount", BindingFlags.Public | BindingFlags.Instance, null, Type.EmptyTypes, null)
-                ?.Invoke(gameData, null);
+            try
+            {
+                gameData.GetType()
+                    .GetMethod("InitRespawnLimitCount", BindingFlags.Public | BindingFlags.Instance, null, Type.EmptyTypes, null)
+                    ?.Invoke(gameData, null);
+            }
+            catch
+            {
+                // Respawn limits are optional per-unit bookkeeping. If a locally
+                // synthesized roster entry cannot resolve that table, keep the
+                // GAME_LOAD_ACK usable instead of falling back to a stale capture.
+            }
         }
 
         private void EnsureLeaderUnitUid(object teamData)
@@ -1176,6 +1762,16 @@ internal static class ManagedCombatBridge
             collection?.GetType().GetMethod("Clear", BindingFlags.Public | BindingFlags.Instance)?.Invoke(collection, null);
         }
 
+        private static void AddCollectionItem(object? collection, object item)
+        {
+            collection?.GetType().GetMethod("Add", BindingFlags.Public | BindingFlags.Instance)?.Invoke(collection, [item]);
+        }
+
+        private static long ParseLong(string? value)
+        {
+            return long.TryParse(value, NumberStyles.Integer, CultureInfo.InvariantCulture, out var parsed) ? parsed : 0;
+        }
+
         private void ClearPlayerUnitDynamicRespawnPools(object server, string unitDictionaryFieldName)
         {
             if (GetField(server, unitDictionaryFieldName) is not IDictionary units) return;
@@ -1256,6 +1852,227 @@ internal static class ManagedCombatBridge
             SetField(packet, "errorCode", 0);
             SetField(packet, "gameData", gameData);
             return SerializePacket(packet, GameLoadAck, "managed-game-load");
+        }
+
+        public string DescribeGameLoadAck(object packet)
+        {
+            var gameData = GetField(packet, "gameData");
+            if (gameData == null) return "gameData=null";
+
+            var lines = new List<string>
+            {
+                $"errorCode={GetField(packet, "errorCode")}",
+                $"gameUID={GetField(gameData, "m_GameUID")} gameUnitUIDIndex={GetField(gameData, "m_GameUnitUIDIndex")} local={GetField(gameData, "m_bLocal")}",
+                $"gameType={GetField(gameData, "m_NKM_GAME_TYPE")} dungeonID={GetField(gameData, "m_DungeonID")} mapID={GetField(gameData, "m_MapID")} teamASupply={GetField(gameData, "m_TeamASupply")} doubleCostTime={GetField(gameData, "m_fDoubleCostTime")}",
+                $"teamA={DescribeTeam(GetField(gameData, "m_NKMGameTeamDataA"))}",
+                $"teamB={DescribeTeam(GetField(gameData, "m_NKMGameTeamDataB"))}"
+            };
+            return string.Join(Environment.NewLine, lines);
+        }
+
+        public string DescribeGameSync(object packet)
+        {
+            var pack = GetField(packet, "gameSyncDataPack");
+            var syncItems = pack == null ? null : GetField(pack, "m_listGameSyncData");
+            var lines = new List<string>
+            {
+                $"packetGameTime={GetField(packet, "gameTime")} absolute={GetField(packet, "absoluteGameTime")} simulation={GetField(packet, "simulationGame")}",
+                $"baseCount={CountCollection(syncItems)}"
+            };
+
+            if (syncItems is IEnumerable enumerable)
+            {
+                var index = 0;
+                foreach (var syncBase in enumerable.Cast<object>())
+                {
+                    lines.Add($"base[{index}] {DescribeSyncBase(syncBase)}");
+                    index += 1;
+                    if (index >= 8) break;
+                }
+            }
+
+            return string.Join(Environment.NewLine, lines);
+        }
+
+        public string DescribeGameLoadCompleteAck(object packet)
+        {
+            var runtimeData = GetField(packet, "gameRuntimeData");
+            return string.Join(Environment.NewLine, new[]
+            {
+                $"errorCode={GetField(packet, "errorCode")} isIntrude={GetField(packet, "isIntrude")} rewardMultiply={GetField(packet, "rewardMultiply")}",
+                DescribeRuntimeData(runtimeData)
+            });
+        }
+
+        private string DescribeRuntimeData(object? runtimeData)
+        {
+            if (runtimeData == null) return "runtime=null";
+            return string.Join(" ", new[]
+            {
+                $"runtimeGameTime={GetField(runtimeData, "m_GameTime")}",
+                $"state={GetField(runtimeData, "m_NKM_GAME_STATE")}",
+                $"wave={GetField(runtimeData, "m_WaveID")}",
+                $"remain={GetField(runtimeData, "m_fRemainGameTime")}",
+                $"win={GetField(runtimeData, "m_WinTeam")}",
+                $"ended={GetField(runtimeData, "m_bGameEnded")}",
+                $"teamA={DescribeRuntimeTeam(GetField(runtimeData, "m_NKMGameRuntimeTeamDataA"))}",
+                $"teamB={DescribeRuntimeTeam(GetField(runtimeData, "m_NKMGameRuntimeTeamDataB"))}",
+                $"events={CountCollection(GetField(runtimeData, "m_lstPermanentDungeonEvent"))}"
+            });
+        }
+
+        private string DescribeRuntimeTeam(object? team)
+        {
+            if (team == null) return "null";
+            return $"user={GetField(team, "m_UserUID")} cost={GetField(team, "m_fRespawnCost")} assist={GetField(team, "m_fRespawnCostAssist")} used={GetField(team, "m_fUsedRespawnCost")} count={GetField(team, "m_respawn_count")} auto={GetField(team, "m_NKM_GAME_AUTO_SKILL_TYPE")} aiDisable={GetField(team, "m_bAIDisable")}";
+        }
+
+        private string DescribeSyncBase(object? syncBase)
+        {
+            if (syncBase == null) return "null";
+            return string.Join(" ", new[]
+            {
+                $"gameTime={GetField(syncBase, "m_fGameTime")}",
+                $"remain={GetField(syncBase, "m_fRemainGameTime")}",
+                $"costA={GetField(syncBase, "m_fRespawnCostA1")}",
+                $"costB={GetField(syncBase, "m_fRespawnCostB1")}",
+                $"speed={GetField(syncBase, "m_NKM_GAME_SPEED_TYPE")}",
+                $"autoA={GetField(syncBase, "m_NKM_GAME_AUTO_SKILL_TYPE_A")}",
+                $"units={DescribeSyncUnits(GetField(syncBase, "m_NKMGameSyncData_Unit"))}",
+                $"simple={DescribeSimpleSyncUnits(GetField(syncBase, "m_NKMGameSyncDataSimple_Unit"))}",
+                $"deck={DescribeDeckSyncs(GetField(syncBase, "m_NKMGameSyncData_Deck"))}",
+                $"state={DescribeGameStateSyncs(GetField(syncBase, "m_NKMGameSyncData_GameState"))}",
+                $"events={CountCollection(GetField(syncBase, "m_NKMGameSyncData_DungeonEvent"))}",
+                $"die={CountCollection(GetField(syncBase, "m_NKMGameSyncData_DieUnit"))}",
+                $"shipSkill={CountCollection(GetField(syncBase, "m_NKMGameSyncData_ShipSkill"))}"
+            });
+        }
+
+        private string DescribeSyncUnits(object? units)
+        {
+            if (units is not IEnumerable enumerable) return "0[]";
+            var values = new List<string>();
+            foreach (var item in enumerable.Cast<object>().Take(12))
+            {
+                var unitSync = GetField(item, "m_NKMGameUnitSyncData");
+                if (unitSync == null)
+                {
+                    values.Add("null");
+                    continue;
+                }
+
+                values.Add(string.Join(":",
+                    Convert.ToString(GetField(unitSync, "m_GameUnitUID"), CultureInfo.InvariantCulture),
+                    Convert.ToString(GetField(unitSync, "m_NKM_UNIT_PLAY_STATE"), CultureInfo.InvariantCulture),
+                    Convert.ToString(GetField(unitSync, "m_bRespawnThisFrame"), CultureInfo.InvariantCulture),
+                    Convert.ToString(GetField(unitSync, "m_PosX"), CultureInfo.InvariantCulture),
+                    Convert.ToString(GetField(unitSync, "m_StateID"), CultureInfo.InvariantCulture)));
+            }
+            return $"{CountCollection(units)}[{string.Join(",", values)}]";
+        }
+
+        private string DescribeSimpleSyncUnits(object? units)
+        {
+            if (units is not IEnumerable enumerable) return "0[]";
+            var values = enumerable
+                .Cast<object>()
+                .Take(12)
+                .Select(item => Convert.ToString(GetField(item, "m_GameUnitUID"), CultureInfo.InvariantCulture))
+                .ToList();
+            return $"{CountCollection(units)}[{string.Join(",", values)}]";
+        }
+
+        private string DescribeDeckSyncs(object? deckSyncs)
+        {
+            if (deckSyncs is not IEnumerable enumerable) return "0[]";
+            var values = enumerable.Cast<object>().Take(12).Select(item => string.Join(":",
+                Convert.ToString(GetField(item, "m_NKM_TEAM_TYPE"), CultureInfo.InvariantCulture),
+                Convert.ToString(GetField(item, "m_UnitDeckIndex"), CultureInfo.InvariantCulture),
+                Convert.ToString(GetField(item, "m_UnitDeckUID"), CultureInfo.InvariantCulture),
+                Convert.ToString(GetField(item, "m_NextDeckUnitUID"), CultureInfo.InvariantCulture))).ToList();
+            return $"{CountCollection(deckSyncs)}[{string.Join(",", values)}]";
+        }
+
+        private string DescribeGameStateSyncs(object? gameStates)
+        {
+            if (gameStates is not IEnumerable enumerable) return "0[]";
+            var values = enumerable.Cast<object>().Take(12).Select(item => string.Join(":",
+                Convert.ToString(GetField(item, "m_NKM_GAME_STATE"), CultureInfo.InvariantCulture),
+                Convert.ToString(GetField(item, "m_WinTeam"), CultureInfo.InvariantCulture),
+                Convert.ToString(GetField(item, "m_WaveID"), CultureInfo.InvariantCulture))).ToList();
+            return $"{CountCollection(gameStates)}[{string.Join(",", values)}]";
+        }
+
+        private string DescribeTeam(object? team)
+        {
+            if (team == null) return "null";
+
+            return string.Join(" ", new[]
+            {
+                $"type={GetField(team, "m_eNKM_TEAM_TYPE")}",
+                $"user={GetField(team, "m_user_uid")}",
+                $"leader={GetField(team, "m_LeaderUnitUID")}",
+                $"ship={DescribeUnit(GetField(team, "m_MainShip"))}",
+                $"units={DescribeUnitList(GetField(team, "m_listUnitData"))}",
+                $"events={DescribeUnitList(GetField(team, "m_listEvevtUnitData"))}",
+                $"dynamic={CountCollection(GetField(team, "m_listDynamicRespawnUnitData"))}",
+                $"env={CountCollection(GetField(team, "m_listEnvUnitData"))}",
+                $"deck={DescribeDeck(GetField(team, "m_DeckData"))}"
+            });
+        }
+
+        private string DescribeDeck(object? deck)
+        {
+            if (deck == null) return "null";
+            try
+            {
+                var count = Convert.ToInt32(FindMethodByName(deck.GetType(), "GetListUnitDeckCount")?.Invoke(deck, null) ?? 0, CultureInfo.InvariantCulture);
+                var values = new List<string>();
+                var get = FindMethodByName(deck.GetType(), "GetListUnitDeck");
+                for (var index = 0; index < count; index += 1)
+                {
+                    values.Add(Convert.ToInt64(get?.Invoke(deck, [index]) ?? 0L, CultureInfo.InvariantCulture).ToString(CultureInfo.InvariantCulture));
+                }
+
+                var used = Convert.ToInt32(FindMethodByName(deck.GetType(), "GetListUnitDeckUsedCount")?.Invoke(deck, null) ?? 0, CultureInfo.InvariantCulture);
+                var tomb = Convert.ToInt32(FindMethodByName(deck.GetType(), "GetListUnitDeckTombCount")?.Invoke(deck, null) ?? 0, CultureInfo.InvariantCulture);
+                return $"[{string.Join(",", values)}] used={used} tomb={tomb}";
+            }
+            catch (Exception ex)
+            {
+                return $"error:{ex.GetType().Name}";
+            }
+        }
+
+        private string DescribeUnit(object? unit)
+        {
+            if (unit == null) return "null";
+            return $"{GetField(unit, "m_UnitID")}:{GetField(unit, "m_UnitUID")} user={GetField(unit, "m_UserUID")} lv={GetField(unit, "m_UnitLevel")} gameUIDs=[{DescribeScalarList(GetField(unit, "m_listGameUnitUID"))}]";
+        }
+
+        private string DescribeUnitList(object? units)
+        {
+            if (units is not IEnumerable enumerable) return "0[]";
+            var values = enumerable.Cast<object>().Take(12).Select(DescribeUnit).ToList();
+            return $"{CountCollection(units)}[{string.Join(";", values)}]";
+        }
+
+        private static string DescribeScalarList(object? values)
+        {
+            if (values is not IEnumerable enumerable) return "";
+            return string.Join(",", enumerable.Cast<object>().Take(12).Select(value => Convert.ToString(value, CultureInfo.InvariantCulture)));
+        }
+
+        private static int CountCollection(object? collection)
+        {
+            if (collection == null) return 0;
+            if (collection is ICollection nonGeneric) return nonGeneric.Count;
+            var countProperty = collection.GetType().GetProperty("Count", BindingFlags.Public | BindingFlags.Instance);
+            if (countProperty != null)
+            {
+                return Convert.ToInt32(countProperty.GetValue(collection), CultureInfo.InvariantCulture);
+            }
+            return collection is IEnumerable enumerable ? enumerable.Cast<object>().Count() : 0;
         }
 
         private string ZeroCopyToBase64(object zeroCopy)

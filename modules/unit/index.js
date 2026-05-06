@@ -1,0 +1,1156 @@
+const { dateTimeBinaryNow, toBigInt } = require("../packet-codec");
+const {
+  getUnitTemplet,
+  resolveUnitId,
+  getPieceTemplet,
+  getSkinTemplet,
+  getUnitLevelByTotalExp,
+  getTotalExpForUnitLevel,
+  getOperatorTotalExpForLevel,
+  getOperatorRequiredExpForLevel,
+  getOperatorMaxLevel,
+  getOperatorLevelByTotalExp,
+} = require("../game-data");
+const { grantSkin } = require("../inventory");
+
+const DEFAULT_NEXT_UNIT_UID = 9000000000000001n;
+const DECK_TYPE_NORMAL = 1;
+const DECK_TYPE_DAILY = 3;
+const DECK_TYPE_DIVE = 8;
+const DECK_TYPE_EXPLORE = 10;
+
+function ensureArmy(user) {
+  if (!user || typeof user !== "object") return { units: {}, ships: {}, operators: {}, decks: [] };
+  user.army = user.army && typeof user.army === "object" ? user.army : {};
+  user.army.units = user.army.units && typeof user.army.units === "object" ? user.army.units : {};
+  user.army.ships = user.army.ships && typeof user.army.ships === "object" ? user.army.ships : {};
+  user.army.operators = user.army.operators && typeof user.army.operators === "object" ? user.army.operators : {};
+  user.army.decks = Array.isArray(user.army.decks) ? user.army.decks : [];
+  user.army.deckSets = user.army.deckSets && typeof user.army.deckSets === "object" ? user.army.deckSets : {};
+  user.nextUnitUid = String(toBigInt(user.nextUnitUid, DEFAULT_NEXT_UNIT_UID));
+
+  normalizeUnitMap(user.army.units);
+  normalizeUnitMap(user.army.ships);
+  normalizeOperatorMap(user.army.operators);
+  normalizeDeckSets(user.army);
+  return user.army;
+}
+
+function getArmyUnits(user) {
+  const army = ensureArmy(user);
+  return Object.values(army.units)
+    .map(normalizeUnit)
+    .filter(Boolean)
+    .filter(isSerializableArmyUnit)
+    .sort((a, b) => Number(toBigInt(a.unitUid) - toBigInt(b.unitUid)));
+}
+
+function getArmyShips(user) {
+  const army = ensureArmy(user);
+  return Object.values(army.ships)
+    .map(normalizeUnit)
+    .filter(Boolean)
+    .sort((a, b) => Number(toBigInt(a.unitUid) - toBigInt(b.unitUid)));
+}
+
+function getArmyOperators(user) {
+  const army = ensureArmy(user);
+  return Object.values(army.operators || {})
+    .map(normalizeOperatorData)
+    .filter((operator) => operator && Number(operator.id || operator.unitId) > 0)
+    .sort((a, b) => Number(toBigInt(a.uid || a.operatorUid || 0) - toBigInt(b.uid || b.operatorUid || 0)));
+}
+
+function getArmyDeckSets(user) {
+  const army = ensureArmy(user);
+  const result = [];
+  for (let deckType = 0; deckType <= 10; deckType += 1) {
+    result.push({
+      deckType,
+      decks: getDeckSet(army, deckType).map((deck) => normalizeDeck(deck, deckType)),
+    });
+  }
+  return result;
+}
+
+function ensureDefaultLineup(user, options = {}) {
+  if (!user) return null;
+  const availableUnits = getArmyUnits(user);
+  const availableShips = getArmyShips(user);
+  const availableOperators = getArmyOperators(user);
+  const deckIndex = {
+    deckType: Number(options.deckType != null ? options.deckType : DECK_TYPE_NORMAL),
+    index: Number(options.index || 0),
+  };
+  const deck = ensureDeck(user, deckIndex);
+  let hasUnits = deckHasUnitUids(deck);
+  if (!hasUnits && deckIndex.deckType === DECK_TYPE_DAILY) {
+    const normalDeck = getDeckSet(user.army, DECK_TYPE_NORMAL)[deck.index];
+    if (deckHasUnitUids(normalDeck)) {
+      deck.unitUids = normalDeck.unitUids.slice();
+      deck.shipUid = normalDeck.shipUid;
+      deck.operatorUid = normalDeck.operatorUid;
+      deck.leaderIndex = normalDeck.leaderIndex;
+      hasUnits = true;
+    }
+  }
+  if (!hasUnits) {
+    const units = availableUnits.slice(0, deck.unitUids.length);
+    for (let index = 0; index < units.length; index += 1) {
+      deck.unitUids[index] = units[index].unitUid;
+    }
+  }
+  if (toBigInt(deck.shipUid || 0) <= 0n) {
+    const ship = availableShips[0];
+    if (ship) deck.shipUid = ship.unitUid;
+  }
+  if (toBigInt(deck.operatorUid || 0) <= 0n) {
+    const operator = availableOperators[0];
+    if (operator) deck.operatorUid = String(toBigInt(operator.uid || operator.operatorUid || 0));
+  }
+  if (deck.leaderIndex < 0 || toBigInt(deck.unitUids[deck.leaderIndex] || 0) <= 0n) {
+    deck.leaderIndex = deck.unitUids.findIndex((uid) => toBigInt(uid) > 0n);
+  }
+  return deck;
+}
+
+function buildPlayerDeckForGameLoad(user, req = {}) {
+  if (!user) return null;
+  const deckIndex = resolveDeckIndexForGameLoad(user, req);
+  ensureDefaultLineup(user, deckIndex);
+  const army = ensureArmy(user);
+  const deck = ensureDeck(user, deckIndex);
+  const units = [];
+  let leaderUnitUid = "0";
+
+  for (let slotIndex = 0; slotIndex < deck.unitUids.length; slotIndex += 1) {
+    const uid = toBigInt(deck.unitUids[slotIndex] || 0);
+    if (uid <= 0n) continue;
+    const unit = normalizeUnit(army.units[uid.toString()]);
+    if (!unit || !isSerializableArmyUnit(unit)) continue;
+    const serialized = buildPlayerDeckUnit(unit, slotIndex);
+    units.push(serialized);
+    if (slotIndex === deck.leaderIndex) leaderUnitUid = serialized.unitUid;
+  }
+
+  if (!units.length) return null;
+  if (toBigInt(leaderUnitUid) <= 0n) {
+    leaderUnitUid = units[0].unitUid;
+    deck.leaderIndex = units[0].slotIndex;
+  }
+
+  const ship = normalizeUnit(army.ships[String(toBigInt(deck.shipUid || 0))]) || getArmyShips(user)[0] || null;
+  const operator =
+    (army.operators && army.operators[String(toBigInt(deck.operatorUid || 0))]) || getArmyOperators(user)[0] || null;
+
+  if (ship && toBigInt(deck.shipUid || 0) <= 0n) deck.shipUid = ship.unitUid;
+  if (operator && toBigInt(deck.operatorUid || 0) <= 0n) deck.operatorUid = String(toBigInt(operator.uid || operator.operatorUid || 0));
+
+  return {
+    userUid: String(toBigInt(user.userUid || 0)),
+    nickname: String(user.nickname || "LocalAdmin"),
+    userLevel: Number(user.level || 1),
+    deckType: deck.deckType,
+    deckIndex: deck.index,
+    leaderIndex: deck.leaderIndex,
+    leaderUnitUid,
+    shipUid: ship ? String(toBigInt(ship.unitUid || 0)) : "0",
+    shipUnitId: ship ? Number(ship.unitId || 0) : 0,
+    shipLevel: ship ? Number(ship.level || 1) : 1,
+    shipSkinId: ship ? Number(ship.skinId || 0) : 0,
+    operatorUid: operator ? String(toBigInt(operator.uid || operator.operatorUid || 0)) : "0",
+    operatorId: operator ? Number(operator.id || operator.unitId || 0) : 0,
+    operatorLevel: operator ? Number(operator.level || 1) : 1,
+    units,
+  };
+}
+
+function resolveDeckIndexForGameLoad(user, req = {}) {
+  const index = normalizeDeckIndex(req.selectDeckIndex || 0);
+  if (Number(req.diveStageID || 0) > 0) return { deckType: DECK_TYPE_DIVE, index };
+  if (Number(req.exploreID || 0) > 0) return { deckType: DECK_TYPE_EXPLORE, index };
+
+  const army = ensureArmy(user);
+  const candidates = [];
+  const last = army.lastCombatDeckIndex;
+  if (last && normalizeDeckIndex(last.index) === index) {
+    const lastDeckType = normalizeDeckType(last.deckType);
+    if (lastDeckType === DECK_TYPE_DAILY || lastDeckType === DECK_TYPE_NORMAL) {
+      candidates.push({ deckType: lastDeckType, index });
+    }
+  }
+  candidates.push({ deckType: DECK_TYPE_DAILY, index });
+  candidates.push({ deckType: DECK_TYPE_NORMAL, index });
+
+  const seen = new Set();
+  for (const candidate of candidates) {
+    const key = `${candidate.deckType}:${candidate.index}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    const deck = getDeckSet(army, candidate.deckType)[candidate.index];
+    if (deckHasUnitUids(deck)) return candidate;
+  }
+  return { deckType: DECK_TYPE_DAILY, index };
+}
+
+function buildPlayerDeckUnit(unit, slotIndex) {
+  const templet = getUnitTemplet(unit.unitId) || {};
+  return {
+    slotIndex,
+    unitUid: String(toBigInt(unit.unitUid || 0)),
+    unitId: Number(unit.unitId || 0),
+    level: Number(unit.level || 1),
+    skinId: Number(unit.skinId || 0),
+    limitBreakLevel: Number(unit.limitBreakLevel || 0),
+    tacticLevel: Number(unit.tacticLevel || 0),
+    tacticGroup: Number(templet.m_TacticGroup || 0),
+    skillLevels: normalizeSkillLevels(unit.skillLevels),
+    equipItemUids: normalizeFixedArray(unit.equipItemUids, 4, 0).map((uid) => String(toBigInt(uid || 0))),
+  };
+}
+
+function grantUnit(user, unitIdOrStrId, options = {}) {
+  if (!user) return null;
+  const unitId = resolveUnitId(unitIdOrStrId);
+  if (!Number.isInteger(unitId) || unitId <= 0) return null;
+
+  const army = ensureArmy(user);
+  const unitUid = allocateUnitUid(user);
+  const unit = createUnitData(user, unitId, unitUid, options);
+  const templet = getUnitTemplet(unitId) || {};
+  const target = String(templet.m_NKM_UNIT_TYPE || "") === "NUT_SHIP" ? army.ships : army.units;
+  if (String(templet.m_NKM_UNIT_STYLE_TYPE || "") === "NUST_TRAINER") return null;
+  target[unit.unitUid.toString()] = unit;
+
+  user.collection = user.collection && typeof user.collection === "object" ? user.collection : {};
+  user.collection.units = Array.isArray(user.collection.units) ? user.collection.units : [];
+  if (!user.collection.units.includes(unitId)) user.collection.units.push(unitId);
+
+  return unit;
+}
+
+function grantOperator(user, unitIdOrStrId, options = {}) {
+  if (!user) return null;
+  const unitId = resolveUnitId(unitIdOrStrId);
+  if (!Number.isInteger(unitId) || unitId <= 0) return null;
+  const army = ensureArmy(user);
+  const uid = allocateUnitUid(user);
+  const operator = {
+    id: unitId,
+    uid: uid.toString(),
+    level: Number(options.level || 1),
+    exp: 0,
+    locked: false,
+    mainSkill: { id: Number(options.mainSkillId || 1001), level: 1, exp: 0 },
+    subSkill: { id: Number(options.subSkillId || 1002), level: 1, exp: 0 },
+    fromContract: options.fromContract !== false,
+    regDate: String(options.regDate || dateTimeBinaryNow()),
+  };
+  army.operators[operator.uid] = operator;
+  return operator;
+}
+
+function grantUnitFromPiece(user, itemId, count = 1, options = {}) {
+  const piece = getPieceTemplet(itemId);
+  if (!piece) return [];
+  const grantCount = Math.max(1, Number(count) || 1);
+  const units = [];
+  for (let index = 0; index < grantCount; index += 1) {
+    const unit = grantUnit(user, Number(piece.m_PieceGetUnitID), options);
+    if (unit) units.push(unit);
+  }
+  return units;
+}
+
+function getPieceRequirement(itemId, alreadyOwned = false) {
+  const piece = getPieceTemplet(itemId);
+  if (!piece) return 0;
+  return Number(alreadyOwned ? piece.m_PieceReq : piece.m_PieceReq_First) || Number(piece.m_PieceReq) || 1;
+}
+
+function createUnitData(user, unitId, unitUid, options = {}) {
+  const templet = getUnitTemplet(unitId) || {};
+  const maxStar = Math.max(0, Number(templet.m_StarGradeMax || 0));
+  const unit = {
+    unitUid: unitUid.toString(),
+    userUid: toBigInt(user.userUid || 0).toString(),
+    unitId,
+    level: Number(options.level || 1),
+    exp: Number(options.exp || 0),
+    skinId: Number(options.skinId || 0),
+    injury: 0,
+    limitBreakLevel: Number(options.limitBreakLevel != null ? options.limitBreakLevel : Math.min(3, Math.max(0, maxStar - 3))),
+    locked: false,
+    summonUnit: false,
+    statExp: [0, 0, 0, 0, 0, 0],
+    gameUnitUids: [],
+    gameUnitUidChanges: [],
+    nearTargetRange: [],
+    skillLevels: normalizeSkillLevels(options.skillLevels),
+    equipItemUids: [0, 0, 0, 0],
+    loyalty: Number(options.loyalty || 10000),
+    isPermanentContract: false,
+    isSeized: false,
+    fromContract: options.fromContract !== false,
+    officeRoomId: 0,
+    regDate: String(options.regDate || dateTimeBinaryNow()),
+    officeGrade: 0,
+    officeGaugeStartTime: "0",
+    dungeonRespawnUnitTempletUid: "0",
+    isFavorite: false,
+    tacticLevel: Number(options.tacticLevel || 0),
+    reactorLevel: Number(options.reactorLevel || 0),
+  };
+  if (options.maxLevelOverride != null) {
+    unit.maxLevelOverride = Number(options.maxLevelOverride) || 0;
+  }
+  if (String(templet.m_NKM_UNIT_TYPE || "") === "NUT_SHIP") {
+    unit.shipCommandModules = normalizeShipCommandModules(options.shipCommandModules || options.shipModules);
+  }
+  return unit;
+}
+
+function setUnitSkin(user, unitUid, skinId) {
+  const army = ensureArmy(user);
+  const unit = army.units[String(toBigInt(unitUid))] || army.ships[String(toBigInt(unitUid))];
+  if (!unit) return null;
+  const numericSkinId = Number(skinId) || 0;
+  if (numericSkinId > 0) {
+    grantSkin(user, numericSkinId);
+    user.collection = user.collection && typeof user.collection === "object" ? user.collection : {};
+    user.collection.skins = Array.isArray(user.collection.skins) ? user.collection.skins : [];
+    if (!user.collection.skins.includes(numericSkinId)) user.collection.skins.push(numericSkinId);
+  }
+  unit.skinId = numericSkinId;
+  return unit;
+}
+
+function ensureDeck(user, deckIndex) {
+  const army = ensureArmy(user);
+  const deckType = normalizeDeckType(deckIndex && deckIndex.deckType);
+  const index = normalizeDeckIndex(deckIndex && deckIndex.index);
+  const deckSet = getDeckSet(army, deckType);
+  while (deckSet.length <= index) deckSet.push(createDefaultDeck(deckType, deckSet.length));
+  deckSet[index] = normalizeDeck(deckSet[index], deckType, index);
+  return deckSet[index];
+}
+
+function swapDeckUnits(user, deckIndex, slotIndexFrom, slotIndexTo) {
+  const deck = ensureDeck(user, deckIndex);
+  const from = normalizeSlot(slotIndexFrom, deck.unitUids.length);
+  const to = normalizeSlot(slotIndexTo, deck.unitUids.length);
+  const previousFromUid = deck.unitUids[from] || 0;
+  const previousToUid = deck.unitUids[to] || 0;
+  deck.unitUids[from] = previousToUid;
+  deck.unitUids[to] = previousFromUid;
+  if (deck.leaderIndex === from) deck.leaderIndex = to;
+  else if (deck.leaderIndex === to) deck.leaderIndex = from;
+  rememberCombatDeck(user, deck);
+  return {
+    deck,
+    slotIndexFrom: from,
+    slotIndexTo: to,
+    slotUnitUidFrom: deck.unitUids[from] || 0,
+    slotUnitUidTo: deck.unitUids[to] || 0,
+    previousFromUid,
+    previousToUid,
+  };
+}
+
+function setDeckLeader(user, deckIndex, leaderSlotIndex) {
+  const deck = ensureDeck(user, deckIndex);
+  const slot = Number(leaderSlotIndex);
+  deck.leaderIndex = Number.isInteger(slot) && slot >= -1 && slot < deck.unitUids.length ? slot : -1;
+  rememberCombatDeck(user, deck);
+  return deck;
+}
+
+function unlockDeck(user, deckType) {
+  const army = ensureArmy(user);
+  const type = normalizeDeckType(deckType);
+  const deckSet = getDeckSet(army, type);
+  deckSet.push(createDefaultDeck(type, deckSet.length));
+  return deckSet.length;
+}
+
+function setDeckUnit(user, deckIndex, slotIndex, unitUid) {
+  const army = ensureArmy(user);
+  let deck = ensureDeck(user, deckIndex);
+  const slot = normalizeSlot(slotIndex, deck.unitUids.length);
+  const normalizedUidBig = toBigInt(unitUid);
+  const normalizedUid = String(normalizedUidBig);
+  const old =
+    normalizedUidBig > 0n
+      ? findDeckUnit(army, normalizedUid, { deckType: deck.deckType })
+      : { deckIndex: { deckType: 0, index: 0 }, slotIndex: -1 };
+  deck = ensureDeck(user, deckIndex);
+  let oldLeaderSlotIndex = -1;
+  let movedLeaderFromSameDeck = false;
+
+  if (normalizedUidBig > 0n && old.slotIndex >= 0) {
+    const sameDeck = old.deckIndex.deckType === deck.deckType && old.deckIndex.index === deck.index;
+    const oldDeck = sameDeck ? deck : ensureDeck(user, old.deckIndex);
+    const sameTargetSlot = sameDeck && old.slotIndex === slot;
+    if (sameTargetSlot) {
+      oldLeaderSlotIndex = deck.leaderIndex;
+    } else {
+      const wasOldLeader = oldDeck.leaderIndex === old.slotIndex;
+      movedLeaderFromSameDeck =
+        wasOldLeader && old.deckIndex.deckType === deck.deckType && old.deckIndex.index === deck.index && old.slotIndex !== slot;
+      oldDeck.unitUids[old.slotIndex] = 0;
+      oldLeaderSlotIndex = wasOldLeader ? firstFilledUnitSlot(oldDeck) : oldDeck.leaderIndex;
+      oldDeck.leaderIndex = oldLeaderSlotIndex;
+    }
+  }
+
+  deck.unitUids[slot] = normalizedUidBig > 0n ? normalizedUid : 0;
+  if (normalizedUidBig <= 0n && deck.leaderIndex === slot) {
+    deck.leaderIndex = firstFilledUnitSlot(deck);
+  } else if (movedLeaderFromSameDeck) {
+    deck.leaderIndex = slot;
+  } else if (deck.leaderIndex < 0 && normalizedUidBig > 0n) {
+    deck.leaderIndex = slot;
+  }
+  if (old.deckIndex.deckType === deck.deckType && old.deckIndex.index === deck.index) oldLeaderSlotIndex = deck.leaderIndex;
+  rememberCombatDeck(user, deck);
+  return { deck, oldDeckIndex: old.deckIndex, oldSlotIndex: old.slotIndex, oldLeaderSlotIndex };
+}
+
+function autoSetDeck(user, deckIndex, unitUids, shipUid = 0, operatorUid = 0) {
+  const deck = ensureDeck(user, deckIndex);
+  const slots = normalizeFixedArray(unitUids || [], deck.unitUids.length, 0);
+  deck.unitUids = slots.map((uid) => (toBigInt(uid) > 0n ? String(toBigInt(uid)) : 0));
+  deck.shipUid = toBigInt(shipUid) > 0n ? String(toBigInt(shipUid)) : 0;
+  deck.operatorUid = toBigInt(operatorUid) > 0n ? String(toBigInt(operatorUid)) : 0;
+  deck.leaderIndex = deck.unitUids.findIndex((uid) => toBigInt(uid) > 0n);
+  rememberCombatDeck(user, deck);
+  return deck;
+}
+
+function setDeckShip(user, deckIndex, shipUid) {
+  const army = ensureArmy(user);
+  const normalizedUid = String(toBigInt(shipUid));
+  let deck = ensureDeck(user, deckIndex);
+  const oldDeckIndex = findDeckShip(army, normalizedUid, { deckType: deck.deckType });
+  if (toBigInt(normalizedUid) > 0n) clearShipFromDecks(army, normalizedUid, { deckType: deck.deckType });
+  deck = ensureDeck(user, deckIndex);
+  deck.shipUid = toBigInt(normalizedUid) > 0n ? normalizedUid : 0;
+  rememberCombatDeck(user, deck);
+  return { deck, oldDeckIndex };
+}
+
+function setDeckOperator(user, deckIndex, operatorUid) {
+  const army = ensureArmy(user);
+  const normalizedUid = String(toBigInt(operatorUid));
+  let deck = ensureDeck(user, deckIndex);
+  const oldDeckIndex = findDeckOperator(army, normalizedUid, { deckType: deck.deckType });
+  if (toBigInt(normalizedUid) > 0n) clearOperatorFromDecks(army, normalizedUid, { deckType: deck.deckType });
+  deck = ensureDeck(user, deckIndex);
+  deck.operatorUid = toBigInt(normalizedUid) > 0n ? normalizedUid : 0;
+  rememberCombatDeck(user, deck);
+  return { deck, oldDeckIndex };
+}
+
+function updateDeckName(user, deckIndex, name) {
+  const deck = ensureDeck(user, deckIndex);
+  deck.name = String(name || "").slice(0, 32);
+  rememberCombatDeck(user, deck);
+  return deck;
+}
+
+function getArmyUnitByUid(user, unitUid) {
+  const army = ensureArmy(user);
+  const key = String(toBigInt(unitUid || 0));
+  return normalizeUnit(army.units[key]) || normalizeUnit(army.ships[key]) || null;
+}
+
+function getArmyOperatorByUid(user, operatorUid) {
+  const army = ensureArmy(user);
+  const key = String(toBigInt(operatorUid || 0));
+  const operator = normalizeOperatorData(army.operators[key]);
+  if (operator) army.operators[operator.uid] = operator;
+  return operator;
+}
+
+function addUnitExp(user, unitUid, amount, options = {}) {
+  const unit = getArmyUnitByUid(user, unitUid);
+  if (!unit) return null;
+  const maxLevel = getUnitMaxLevel(unit, options);
+  const currentTotalExp = getUnitCurrentTotalExp(unit, maxLevel);
+  const next = splitUnitTotalExp(currentTotalExp + Math.max(0, Number(amount || 0)), maxLevel);
+  unit.level = next.level;
+  unit.exp = next.exp;
+  if (options.loyalty != null) unit.loyalty = clampInt(options.loyalty, 0, 10000);
+  unit.lastGrowthAt = new Date().toISOString();
+  persistNormalizedUnit(user, unit);
+  return unit;
+}
+
+function setUnitLevel(user, unitUid, level, options = {}) {
+  const unit = getArmyUnitByUid(user, unitUid);
+  if (!unit) return null;
+  const maxLevel = getUnitMaxLevel(unit, options);
+  unit.level = clampInt(level, 1, maxLevel);
+  unit.exp = 0;
+  unit.lastGrowthAt = new Date().toISOString();
+  persistNormalizedUnit(user, unit);
+  return unit;
+}
+
+function enhanceUnitStats(user, unitUid, consumeUnitUids = []) {
+  const unit = getArmyUnitByUid(user, unitUid);
+  if (!unit) return null;
+  const consumeList = uniqueUidStrings(consumeUnitUids).filter((uid) => uid !== String(toBigInt(unitUid || 0)));
+  const gain = Math.max(1, consumeList.length) * 100;
+  unit.statExp = normalizeFixedArray(unit.statExp, 6, 0).map((value, index) => {
+    const ratio = index < 3 ? 1 : 0.5;
+    return Math.min(999999, Math.max(0, Number(value || 0)) + Math.floor(gain * ratio));
+  });
+  removeArmyUnitUids(user, consumeList);
+  unit.lastGrowthAt = new Date().toISOString();
+  persistNormalizedUnit(user, unit);
+  return unit;
+}
+
+function limitBreakUnit(user, unitUid, options = {}) {
+  const unit = getArmyUnitByUid(user, unitUid);
+  if (!unit) return null;
+  const cap = Math.max(1, Number(options.maxLimitBreakLevel || 6));
+  unit.limitBreakLevel = clampInt(Number(unit.limitBreakLevel || 0) + 1, 0, cap);
+  unit.level = Math.min(Number(unit.level || 1), getUnitMaxLevel(unit));
+  unit.lastGrowthAt = new Date().toISOString();
+  persistNormalizedUnit(user, unit);
+  return unit;
+}
+
+function upgradeUnitSkill(user, unitUid, skillId, options = {}) {
+  const unit = getArmyUnitByUid(user, unitUid);
+  if (!unit) return null;
+  const levels = normalizeSkillLevels(unit.skillLevels);
+  const index = resolveSkillIndex(unit, skillId);
+  const maxLevel = Math.max(1, Number(options.maxSkillLevel || 5));
+  levels[index] = clampInt(Number(levels[index] || 1) + 1, 1, maxLevel);
+  unit.skillLevels = levels;
+  unit.lastGrowthAt = new Date().toISOString();
+  persistNormalizedUnit(user, unit);
+  return { unit, skillLevel: levels[index], skillIndex: index };
+}
+
+function tacticUpdateUnit(user, unitUid, consumeUnitUids = []) {
+  const unit = getArmyUnitByUid(user, unitUid);
+  if (!unit) return null;
+  const consumeList = uniqueUidStrings(consumeUnitUids).filter((uid) => uid !== String(toBigInt(unitUid || 0)));
+  unit.tacticLevel = clampInt(Number(unit.tacticLevel || 0) + Math.max(1, consumeList.length), 0, 6);
+  removeArmyUnitUids(user, consumeList);
+  unit.lastGrowthAt = new Date().toISOString();
+  persistNormalizedUnit(user, unit);
+  return unit;
+}
+
+function reactorLevelUpUnit(user, unitUid) {
+  const unit = getArmyUnitByUid(user, unitUid);
+  if (!unit) return null;
+  unit.reactorLevel = clampInt(Number(unit.reactorLevel || 0) + 1, 0, 5);
+  unit.lastGrowthAt = new Date().toISOString();
+  persistNormalizedUnit(user, unit);
+  return unit;
+}
+
+function permanentlyContractUnit(user, unitUid) {
+  const unit = getArmyUnitByUid(user, unitUid);
+  if (!unit) return null;
+  unit.isPermanentContract = true;
+  unit.loyalty = Math.max(Number(unit.loyalty || 0), 10000);
+  unit.lastGrowthAt = new Date().toISOString();
+  persistNormalizedUnit(user, unit);
+  return unit;
+}
+
+function rearmUnit(user, unitUid, rearmamentId) {
+  const unit = getArmyUnitByUid(user, unitUid);
+  const nextUnitId = resolveUnitId(rearmamentId);
+  if (!unit || !nextUnitId) return unit || null;
+  unit.previousUnitId = Number(unit.unitId || 0);
+  unit.unitId = nextUnitId;
+  unit.rearmedAt = new Date().toISOString();
+  unit.lastGrowthAt = unit.rearmedAt;
+  persistNormalizedUnit(user, unit);
+  return unit;
+}
+
+function setShipLevel(user, shipUid, nextLevel) {
+  return setUnitLevel(user, shipUid, nextLevel, { maxLevel: 110 });
+}
+
+function upgradeShip(user, shipUid, nextShipId) {
+  const ship = getArmyUnitByUid(user, shipUid);
+  const nextUnitId = resolveUnitId(nextShipId);
+  if (!ship || !nextUnitId) return ship || null;
+  ship.previousUnitId = Number(ship.unitId || 0);
+  ship.unitId = nextUnitId;
+  ship.upgradedAt = new Date().toISOString();
+  persistNormalizedUnit(user, ship);
+  return ship;
+}
+
+function limitBreakShip(user, shipUid, consumeShipUid = 0) {
+  const ship = limitBreakUnit(user, shipUid, { maxLimitBreakLevel: 6 });
+  if (toBigInt(consumeShipUid || 0) > 0n) removeArmyUnitUids(user, [consumeShipUid]);
+  return ship;
+}
+
+function setUnitLock(user, unitUid, locked) {
+  const unit = getArmyUnitByUid(user, unitUid);
+  if (!unit) return null;
+  unit.locked = Boolean(locked);
+  persistNormalizedUnit(user, unit);
+  return unit;
+}
+
+function setUnitFavorite(user, unitUid, isFavorite) {
+  const unit = getArmyUnitByUid(user, unitUid);
+  if (!unit) return null;
+  unit.isFavorite = Boolean(isFavorite);
+  persistNormalizedUnit(user, unit);
+  return unit;
+}
+
+function setOperatorLock(user, operatorUid, locked) {
+  const operator = getArmyOperatorByUid(user, operatorUid);
+  if (!operator) return null;
+  operator.locked = Boolean(locked);
+  operator.bLock = operator.locked;
+  return operator;
+}
+
+function levelOperator(user, operatorUid, materialCount = 1) {
+  return addOperatorExp(user, operatorUid, Math.max(1, Number(materialCount || 1)) * 100);
+}
+
+function addOperatorExp(user, operatorUid, amount, options = {}) {
+  const operator = getArmyOperatorByUid(user, operatorUid);
+  if (!operator) return null;
+  const maxLevel = getOperatorGrowthMaxLevel(operator, options);
+  const currentTotalExp = getOperatorCurrentTotalExp(operator, maxLevel);
+  const next = splitOperatorTotalExp(getOperatorGrade(operator), currentTotalExp + Math.max(0, Number(amount || 0)), maxLevel);
+  operator.level = next.level;
+  operator.exp = next.exp;
+  operator.lastGrowthAt = new Date().toISOString();
+  persistNormalizedOperator(user, operator);
+  return operator;
+}
+
+function enhanceOperator(user, targetOperatorUid, sourceOperatorUid = 0, options = {}) {
+  const operator = getArmyOperatorByUid(user, targetOperatorUid);
+  if (!operator) return null;
+  const skill = options.transSkill ? "subSkill" : "mainSkill";
+  operator[skill] = operator[skill] && typeof operator[skill] === "object" ? operator[skill] : { id: skill === "subSkill" ? 1002 : 1001 };
+  operator[skill].level = clampInt(Number(operator[skill].level || 1) + 1, 1, 8);
+  operator[skill].exp = Math.max(0, Number(operator[skill].exp || 0));
+  if (toBigInt(sourceOperatorUid || 0) > 0n) removeOperatorUids(user, [sourceOperatorUid]);
+  operator.lastGrowthAt = new Date().toISOString();
+  return operator;
+}
+
+function removeArmyUnitUids(user, unitUids = []) {
+  const army = ensureArmy(user);
+  const removed = [];
+  for (const uid of uniqueUidStrings(unitUids)) {
+    if (army.units[uid]) {
+      delete army.units[uid];
+      clearUnitFromDecks(army, uid);
+      removed.push(uid);
+    }
+    if (army.ships[uid]) {
+      delete army.ships[uid];
+      clearShipFromDecks(army, uid);
+      removed.push(uid);
+    }
+  }
+  return removed;
+}
+
+function removeOperatorUids(user, operatorUids = []) {
+  const army = ensureArmy(user);
+  const removed = [];
+  for (const uid of uniqueUidStrings(operatorUids)) {
+    if (!army.operators[uid]) continue;
+    delete army.operators[uid];
+    clearOperatorFromDecks(army, uid);
+    removed.push(uid);
+  }
+  return removed;
+}
+
+function normalizeUnit(value) {
+  if (!value || typeof value !== "object") return null;
+  const unitUid = toBigInt(value.unitUid != null ? value.unitUid : value.m_UnitUID || 0);
+  const unitId = Number(value.unitId != null ? value.unitId : value.m_UnitID || 0);
+  if (unitUid <= 0n || !Number.isInteger(unitId) || unitId <= 0) return null;
+  return normalizeUnitExpShape({
+    ...value,
+    unitUid: unitUid.toString(),
+    userUid: toBigInt(value.userUid != null ? value.userUid : value.m_UserUID || 0).toString(),
+    unitId,
+    level: Number(value.level || value.m_UnitLevel || 1),
+    exp: Number(value.exp || value.m_iUnitLevelEXP || 0),
+    statExp: normalizeFixedArray(value.statExp || value.m_listStatEXP, 6, 0),
+    skillLevels: normalizeSkillLevels(value.skillLevels || value.m_aUnitSkillLevel),
+    equipItemUids: normalizeFixedArray(value.equipItemUids || value.m_EquipItemList, 4, 0),
+    shipCommandModules: normalizeShipCommandModules(value.shipCommandModules || value.ShipCommandModule || value.shipModules),
+    maxLevelOverride: Number(value.maxLevelOverride || 0) || 0,
+    regDate: String(value.regDate || value.m_regDate || dateTimeBinaryNow()),
+  });
+}
+
+function persistNormalizedUnit(user, unit) {
+  if (!user || !unit) return null;
+  const army = ensureArmy(user);
+  const normalized = normalizeUnit(unit);
+  if (!normalized) return null;
+  const templet = getUnitTemplet(normalized.unitId) || {};
+  const target = String(templet.m_NKM_UNIT_TYPE || "") === "NUT_SHIP" ? army.ships : army.units;
+  target[normalized.unitUid] = normalized;
+  return normalized;
+}
+
+function getUnitMaxLevel(unit, options = {}) {
+  if (options.maxLevel != null) return Math.max(1, Number(options.maxLevel) || 1);
+  if (unit && Number(unit.maxLevelOverride || 0) > 0) return Math.max(1, Number(unit.maxLevelOverride));
+  const limitBreakLevel = Math.max(0, Number(unit && unit.limitBreakLevel) || 0);
+  const reactorLevel = Math.max(0, Number(unit && unit.reactorLevel) || 0);
+  return Math.min(110, 100 + limitBreakLevel + reactorLevel);
+}
+
+function normalizeUnitExpShape(unit, options = {}) {
+  if (!unit || typeof unit !== "object") return unit;
+  const maxLevel = getUnitMaxLevel(unit, options);
+  unit.level = clampInt(unit.level || 1, 1, maxLevel);
+  unit.exp = Math.max(0, Math.trunc(Number(unit.exp || 0) || 0));
+  if (unit.level >= maxLevel) {
+    unit.exp = 0;
+    return unit;
+  }
+  const required = getUnitRequiredExpForLevel(unit.level);
+  if (required > 0 && unit.exp >= required) {
+    const next = splitUnitTotalExp(unit.exp, maxLevel);
+    unit.level = next.level;
+    unit.exp = next.exp;
+  }
+  return unit;
+}
+
+function getUnitCurrentTotalExp(unit, maxLevel = getUnitMaxLevel(unit)) {
+  normalizeUnitExpShape(unit, { maxLevel });
+  return Math.max(0, getTotalExpForUnitLevel(unit.level) + Number(unit.exp || 0));
+}
+
+function getUnitRequiredExpForLevel(level) {
+  const current = getTotalExpForUnitLevel(level);
+  const next = getTotalExpForUnitLevel(Number(level || 0) + 1);
+  return next > current ? next - current : 0;
+}
+
+function splitUnitTotalExp(totalExp, maxLevel = 110) {
+  const cap = Math.max(1, Number(maxLevel) || 1);
+  const hasTable = getTotalExpForUnitLevel(2) > 0 || getTotalExpForUnitLevel(cap) > 0;
+  if (!hasTable) {
+    const bounded = Math.max(0, Math.trunc(Number(totalExp) || 0));
+    const level = clampInt(1 + Math.floor(bounded / 100), 1, cap);
+    return { level, exp: level >= cap ? 0 : bounded % 100 };
+  }
+
+  const maxTotalExp = getTotalExpForUnitLevel(cap);
+  const bounded = maxTotalExp > 0 ? Math.min(Math.max(0, Number(totalExp) || 0), maxTotalExp) : Math.max(0, Number(totalExp) || 0);
+  const level = getUnitLevelByTotalExp(bounded, cap);
+  if (level >= cap && maxTotalExp > 0 && bounded >= maxTotalExp) return { level: cap, exp: 0 };
+  const base = getTotalExpForUnitLevel(level);
+  const required = getUnitRequiredExpForLevel(level);
+  let exp = Math.max(0, Math.trunc(bounded - base));
+  if (required > 0) exp = Math.min(exp, required - 1);
+  return { level, exp };
+}
+
+function normalizeOperatorData(value) {
+  if (!value || typeof value !== "object") return null;
+  const uid = toBigInt(value.uid != null ? value.uid : value.operatorUid != null ? value.operatorUid : value.m_OperatorUID || 0);
+  const id = Number(value.id != null ? value.id : value.unitId != null ? value.unitId : value.m_UnitID || 0);
+  if (uid <= 0n || !Number.isInteger(id) || id <= 0) return null;
+  const operator = {
+    ...value,
+    id,
+    uid: uid.toString(),
+    level: Number(value.level || 1),
+    exp: Number(value.exp || 0),
+    locked: Boolean(value.locked || value.bLock),
+    mainSkill: value.mainSkill && typeof value.mainSkill === "object" ? value.mainSkill : { id: 1001, level: 1, exp: 0 },
+    subSkill: value.subSkill && typeof value.subSkill === "object" ? value.subSkill : { id: 1002, level: 1, exp: 0 },
+  };
+  return normalizeOperatorExpShape(operator);
+}
+
+function normalizeOperatorExpShape(operator, options = {}) {
+  if (!operator || typeof operator !== "object") return operator;
+  const maxLevel = getOperatorGrowthMaxLevel(operator, options);
+  operator.level = clampInt(operator.level || 1, 1, maxLevel);
+  operator.exp = Math.max(0, Math.trunc(Number(operator.exp || 0) || 0));
+  if (operator.level >= maxLevel) {
+    operator.exp = 0;
+    return operator;
+  }
+  const required = getOperatorRequiredExpForLevel(getOperatorGrade(operator), operator.level);
+  if (required > 0 && operator.exp >= required) {
+    const next = splitOperatorTotalExp(getOperatorGrade(operator), operator.exp, maxLevel);
+    operator.level = next.level;
+    operator.exp = next.exp;
+  }
+  return operator;
+}
+
+function getOperatorGrowthMaxLevel(operator, options = {}) {
+  if (options.maxLevel != null) return Math.max(1, Number(options.maxLevel) || 1);
+  return Math.max(1, Number(getOperatorMaxLevel(getOperatorGrade(operator)) || 100) || 100);
+}
+
+function getOperatorCurrentTotalExp(operator, maxLevel = getOperatorGrowthMaxLevel(operator)) {
+  normalizeOperatorExpShape(operator, { maxLevel });
+  return Math.max(0, getOperatorTotalExpForLevel(getOperatorGrade(operator), operator.level) + Number(operator.exp || 0));
+}
+
+function splitOperatorTotalExp(grade, totalExp, maxLevel = getOperatorMaxLevel(grade)) {
+  const cap = Math.max(1, Number(maxLevel) || 1);
+  const maxTotalExp = getOperatorTotalExpForLevel(grade, cap);
+  const hasTable = getOperatorRequiredExpForLevel(grade, 1) > 0 || maxTotalExp > 0;
+  if (!hasTable) {
+    const bounded = Math.max(0, Math.trunc(Number(totalExp) || 0));
+    const level = clampInt(1 + Math.floor(bounded / 100), 1, cap);
+    return { level, exp: level >= cap ? 0 : bounded % 100 };
+  }
+
+  const bounded = maxTotalExp > 0 ? Math.min(Math.max(0, Number(totalExp) || 0), maxTotalExp) : Math.max(0, Number(totalExp) || 0);
+  const level = getOperatorLevelByTotalExp(grade, bounded, cap);
+  if (level >= cap && maxTotalExp > 0 && bounded >= maxTotalExp) return { level: cap, exp: 0 };
+  const base = getOperatorTotalExpForLevel(grade, level);
+  const required = getOperatorRequiredExpForLevel(grade, level);
+  let exp = Math.max(0, Math.trunc(bounded - base));
+  if (required > 0) exp = Math.min(exp, required - 1);
+  return { level, exp };
+}
+
+function getOperatorGrade(operator) {
+  const templet = getUnitTemplet(Number(operator && (operator.id || operator.unitId) || 0)) || {};
+  return String(templet.m_NKM_UNIT_GRADE || "NUG_SSR");
+}
+
+function persistNormalizedOperator(user, operator) {
+  if (!user || !operator) return null;
+  const army = ensureArmy(user);
+  const normalized = normalizeOperatorData(operator);
+  if (!normalized) return null;
+  army.operators[normalized.uid] = normalized;
+  return normalized;
+}
+
+function resolveSkillIndex(unit, skillId) {
+  const numeric = Number(skillId || 0);
+  if (Number.isInteger(numeric) && numeric >= 1 && numeric <= 5) return numeric - 1;
+  const levels = normalizeSkillLevels(unit && unit.skillLevels);
+  const firstOpen = levels.findIndex((level) => Number(level || 1) < 5);
+  if (firstOpen >= 0) return firstOpen;
+  return 0;
+}
+
+function uniqueUidStrings(values) {
+  return Array.from(
+    new Set(
+      (Array.isArray(values) ? values : [])
+        .map((value) => String(toBigInt(value || 0)))
+        .filter((value) => toBigInt(value) > 0n)
+    )
+  );
+}
+
+function clampInt(value, min, max) {
+  const numeric = Number(value);
+  if (!Number.isFinite(numeric)) return min;
+  return Math.max(min, Math.min(max, Math.trunc(numeric)));
+}
+
+function isSerializableArmyUnit(unit) {
+  const templet = getUnitTemplet(unit.unitId);
+  if (!templet) return false;
+  const type = String(templet.m_NKM_UNIT_TYPE || "");
+  const style = String(templet.m_NKM_UNIT_STYLE_TYPE || "");
+  return type !== "NUT_SHIP" && type !== "NUT_OPERATOR" && type !== "NUT_SYSTEM" && style !== "NUST_TRAINER";
+}
+
+function normalizeUnitMap(map) {
+  for (const [key, value] of Object.entries(map)) {
+    const unit = normalizeUnit(value);
+    if (!unit || toBigInt(unit.unitUid) <= 0n || unit.unitId <= 0) {
+      delete map[key];
+      continue;
+    }
+    if (String(key) !== String(unit.unitUid)) delete map[key];
+    map[String(unit.unitUid)] = unit;
+  }
+}
+
+function normalizeOperatorMap(map) {
+  for (const [key, value] of Object.entries(map)) {
+    const operator = normalizeOperatorData(value);
+    if (!operator || toBigInt(operator.uid) <= 0n || operator.id <= 0) {
+      delete map[key];
+      continue;
+    }
+    if (String(key) !== String(operator.uid)) delete map[key];
+    map[String(operator.uid)] = operator;
+  }
+}
+
+function normalizeDeckSets(army) {
+  for (let deckType = 0; deckType <= 10; deckType += 1) getDeckSet(army, deckType);
+}
+
+function getDeckSet(army, deckType) {
+  const type = normalizeDeckType(deckType);
+  const key = String(type);
+  const defaults = defaultDeckCount(type);
+  army.deckSets[key] = Array.isArray(army.deckSets[key]) ? army.deckSets[key] : [];
+  while (army.deckSets[key].length < defaults) army.deckSets[key].push(createDefaultDeck(type, army.deckSets[key].length));
+  army.deckSets[key] = army.deckSets[key].map((deck, index) => normalizeDeck(deck, type, index));
+  return army.deckSets[key];
+}
+
+function createDefaultDeck(deckType, index) {
+  const slotCount = deckType === 4 ? 16 : 8;
+  return {
+    deckType,
+    index,
+    name: "",
+    shipUid: 0,
+    operatorUid: 0,
+    unitUids: Array.from({ length: slotCount }, () => 0),
+    leaderIndex: -1,
+    state: 0,
+  };
+}
+
+function normalizeDeck(deck, deckType, index = 0) {
+  const slotCount = deckType === 4 ? 16 : 8;
+  const data = deck && typeof deck === "object" ? deck : {};
+  return {
+    deckType,
+    index: Number(data.index != null ? data.index : index) || 0,
+    name: String(data.name != null ? data.name : data.deckName || ""),
+    shipUid: toBigInt(data.shipUid != null ? data.shipUid : data.m_ShipUID || 0) > 0n
+      ? String(toBigInt(data.shipUid != null ? data.shipUid : data.m_ShipUID || 0))
+      : 0,
+    operatorUid: toBigInt(data.operatorUid != null ? data.operatorUid : data.m_OperatorUID || 0) > 0n
+      ? String(toBigInt(data.operatorUid != null ? data.operatorUid : data.m_OperatorUID || 0))
+      : 0,
+    unitUids: normalizeFixedArray(data.unitUids || data.m_listDeckUnitUID, slotCount, 0).map((uid) =>
+      toBigInt(uid) > 0n ? String(toBigInt(uid)) : 0
+    ),
+    leaderIndex: Number(data.leaderIndex != null ? data.leaderIndex : data.m_LeaderIndex != null ? data.m_LeaderIndex : -1),
+    state: Number(data.state != null ? data.state : data.m_DeckState || 0) || 0,
+  };
+}
+
+function firstFilledUnitSlot(deck) {
+  const units = Array.isArray(deck && deck.unitUids) ? deck.unitUids : [];
+  const index = units.findIndex((uid) => toBigInt(uid) > 0n);
+  return index >= 0 ? index : -1;
+}
+
+function deckHasUnitUids(deck) {
+  return Array.isArray(deck && deck.unitUids) && deck.unitUids.some((uid) => toBigInt(uid) > 0n);
+}
+
+function rememberCombatDeck(user, deckIndex) {
+  if (!user || !deckIndex) return;
+  const deckType = normalizeDeckType(deckIndex.deckType);
+  if (![DECK_TYPE_NORMAL, DECK_TYPE_DAILY, DECK_TYPE_DIVE, DECK_TYPE_EXPLORE].includes(deckType)) return;
+  const army = ensureArmy(user);
+  army.lastCombatDeckIndex = {
+    deckType,
+    index: normalizeDeckIndex(deckIndex.index),
+    updatedAt: new Date().toISOString(),
+  };
+}
+
+function findDeckUnit(army, unitUid, options = {}) {
+  const normalizedUid = String(toBigInt(unitUid));
+  for (const [type, decks] of deckSetEntries(army, options.deckType)) {
+    for (let index = 0; index < decks.length; index += 1) {
+      const slotIndex = (decks[index].unitUids || []).findIndex((uid) => String(toBigInt(uid)) === normalizedUid);
+      if (slotIndex >= 0) return { deckIndex: { deckType: Number(type), index }, slotIndex };
+    }
+  }
+  return { deckIndex: { deckType: 0, index: 0 }, slotIndex: -1 };
+}
+
+function findDeckShip(army, shipUid, options = {}) {
+  const normalizedUid = String(toBigInt(shipUid));
+  for (const [type, decks] of deckSetEntries(army, options.deckType)) {
+    for (let index = 0; index < decks.length; index += 1) {
+      if (String(toBigInt(decks[index].shipUid || 0)) === normalizedUid) return { deckType: Number(type), index };
+    }
+  }
+  return { deckType: 0, index: 0 };
+}
+
+function findDeckOperator(army, operatorUid, options = {}) {
+  const normalizedUid = String(toBigInt(operatorUid));
+  for (const [type, decks] of deckSetEntries(army, options.deckType)) {
+    for (let index = 0; index < decks.length; index += 1) {
+      if (String(toBigInt(decks[index].operatorUid || 0)) === normalizedUid) return { deckType: Number(type), index };
+    }
+  }
+  return { deckType: 0, index: 0 };
+}
+
+function clearUnitFromDecks(army, unitUid) {
+  const normalizedUid = String(toBigInt(unitUid));
+  for (const decks of Object.values(army.deckSets || {})) {
+    for (const deck of decks) {
+      deck.unitUids = deck.unitUids.map((uid) => (String(toBigInt(uid)) === normalizedUid ? 0 : uid));
+    }
+  }
+}
+
+function clearShipFromDecks(army, shipUid, options = {}) {
+  const normalizedUid = String(toBigInt(shipUid));
+  for (const [, decks] of deckSetEntries(army, options.deckType)) {
+    for (const deck of decks) {
+      if (String(toBigInt(deck.shipUid || 0)) === normalizedUid) deck.shipUid = 0;
+    }
+  }
+}
+
+function clearOperatorFromDecks(army, operatorUid, options = {}) {
+  const normalizedUid = String(toBigInt(operatorUid));
+  for (const [, decks] of deckSetEntries(army, options.deckType)) {
+    for (const deck of decks) {
+      if (String(toBigInt(deck.operatorUid || 0)) === normalizedUid) deck.operatorUid = 0;
+    }
+  }
+}
+
+function deckSetEntries(army, deckType = null) {
+  if (deckType == null) return Object.entries(army.deckSets || {});
+  const type = normalizeDeckType(deckType);
+  return [[String(type), getDeckSet(army, type)]];
+}
+
+function normalizeDeckType(deckType) {
+  const type = Number(deckType);
+  return Number.isInteger(type) && type >= 0 && type <= 10 ? type : 1;
+}
+
+function normalizeDeckIndex(index) {
+  const numeric = Number(index);
+  return Number.isInteger(numeric) && numeric >= 0 ? numeric : 0;
+}
+
+function normalizeSlot(slot, length) {
+  const numeric = Number(slot);
+  return Number.isInteger(numeric) && numeric >= 0 && numeric < length ? numeric : 0;
+}
+
+function defaultDeckCount(deckType) {
+  if (deckType === 1 || deckType === 2 || deckType === 3 || deckType === 5 || deckType === 6 || deckType === 8) return 1;
+  if (deckType === 4) return 3;
+  return 0;
+}
+
+function allocateUnitUid(user) {
+  ensureArmy(user);
+  let next = toBigInt(user.nextUnitUid, DEFAULT_NEXT_UNIT_UID);
+  while (user.army.units[next.toString()] || user.army.ships[next.toString()] || user.army.operators[next.toString()]) next += 1n;
+  user.nextUnitUid = String(next + 1n);
+  return next;
+}
+
+function normalizeSkillLevels(values) {
+  return normalizeFixedArray(values, 5, 1).map((value) => Math.max(1, Number(value) || 1));
+}
+
+function normalizeFixedArray(values, length, fallback) {
+  const result = Array.isArray(values) ? values.slice(0, length) : [];
+  while (result.length < length) result.push(fallback);
+  return result;
+}
+
+function normalizeShipCommandModules(values) {
+  const modules = Array.isArray(values) && values.length ? values.slice(0, 2) : [null, null];
+  while (modules.length < 2) modules.push(null);
+  return modules.map((module, moduleIndex) => {
+    const source = module && typeof module === "object" ? module : {};
+    const slots = Array.isArray(source.slots) && source.slots.length ? source.slots.slice(0, 2) : [null, null];
+    while (slots.length < 2) slots.push(null);
+    return {
+      slots: slots.map((slot, slotIndex) => normalizeShipCommandSlot(slot, moduleIndex, slotIndex)),
+    };
+  });
+}
+
+function normalizeShipCommandSlot(value, moduleIndex = 0, slotIndex = 0) {
+  const slot = value && typeof value === "object" ? value : {};
+  const defaultStats = ["NST_HP", "NST_ATK", "NST_DEF", "NST_SKILL_COOL_TIME_REDUCE_RATE"];
+  return {
+    targetStyleType: Array.isArray(slot.targetStyleType) ? slot.targetStyleType : Array.isArray(slot.styleTypes) ? slot.styleTypes : [],
+    targetRoleType: Array.isArray(slot.targetRoleType) ? slot.targetRoleType : Array.isArray(slot.roleTypes) ? slot.roleTypes : [],
+    statType: slot.statType != null ? slot.statType : defaultStats[(moduleIndex * 2 + slotIndex) % defaultStats.length],
+    statValue: Number(slot.statValue != null ? slot.statValue : slot.value != null ? slot.value : 5 + moduleIndex + slotIndex) || 0,
+    isLock: Boolean(slot.isLock || slot.locked),
+  };
+}
+
+module.exports = {
+  ensureArmy,
+  getArmyUnits,
+  getArmyShips,
+  getArmyOperators,
+  getArmyDeckSets,
+  ensureDefaultLineup,
+  buildPlayerDeckForGameLoad,
+  grantUnit,
+  grantOperator,
+  grantUnitFromPiece,
+  getPieceRequirement,
+  createUnitData,
+  setUnitSkin,
+  getArmyUnitByUid,
+  getArmyOperatorByUid,
+  addUnitExp,
+  setUnitLevel,
+  enhanceUnitStats,
+  limitBreakUnit,
+  upgradeUnitSkill,
+  tacticUpdateUnit,
+  reactorLevelUpUnit,
+  permanentlyContractUnit,
+  rearmUnit,
+  setShipLevel,
+  upgradeShip,
+  limitBreakShip,
+  setUnitLock,
+  setUnitFavorite,
+  setOperatorLock,
+  levelOperator,
+  addOperatorExp,
+  enhanceOperator,
+  removeArmyUnitUids,
+  removeOperatorUids,
+  ensureDeck,
+  swapDeckUnits,
+  setDeckLeader,
+  unlockDeck,
+  setDeckUnit,
+  autoSetDeck,
+  setDeckShip,
+  setDeckOperator,
+  updateDeckName,
+  normalizeShipCommandModules,
+};

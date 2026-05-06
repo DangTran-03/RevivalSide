@@ -1,0 +1,32 @@
+module.exports = {
+  packetId: 823,
+  name: "GAME_GIVEUP_REQ",
+  handle(ctx, socket, packet) {
+    ctx.sendGameResponse(
+      socket,
+      packet,
+      ctx.constants.GAME_GIVEUP_ACK,
+      ctx.writeSignedVarInt(0),
+      "game-giveup"
+    );
+
+    const replay = socket.session && socket.session.gameReplay;
+    if (!replay || !replay.dynamicGame) return true;
+    const battleState = replay.battleState || replay.battleSim || {};
+    battleState.finished = true;
+    battleState.win = false;
+    battleState.Win = false;
+    battleState.gameState = { ...(battleState.gameState || {}), state: 4, winTeam: 3 };
+    const payload = ctx.buildDynamicGameEndNotPayload(replay, {
+      battleState,
+      giveup: true,
+      win: false,
+      user: socket.session && socket.session.user,
+    });
+    if (payload) {
+      ctx.sendServerGamePacket(socket, ctx.constants.GAME_END_NOT, payload, "game-giveup-end");
+    }
+    if (typeof ctx.stopGameSyncTimers === "function") ctx.stopGameSyncTimers(socket);
+    return true;
+  },
+};

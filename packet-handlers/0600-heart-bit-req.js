@@ -21,6 +21,10 @@ module.exports = {
       if (ctx.config.DYNAMIC_BATTLE_MANAGER && replay.dynamicGame) {
         replay.syntheticGameTime = Math.max(4, Number(replay.syntheticGameTime || 4) + 0.5);
         ctx.sendServerGamePacket(socket, ctx.constants.HEART_BIT_ACK, ctx.writeSignedVarLong(time), "heart-bit");
+        if (replay.pendingGameStartBootstrap) {
+          ctx.sendPendingGameStartSync(socket, "heart-bit-fallback");
+          return true;
+        }
         if (replay.dynamicBattleResultSent) {
           return true;
         }
@@ -63,9 +67,22 @@ module.exports = {
       }
       return true;
     }
-    ctx.sendResponse(socket, packet.sequence, ctx.constants.HEART_BIT_ACK, () =>
-      ctx.buildEncryptedPacket(packet.sequence, ctx.constants.HEART_BIT_ACK, ctx.writeSignedVarLong(time))
-    );
+    if (ctx.config.DYNAMIC_BATTLE_MANAGER && replay.dynamicGame) {
+      ctx.sendServerGamePacket(socket, ctx.constants.HEART_BIT_ACK, ctx.writeSignedVarLong(time), "heart-bit");
+      if (!replay.loadCompleteReceived) {
+        console.log("[capture-game] heartbeat before GAME_LOAD_COMPLETE_REQ; deferring combat sync until load complete");
+        return true;
+      }
+      if (replay.pendingGameStartBootstrap) {
+        ctx.sendPendingGameStartSync(socket, "heart-bit-fallback");
+        return true;
+      }
+      if (!replay.dynamicBattleResultSent && !replay.dynamicBattleTimer) {
+        ctx.startDynamicBattleManager(socket, "heart-bit");
+      }
+      return true;
+    }
+    ctx.sendGameResponse(socket, packet, ctx.constants.HEART_BIT_ACK, ctx.writeSignedVarLong(time), "heart-bit");
     return true;
   },
 };

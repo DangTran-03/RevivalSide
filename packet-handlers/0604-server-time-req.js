@@ -10,15 +10,16 @@ module.exports = {
       return true;
     }
     if (ctx.config.REPLAY_CAPTURED_GAME_FLOW && ctx.capturedGameFlow) {
+      ctx.skipStaleTutorialGameLoadReplay(socket, "server-time");
       ctx.sendCapturedGameThroughPacketId(socket, ctx.constants.SERVER_TIME_ACK, "server-time");
       return true;
     }
-    ctx.sendResponse(socket, packet.sequence, ctx.constants.SERVER_TIME_ACK, () =>
-      ctx.buildEncryptedPacket(
-        packet.sequence,
-        ctx.constants.SERVER_TIME_ACK,
-        ctx.writeSignedVarLong(BigInt(Date.now()) * 10000n + 621355968000000000n)
-      )
+    ctx.sendGameResponse(
+      socket,
+      packet,
+      ctx.constants.SERVER_TIME_ACK,
+      ctx.writeSignedVarLong(BigInt(Date.now()) * 10000n + 621355968000000000n),
+      "server-time"
     );
     return true;
   },

@@ -11,7 +11,6 @@ module.exports = {
         )} gameTime=${req.gameTime.toFixed(2)}`
       );
     }
-    if (!ctx.config.REPLAY_CAPTURED_GAME_FLOW || !ctx.capturedGameFlow) return false;
     if (ctx.config.DYNAMIC_BATTLE_MANAGER && ctx.handleDynamicBattleRespawn(socket, req)) {
       return true;
     }
@@ -19,6 +18,7 @@ module.exports = {
       console.log("[combat-host] GAME_RESPAWN_REQ not handled by combat host; captured respawn replay disabled");
       return true;
     }
+    if (!ctx.config.REPLAY_CAPTURED_GAME_FLOW || !ctx.capturedGameFlow) return false;
     if (!ctx.sendCapturedGameThroughPacketId(socket, ctx.constants.GAME_RESPAWN_ACK, "game-respawn")) {
       console.log(
         `[official-missing] no sniffed GAME_RESPAWN_ACK for nextServerIndex=${socket.session.gameReplay.nextServerIndex}; no response sent`

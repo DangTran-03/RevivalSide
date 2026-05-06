@@ -66,6 +66,9 @@ function buildGameSync(data = {}, options = {}) {
           respawnCostAssistB1: data.respawnCostAssistB1 || 0,
           usedRespawnCostA1: data.usedRespawnCostA1 || 0,
           usedRespawnCostB1: data.usedRespawnCostB1 || 0,
+          gameSpeedType: resolveControlValue(data, "gameSpeedType", 0),
+          autoSkillTypeA: resolveControlValue(data, "autoSkillType", 1),
+          autoSkillTypeB: resolveControlValue(data, "autoSkillTypeB", 0),
           dieUnits: data.dieUnits || [],
           units: data.units || [],
           decks: data.decks || [],
@@ -135,9 +138,9 @@ function buildGameSyncDataBase(entry) {
     writeHalfFloat(entry.respawnCostAssistB1 || 0),
     writeHalfFloat(entry.usedRespawnCostA1 || 0),
     writeHalfFloat(entry.usedRespawnCostB1 || 0),
-    writeSignedVarInt(0), // NKM_GAME_SPEED_TYPE.NGST_1
-    writeSignedVarInt(0), // NKM_GAME_AUTO_SKILL_TYPE.NGST_AUTO
-    writeSignedVarInt(0),
+    writeSignedVarInt(clampControlEnum(entry.gameSpeedType, 0, 5, 0)),
+    writeSignedVarInt(clampControlEnum(entry.autoSkillTypeA, 0, 1, 1)),
+    writeSignedVarInt(clampControlEnum(entry.autoSkillTypeB, 0, 1, 0)),
     writeObjectList((entry.dieUnits || []).map((die) => writeNullableObject(buildGameSyncDataDieUnit(die)))),
     writeObjectList((entry.units || []).map((unit) => writeNullableObject(buildGameSyncDataUnit(unit)))),
     writeObjectList([]), // NKMGameSyncDataSimple_Unit
@@ -150,6 +153,21 @@ function buildGameSyncDataBase(entry) {
     writeObjectList([]), // NKMGameSyncData_KillLog
     entry.gamePoint == null ? writeNullObject() : writeNullableObject(writeSignedVarInt(entry.gamePoint)),
   ]);
+}
+
+function resolveControlValue(data, key, fallback) {
+  if (data && data[key] != null) return data[key];
+  const dynamicGame = data && data.dynamicGame && typeof data.dynamicGame === "object" ? data.dynamicGame : null;
+  if (dynamicGame && dynamicGame[key] != null) return dynamicGame[key];
+  const battleState = data && data.battleState && typeof data.battleState === "object" ? data.battleState : null;
+  if (battleState && battleState[key] != null) return battleState[key];
+  return fallback;
+}
+
+function clampControlEnum(value, min, max, fallback) {
+  const numeric = Number(value);
+  if (!Number.isFinite(numeric)) return fallback;
+  return Math.max(min, Math.min(max, numeric | 0));
 }
 
 function buildGameSyncDataUnit(unit) {

@@ -35,6 +35,8 @@ internal static class PacketBuilder
             RemainGameTime = state.RemainGameTime,
             RespawnCostA1 = state.RespawnCostA1,
             RespawnCostB1 = state.RespawnCostB1,
+            GameSpeedType = state.GameSpeedType,
+            AutoSkillTypeA = state.AutoSkillType,
             Units = state.Units,
             DieUnits = state.PendingDieUnitUIDs.Count > 0 ? [state.PendingDieUnitUIDs.ToList()] : [],
             Decks = state.PendingDeckSyncs.ToList(),
@@ -86,8 +88,8 @@ internal static class PacketBuilder
         writer.WriteHalfFloat(entry.RespawnCostAssistB1);
         writer.WriteHalfFloat(entry.UsedRespawnCostA1);
         writer.WriteHalfFloat(entry.UsedRespawnCostB1);
-        writer.WriteSignedVarInt(0);
-        writer.WriteSignedVarInt(0);
+        writer.WriteSignedVarInt(ClampControlEnum(entry.GameSpeedType, 0, 5, 0));
+        writer.WriteSignedVarInt(ClampControlEnum(entry.AutoSkillTypeA, 0, 1, 1));
         writer.WriteSignedVarInt(0);
 
         writer.WriteObjectList(entry.DieUnits, (itemWriter, dieUnits) =>
@@ -211,6 +213,12 @@ internal static class PacketBuilder
     {
         return long.TryParse(value, out var parsed) ? parsed : fallback;
     }
+
+    private static int ClampControlEnum(int? value, int min, int max, int fallback)
+    {
+        if (!value.HasValue) return fallback;
+        return Math.Max(min, Math.Min(max, value.Value));
+    }
 }
 
 internal sealed class GameSyncBaseEntry
@@ -224,6 +232,8 @@ internal sealed class GameSyncBaseEntry
     public double RespawnCostAssistB1 { get; set; }
     public double UsedRespawnCostA1 { get; set; }
     public double UsedRespawnCostB1 { get; set; }
+    public int? GameSpeedType { get; set; }
+    public int? AutoSkillTypeA { get; set; }
     public List<List<int>> DieUnits { get; set; } = [];
     public List<UnitState> Units { get; set; } = [];
     public List<DeckSync> Decks { get; set; } = [];

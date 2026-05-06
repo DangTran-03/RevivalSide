@@ -170,6 +170,7 @@ function cloneStage(stage) {
   return {
     ...DEFAULT_TUTORIAL_RUNTIME,
     ...stage,
+    tutorial: true,
     gameState: { ...(stage.gameState || DEFAULT_TUTORIAL_RUNTIME.gameState) },
     teamA: {
       units: (stage.teamA && stage.teamA.units ? stage.teamA.units : []).map((unit) => ({ ...unit })),

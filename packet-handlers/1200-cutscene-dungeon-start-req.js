@@ -12,8 +12,12 @@ module.exports = {
       );
       return true;
     }
-    ctx.sendResponse(socket, packet.sequence, ctx.constants.CUTSCENE_DUNGEON_START_ACK, () =>
-      ctx.buildEncryptedPacket(packet.sequence, ctx.constants.CUTSCENE_DUNGEON_START_ACK, ctx.buildCutsceneDungeonStartAckPayload(dungeonId))
+    ctx.sendGameResponse(
+      socket,
+      packet,
+      ctx.constants.CUTSCENE_DUNGEON_START_ACK,
+      ctx.buildCutsceneDungeonStartAckPayload(dungeonId),
+      `cutscene-start dungeonID=${dungeonId}`
     );
     return true;
   },
