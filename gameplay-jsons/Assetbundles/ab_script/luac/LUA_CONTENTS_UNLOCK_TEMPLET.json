@@ -1,0 +1,1050 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script\\luac\\LUA_CONTENTS_UNLOCK_TEMPLET.lua",
+  "rootName": "CONTENTS_UNLOCK_TEMPLET",
+  "recordCount": 241,
+  "records": [
+    {
+      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
+      "m_UnlockReqValue": 1004,
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
+      "m_UnlockReqValue": 1004,
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
+      "m_UnlockReqValue": 1007,
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
+      "m_UnlockReqValue": 1007,
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
+      "m_UnlockReqValue": 1007,
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
+      "m_UnlockReqValue": 1007,
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
+      "m_UnlockReqValue": 1007,
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
+      "m_UnlockReqValue": 1007,
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
+      "m_UnlockReqValue": 1007,
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
+      "m_UnlockReqValue": 1007,
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
+      "m_UnlockReqValue": 1007,
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
+      "m_UnlockReqValue": 1001231,
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
+      "m_UnlockReqValue": 1007,
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
+      "m_UnlockReqValue": 1001211,
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
+      "m_UnlockReqValue": 1007,
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
+      "m_UnlockReqValue": 1001241,
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
+      "m_UnlockReqValue": 1001241,
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
+      "m_UnlockReqValue": 1001421,
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
+      "m_UnlockReqValue": 1001241,
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
+      "m_UnlockReqValue": 10104,
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
+      "m_UnlockReqValue": 10104,
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
+      "m_UnlockReqValue": 1001421,
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
+      "m_UnlockReqValue": 1001421,
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
+      "m_UnlockReqValue": 1001421,
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
+      "m_UnlockReqValue": 1001421,
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
+      "m_UnlockReqValue": 1001421,
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
+      "m_UnlockReqValue": 1001421,
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
+      "m_UnlockReqValue": 1001421,
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
+      "m_UnlockReqValue": 1001231,
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
+      "m_UnlockReqValue": 10105,
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
+      "m_UnlockReqValue": 10105,
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
+      "m_UnlockReqValue": 10105,
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
+      "m_UnlockReqValue": 10105,
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
+      "m_UnlockReqValue": 10105,
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
+      "m_UnlockReqValue": 1001421,
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
+      "m_UnlockReqValue": 1001421,
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
+      "m_UnlockReqValue": 1002141,
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
+      "m_UnlockReqValue": 10105,
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
+      "m_UnlockReqValue": 10105,
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
+      "m_UnlockReqValue": 10105,
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
+      "m_UnlockReqValue": 10105,
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
+      "m_UnlockReqValue": 1002121,
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
+      "m_UnlockReqValue": 10105,
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
+      "m_UnlockReqValue": 1002141,
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
+      "m_UnlockReqValue": 1002242,
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
+      "m_UnlockReqValue": 10204,
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
+      "m_UnlockReqValue": 10202,
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
+      "m_UnlockReqValue": 1001241,
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
+      "m_UnlockReqValue": 10202,
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
+      "m_UnlockReqValue": 10514,
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
+      "m_UnlockReqValue": 10514,
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
+      "m_UnlockReqValue": 10514,
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
+      "m_UnlockReqValue": 10514,
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 11511
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 11711
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 11811
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 11911
+    },
+    {
+      "m_UnlockReqType": "SURT_PLAYER_LEVEL",
+      "m_UnlockReqValue": 15,
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_PLAYER_LEVEL",
+      "m_UnlockReqValue": 15,
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 11211
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 11221
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 11231
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 11241
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 12211
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 11311
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 11321
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 11331
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 11341
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 12312
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 11411
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 11421
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 11431
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 11441
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 12412
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 11511
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 11521
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 11531
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 11541
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 12512
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 11611
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 11621
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 11631
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 11641
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 12611
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 11711
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 11811
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 3123711
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 3123811
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 3124011
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 3123911
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 6220511
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 6220611
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 6120845
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 6120848
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 6120851
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 6120939
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 6120940
+    },
+    {
+      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
+      "m_UnlockReqValue": 10514,
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 6221011
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 6221021
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 6221111
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 6221121
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 6221131
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 6221211
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 6221221
+    },
+    {
+      "m_UnlockReqType": "SURT_UNIT_COLLECTION_RARITY_COUNT",
+      "m_UnlockReqValue": 2,
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_PVP_RANK_SCORE_RECORD",
+      "m_UnlockReqValue": 1000,
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
+      "m_UnlockReqValue": 10105,
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_CLEAR_WARFARE",
+      "m_UnlockReqValue": 101201,
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_ALWAYS_UNLOCKED",
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
+      "m_UnlockReqValue": 10409,
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
+      "m_UnlockReqValue": 10304,
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
+      "m_UnlockReqValue": 10514,
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
+      "m_UnlockReqValue": 4026,
+      "m_ContentsValue": 2504022
+    },
+    {
+      "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
+      "m_UnlockReqValue": 1002242,
+      "m_ContentsValue": 2504061
+    },
+    {
+      "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
+      "m_UnlockReqValue": 102104,
+      "m_ContentsValue": 2504111
+    },
+    {
+      "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
+      "m_UnlockReqValue": 4211,
+      "m_ContentsValue": 2504212
+    },
+    {
+      "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
+      "m_UnlockReqValue": 10304,
+      "m_ContentsValue": 2504251
+    },
+    {
+      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
+      "m_UnlockReqValue": 4251,
+      "m_ContentsValue": 2504252
+    },
+    {
+      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
+      "m_UnlockReqValue": 10409,
+      "m_ContentsValue": 2504256
+    },
+    {
+      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
+      "m_UnlockReqValue": 4256,
+      "m_ContentsValue": 2504257
+    },
+    {
+      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
+      "m_UnlockReqValue": 10514,
+      "m_ContentsValue": 2504261
+    },
+    {
+      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
+      "m_UnlockReqValue": 4261,
+      "m_ContentsValue": 2504262
+    },
+    {
+      "m_UnlockReqType": "SURT_DIVE_HISTORY_CLEARED",
+      "m_UnlockReqValue": 1500,
+      "m_ContentsValue": 2504263
+    },
+    {
+      "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
+      "m_ContentsValue": 0
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 6221311
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 6221321
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 6121411
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 6221511
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 6221521
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 6220911
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 6221711
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 6221721
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 6221731
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 6121811
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 6222011
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 6222021
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 6222031
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 6122111
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 6222311
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 6222321
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 6122411
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 6222511
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 6222512
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 6222513
+    },
+    {
+      "m_UnlockReqType": "SURT_MISSION_TAB_UNLOCKED",
+      "m_UnlockReqValue": 920,
+      "m_ContentsValue": 920
+    },
+    {
+      "m_UnlockReqType": "SURT_MISSION_TAB_UNLOCKED",
+      "m_UnlockReqValue": 930,
+      "m_ContentsValue": 930
+    },
+    {
+      "m_UnlockReqType": "SURT_MISSION_TAB_UNLOCKED",
+      "m_UnlockReqValue": 940,
+      "m_ContentsValue": 940
+    },
+    {
+      "m_UnlockReqType": "SURT_MISSION_TAB_UNLOCKED",
+      "m_UnlockReqValue": 950,
+      "m_ContentsValue": 950
+    },
+    {
+      "m_UnlockReqType": "SURT_MISSION_TAB_UNLOCKED",
+      "m_UnlockReqValue": 960,
+      "m_ContentsValue": 960
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 6222611
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 6222621
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 6222631
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 6222641
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 6122711
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 6222811
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 6222821
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 6122911
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 3124111
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 3124211
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 31100111
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 31100211
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 31100311
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 31100411
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 31100511
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 31100611
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 31100811
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 31100911
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 31100711
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 31101011
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 31101111
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 31101211
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 31101311
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 31101411
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 31101511
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 31101611
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 31101711
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 31101811
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 31101911
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 31102011
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 31102111
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 31300111
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 31300211
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 31300311
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 31300411
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 31300511
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 31300611
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 31300711
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 31300811
+    },
+    {
+      "m_UnlockReqType": "SURT_UNLOCK_STAGE",
+      "m_ContentsValue": 31300911
+    }
+  ]
+}

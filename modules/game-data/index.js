@@ -8,6 +8,7 @@ const TABLE_ROOTS = [
   path.join(ROOT_DIR, "gameplay-jsons", "Assetbundles"),
   path.join(ROOT_DIR, "gameplay-jsons", "StreamingAssets"),
 ];
+const ENABLE_EXTRACTED_MISSION_TABLES = process.env.CS_ENABLE_EXTRACTED_MISSION_TABLES === "1";
 
 let cachedData = null;
 
@@ -187,13 +188,19 @@ function loadGameData() {
   const missionsByCounterGroupId = new Map();
   const missionTabs = [];
   const missionTabById = new Map();
-  for (const record of readRecords("ab_script", "LUA_MISSION_TAB_TEMPLET.json")) {
+  const missionTabRecords = ENABLE_EXTRACTED_MISSION_TABLES
+    ? readRecords("ab_script", "LUA_MISSION_TAB_TEMPLET.json")
+    : [];
+  const missionRecords = ENABLE_EXTRACTED_MISSION_TABLES
+    ? readRecords("ab_script", "LUA_MISSION_TEMPLET.json")
+    : [];
+  for (const record of missionTabRecords) {
     const tabId = Number(record && record.m_TabID);
     if (!Number.isInteger(tabId) || tabId <= 0 || missionTabById.has(tabId)) continue;
     missionTabs.push(record);
     missionTabById.set(tabId, record);
   }
-  for (const record of readRecords("ab_script", "LUA_MISSION_TEMPLET.json")) {
+  for (const record of missionRecords) {
     const missionId = Number(record && record.m_MissionID);
     if (!Number.isInteger(missionId) || missionId <= 0) continue;
     if (record.m_Enabled === false) continue;
@@ -314,9 +321,11 @@ function resolveUnitId(unitIdOrStrId) {
 
 function getPlayableUnitIds(options = {}) {
   const includeOperators = options.includeOperators === true;
+  const includeNonContractable = options.includeNonContractable === true;
   return Array.from(loadGameData().unitById.values())
     .filter((record) => {
       if (!record || record.m_bMonster === true) return false;
+      if (!includeNonContractable && record.m_bContractable !== true) return false;
       const type = String(record.m_NKM_UNIT_TYPE || "");
       const style = String(record.m_NKM_UNIT_STYLE_TYPE || "");
       if (type === "NUT_SYSTEM" || type === "NUT_SHIP") return false;
@@ -328,10 +337,12 @@ function getPlayableUnitIds(options = {}) {
     .sort((a, b) => a - b);
 }
 
-function getPlayableShipIds() {
+function getPlayableShipIds(options = {}) {
+  const includeNonContractable = options.includeNonContractable === true;
   return Array.from(loadGameData().unitById.values())
     .filter((record) => {
       if (!record || record.m_bMonster === true) return false;
+      if (!includeNonContractable && record.m_bContractable !== true) return false;
       return String(record.m_NKM_UNIT_TYPE || "") === "NUT_SHIP" && Number(record.m_UnitID) > 0;
     })
     .map((record) => Number(record.m_UnitID))

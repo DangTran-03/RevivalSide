@@ -1,0 +1,1519 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script\\luac\\LUA_ACQ_PACKAGE_TEMPLET.lua",
+  "rootName": "ACQ_PACKAGE_TEMPLET",
+  "recordCount": 216,
+  "records": [
+    {
+      "m_PackageID": 160466,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 160466,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 160466,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 160466,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 160541,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 160541,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 160541,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 160541,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 160542,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 160542,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 160542,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 160542,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 160561,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 160561,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 160561,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 160561,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 160566,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 160566,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 160566,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 160566,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 160582,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 160582,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 160582,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 160582,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 160589,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 160589,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 160589,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 160589,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 160581,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 160581,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 160581,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 160581,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 160599,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 160599,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 160599,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 160599,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 160606,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 160606,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 160606,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 160606,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 160607,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 160607,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 160607,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 160607,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 160609,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 160609,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 160609,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 160609,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 160629,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 160629,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 160629,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 160629,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170040,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170040,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170040,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170040,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170044,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170044,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170044,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170044,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170056,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170056,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170056,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170056,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170055,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170055,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170055,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170055,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170057,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170057,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170057,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170057,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170058,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170058,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170058,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170058,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170059,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170059,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170059,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170059,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170062,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170062,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170062,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170062,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170064,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170064,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170064,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170064,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170065,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170065,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170065,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170065,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170068,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170068,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170068,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170068,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170074,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170074,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170074,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170074,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170087,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170087,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170087,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170087,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170088,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170088,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170088,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170088,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170089,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170089,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170089,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170089,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170090,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170090,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170090,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170090,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170120,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170120,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170120,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170120,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170138,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170138,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170138,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170138,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170139,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170139,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170139,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170139,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170140,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170140,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170140,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170140,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170163,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170163,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170163,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170163,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170167,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170167,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170167,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170167,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170174,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170174,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170174,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170174,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170189,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170189,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170189,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170189,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170212,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170212,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170212,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170212,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170230,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170230,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170230,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170230,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170273,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170273,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170273,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170273,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170277,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170277,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170277,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170277,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170292,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170292,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170292,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170292,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170293,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170293,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170293,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170293,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170294,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170294,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170294,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170294,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170310,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170310,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170310,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170310,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170326,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170326,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170326,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170326,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170327,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170327,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170327,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170327,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170328,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170328,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170328,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170328,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170329,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170329,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170329,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170329,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170343,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170343,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170343,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170343,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170344,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170344,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170344,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170344,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170364,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170364,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170364,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170364,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170365,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170365,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170365,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170365,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170378,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170378,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    },
+    {
+      "m_PackageID": 170378,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 450,
+      "m_FreeValue_1": 450
+    },
+    {
+      "m_PackageID": 170378,
+      "m_RewardType_1": "RT_MISC",
+      "m_RewardID_1": 101,
+      "m_RewardValue_1": 900,
+      "m_FreeValue_1": 900
+    }
+  ]
+}

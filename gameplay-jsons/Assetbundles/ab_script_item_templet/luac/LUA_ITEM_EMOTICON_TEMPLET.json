@@ -1,0 +1,715 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_item_templet\\luac\\LUA_ITEM_EMOTICON_TEMPLET.lua",
+  "rootName": "EMOTICON_MANAGER",
+  "recordCount": 236,
+  "records": [
+    {
+      "m_EmoticonID": 101
+    },
+    {
+      "m_EmoticonID": 102
+    },
+    {
+      "m_EmoticonID": 103
+    },
+    {
+      "m_EmoticonID": 104
+    },
+    {
+      "m_EmoticonID": 105
+    },
+    {
+      "m_EmoticonID": 106
+    },
+    {
+      "m_EmoticonID": 1077
+    },
+    {
+      "m_EmoticonID": 1001
+    },
+    {
+      "m_EmoticonID": 1002
+    },
+    {
+      "m_EmoticonID": 1003
+    },
+    {
+      "m_EmoticonID": 1004
+    },
+    {
+      "m_EmoticonID": 9001
+    },
+    {
+      "m_EmoticonID": 9005
+    },
+    {
+      "m_EmoticonID": 9006
+    },
+    {
+      "m_EmoticonID": 9007
+    },
+    {
+      "m_EmoticonID": 9008
+    },
+    {
+      "m_EmoticonID": 9009
+    },
+    {
+      "m_EmoticonID": 9010
+    },
+    {
+      "m_EmoticonID": 9011
+    },
+    {
+      "m_EmoticonID": 9012
+    },
+    {
+      "m_EmoticonID": 9013
+    },
+    {
+      "m_EmoticonID": 9014
+    },
+    {
+      "m_EmoticonID": 9015
+    },
+    {
+      "m_EmoticonID": 9016
+    },
+    {
+      "m_EmoticonID": 9017
+    },
+    {
+      "m_EmoticonID": 9018
+    },
+    {
+      "m_EmoticonID": 9019
+    },
+    {
+      "m_EmoticonID": 9020
+    },
+    {
+      "m_EmoticonID": 9021
+    },
+    {
+      "m_EmoticonID": 9022
+    },
+    {
+      "m_EmoticonID": 9023
+    },
+    {
+      "m_EmoticonID": 9024
+    },
+    {
+      "m_EmoticonID": 9025
+    },
+    {
+      "m_EmoticonID": 9026
+    },
+    {
+      "m_EmoticonID": 9027
+    },
+    {
+      "m_EmoticonID": 9028
+    },
+    {
+      "m_EmoticonID": 9029
+    },
+    {
+      "m_EmoticonID": 9030
+    },
+    {
+      "m_EmoticonID": 9031
+    },
+    {
+      "m_EmoticonID": 9032
+    },
+    {
+      "m_EmoticonID": 9033
+    },
+    {
+      "m_EmoticonID": 9034
+    },
+    {
+      "m_EmoticonID": 9035
+    },
+    {
+      "m_EmoticonID": 9036
+    },
+    {
+      "m_EmoticonID": 9037
+    },
+    {
+      "m_EmoticonID": 9038
+    },
+    {
+      "m_EmoticonID": 9039
+    },
+    {
+      "m_EmoticonID": 9040
+    },
+    {
+      "m_EmoticonID": 9041
+    },
+    {
+      "m_EmoticonID": 9042
+    },
+    {
+      "m_EmoticonID": 9043
+    },
+    {
+      "m_EmoticonID": 9044
+    },
+    {
+      "m_EmoticonID": 9045
+    },
+    {
+      "m_EmoticonID": 9046
+    },
+    {
+      "m_EmoticonID": 9047
+    },
+    {
+      "m_EmoticonID": 9048
+    },
+    {
+      "m_EmoticonID": 9049
+    },
+    {
+      "m_EmoticonID": 9050
+    },
+    {
+      "m_EmoticonID": 9051
+    },
+    {
+      "m_EmoticonID": 9052
+    },
+    {
+      "m_EmoticonID": 9053
+    },
+    {
+      "m_EmoticonID": 9054
+    },
+    {
+      "m_EmoticonID": 9055
+    },
+    {
+      "m_EmoticonID": 9056
+    },
+    {
+      "m_EmoticonID": 9057
+    },
+    {
+      "m_EmoticonID": 9058
+    },
+    {
+      "m_EmoticonID": 9059
+    },
+    {
+      "m_EmoticonID": 9060
+    },
+    {
+      "m_EmoticonID": 9061
+    },
+    {
+      "m_EmoticonID": 9062
+    },
+    {
+      "m_EmoticonID": 9063
+    },
+    {
+      "m_EmoticonID": 9064
+    },
+    {
+      "m_EmoticonID": 9065
+    },
+    {
+      "m_EmoticonID": 9066
+    },
+    {
+      "m_EmoticonID": 9067
+    },
+    {
+      "m_EmoticonID": 9068
+    },
+    {
+      "m_EmoticonID": 9069
+    },
+    {
+      "m_EmoticonID": 9070
+    },
+    {
+      "m_EmoticonID": 9071
+    },
+    {
+      "m_EmoticonID": 9072
+    },
+    {
+      "m_EmoticonID": 9073
+    },
+    {
+      "m_EmoticonID": 9074
+    },
+    {
+      "m_EmoticonID": 9075
+    },
+    {
+      "m_EmoticonID": 9076
+    },
+    {
+      "m_EmoticonID": 9077
+    },
+    {
+      "m_EmoticonID": 9078
+    },
+    {
+      "m_EmoticonID": 9079
+    },
+    {
+      "m_EmoticonID": 9080
+    },
+    {
+      "m_EmoticonID": 9081
+    },
+    {
+      "m_EmoticonID": 9082
+    },
+    {
+      "m_EmoticonID": 9083
+    },
+    {
+      "m_EmoticonID": 9084
+    },
+    {
+      "m_EmoticonID": 9085
+    },
+    {
+      "m_EmoticonID": 9086
+    },
+    {
+      "m_EmoticonID": 9087
+    },
+    {
+      "m_EmoticonID": 9088
+    },
+    {
+      "m_EmoticonID": 9089
+    },
+    {
+      "m_EmoticonID": 9090
+    },
+    {
+      "m_EmoticonID": 9091
+    },
+    {
+      "m_EmoticonID": 9092
+    },
+    {
+      "m_EmoticonID": 9093
+    },
+    {
+      "m_EmoticonID": 9094
+    },
+    {
+      "m_EmoticonID": 9095
+    },
+    {
+      "m_EmoticonID": 9096
+    },
+    {
+      "m_EmoticonID": 9097
+    },
+    {
+      "m_EmoticonID": 9098
+    },
+    {
+      "m_EmoticonID": 9099
+    },
+    {
+      "m_EmoticonID": 9100
+    },
+    {
+      "m_EmoticonID": 9101
+    },
+    {
+      "m_EmoticonID": 9102
+    },
+    {
+      "m_EmoticonID": 9103
+    },
+    {
+      "m_EmoticonID": 9104
+    },
+    {
+      "m_EmoticonID": 9105
+    },
+    {
+      "m_EmoticonID": 9106
+    },
+    {
+      "m_EmoticonID": 9107
+    },
+    {
+      "m_EmoticonID": 9108
+    },
+    {
+      "m_EmoticonID": 9109
+    },
+    {
+      "m_EmoticonID": 9110
+    },
+    {
+      "m_EmoticonID": 9111
+    },
+    {
+      "m_EmoticonID": 9112
+    },
+    {
+      "m_EmoticonID": 9113
+    },
+    {
+      "m_EmoticonID": 9114
+    },
+    {
+      "m_EmoticonID": 9115
+    },
+    {
+      "m_EmoticonID": 9116
+    },
+    {
+      "m_EmoticonID": 9117
+    },
+    {
+      "m_EmoticonID": 9118
+    },
+    {
+      "m_EmoticonID": 9119
+    },
+    {
+      "m_EmoticonID": 9120
+    },
+    {
+      "m_EmoticonID": 9121
+    },
+    {
+      "m_EmoticonID": 9122
+    },
+    {
+      "m_EmoticonID": 9123
+    },
+    {
+      "m_EmoticonID": 9124
+    },
+    {
+      "m_EmoticonID": 9125
+    },
+    {
+      "m_EmoticonID": 9126
+    },
+    {
+      "m_EmoticonID": 9127
+    },
+    {
+      "m_EmoticonID": 9128
+    },
+    {
+      "m_EmoticonID": 9129
+    },
+    {
+      "m_EmoticonID": 9130
+    },
+    {
+      "m_EmoticonID": 9131
+    },
+    {
+      "m_EmoticonID": 9132
+    },
+    {
+      "m_EmoticonID": 9133
+    },
+    {
+      "m_EmoticonID": 9134
+    },
+    {
+      "m_EmoticonID": 9135
+    },
+    {
+      "m_EmoticonID": 9136
+    },
+    {
+      "m_EmoticonID": 9137
+    },
+    {
+      "m_EmoticonID": 9138
+    },
+    {
+      "m_EmoticonID": 9139
+    },
+    {
+      "m_EmoticonID": 9140
+    },
+    {
+      "m_EmoticonID": 9141
+    },
+    {
+      "m_EmoticonID": 9142
+    },
+    {
+      "m_EmoticonID": 9143
+    },
+    {
+      "m_EmoticonID": 9144
+    },
+    {
+      "m_EmoticonID": 9145
+    },
+    {
+      "m_EmoticonID": 9146
+    },
+    {
+      "m_EmoticonID": 9147
+    },
+    {
+      "m_EmoticonID": 9148
+    },
+    {
+      "m_EmoticonID": 9149
+    },
+    {
+      "m_EmoticonID": 9150
+    },
+    {
+      "m_EmoticonID": 9151
+    },
+    {
+      "m_EmoticonID": 9152
+    },
+    {
+      "m_EmoticonID": 9153
+    },
+    {
+      "m_EmoticonID": 9154
+    },
+    {
+      "m_EmoticonID": 9155
+    },
+    {
+      "m_EmoticonID": 9156
+    },
+    {
+      "m_EmoticonID": 9157
+    },
+    {
+      "m_EmoticonID": 9158
+    },
+    {
+      "m_EmoticonID": 9159
+    },
+    {
+      "m_EmoticonID": 9160
+    },
+    {
+      "m_EmoticonID": 9161
+    },
+    {
+      "m_EmoticonID": 9162
+    },
+    {
+      "m_EmoticonID": 9163
+    },
+    {
+      "m_EmoticonID": 9164
+    },
+    {
+      "m_EmoticonID": 9165
+    },
+    {
+      "m_EmoticonID": 9166
+    },
+    {
+      "m_EmoticonID": 104101
+    },
+    {
+      "m_EmoticonID": 104103
+    },
+    {
+      "m_EmoticonID": 104202
+    },
+    {
+      "m_EmoticonID": 104304
+    },
+    {
+      "m_EmoticonID": 105105
+    },
+    {
+      "m_EmoticonID": 105107
+    },
+    {
+      "m_EmoticonID": 105111
+    },
+    {
+      "m_EmoticonID": 105201
+    },
+    {
+      "m_EmoticonID": 105206
+    },
+    {
+      "m_EmoticonID": 1018309
+    },
+    {
+      "m_EmoticonID": 1055310
+    },
+    {
+      "m_EmoticonID": 1134212
+    },
+    {
+      "m_EmoticonID": 1134112
+    },
+    {
+      "m_EmoticonID": 1044306
+    },
+    {
+      "m_EmoticonID": 1136113
+    },
+    {
+      "m_EmoticonID": 1158210
+    },
+    {
+      "m_EmoticonID": 1110303
+    },
+    {
+      "m_EmoticonID": 1137114
+    },
+    {
+      "m_EmoticonID": 1051109
+    },
+    {
+      "m_EmoticonID": 1152311
+    },
+    {
+      "m_EmoticonID": 1063116
+    },
+    {
+      "m_EmoticonID": 1191312
+    },
+    {
+      "m_EmoticonID": 1008208
+    },
+    {
+      "m_EmoticonID": 1060313
+    },
+    {
+      "m_EmoticonID": 1040117
+    },
+    {
+      "m_EmoticonID": 1096202
+    },
+    {
+      "m_EmoticonID": 1192111
+    },
+    {
+      "m_EmoticonID": 1193314
+    },
+    {
+      "m_EmoticonID": 1044102
+    },
+    {
+      "m_EmoticonID": 1194315
+    },
+    {
+      "m_EmoticonID": 1121119
+    },
+    {
+      "m_EmoticonID": 102214
+    },
+    {
+      "m_EmoticonID": 1006217
+    },
+    {
+      "m_EmoticonID": 1135317
+    },
+    {
+      "m_EmoticonID": 1018215
+    },
+    {
+      "m_EmoticonID": 1099318
+    },
+    {
+      "m_EmoticonID": 1007216
+    },
+    {
+      "m_EmoticonID": 1137120
+    },
+    {
+      "m_EmoticonID": 1200001
+    },
+    {
+      "m_EmoticonID": 1200002
+    },
+    {
+      "m_EmoticonID": 1200003
+    },
+    {
+      "m_EmoticonID": 1200004
+    },
+    {
+      "m_EmoticonID": 1200005
+    },
+    {
+      "m_EmoticonID": 1200006
+    },
+    {
+      "m_EmoticonID": 1200010
+    },
+    {
+      "m_EmoticonID": 1200011
+    },
+    {
+      "m_EmoticonID": 1200012
+    },
+    {
+      "m_EmoticonID": 1200013
+    },
+    {
+      "m_EmoticonID": 1200014
+    },
+    {
+      "m_EmoticonID": 1200015
+    },
+    {
+      "m_EmoticonID": 1200016
+    },
+    {
+      "m_EmoticonID": 1200017
+    },
+    {
+      "m_EmoticonID": 1200018
+    },
+    {
+      "m_EmoticonID": 1200019
+    },
+    {
+      "m_EmoticonID": 1200020
+    },
+    {
+      "m_EmoticonID": 1200021
+    },
+    {
+      "m_EmoticonID": 1200022
+    },
+    {
+      "m_EmoticonID": 1200023
+    },
+    {
+      "m_EmoticonID": 1200024
+    },
+    {
+      "m_EmoticonID": 1200025
+    },
+    {
+      "m_EmoticonID": 1200026
+    },
+    {
+      "m_EmoticonID": 1200027
+    }
+  ]
+}

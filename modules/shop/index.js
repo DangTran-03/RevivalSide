@@ -96,12 +96,15 @@ const PACKETS = Object.freeze({
   SHOP_RANDOM_SHOP_BUY_LIST_ACK: 2429,
 });
 
-const SHOP_TEMPLET_FILES = [
-  path.join(ROOT_DIR, "gameplay-tables-json", "StreamingAssets", "ab_script", "luac", "LUA_SHOP_TEMPLET_01.json"),
-  path.join(ROOT_DIR, "gameplay-tables-json", "StreamingAssets", "ab_script", "luac", "LUA_SHOP_TEMPLET_02.json"),
-  path.join(ROOT_DIR, "gameplay-tables-json", "Assetbundles", "ab_script", "luac", "LUA_SHOP_TEMPLET_01.json"),
-  path.join(ROOT_DIR, "gameplay-tables-json", "Assetbundles", "ab_script", "luac", "LUA_SHOP_TEMPLET_02.json"),
+const SHOP_TABLE_ROOTS = [
+  path.join(ROOT_DIR, "gameplay-tables-json", "StreamingAssets"),
+  path.join(ROOT_DIR, "gameplay-tables-json", "Assetbundles"),
+  path.join(ROOT_DIR, "gameplay-jsons", "StreamingAssets"),
+  path.join(ROOT_DIR, "gameplay-jsons", "Assetbundles"),
 ];
+const SHOP_TEMPLET_FILES = ["LUA_SHOP_TEMPLET_01.json", "LUA_SHOP_TEMPLET_02.json"].flatMap((fileName) =>
+  SHOP_TABLE_ROOTS.map((root) => path.join(root, "ab_script", "luac", fileName))
+);
 
 let cachedCatalog = null;
 const INCLUDE_BEGINNER_PACKS = process.env.CS_SHOP_INCLUDE_BEGINNER_PACKS === "1";

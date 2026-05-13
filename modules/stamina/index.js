@@ -12,22 +12,18 @@ const {
 const { getMiscItem, setMiscItemBalance } = require("../inventory");
 
 const ROOT_DIR = path.resolve(__dirname, "..", "..");
-const PLAYER_EXP_TABLE_PATH = path.join(
-  ROOT_DIR,
-  "gameplay-tables-json",
-  "Assetbundles",
-  "ab_script",
-  "luac",
-  "LUA_PLAYER_EXP_TABLE.json"
-);
-const PVP_CONST_TABLE_PATH = path.join(
-  ROOT_DIR,
-  "gameplay-tables-json",
-  "Assetbundles",
-  "ab_script",
-  "luac",
-  "LUA_PVP_CONST.json"
-);
+const PLAYER_EXP_TABLE_PATH = findFirstExistingPath([
+  path.join(ROOT_DIR, "gameplay-tables-json", "Assetbundles", "ab_script", "luac", "LUA_PLAYER_EXP_TABLE.json"),
+  path.join(ROOT_DIR, "gameplay-tables-json", "StreamingAssets", "ab_script", "luac", "LUA_PLAYER_EXP_TABLE.json"),
+  path.join(ROOT_DIR, "gameplay-jsons", "Assetbundles", "ab_script", "luac", "LUA_PLAYER_EXP_TABLE.json"),
+  path.join(ROOT_DIR, "gameplay-jsons", "StreamingAssets", "ab_script", "luac", "LUA_PLAYER_EXP_TABLE.json"),
+]);
+const PVP_CONST_TABLE_PATH = findFirstExistingPath([
+  path.join(ROOT_DIR, "gameplay-tables-json", "Assetbundles", "ab_script", "luac", "LUA_PVP_CONST.json"),
+  path.join(ROOT_DIR, "gameplay-tables-json", "StreamingAssets", "ab_script", "luac", "LUA_PVP_CONST.json"),
+  path.join(ROOT_DIR, "gameplay-jsons", "Assetbundles", "ab_script", "luac", "LUA_PVP_CONST.json"),
+  path.join(ROOT_DIR, "gameplay-jsons", "StreamingAssets", "ab_script", "luac", "LUA_PVP_CONST.json"),
+]);
 
 const TICKS_AT_UNIX_EPOCH = 621355968000000000n;
 const DATE_TIME_LOCAL_MASK = 0x4000000000000000n;
@@ -58,6 +54,10 @@ const DAILY_UTC_HOUR = Number(process.env.CS_STAMINA_DAILY_REFRESH_UTC_HOUR || 4
 
 let cachedPlayerExpRows = null;
 let cachedPvpConst = null;
+
+function findFirstExistingPath(paths) {
+  return paths.find((candidate) => fs.existsSync(candidate)) || paths[0];
+}
 
 function createStaminaHandlers() {
   return [

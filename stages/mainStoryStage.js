@@ -6,6 +6,8 @@ const ROOT_DIR = path.resolve(__dirname, "..");
 const TABLE_ROOTS = Object.freeze([
   path.join(ROOT_DIR, "gameplay-tables-json", "Assetbundles"),
   path.join(ROOT_DIR, "gameplay-tables-json", "StreamingAssets"),
+  path.join(ROOT_DIR, "gameplay-jsons", "Assetbundles"),
+  path.join(ROOT_DIR, "gameplay-jsons", "StreamingAssets"),
 ]);
 
 const DEFAULT_MAIN_STORY_RUNTIME = Object.freeze({

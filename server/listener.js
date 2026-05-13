@@ -134,6 +134,18 @@ function envFlagDefault(defaultValue, ...keys) {
   return Boolean(defaultValue);
 }
 
+function resolveNewAccountRosterMode() {
+  const explicit = String(process.env.CS_NEW_ACCOUNT_ROSTER_MODE || "").trim().toLowerCase();
+  if (["all", "debug-all"].includes(explicit)) return "all";
+  if (["starter", "safe"].includes(explicit)) return "starter";
+  if (["none", "off", "official", "0", "false"].includes(explicit)) return "none";
+
+  const legacy = String(process.env.CS_SEED_NEW_ACCOUNT_ROSTER || "").trim().toLowerCase();
+  if (["all", "debug-all"].includes(legacy)) return "all";
+  if (["starter", "safe"].includes(legacy)) return "starter";
+  return "none";
+}
+
 function resolveGuideMissionTabs() {
   try {
     const tabs = getMissionTabTemplets()
@@ -158,6 +170,10 @@ function uniqueMissionTabs(tabIds) {
         .filter((tabId) => Number.isInteger(tabId) && tabId > 0)
     )
   );
+}
+
+function firstExistingPath(paths) {
+  return paths.find((candidate) => fs.existsSync(candidate)) || paths[0];
 }
 
 const PORT = Number(process.env.CS_PORT || 22000);
@@ -234,10 +250,20 @@ const UNIT_TABLE_PATH = process.env.CS_UNIT_TABLE_PATH || path.join(ROOT_DIR, "s
 const DUNGEON_TABLE_PATH = process.env.CS_DUNGEON_TABLE_PATH || path.join(ROOT_DIR, "server-data", "dungeons.json");
 const STAGE_TABLE_PATH =
   process.env.CS_STAGE_TABLE_PATH ||
-  path.join(ROOT_DIR, "gameplay-tables-json", "Assetbundles", "ab_script", "luac", "LUA_STAGE_TEMPLET.json");
+  firstExistingPath([
+    path.join(ROOT_DIR, "gameplay-tables-json", "Assetbundles", "ab_script", "luac", "LUA_STAGE_TEMPLET.json"),
+    path.join(ROOT_DIR, "gameplay-tables-json", "StreamingAssets", "ab_script", "luac", "LUA_STAGE_TEMPLET.json"),
+    path.join(ROOT_DIR, "gameplay-jsons", "Assetbundles", "ab_script", "luac", "LUA_STAGE_TEMPLET.json"),
+    path.join(ROOT_DIR, "gameplay-jsons", "StreamingAssets", "ab_script", "luac", "LUA_STAGE_TEMPLET.json"),
+  ]);
 const MAP_TABLE_PATH =
   process.env.CS_MAP_TABLE_PATH ||
-  path.join(ROOT_DIR, "gameplay-tables-json", "Assetbundles", "ab_script", "luac", "LUA_MAP_TEMPLET.json");
+  firstExistingPath([
+    path.join(ROOT_DIR, "gameplay-tables-json", "Assetbundles", "ab_script", "luac", "LUA_MAP_TEMPLET.json"),
+    path.join(ROOT_DIR, "gameplay-tables-json", "StreamingAssets", "ab_script", "luac", "LUA_MAP_TEMPLET.json"),
+    path.join(ROOT_DIR, "gameplay-jsons", "Assetbundles", "ab_script", "luac", "LUA_MAP_TEMPLET.json"),
+    path.join(ROOT_DIR, "gameplay-jsons", "StreamingAssets", "ab_script", "luac", "LUA_MAP_TEMPLET.json"),
+  ]);
 const USE_LOCAL_USER_DB = process.env.CS_USE_LOCAL_USER_DB !== "0";
 const REPLAY_CAPTURED_CONTENTS_VERSION = process.env.CS_REPLAY_CAPTURED_CONTENTS_VERSION !== "0";
 const REPLAY_CAPTURED_LOGIN_ACK = process.env.CS_REPLAY_CAPTURED_LOGIN_ACK !== "0";
@@ -292,8 +318,9 @@ const GUIDE_MISSION_TABS = Object.freeze(resolveGuideMissionTabs());
 const SIMULATION_MISSION_TABS = [6, 7, 8];
 const FAST_LOBBY_MISSION_TABS = uniqueMissionTabs([1, 2, 3, ...SIMULATION_MISSION_TABS, ...GUIDE_MISSION_TABS]);
 const POST_TUTORIAL_MIN_USER_LEVEL = Math.max(2, Number(process.env.CS_POST_TUTORIAL_MIN_USER_LEVEL || 2) || 2);
-const SEED_NEW_ACCOUNT_ROSTER = process.env.CS_SEED_NEW_ACCOUNT_ROSTER !== "0";
+const NEW_ACCOUNT_ROSTER_MODE = resolveNewAccountRosterMode();
 const SEED_NEW_ACCOUNT_TROPHIES = process.env.CS_SEED_NEW_ACCOUNT_TROPHIES === "1";
+const ENABLE_EXTRACTED_MISSION_TABLES = process.env.CS_ENABLE_EXTRACTED_MISSION_TABLES === "1";
 const USE_STEAM_TOKEN_AS_ACCESS_TOKEN = process.env.CS_USE_STEAM_TOKEN_AS_ACCESS_TOKEN === "1";
 const REWRITE_CAPTURED_SERVER_INFO = process.env.CS_REWRITE_CAPTURED_SERVER_INFO !== "0";
 const MIRROR_PUBLIC_HOST = process.env.CS_HTTP_MIRROR_HOST || "127.0.0.1";
@@ -543,10 +570,11 @@ function logRuntimeConfig() {
   console.log(`[cfg] gameServer=${GAME_SERVER_IP}:${GAME_SERVER_PORT}`);
   console.log(`[cfg] accessTokenSource=${USE_STEAM_TOKEN_AS_ACCESS_TOKEN ? "steam" : "server-issued"}`);
   console.log(
-    `[cfg] newAccountRoster=${SEED_NEW_ACCOUNT_ROSTER ? "on" : "off"} trophies=${
+    `[cfg] newAccountRosterMode=${NEW_ACCOUNT_ROSTER_MODE} trophies=${
       SEED_NEW_ACCOUNT_TROPHIES ? "on" : "off"
     }`
   );
+  console.log(`[cfg] extractedMissionTables=${ENABLE_EXTRACTED_MISSION_TABLES ? "on" : "off"}`);
   console.log(`[cfg] skipTutorialCutscene=${SKIP_TUTORIAL_CUTSCENE ? "on" : "off"}`);
   console.log(`[cfg] skipTutorialToWin=${SKIP_TUTORIAL_TO_WIN ? "on" : "off"}`);
   console.log(`[cfg] resetLocalProgressOnLogin=${RESET_LOCAL_PROGRESS_ON_LOGIN ? "on" : "off"}`);
@@ -6069,7 +6097,7 @@ function getOrCreateUserForSteam(loginReq) {
     lastLoginAt: new Date().toISOString(),
   });
   const bootstrap = ensureOfficialNewAccountDefaults(user, {
-    seedRoster: SEED_NEW_ACCOUNT_ROSTER,
+    rosterMode: NEW_ACCOUNT_ROSTER_MODE,
     includeTrophies: SEED_NEW_ACCOUNT_TROPHIES,
   });
   ensureUserDefaults(user);

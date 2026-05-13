@@ -1,0 +1,2095 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script\\luac\\LUA_COLLECTION_TEAMUP_TEMPLET.lua",
+  "rootName": "COLLECTION_TEAMUP_TEMPLET",
+  "recordCount": 261,
+  "records": [
+    {
+      "m_TeamID": 10,
+      "m_UnitID": 1002,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 150
+    },
+    {
+      "m_TeamID": 10,
+      "m_UnitID": 1003,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 150
+    },
+    {
+      "m_TeamID": 10,
+      "m_UnitID": 1001,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 150
+    },
+    {
+      "m_TeamID": 10,
+      "m_UnitID": 1243,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 150
+    },
+    {
+      "m_TeamID": 10,
+      "m_UnitID": 1150,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 150
+    },
+    {
+      "m_TeamID": 10,
+      "m_UnitID": 1154,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 150
+    },
+    {
+      "m_TeamID": 10,
+      "m_UnitID": 1194,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 150
+    },
+    {
+      "m_TeamID": 10,
+      "m_UnitID": 1292,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 150
+    },
+    {
+      "m_TeamID": 20,
+      "m_UnitID": 1004,
+      "m_RewardCriteria": 4,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 300
+    },
+    {
+      "m_TeamID": 20,
+      "m_UnitID": 1005,
+      "m_RewardCriteria": 4,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 300
+    },
+    {
+      "m_TeamID": 20,
+      "m_UnitID": 1006,
+      "m_RewardCriteria": 4,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 300
+    },
+    {
+      "m_TeamID": 20,
+      "m_UnitID": 1007,
+      "m_RewardCriteria": 4,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 300
+    },
+    {
+      "m_TeamID": 20,
+      "m_UnitID": 1166,
+      "m_RewardCriteria": 4,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 300
+    },
+    {
+      "m_TeamID": 31,
+      "m_UnitID": 1008,
+      "m_RewardCriteria": 4,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 50
+    },
+    {
+      "m_TeamID": 31,
+      "m_UnitID": 1009,
+      "m_RewardCriteria": 4,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 50
+    },
+    {
+      "m_TeamID": 31,
+      "m_UnitID": 1010,
+      "m_RewardCriteria": 4,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 50
+    },
+    {
+      "m_TeamID": 31,
+      "m_UnitID": 1011,
+      "m_RewardCriteria": 4,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 50
+    },
+    {
+      "m_TeamID": 32,
+      "m_UnitID": 1012,
+      "m_RewardCriteria": 6,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 160
+    },
+    {
+      "m_TeamID": 32,
+      "m_UnitID": 1013,
+      "m_RewardCriteria": 6,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 160
+    },
+    {
+      "m_TeamID": 32,
+      "m_UnitID": 1014,
+      "m_RewardCriteria": 6,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 160
+    },
+    {
+      "m_TeamID": 32,
+      "m_UnitID": 1015,
+      "m_RewardCriteria": 6,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 160
+    },
+    {
+      "m_TeamID": 32,
+      "m_UnitID": 1016,
+      "m_RewardCriteria": 6,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 160
+    },
+    {
+      "m_TeamID": 32,
+      "m_UnitID": 1017,
+      "m_RewardCriteria": 6,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 160
+    },
+    {
+      "m_TeamID": 200,
+      "m_UnitID": 1142,
+      "m_RewardCriteria": 4,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 190
+    },
+    {
+      "m_TeamID": 200,
+      "m_UnitID": 1018,
+      "m_RewardCriteria": 4,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 190
+    },
+    {
+      "m_TeamID": 200,
+      "m_UnitID": 1143,
+      "m_RewardCriteria": 4,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 190
+    },
+    {
+      "m_TeamID": 200,
+      "m_UnitID": 1144,
+      "m_RewardCriteria": 4,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 190
+    },
+    {
+      "m_TeamID": 51,
+      "m_UnitID": 1019,
+      "m_RewardCriteria": 5,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 120
+    },
+    {
+      "m_TeamID": 51,
+      "m_UnitID": 1020,
+      "m_RewardCriteria": 5,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 120
+    },
+    {
+      "m_TeamID": 51,
+      "m_UnitID": 1021,
+      "m_RewardCriteria": 5,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 120
+    },
+    {
+      "m_TeamID": 51,
+      "m_UnitID": 1022,
+      "m_RewardCriteria": 5,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 120
+    },
+    {
+      "m_TeamID": 51,
+      "m_UnitID": 1023,
+      "m_RewardCriteria": 5,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 120
+    },
+    {
+      "m_TeamID": 52,
+      "m_UnitID": 1024,
+      "m_RewardCriteria": 4,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 70
+    },
+    {
+      "m_TeamID": 52,
+      "m_UnitID": 1025,
+      "m_RewardCriteria": 4,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 70
+    },
+    {
+      "m_TeamID": 52,
+      "m_UnitID": 1026,
+      "m_RewardCriteria": 4,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 70
+    },
+    {
+      "m_TeamID": 52,
+      "m_UnitID": 1027,
+      "m_RewardCriteria": 4,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 70
+    },
+    {
+      "m_TeamID": 61,
+      "m_UnitID": 1028,
+      "m_RewardCriteria": 4,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 300
+    },
+    {
+      "m_TeamID": 61,
+      "m_UnitID": 1029,
+      "m_RewardCriteria": 4,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 300
+    },
+    {
+      "m_TeamID": 61,
+      "m_UnitID": 1030,
+      "m_RewardCriteria": 4,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 300
+    },
+    {
+      "m_TeamID": 61,
+      "m_UnitID": 1031,
+      "m_RewardCriteria": 4,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 300
+    },
+    {
+      "m_TeamID": 62,
+      "m_UnitID": 1032,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 60
+    },
+    {
+      "m_TeamID": 62,
+      "m_UnitID": 1033,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 60
+    },
+    {
+      "m_TeamID": 62,
+      "m_UnitID": 1034,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 60
+    },
+    {
+      "m_TeamID": 70,
+      "m_UnitID": 1037,
+      "m_RewardCriteria": 2,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 150
+    },
+    {
+      "m_TeamID": 70,
+      "m_UnitID": 1040,
+      "m_RewardCriteria": 2,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 150
+    },
+    {
+      "m_TeamID": 70,
+      "m_UnitID": 1039,
+      "m_RewardCriteria": 2,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 150
+    },
+    {
+      "m_TeamID": 70,
+      "m_UnitID": 1155,
+      "m_RewardCriteria": 2,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 150
+    },
+    {
+      "m_TeamID": 90,
+      "m_UnitID": 1046,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 90
+    },
+    {
+      "m_TeamID": 90,
+      "m_UnitID": 1047,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 90
+    },
+    {
+      "m_TeamID": 90,
+      "m_UnitID": 1048,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 90
+    },
+    {
+      "m_TeamID": 90,
+      "m_UnitID": 1223,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 90
+    },
+    {
+      "m_TeamID": 100,
+      "m_UnitID": 1049,
+      "m_RewardCriteria": 4,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 110
+    },
+    {
+      "m_TeamID": 110,
+      "m_UnitID": 1050,
+      "m_RewardCriteria": 1,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 20
+    },
+    {
+      "m_TeamID": 100,
+      "m_UnitID": 1051,
+      "m_RewardCriteria": 4,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 110
+    },
+    {
+      "m_TeamID": 100,
+      "m_UnitID": 1052,
+      "m_RewardCriteria": 4,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 110
+    },
+    {
+      "m_TeamID": 100,
+      "m_UnitID": 1055,
+      "m_RewardCriteria": 4,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 110
+    },
+    {
+      "m_TeamID": 120,
+      "m_UnitID": 1059,
+      "m_RewardCriteria": 4,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 300
+    },
+    {
+      "m_TeamID": 120,
+      "m_UnitID": 1060,
+      "m_RewardCriteria": 4,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 300
+    },
+    {
+      "m_TeamID": 120,
+      "m_UnitID": 1061,
+      "m_RewardCriteria": 4,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 300
+    },
+    {
+      "m_TeamID": 120,
+      "m_UnitID": 1062,
+      "m_RewardCriteria": 4,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 300
+    },
+    {
+      "m_TeamID": 120,
+      "m_UnitID": 1202,
+      "m_RewardCriteria": 4,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 300
+    },
+    {
+      "m_TeamID": 120,
+      "m_UnitID": 1204,
+      "m_RewardCriteria": 4,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 300
+    },
+    {
+      "m_TeamID": 120,
+      "m_UnitID": 1146,
+      "m_RewardCriteria": 4,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 300
+    },
+    {
+      "m_TeamID": 120,
+      "m_UnitID": 1217,
+      "m_RewardCriteria": 4,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 300
+    },
+    {
+      "m_TeamID": 161,
+      "m_UnitID": 1077,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 120
+    },
+    {
+      "m_TeamID": 161,
+      "m_UnitID": 1078,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 120
+    },
+    {
+      "m_TeamID": 161,
+      "m_UnitID": 1079,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 120
+    },
+    {
+      "m_TeamID": 162,
+      "m_UnitID": 1080,
+      "m_RewardCriteria": 5,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 350
+    },
+    {
+      "m_TeamID": 162,
+      "m_UnitID": 1081,
+      "m_RewardCriteria": 5,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 350
+    },
+    {
+      "m_TeamID": 162,
+      "m_UnitID": 1082,
+      "m_RewardCriteria": 5,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 350
+    },
+    {
+      "m_TeamID": 162,
+      "m_UnitID": 1083,
+      "m_RewardCriteria": 5,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 350
+    },
+    {
+      "m_TeamID": 162,
+      "m_UnitID": 1084,
+      "m_RewardCriteria": 5,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 350
+    },
+    {
+      "m_TeamID": 170,
+      "m_UnitID": 1085,
+      "m_RewardCriteria": 5,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 240
+    },
+    {
+      "m_TeamID": 170,
+      "m_UnitID": 1086,
+      "m_RewardCriteria": 5,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 240
+    },
+    {
+      "m_TeamID": 170,
+      "m_UnitID": 1087,
+      "m_RewardCriteria": 5,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 240
+    },
+    {
+      "m_TeamID": 170,
+      "m_UnitID": 1088,
+      "m_RewardCriteria": 5,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 240
+    },
+    {
+      "m_TeamID": 170,
+      "m_UnitID": 1089,
+      "m_RewardCriteria": 5,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 240
+    },
+    {
+      "m_TeamID": 170,
+      "m_UnitID": 1291,
+      "m_RewardCriteria": 5,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 240
+    },
+    {
+      "m_TeamID": 170,
+      "m_UnitID": 1295,
+      "m_RewardCriteria": 5,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 240
+    },
+    {
+      "m_TeamID": 180,
+      "m_UnitID": 1090,
+      "m_RewardCriteria": 4,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 140
+    },
+    {
+      "m_TeamID": 180,
+      "m_UnitID": 1091,
+      "m_RewardCriteria": 4,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 140
+    },
+    {
+      "m_TeamID": 180,
+      "m_UnitID": 1092,
+      "m_RewardCriteria": 4,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 140
+    },
+    {
+      "m_TeamID": 180,
+      "m_UnitID": 1093,
+      "m_RewardCriteria": 4,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 140
+    },
+    {
+      "m_TeamID": 180,
+      "m_UnitID": 1161,
+      "m_RewardCriteria": 4,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 140
+    },
+    {
+      "m_TeamID": 240,
+      "m_UnitID": 1117,
+      "m_RewardCriteria": 4,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 220
+    },
+    {
+      "m_TeamID": 240,
+      "m_UnitID": 1118,
+      "m_RewardCriteria": 4,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 220
+    },
+    {
+      "m_TeamID": 240,
+      "m_UnitID": 1119,
+      "m_RewardCriteria": 4,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 220
+    },
+    {
+      "m_TeamID": 240,
+      "m_UnitID": 1120,
+      "m_RewardCriteria": 4,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 220
+    },
+    {
+      "m_TeamID": 250,
+      "m_UnitID": 1121,
+      "m_RewardCriteria": 5,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 240
+    },
+    {
+      "m_TeamID": 250,
+      "m_UnitID": 1122,
+      "m_RewardCriteria": 5,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 240
+    },
+    {
+      "m_TeamID": 250,
+      "m_UnitID": 1123,
+      "m_RewardCriteria": 5,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 240
+    },
+    {
+      "m_TeamID": 250,
+      "m_UnitID": 1124,
+      "m_RewardCriteria": 5,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 240
+    },
+    {
+      "m_TeamID": 250,
+      "m_UnitID": 1125,
+      "m_RewardCriteria": 5,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 240
+    },
+    {
+      "m_TeamID": 250,
+      "m_UnitID": 1206,
+      "m_RewardCriteria": 5,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 240
+    },
+    {
+      "m_TeamID": 250,
+      "m_UnitID": 1208,
+      "m_RewardCriteria": 5,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 240
+    },
+    {
+      "m_TeamID": 260,
+      "m_UnitID": 1232,
+      "m_RewardCriteria": 5,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 240
+    },
+    {
+      "m_TeamID": 260,
+      "m_UnitID": 1293,
+      "m_RewardCriteria": 5,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 240
+    },
+    {
+      "m_TeamID": 300,
+      "m_UnitID": 1126,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 30
+    },
+    {
+      "m_TeamID": 300,
+      "m_UnitID": 1127,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 30
+    },
+    {
+      "m_TeamID": 300,
+      "m_UnitID": 1128,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 30
+    },
+    {
+      "m_TeamID": 310,
+      "m_UnitID": 1129,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 40
+    },
+    {
+      "m_TeamID": 310,
+      "m_UnitID": 1130,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 40
+    },
+    {
+      "m_TeamID": 310,
+      "m_UnitID": 1131,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 40
+    },
+    {
+      "m_TeamID": 340,
+      "m_UnitID": 1132,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 40
+    },
+    {
+      "m_TeamID": 340,
+      "m_UnitID": 1133,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 40
+    },
+    {
+      "m_TeamID": 340,
+      "m_UnitID": 1134,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 40
+    },
+    {
+      "m_TeamID": 140,
+      "m_UnitID": 1063,
+      "m_RewardCriteria": 5,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 400
+    },
+    {
+      "m_TeamID": 140,
+      "m_UnitID": 1064,
+      "m_RewardCriteria": 5,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 400
+    },
+    {
+      "m_TeamID": 140,
+      "m_UnitID": 1065,
+      "m_RewardCriteria": 5,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 400
+    },
+    {
+      "m_TeamID": 140,
+      "m_UnitID": 1066,
+      "m_RewardCriteria": 5,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 400
+    },
+    {
+      "m_TeamID": 140,
+      "m_UnitID": 1067,
+      "m_RewardCriteria": 5,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 400
+    },
+    {
+      "m_TeamID": 141,
+      "m_UnitID": 1068,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 141,
+      "m_UnitID": 1069,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 141,
+      "m_UnitID": 1070,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 80,
+      "m_UnitID": 1041,
+      "m_RewardCriteria": 5,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 270
+    },
+    {
+      "m_TeamID": 80,
+      "m_UnitID": 1042,
+      "m_RewardCriteria": 5,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 270
+    },
+    {
+      "m_TeamID": 80,
+      "m_UnitID": 1043,
+      "m_RewardCriteria": 5,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 270
+    },
+    {
+      "m_TeamID": 80,
+      "m_UnitID": 1044,
+      "m_RewardCriteria": 5,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 270
+    },
+    {
+      "m_TeamID": 80,
+      "m_UnitID": 1045,
+      "m_RewardCriteria": 5,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 270
+    },
+    {
+      "m_TeamID": 190,
+      "m_UnitID": 1096,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 220
+    },
+    {
+      "m_TeamID": 190,
+      "m_UnitID": 1097,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 220
+    },
+    {
+      "m_TeamID": 190,
+      "m_UnitID": 1145,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 220
+    },
+    {
+      "m_TeamID": 330,
+      "m_UnitID": 1135,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 170
+    },
+    {
+      "m_TeamID": 330,
+      "m_UnitID": 1136,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 170
+    },
+    {
+      "m_TeamID": 330,
+      "m_UnitID": 1137,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 170
+    },
+    {
+      "m_TeamID": 210,
+      "m_UnitID": 1098,
+      "m_RewardCriteria": 2,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 200
+    },
+    {
+      "m_TeamID": 210,
+      "m_UnitID": 1099,
+      "m_RewardCriteria": 2,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 200
+    },
+    {
+      "m_TeamID": 350,
+      "m_UnitID": 1138,
+      "m_RewardCriteria": 2,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 200
+    },
+    {
+      "m_TeamID": 350,
+      "m_UnitID": 1139,
+      "m_RewardCriteria": 2,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 200
+    },
+    {
+      "m_TeamID": 350,
+      "m_UnitID": 1247,
+      "m_RewardCriteria": 2,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 200
+    },
+    {
+      "m_TeamID": 350,
+      "m_UnitID": 1246,
+      "m_RewardCriteria": 2,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 200
+    },
+    {
+      "m_TeamID": 360,
+      "m_UnitID": 1112,
+      "m_RewardCriteria": 5,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 400
+    },
+    {
+      "m_TeamID": 360,
+      "m_UnitID": 1113,
+      "m_RewardCriteria": 5,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 400
+    },
+    {
+      "m_TeamID": 360,
+      "m_UnitID": 1114,
+      "m_RewardCriteria": 5,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 400
+    },
+    {
+      "m_TeamID": 360,
+      "m_UnitID": 1115,
+      "m_RewardCriteria": 5,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 400
+    },
+    {
+      "m_TeamID": 360,
+      "m_UnitID": 1116,
+      "m_RewardCriteria": 5,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 400
+    },
+    {
+      "m_TeamID": 360,
+      "m_UnitID": 1200,
+      "m_RewardCriteria": 5,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 400
+    },
+    {
+      "m_TeamID": 360,
+      "m_UnitID": 1236,
+      "m_RewardCriteria": 5,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 400
+    },
+    {
+      "m_TeamID": 360,
+      "m_UnitID": 1263,
+      "m_RewardCriteria": 5,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 400
+    },
+    {
+      "m_TeamID": 370,
+      "m_UnitID": 1109,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 370,
+      "m_UnitID": 1110,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 370,
+      "m_UnitID": 1111,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 370,
+      "m_UnitID": 1239,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 380,
+      "m_UnitID": 1147,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 380,
+      "m_UnitID": 1148,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 380,
+      "m_UnitID": 1149,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 380,
+      "m_UnitID": 1231,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 380,
+      "m_UnitID": 1235,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 380,
+      "m_UnitID": 1250,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 390,
+      "m_UnitID": 1151,
+      "m_RewardCriteria": 2,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 200
+    },
+    {
+      "m_TeamID": 390,
+      "m_UnitID": 1152,
+      "m_RewardCriteria": 2,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 200
+    },
+    {
+      "m_TeamID": 390,
+      "m_UnitID": 1181,
+      "m_RewardCriteria": 2,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 200
+    },
+    {
+      "m_TeamID": 390,
+      "m_UnitID": 1248,
+      "m_RewardCriteria": 2,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 200
+    },
+    {
+      "m_TeamID": 400,
+      "m_UnitID": 1157,
+      "m_RewardCriteria": 2,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 200
+    },
+    {
+      "m_TeamID": 400,
+      "m_UnitID": 1158,
+      "m_RewardCriteria": 2,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 200
+    },
+    {
+      "m_TeamID": 400,
+      "m_UnitID": 1242,
+      "m_RewardCriteria": 2,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 200
+    },
+    {
+      "m_TeamID": 410,
+      "m_UnitID": 1162,
+      "m_RewardCriteria": 4,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 270
+    },
+    {
+      "m_TeamID": 410,
+      "m_UnitID": 1163,
+      "m_RewardCriteria": 4,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 270
+    },
+    {
+      "m_TeamID": 410,
+      "m_UnitID": 1164,
+      "m_RewardCriteria": 4,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 270
+    },
+    {
+      "m_TeamID": 410,
+      "m_UnitID": 1165,
+      "m_RewardCriteria": 4,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 270
+    },
+    {
+      "m_TeamID": 420,
+      "m_UnitID": 1103,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 420,
+      "m_UnitID": 1104,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 420,
+      "m_UnitID": 1105,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 420,
+      "m_UnitID": 1226,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 430,
+      "m_UnitID": 1169,
+      "m_RewardCriteria": 2,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 200
+    },
+    {
+      "m_TeamID": 430,
+      "m_UnitID": 1170,
+      "m_RewardCriteria": 2,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 200
+    },
+    {
+      "m_TeamID": 440,
+      "m_UnitID": 1100,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 440,
+      "m_UnitID": 1101,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 440,
+      "m_UnitID": 1102,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 450,
+      "m_UnitID": 1072,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 450,
+      "m_UnitID": 1071,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 450,
+      "m_UnitID": 1073,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 450,
+      "m_UnitID": 1274,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 460,
+      "m_UnitID": 1159,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 460,
+      "m_UnitID": 1160,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 460,
+      "m_UnitID": 1227,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 460,
+      "m_UnitID": 1273,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 460,
+      "m_UnitID": 1285,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 470,
+      "m_UnitID": 1167,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 470,
+      "m_UnitID": 1193,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 480,
+      "m_UnitID": 1171,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 480,
+      "m_UnitID": 1172,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 480,
+      "m_UnitID": 1173,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 480,
+      "m_UnitID": 1174,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 490,
+      "m_UnitID": 1179,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 490,
+      "m_UnitID": 1180,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 490,
+      "m_UnitID": 1196,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 490,
+      "m_UnitID": 1197,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 500,
+      "m_UnitID": 1175,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 500,
+      "m_UnitID": 1176,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 500,
+      "m_UnitID": 1213,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 510,
+      "m_UnitID": 1177,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 510,
+      "m_UnitID": 1178,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 510,
+      "m_UnitID": 1279,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 520,
+      "m_UnitID": 1187,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 520,
+      "m_UnitID": 1188,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 520,
+      "m_UnitID": 1190,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 520,
+      "m_UnitID": 1189,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 530,
+      "m_UnitID": 1191,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 540,
+      "m_UnitID": 1192,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 550,
+      "m_UnitID": 1195,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 550,
+      "m_UnitID": 1203,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 550,
+      "m_UnitID": 1218,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 550,
+      "m_UnitID": 1240,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 560,
+      "m_UnitID": 1198,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 560,
+      "m_UnitID": 1214,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 560,
+      "m_UnitID": 1216,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 560,
+      "m_UnitID": 1237,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 560,
+      "m_UnitID": 1254,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 570,
+      "m_UnitID": 1199,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 570,
+      "m_UnitID": 1255,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 570,
+      "m_UnitID": 1259,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 580,
+      "m_UnitID": 1201,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 580,
+      "m_UnitID": 1220,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 580,
+      "m_UnitID": 1302,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 590,
+      "m_UnitID": 1205,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 590,
+      "m_UnitID": 1207,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 600,
+      "m_UnitID": 1211,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 600,
+      "m_UnitID": 1212,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 600,
+      "m_UnitID": 1225,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 610,
+      "m_UnitID": 1215,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 610,
+      "m_UnitID": 1234,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 610,
+      "m_UnitID": 1253,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 620,
+      "m_UnitID": 1210,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 620,
+      "m_UnitID": 1219,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 620,
+      "m_UnitID": 1258,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 620,
+      "m_UnitID": 1268,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 620,
+      "m_UnitID": 1278,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 630,
+      "m_UnitID": 1221,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 630,
+      "m_UnitID": 1222,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 630,
+      "m_UnitID": 1224,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 640,
+      "m_UnitID": 1233,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 640,
+      "m_UnitID": 1288,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 640,
+      "m_UnitID": 1290,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 650,
+      "m_UnitID": 1238,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 650,
+      "m_UnitID": 1241,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 660,
+      "m_UnitID": 1244,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 660,
+      "m_UnitID": 1245,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 670,
+      "m_UnitID": 1252,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 680,
+      "m_UnitID": 1260,
+      "m_RewardCriteria": 3,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 690,
+      "m_UnitID": 1262,
+      "m_RewardCriteria": 2,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 690,
+      "m_UnitID": 1264,
+      "m_RewardCriteria": 2,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 690,
+      "m_UnitID": 1269,
+      "m_RewardCriteria": 2,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 700,
+      "m_UnitID": 1265,
+      "m_RewardCriteria": 2,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 700,
+      "m_UnitID": 1266,
+      "m_RewardCriteria": 2,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 710,
+      "m_UnitID": 1267,
+      "m_RewardCriteria": 2,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 720,
+      "m_UnitID": 1270,
+      "m_RewardCriteria": 2,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 720,
+      "m_UnitID": 1271,
+      "m_RewardCriteria": 2,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 730,
+      "m_UnitID": 1275,
+      "m_RewardCriteria": 2,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 730,
+      "m_UnitID": 1277,
+      "m_RewardCriteria": 2,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 740,
+      "m_UnitID": 1287,
+      "m_RewardCriteria": 2,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 750,
+      "m_UnitID": 1296,
+      "m_RewardCriteria": 2,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 140,
+      "m_UnitID": 1298,
+      "m_RewardCriteria": 2,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 760,
+      "m_UnitID": 1299,
+      "m_RewardCriteria": 2,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 760,
+      "m_UnitID": 1300,
+      "m_RewardCriteria": 2,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 750,
+      "m_UnitID": 1303,
+      "m_RewardCriteria": 2,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 680,
+      "m_UnitID": 1304,
+      "m_RewardCriteria": 2,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 700,
+      "m_UnitID": 1308,
+      "m_RewardCriteria": 2,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 10,
+      "m_UnitID": 1306,
+      "m_RewardCriteria": 2,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 770,
+      "m_UnitID": 1310,
+      "m_RewardCriteria": 2,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    },
+    {
+      "m_TeamID": 780,
+      "m_UnitID": 1311,
+      "m_RewardCriteria": 2,
+      "m_RewardType": "RT_MISC",
+      "m_RewardID": 101,
+      "m_RewardValue": 250
+    }
+  ]
+}

@@ -21,13 +21,20 @@ const {
 
 const ROOT_DIR = path.resolve(__dirname, "..", "..");
 const DEFAULTS_PATH = path.join(ROOT_DIR, "gameplay-jsons", "new-account-defaults.json");
-const BOOTSTRAP_KEY = "officialNewAccountDefaultsV1";
+const BOOTSTRAP_KEY = "officialNewAccountDefaultsV2";
+const ROSTER_MODES = Object.freeze({
+  NONE: "none",
+  STARTER: "starter",
+  ALL: "all",
+});
 
 let cachedDefaults = null;
 
 function ensureOfficialNewAccountDefaults(user, options = {}) {
+  const rosterMode = normalizeRosterMode(options.rosterMode || (options.seedRoster === true ? ROSTER_MODES.ALL : ROSTER_MODES.NONE));
   const result = {
     changed: false,
+    rosterMode,
     units: 0,
     ships: 0,
     operators: 0,
@@ -37,19 +44,20 @@ function ensureOfficialNewAccountDefaults(user, options = {}) {
 
   if (applyOfficialProfileDefaults(user)) result.changed = true;
 
-  if (options.seedRoster === false) {
-    rememberBootstrap(user, result, { rosterSeeded: false });
+  if (rosterMode === ROSTER_MODES.NONE) {
+    rememberBootstrap(user, result, { rosterSeeded: false, rosterMode });
     return result;
   }
 
   const seeded = seedOfficialRoster(user, {
+    rosterMode,
     includeTrophies: options.includeTrophies === true,
   });
   Object.assign(result, seeded, { changed: result.changed || seeded.changed });
 
   ensureDefaultLineup(user);
   ensureDefaultLineup(user, { deckType: 3, index: 0 });
-  rememberBootstrap(user, result, { rosterSeeded: true });
+  rememberBootstrap(user, result, { rosterSeeded: true, rosterMode });
   return result;
 }
 
@@ -74,17 +82,36 @@ function applyOfficialProfileDefaults(user) {
 
 function seedOfficialRoster(user, options = {}) {
   ensureArmy(user);
+  const roster = resolveRosterSeedIds(options.rosterMode);
   const result = {
     changed: false,
-    units: seedUnitBucket(user, getPlayableUnitIds(), getArmyUnits(user), grantUnit),
-    ships: seedUnitBucket(user, getPlayableShipIds(), getArmyShips(user), grantUnit),
-    operators: seedUnitBucket(user, getPlayableOperatorIds(), getArmyOperators(user), grantOperator),
+    units: seedUnitBucket(user, roster.units, getArmyUnits(user), grantUnit),
+    ships: seedUnitBucket(user, roster.ships, getArmyShips(user), grantUnit),
+    operators: seedUnitBucket(user, roster.operators, getArmyOperators(user), grantOperator),
     trophies: options.includeTrophies
       ? seedUnitBucket(user, getTrophyUnitIds(), getArmyTrophies(user), grantUnit)
       : 0,
   };
   result.changed = result.units > 0 || result.ships > 0 || result.operators > 0 || result.trophies > 0;
   return result;
+}
+
+function resolveRosterSeedIds(rosterMode) {
+  if (rosterMode === ROSTER_MODES.ALL) {
+    return {
+      units: getPlayableUnitIds(),
+      ships: getPlayableShipIds(),
+      operators: getPlayableOperatorIds(),
+    };
+  }
+
+  const defaults = loadNewAccountDefaults();
+  const roster = defaults.roster && typeof defaults.roster === "object" ? defaults.roster : {};
+  return {
+    units: uniquePositiveInts(roster.units),
+    ships: uniquePositiveInts(roster.ships),
+    operators: uniquePositiveInts(roster.operators),
+  };
 }
 
 function seedUnitBucket(user, ids, existingEntries, grant) {
@@ -116,6 +143,7 @@ function rememberBootstrap(user, result, options = {}) {
   user.bootstrap[BOOTSTRAP_KEY] = {
     appliedAt: new Date().toISOString(),
     rosterSeeded: options.rosterSeeded === true,
+    rosterMode: normalizeRosterMode(options.rosterMode),
     units: Number(result.units || 0),
     ships: Number(result.ships || 0),
     operators: Number(result.operators || 0),
@@ -132,6 +160,23 @@ function loadNewAccountDefaults() {
     cachedDefaults = {};
   }
   return cachedDefaults;
+}
+
+function normalizeRosterMode(value) {
+  const text = String(value || "").trim().toLowerCase();
+  if (text === "all" || text === "debug-all") return ROSTER_MODES.ALL;
+  if (text === "starter" || text === "safe") return ROSTER_MODES.STARTER;
+  return ROSTER_MODES.NONE;
+}
+
+function uniquePositiveInts(values) {
+  return Array.from(
+    new Set(
+      (Array.isArray(values) ? values : [])
+        .map((value) => Number(value))
+        .filter((value) => Number.isInteger(value) && value > 0)
+    )
+  ).sort((a, b) => a - b);
 }
 
 function setMissing(target, key, value) {

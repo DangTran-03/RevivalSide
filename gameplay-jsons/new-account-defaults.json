@@ -30,6 +30,11 @@
     "hasOffice": false,
     "privatePvpInvitation": 0
   },
+  "roster": {
+    "units": [],
+    "ships": [],
+    "operators": []
+  },
   "userOption": {
     "autoRespawn": false,
     "actionCameraType": 1,

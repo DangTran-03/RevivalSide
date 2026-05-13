@@ -18,7 +18,7 @@ The setup has four big parts:
 3. Build the local game data that cannot be stored in git.
 4. Start the wiki and the listener.
 
-Fresh clones include a small checked-in `gameplay-jsons` fallback with enough official table data for local account defaults, roster seeding, profile exp normalization, and tutorial event decks. If someone gave you a prepared copy of the repo that already has `server-data`, `gameplay-tables-json`, and `extracted-assets`, you can skip most of part 3.
+Fresh clones include a checked-in `gameplay-jsons` fallback with enough official table data for local account defaults, profile exp normalization, tutorial/main-story flow, safe debug roster seeding, shop purchases, attendance, contracts, gear, rewards, and collection payloads. If someone gave you a prepared copy of the repo that already has `server-data`, `gameplay-tables-json`, and `extracted-assets`, you can skip most of part 3.
 
 ## Before You Start
 
@@ -188,7 +188,7 @@ Change it to your real `Data\Managed` folder. The folder must contain `Assembly-
 
 ## Build Local Game Data
 
-The repo does not store raw game assets, raw DLLs, your account data, or full generated table dumps. It does store the smaller `gameplay-jsons` fallback used by fresh local accounts. Everyone still builds the full local data from their own CounterSide install when they want the wiki, images, full shop data, or broader table coverage.
+The repo does not store raw game assets, raw DLLs, your account data, or full generated table dumps. It does store the smaller `gameplay-jsons` fallback used by fresh local accounts and core local systems. Everyone still builds the full local data from their own CounterSide install when they want the wiki, images, or raw table coverage.
 
 Set a short variable for your CounterSide folder:
 

@@ -424,6 +424,8 @@ function attendanceTabTablePath() {
     findFirstExistingPath([
       path.join(ROOT_DIR, "gameplay-tables-json", "StreamingAssets", "ab_script", "luac", "LUA_ATTENDANCE_TAB_TEMPLET.json"),
       path.join(ROOT_DIR, "gameplay-tables-json", "Assetbundles", "ab_script", "luac", "LUA_ATTENDANCE_TAB_TEMPLET.json"),
+      path.join(ROOT_DIR, "gameplay-jsons", "StreamingAssets", "ab_script", "luac", "LUA_ATTENDANCE_TAB_TEMPLET.json"),
+      path.join(ROOT_DIR, "gameplay-jsons", "Assetbundles", "ab_script", "luac", "LUA_ATTENDANCE_TAB_TEMPLET.json"),
     ])
   );
 }
@@ -434,6 +436,8 @@ function attendanceRewardTablePath() {
     findFirstExistingPath([
       path.join(ROOT_DIR, "gameplay-tables-json", "StreamingAssets", "ab_script", "luac", "LUA_ATTENDANCE_REWARD_TEMPLET.json"),
       path.join(ROOT_DIR, "gameplay-tables-json", "Assetbundles", "ab_script", "luac", "LUA_ATTENDANCE_REWARD_TEMPLET.json"),
+      path.join(ROOT_DIR, "gameplay-jsons", "StreamingAssets", "ab_script", "luac", "LUA_ATTENDANCE_REWARD_TEMPLET.json"),
+      path.join(ROOT_DIR, "gameplay-jsons", "Assetbundles", "ab_script", "luac", "LUA_ATTENDANCE_REWARD_TEMPLET.json"),
     ])
   );
 }

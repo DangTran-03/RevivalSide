@@ -1,0 +1,3487 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script\\luac\\LUA_ATTENDANCE_TAB_TEMPLET.lua",
+  "rootName": "ATTENDANCE_TAB_TEMPLET",
+  "recordCount": 348,
+  "records": [
+    {
+      "IDX": 19090,
+      "m_TabID": 10,
+      "m_RewardGroup": 19090,
+      "m_MaxAttCount": 25,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 19100,
+      "m_TabID": 10,
+      "m_RewardGroup": 19100,
+      "m_MaxAttCount": 25,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 19110,
+      "m_TabID": 10,
+      "m_RewardGroup": 19110,
+      "m_MaxAttCount": 25,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 19120,
+      "m_TabID": 10,
+      "m_RewardGroup": 19120,
+      "m_MaxAttCount": 25,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 20011,
+      "m_TabID": 10,
+      "m_RewardGroup": 20011,
+      "m_MaxAttCount": 25,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 20012,
+      "m_TabID": 10,
+      "m_RewardGroup": 20012,
+      "m_MaxAttCount": 20,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 20021,
+      "m_TabID": 10,
+      "m_RewardGroup": 20021,
+      "m_MaxAttCount": 20,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 20022,
+      "m_TabID": 10,
+      "m_RewardGroup": 20022,
+      "m_MaxAttCount": 20,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 20030,
+      "m_TabID": 10,
+      "m_RewardGroup": 20030,
+      "m_MaxAttCount": 25,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 20040,
+      "m_TabID": 10,
+      "m_RewardGroup": 20040,
+      "m_MaxAttCount": 30,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 20050,
+      "m_TabID": 10,
+      "m_RewardGroup": 20050,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 20060,
+      "m_TabID": 10,
+      "m_RewardGroup": 20060,
+      "m_MaxAttCount": 30,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 20070,
+      "m_TabID": 10,
+      "m_RewardGroup": 20070,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 20080,
+      "m_TabID": 10,
+      "m_RewardGroup": 20080,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 20090,
+      "m_TabID": 10,
+      "m_RewardGroup": 20090,
+      "m_MaxAttCount": 30,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 20100,
+      "m_TabID": 10,
+      "m_RewardGroup": 20100,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 20110,
+      "m_TabID": 10,
+      "m_RewardGroup": 20110,
+      "m_MaxAttCount": 30,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 20120,
+      "m_TabID": 10,
+      "m_RewardGroup": 20120,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2012",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 21011,
+      "m_TabID": 10,
+      "m_RewardGroup": 21021,
+      "m_MaxAttCount": 28,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2102_N",
+      "m_OpenTag": "ATTEND_MONTHLY_2102_N",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 21010,
+      "m_TabID": 10,
+      "m_RewardGroup": 21010,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2101",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 21020,
+      "m_TabID": 10,
+      "m_RewardGroup": 21020,
+      "m_MaxAttCount": 28,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2102",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 21030,
+      "m_TabID": 10,
+      "m_RewardGroup": 21010,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2103",
+      "m_OpenTag": "ATTEND_MONTHLY_2103",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 21031,
+      "m_TabID": 10,
+      "m_RewardGroup": 21011,
+      "m_MaxAttCount": 29,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2103_N",
+      "m_OpenTag": "ATTEND_MONTHLY_2103_N",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 21040,
+      "m_TabID": 10,
+      "m_RewardGroup": 21040,
+      "m_MaxAttCount": 30,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2104",
+      "m_OpenTag": "ATTEND_MONTHLY_2104",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 21050,
+      "m_TabID": 10,
+      "m_RewardGroup": 21010,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2105",
+      "m_OpenTag": "ATTEND_MONTHLY_2105",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 21060,
+      "m_TabID": 10,
+      "m_RewardGroup": 21040,
+      "m_MaxAttCount": 30,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2106",
+      "m_OpenTag": "ATTEND_MONTHLY_2106",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 21070,
+      "m_TabID": 10,
+      "m_RewardGroup": 21010,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2107",
+      "m_OpenTag": "ATTEND_MONTHLY_2107",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 21080,
+      "m_TabID": 10,
+      "m_RewardGroup": 21010,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2108",
+      "m_OpenTag": "ATTEND_MONTHLY_2108",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 21090,
+      "m_TabID": 10,
+      "m_RewardGroup": 21040,
+      "m_MaxAttCount": 30,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2109",
+      "m_OpenTag": "ATTEND_MONTHLY_2109",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 21100,
+      "m_TabID": 10,
+      "m_RewardGroup": 21010,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2110",
+      "m_OpenTag": "ATTEND_MONTHLY_2110",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 21110,
+      "m_TabID": 10,
+      "m_RewardGroup": 21040,
+      "m_MaxAttCount": 30,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2111",
+      "m_OpenTag": "ATTEND_MONTHLY_2111",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 21111,
+      "m_TabID": 10,
+      "m_RewardGroup": 21041,
+      "m_MaxAttCount": 27,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2111_CHN",
+      "m_OpenTag": "ATTEND_MONTHLY_2111_CHN",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 21120,
+      "m_TabID": 10,
+      "m_RewardGroup": 21010,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2112",
+      "m_OpenTag": "ATTEND_MONTHLY_2112",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 22010,
+      "m_TabID": 10,
+      "m_RewardGroup": 21010,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2201",
+      "m_OpenTag": "ATTEND_MONTHLY_2201",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 22020,
+      "m_TabID": 10,
+      "m_RewardGroup": 22020,
+      "m_MaxAttCount": 28,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2202",
+      "m_OpenTag": "ATTEND_MONTHLY_2202",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 22030,
+      "m_TabID": 10,
+      "m_RewardGroup": 21010,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2203",
+      "m_OpenTag": "ATTEND_MONTHLY_2203",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 22040,
+      "m_TabID": 10,
+      "m_RewardGroup": 21040,
+      "m_MaxAttCount": 30,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2204",
+      "m_OpenTag": "ATTEND_MONTHLY_2204",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 22050,
+      "m_TabID": 10,
+      "m_RewardGroup": 21010,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2205",
+      "m_OpenTag": "ATTEND_MONTHLY_2205",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 22060,
+      "m_TabID": 10,
+      "m_RewardGroup": 21040,
+      "m_MaxAttCount": 30,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2206",
+      "m_OpenTag": "ATTEND_MONTHLY_2206",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 22070,
+      "m_TabID": 10,
+      "m_RewardGroup": 21010,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2207",
+      "m_OpenTag": "ATTEND_MONTHLY_2207",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 22080,
+      "m_TabID": 10,
+      "m_RewardGroup": 21010,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2208",
+      "m_OpenTag": "ATTEND_MONTHLY_2208",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 22090,
+      "m_TabID": 10,
+      "m_RewardGroup": 21040,
+      "m_MaxAttCount": 30,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2209",
+      "m_OpenTag": "ATTEND_MONTHLY_2209",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 22100,
+      "m_TabID": 10,
+      "m_RewardGroup": 21010,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2210",
+      "m_OpenTag": "ATTEND_MONTHLY_2210",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 22110,
+      "m_TabID": 10,
+      "m_RewardGroup": 21040,
+      "m_MaxAttCount": 30,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2211",
+      "m_OpenTag": "ATTEND_MONTHLY_2211",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 22120,
+      "m_TabID": 10,
+      "m_RewardGroup": 21010,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2212",
+      "m_OpenTag": "ATTEND_MONTHLY_2212",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23001,
+      "m_TabID": 10,
+      "m_RewardGroup": 21010,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2301",
+      "m_OpenTag": "ATTEND_MONTHLY_2301",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23002,
+      "m_TabID": 10,
+      "m_RewardGroup": 22020,
+      "m_MaxAttCount": 28,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2302",
+      "m_OpenTag": "ATTEND_MONTHLY_2302",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23003,
+      "m_TabID": 10,
+      "m_RewardGroup": 21010,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2303",
+      "m_OpenTag": "ATTEND_MONTHLY_2303",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23004,
+      "m_TabID": 10,
+      "m_RewardGroup": 21040,
+      "m_MaxAttCount": 30,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2304",
+      "m_OpenTag": "ATTEND_MONTHLY_2304",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23005,
+      "m_TabID": 10,
+      "m_RewardGroup": 21010,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2305",
+      "m_OpenTag": "ATTEND_MONTHLY_2305",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23006,
+      "m_TabID": 10,
+      "m_RewardGroup": 21040,
+      "m_MaxAttCount": 30,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2306",
+      "m_OpenTag": "ATTEND_MONTHLY_2306",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23007,
+      "m_TabID": 10,
+      "m_RewardGroup": 21010,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2307",
+      "m_OpenTag": "ATTEND_MONTHLY_2307",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23008,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2308",
+      "m_OpenTag": "ATTEND_MONTHLY_2308",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23009,
+      "m_TabID": 10,
+      "m_RewardGroup": 21040,
+      "m_MaxAttCount": 30,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2309",
+      "m_OpenTag": "ATTEND_MONTHLY_2309",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23010,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2310",
+      "m_OpenTag": "ATTEND_MONTHLY_2310",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23011,
+      "m_TabID": 10,
+      "m_RewardGroup": 21040,
+      "m_MaxAttCount": 30,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2311",
+      "m_OpenTag": "ATTEND_MONTHLY_2311",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23012,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2312",
+      "m_OpenTag": "ATTEND_MONTHLY_2312",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23013,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2401",
+      "m_OpenTag": "ATTEND_MONTHLY_2401",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23014,
+      "m_TabID": 10,
+      "m_RewardGroup": 24020,
+      "m_MaxAttCount": 29,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2402",
+      "m_OpenTag": "ATTEND_MONTHLY_2402",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23015,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2403",
+      "m_OpenTag": "ATTEND_MONTHLY_2403",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23016,
+      "m_TabID": 10,
+      "m_RewardGroup": 21040,
+      "m_MaxAttCount": 30,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2404",
+      "m_OpenTag": "ATTEND_MONTHLY_2404",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23017,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2405",
+      "m_OpenTag": "ATTEND_MONTHLY_2405",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23018,
+      "m_TabID": 10,
+      "m_RewardGroup": 21040,
+      "m_MaxAttCount": 30,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2406",
+      "m_OpenTag": "ATTEND_MONTHLY_2406",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23019,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2407",
+      "m_OpenTag": "ATTEND_MONTHLY_2407",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23020,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2408",
+      "m_OpenTag": "ATTEND_MONTHLY_2408",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23021,
+      "m_TabID": 10,
+      "m_RewardGroup": 21040,
+      "m_MaxAttCount": 30,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2409",
+      "m_OpenTag": "ATTEND_MONTHLY_2409",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23022,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2410",
+      "m_OpenTag": "ATTEND_MONTHLY_2410",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23023,
+      "m_TabID": 10,
+      "m_RewardGroup": 21040,
+      "m_MaxAttCount": 30,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2411",
+      "m_OpenTag": "ATTEND_MONTHLY_2411",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23024,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2412",
+      "m_OpenTag": "ATTEND_MONTHLY_2412",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23025,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2501",
+      "m_OpenTag": "ATTEND_MONTHLY_2501",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23026,
+      "m_TabID": 10,
+      "m_RewardGroup": 22020,
+      "m_MaxAttCount": 28,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23027,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23028,
+      "m_TabID": 10,
+      "m_RewardGroup": 21040,
+      "m_MaxAttCount": 30,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23029,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23030,
+      "m_TabID": 10,
+      "m_RewardGroup": 21040,
+      "m_MaxAttCount": 30,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23031,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23032,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23033,
+      "m_TabID": 10,
+      "m_RewardGroup": 21040,
+      "m_MaxAttCount": 30,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23034,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23035,
+      "m_TabID": 10,
+      "m_RewardGroup": 21040,
+      "m_MaxAttCount": 30,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23036,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23037,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23038,
+      "m_TabID": 10,
+      "m_RewardGroup": 22020,
+      "m_MaxAttCount": 28,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23039,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23040,
+      "m_TabID": 10,
+      "m_RewardGroup": 21040,
+      "m_MaxAttCount": 30,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23041,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23042,
+      "m_TabID": 10,
+      "m_RewardGroup": 21040,
+      "m_MaxAttCount": 30,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23043,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23044,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23045,
+      "m_TabID": 10,
+      "m_RewardGroup": 21040,
+      "m_MaxAttCount": 30,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23046,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23047,
+      "m_TabID": 10,
+      "m_RewardGroup": 21040,
+      "m_MaxAttCount": 30,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23048,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23049,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23050,
+      "m_TabID": 10,
+      "m_RewardGroup": 22020,
+      "m_MaxAttCount": 28,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23051,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23052,
+      "m_TabID": 10,
+      "m_RewardGroup": 21040,
+      "m_MaxAttCount": 30,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23053,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23054,
+      "m_TabID": 10,
+      "m_RewardGroup": 21040,
+      "m_MaxAttCount": 30,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23055,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23056,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23057,
+      "m_TabID": 10,
+      "m_RewardGroup": 21040,
+      "m_MaxAttCount": 30,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23058,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23059,
+      "m_TabID": 10,
+      "m_RewardGroup": 21040,
+      "m_MaxAttCount": 30,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23060,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23061,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23062,
+      "m_TabID": 10,
+      "m_RewardGroup": 24020,
+      "m_MaxAttCount": 29,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23063,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23064,
+      "m_TabID": 10,
+      "m_RewardGroup": 21040,
+      "m_MaxAttCount": 30,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23065,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23066,
+      "m_TabID": 10,
+      "m_RewardGroup": 21040,
+      "m_MaxAttCount": 30,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23067,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23068,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23069,
+      "m_TabID": 10,
+      "m_RewardGroup": 21040,
+      "m_MaxAttCount": 30,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23070,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23071,
+      "m_TabID": 10,
+      "m_RewardGroup": 21040,
+      "m_MaxAttCount": 30,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23072,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23073,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23074,
+      "m_TabID": 10,
+      "m_RewardGroup": 22020,
+      "m_MaxAttCount": 28,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23075,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23076,
+      "m_TabID": 10,
+      "m_RewardGroup": 21040,
+      "m_MaxAttCount": 30,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23077,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23078,
+      "m_TabID": 10,
+      "m_RewardGroup": 21040,
+      "m_MaxAttCount": 30,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23079,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23080,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23081,
+      "m_TabID": 10,
+      "m_RewardGroup": 21040,
+      "m_MaxAttCount": 30,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23082,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23083,
+      "m_TabID": 10,
+      "m_RewardGroup": 21040,
+      "m_MaxAttCount": 30,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23084,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23085,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23086,
+      "m_TabID": 10,
+      "m_RewardGroup": 22020,
+      "m_MaxAttCount": 28,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23087,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23088,
+      "m_TabID": 10,
+      "m_RewardGroup": 21040,
+      "m_MaxAttCount": 30,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23089,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23090,
+      "m_TabID": 10,
+      "m_RewardGroup": 21040,
+      "m_MaxAttCount": 30,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23091,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23092,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23093,
+      "m_TabID": 10,
+      "m_RewardGroup": 21040,
+      "m_MaxAttCount": 30,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23094,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23095,
+      "m_TabID": 10,
+      "m_RewardGroup": 21040,
+      "m_MaxAttCount": 30,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23096,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23097,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23098,
+      "m_TabID": 10,
+      "m_RewardGroup": 22020,
+      "m_MaxAttCount": 28,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23099,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23100,
+      "m_TabID": 10,
+      "m_RewardGroup": 21040,
+      "m_MaxAttCount": 30,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23101,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23102,
+      "m_TabID": 10,
+      "m_RewardGroup": 21040,
+      "m_MaxAttCount": 30,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23103,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23104,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23105,
+      "m_TabID": 10,
+      "m_RewardGroup": 21040,
+      "m_MaxAttCount": 30,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23106,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23107,
+      "m_TabID": 10,
+      "m_RewardGroup": 21040,
+      "m_MaxAttCount": 30,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23108,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23109,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23110,
+      "m_TabID": 10,
+      "m_RewardGroup": 24020,
+      "m_MaxAttCount": 29,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23111,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23112,
+      "m_TabID": 10,
+      "m_RewardGroup": 21040,
+      "m_MaxAttCount": 30,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23113,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23114,
+      "m_TabID": 10,
+      "m_RewardGroup": 21040,
+      "m_MaxAttCount": 30,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23115,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23116,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23117,
+      "m_TabID": 10,
+      "m_RewardGroup": 21040,
+      "m_MaxAttCount": 30,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23118,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23119,
+      "m_TabID": 10,
+      "m_RewardGroup": 21040,
+      "m_MaxAttCount": 30,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23120,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23121,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23122,
+      "m_TabID": 10,
+      "m_RewardGroup": 22020,
+      "m_MaxAttCount": 28,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23123,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23124,
+      "m_TabID": 10,
+      "m_RewardGroup": 21040,
+      "m_MaxAttCount": 30,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23125,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23126,
+      "m_TabID": 10,
+      "m_RewardGroup": 21040,
+      "m_MaxAttCount": 30,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23127,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23128,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23129,
+      "m_TabID": 10,
+      "m_RewardGroup": 21040,
+      "m_MaxAttCount": 30,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23130,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23131,
+      "m_TabID": 10,
+      "m_RewardGroup": 21040,
+      "m_MaxAttCount": 30,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23132,
+      "m_TabID": 10,
+      "m_RewardGroup": 21012,
+      "m_MaxAttCount": 31,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23133,
+      "m_TabID": 10,
+      "m_RewardGroup": 25020,
+      "m_MaxAttCount": 28,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2502",
+      "m_OpenTag": "ATTEND_MONTHLY_2502",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23134,
+      "m_TabID": 10,
+      "m_RewardGroup": 25020,
+      "m_MaxAttCount": 28,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2503",
+      "m_OpenTag": "ATTEND_MONTHLY_2503",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23135,
+      "m_TabID": 10,
+      "m_RewardGroup": 25020,
+      "m_MaxAttCount": 28,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2504",
+      "m_OpenTag": "ATTEND_MONTHLY_2504",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23136,
+      "m_TabID": 10,
+      "m_RewardGroup": 25020,
+      "m_MaxAttCount": 28,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2505",
+      "m_OpenTag": "ATTEND_MONTHLY_2505",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23137,
+      "m_TabID": 10,
+      "m_RewardGroup": 25020,
+      "m_MaxAttCount": 28,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2506",
+      "m_OpenTag": "ATTEND_MONTHLY_2506",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23138,
+      "m_TabID": 10,
+      "m_RewardGroup": 25020,
+      "m_MaxAttCount": 28,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2507",
+      "m_OpenTag": "ATTEND_MONTHLY_2507",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23139,
+      "m_TabID": 10,
+      "m_RewardGroup": 25020,
+      "m_MaxAttCount": 28,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2508",
+      "m_OpenTag": "ATTEND_MONTHLY_2508",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23140,
+      "m_TabID": 10,
+      "m_RewardGroup": 25020,
+      "m_MaxAttCount": 28,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2509",
+      "m_OpenTag": "ATTEND_MONTHLY_2509",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23141,
+      "m_TabID": 10,
+      "m_RewardGroup": 25020,
+      "m_MaxAttCount": 28,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2510",
+      "m_OpenTag": "ATTEND_MONTHLY_2510",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23142,
+      "m_TabID": 10,
+      "m_RewardGroup": 25020,
+      "m_MaxAttCount": 28,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2511",
+      "m_OpenTag": "ATTEND_MONTHLY_2511",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23143,
+      "m_TabID": 10,
+      "m_RewardGroup": 25020,
+      "m_MaxAttCount": 28,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2512",
+      "m_OpenTag": "ATTEND_MONTHLY_2512",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23144,
+      "m_TabID": 10,
+      "m_RewardGroup": 25020,
+      "m_MaxAttCount": 28,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2601",
+      "m_OpenTag": "ATTEND_MONTHLY_2601",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23145,
+      "m_TabID": 10,
+      "m_RewardGroup": 25020,
+      "m_MaxAttCount": 28,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2602",
+      "m_OpenTag": "ATTEND_MONTHLY_2602",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23146,
+      "m_TabID": 10,
+      "m_RewardGroup": 25020,
+      "m_MaxAttCount": 28,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2603",
+      "m_OpenTag": "ATTEND_MONTHLY_2603",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23147,
+      "m_TabID": 10,
+      "m_RewardGroup": 25020,
+      "m_MaxAttCount": 28,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2604",
+      "m_OpenTag": "ATTEND_MONTHLY_2604",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23148,
+      "m_TabID": 10,
+      "m_RewardGroup": 25020,
+      "m_MaxAttCount": 28,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2605",
+      "m_OpenTag": "ATTEND_MONTHLY_2605",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23149,
+      "m_TabID": 10,
+      "m_RewardGroup": 25020,
+      "m_MaxAttCount": 28,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2606",
+      "m_OpenTag": "ATTEND_MONTHLY_2606",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23150,
+      "m_TabID": 10,
+      "m_RewardGroup": 25020,
+      "m_MaxAttCount": 28,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2607",
+      "m_OpenTag": "ATTEND_MONTHLY_2607",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23151,
+      "m_TabID": 10,
+      "m_RewardGroup": 25020,
+      "m_MaxAttCount": 28,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2608",
+      "m_OpenTag": "ATTEND_MONTHLY_2608",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23152,
+      "m_TabID": 10,
+      "m_RewardGroup": 25020,
+      "m_MaxAttCount": 28,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2609",
+      "m_OpenTag": "ATTEND_MONTHLY_2609",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23153,
+      "m_TabID": 10,
+      "m_RewardGroup": 25020,
+      "m_MaxAttCount": 28,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2610",
+      "m_OpenTag": "ATTEND_MONTHLY_2610",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23154,
+      "m_TabID": 10,
+      "m_RewardGroup": 25020,
+      "m_MaxAttCount": 28,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2611",
+      "m_OpenTag": "ATTEND_MONTHLY_2611",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 23155,
+      "m_TabID": 10,
+      "m_RewardGroup": 25020,
+      "m_MaxAttCount": 28,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_MONTHLY_2612",
+      "m_OpenTag": "ATTEND_MONTHLY_2612",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30201,
+      "m_TabID": 20,
+      "m_RewardGroup": 30201,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NEW",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 15
+    },
+    {
+      "IDX": 30202,
+      "m_TabID": 40,
+      "m_RewardGroup": 30202,
+      "m_MaxAttCount": 10,
+      "m_EventType": "NEW",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 15
+    },
+    {
+      "IDX": 30203,
+      "m_TabID": 30,
+      "m_RewardGroup": 30203,
+      "m_MaxAttCount": 10,
+      "m_EventType": "NEW",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 30
+    },
+    {
+      "IDX": 30204,
+      "m_TabID": 25,
+      "m_RewardGroup": 30204,
+      "m_MaxAttCount": 10,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30205,
+      "m_TabID": 15,
+      "m_RewardGroup": 30205,
+      "m_MaxAttCount": 15,
+      "m_EventType": "NEW",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 9999
+    },
+    {
+      "IDX": 30206,
+      "m_TabID": 20,
+      "m_RewardGroup": 30206,
+      "m_MaxAttCount": 20,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30207,
+      "m_TabID": 20,
+      "m_RewardGroup": 30207,
+      "m_MaxAttCount": 15,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30208,
+      "m_TabID": 20,
+      "m_RewardGroup": 30208,
+      "m_MaxAttCount": 20,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30209,
+      "m_TabID": 25,
+      "m_RewardGroup": 30209,
+      "m_MaxAttCount": 15,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30210,
+      "m_TabID": 20,
+      "m_RewardGroup": 30210,
+      "m_MaxAttCount": 10,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30211,
+      "m_TabID": 25,
+      "m_RewardGroup": 30211,
+      "m_MaxAttCount": 20,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30212,
+      "m_TabID": 20,
+      "m_RewardGroup": 30212,
+      "m_MaxAttCount": 10,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30213,
+      "m_TabID": 60,
+      "m_RewardGroup": 30213,
+      "m_MaxAttCount": 20,
+      "m_EventType": "NEW",
+      "m_DateStrID": "ATTEND_NEWBIE_ALWAYS",
+      "m_OpenTag": "ATTEND_NEWBIE_ALWAYS",
+      "m_LimitDayCount": 30
+    },
+    {
+      "IDX": 30214,
+      "m_TabID": 25,
+      "m_RewardGroup": 30214,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30215,
+      "m_TabID": 30,
+      "m_RewardGroup": 30215,
+      "m_MaxAttCount": 15,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30216,
+      "m_TabID": 30,
+      "m_RewardGroup": 30216,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30217,
+      "m_TabID": 40,
+      "m_RewardGroup": 30217,
+      "m_MaxAttCount": 10,
+      "m_EventType": "NEW",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 30
+    },
+    {
+      "IDX": 30218,
+      "m_TabID": 10,
+      "m_RewardGroup": 30218,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_EVENT_CBT",
+      "m_OpenTag": "ATTEND_EVENT_CBT",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30219,
+      "m_TabID": 30,
+      "m_RewardGroup": 30219,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_CBT_CASH",
+      "m_OpenTag": "TAG_ATTEND_EVENT_CBT_CASH",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30220,
+      "m_TabID": 30,
+      "m_RewardGroup": 30220,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30221,
+      "m_TabID": 40,
+      "m_RewardGroup": 30221,
+      "m_MaxAttCount": 10,
+      "m_EventType": "NEW",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 30
+    },
+    {
+      "IDX": 40000,
+      "m_TabID": 60,
+      "m_RewardGroup": 40000,
+      "m_MaxAttCount": 20,
+      "m_EventType": "NEW",
+      "m_DateStrID": "ATTEND_NEWBIE_ALWAYS_V2",
+      "m_OpenTag": "ATTEND_NEWBIE_ALWAYS_V2",
+      "m_LimitDayCount": 30
+    },
+    {
+      "IDX": 40001,
+      "m_TabID": 50,
+      "m_RewardGroup": 40001,
+      "m_MaxAttCount": 20,
+      "m_EventType": "RETURN",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 30
+    },
+    {
+      "IDX": 40002,
+      "m_TabID": 50,
+      "m_RewardGroup": 40002,
+      "m_MaxAttCount": 10,
+      "m_EventType": "RETURN",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 30
+    },
+    {
+      "IDX": 40003,
+      "m_TabID": 50,
+      "m_RewardGroup": 40003,
+      "m_MaxAttCount": 15,
+      "m_EventType": "RETURN",
+      "m_DateStrID": "ATTEND_RETURN_ALWAYS",
+      "m_OpenTag": "ATTEND_RETURN_ALWAYS",
+      "m_LimitDayCount": 30
+    },
+    {
+      "IDX": 40004,
+      "m_TabID": 60,
+      "m_RewardGroup": 40004,
+      "m_MaxAttCount": 10,
+      "m_EventType": "RETURN",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 30
+    },
+    {
+      "IDX": 40005,
+      "m_TabID": 60,
+      "m_RewardGroup": 40005,
+      "m_MaxAttCount": 10,
+      "m_EventType": "RETURN",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 30
+    },
+    {
+      "IDX": 40006,
+      "m_TabID": 50,
+      "m_RewardGroup": 40006,
+      "m_MaxAttCount": 15,
+      "m_EventType": "RETURN",
+      "m_DateStrID": "ATTEND_RETURN_ALWAYS_V2",
+      "m_OpenTag": "ATTEND_RETURN_ALWAYS_V2",
+      "m_LimitDayCount": 30
+    },
+    {
+      "IDX": 30222,
+      "m_TabID": 20,
+      "m_RewardGroup": 30222,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30223,
+      "m_TabID": 20,
+      "m_RewardGroup": 30223,
+      "m_MaxAttCount": 15,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30224,
+      "m_TabID": 20,
+      "m_RewardGroup": 30224,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30225,
+      "m_TabID": 30,
+      "m_RewardGroup": 30225,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30226,
+      "m_TabID": 40,
+      "m_RewardGroup": 30226,
+      "m_MaxAttCount": 15,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30227,
+      "m_TabID": 40,
+      "m_RewardGroup": 30227,
+      "m_MaxAttCount": 15,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30228,
+      "m_TabID": 20,
+      "m_RewardGroup": 30223,
+      "m_MaxAttCount": 15,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_EVENT_OBT",
+      "m_OpenTag": "ATTEND_EVENT_OBT",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30229,
+      "m_TabID": 30,
+      "m_RewardGroup": 30225,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30230,
+      "m_TabID": 50,
+      "m_RewardGroup": 30230,
+      "m_MaxAttCount": 15,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_EVENT_ANNIVERSARY_1",
+      "m_OpenTag": "ATTEND_EVENT_ANNIVERSARY_1",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30231,
+      "m_TabID": 40,
+      "m_RewardGroup": 30231,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_EVENT_NEWYEAR",
+      "m_OpenTag": "ATTEND_EVENT_NEWYEAR",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30232,
+      "m_TabID": 30,
+      "m_RewardGroup": 30225,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30233,
+      "m_TabID": 50,
+      "m_RewardGroup": 30225,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_EVENT_ENCHANT",
+      "m_OpenTag": "ATTEND_EVENT_ENCHANT",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30234,
+      "m_TabID": 40,
+      "m_RewardGroup": 30234,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_EVENT_50DAY",
+      "m_OpenTag": "ATTEND_EVENT_50DAY",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30235,
+      "m_TabID": 40,
+      "m_RewardGroup": 30235,
+      "m_MaxAttCount": 15,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_EVENT_REPLACER",
+      "m_OpenTag": "ATTEND_EVENT_REPLACER",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30236,
+      "m_TabID": 20,
+      "m_RewardGroup": 30236,
+      "m_MaxAttCount": 10,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_EVENT_FOOLS",
+      "m_OpenTag": "ATTEND_EVENT_FOOLS",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30237,
+      "m_TabID": 30,
+      "m_RewardGroup": 30237,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_EVENT_CHILD",
+      "m_OpenTag": "ATTEND_EVENT_CHILD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30238,
+      "m_TabID": 50,
+      "m_RewardGroup": 30225,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_EVENT_ENCHANT_NEW",
+      "m_OpenTag": "ATTEND_EVENT_ENCHANT_NEW",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30239,
+      "m_TabID": 30,
+      "m_RewardGroup": 30239,
+      "m_MaxAttCount": 10,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_EVENT_100DAY",
+      "m_OpenTag": "ATTEND_EVENT_100DAY",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30240,
+      "m_TabID": 20,
+      "m_RewardGroup": 30240,
+      "m_MaxAttCount": 15,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_EVENT_SHOP_RENEWAL",
+      "m_OpenTag": "ATTEND_EVENT_SHOP_RENEWAL",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30241,
+      "m_TabID": 30,
+      "m_RewardGroup": 30241,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_EVENT_LABOR",
+      "m_OpenTag": "ATTEND_EVENT_LABOR",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30242,
+      "m_TabID": 20,
+      "m_RewardGroup": 30242,
+      "m_MaxAttCount": 15,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_EVENT_100_EVE",
+      "m_OpenTag": "ATTEND_EVENT_100_EVE",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30243,
+      "m_TabID": 20,
+      "m_RewardGroup": 30243,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_EVENT_SIGMA",
+      "m_OpenTag": "ATTEND_EVENT_SIGMA",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30244,
+      "m_TabID": 30,
+      "m_RewardGroup": 30244,
+      "m_MaxAttCount": 15,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_EVENT_SPORTS",
+      "m_OpenTag": "ATTEND_EVENT_SPORTS",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30245,
+      "m_TabID": 20,
+      "m_RewardGroup": 30245,
+      "m_MaxAttCount": 15,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_EVENT_500DAYS",
+      "m_OpenTag": "ATTEND_EVENT_500DAYS",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30246,
+      "m_TabID": 20,
+      "m_RewardGroup": 30246,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_EVENT_30DAYS",
+      "m_OpenTag": "ATTEND_EVENT_30DAYS",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30247,
+      "m_TabID": 30,
+      "m_RewardGroup": 30247,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_EVENT_CHALLENGE_BOOSTING",
+      "m_OpenTag": "ATTEND_EVENT_CHALLENGE_BOOSTING",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30248,
+      "m_TabID": 30,
+      "m_RewardGroup": 30248,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_EVENT_BAMBOO",
+      "m_OpenTag": "ATTEND_EVENT_BAMBOO",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30249,
+      "m_TabID": 30,
+      "m_RewardGroup": 30249,
+      "m_MaxAttCount": 15,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_EVENT_GLOBAL_SPECIAL_SUMMER_2020",
+      "m_OpenTag": "ATTEND_EVENT_GLOBAL_SPECIAL_SUMMER_2020",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30250,
+      "m_TabID": 20,
+      "m_RewardGroup": 30250,
+      "m_MaxAttCount": 10,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_CLB_001",
+      "m_OpenTag": "TAG_ATTEND_EVENT_CLB_001",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30251,
+      "m_TabID": 50,
+      "m_RewardGroup": 30251,
+      "m_MaxAttCount": 10,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_EQUIP_ENCHANT",
+      "m_OpenTag": "TAG_ATTEND_EVENT_EQUIP_ENCHANT",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30252,
+      "m_TabID": 50,
+      "m_RewardGroup": 30216,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_200DAYS",
+      "m_OpenTag": "TAG_ATTEND_EVENT_200DAYS",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30253,
+      "m_TabID": 60,
+      "m_RewardGroup": 30253,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_PRIVATE_EQUIP_POLICY",
+      "m_OpenTag": "TAG_ATTEND_PRIVATE_EQUIP_POLICY",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30254,
+      "m_TabID": 20,
+      "m_RewardGroup": 30254,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_CHN_PBT",
+      "m_OpenTag": "TAG_ATTEND_EVENT_CHN_PBT",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30255,
+      "m_TabID": 50,
+      "m_RewardGroup": 30255,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_ENCHANT_NEW_V2",
+      "m_OpenTag": "TAG_ATTEND_EVENT_ENCHANT_NEW_V2",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30256,
+      "m_TabID": 50,
+      "m_RewardGroup": 30256,
+      "m_MaxAttCount": 15,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_ANNIVERSARY_1_5YEAR",
+      "m_OpenTag": "TAG_ATTEND_EVENT_ANNIVERSARY_1_5YEAR",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30257,
+      "m_TabID": 40,
+      "m_RewardGroup": 30257,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_WEDDING",
+      "m_OpenTag": "TAG_ATTEND_EVENT_WEDDING",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30258,
+      "m_TabID": 30,
+      "m_RewardGroup": 30258,
+      "m_MaxAttCount": 10,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_SPECIAL_SUMMER_2021",
+      "m_OpenTag": "TAG_ATTEND_EVENT_SPECIAL_SUMMER_2021",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30259,
+      "m_TabID": 20,
+      "m_RewardGroup": 30259,
+      "m_MaxAttCount": 14,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_EVENT_CBT_CN",
+      "m_OpenTag": "ATTEND_EVENT_CBT_CN",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30260,
+      "m_TabID": 30,
+      "m_RewardGroup": 30260,
+      "m_MaxAttCount": 15,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_HOLYDAY_2021",
+      "m_OpenTag": "TAG_ATTEND_EVENT_HOLYDAY_2021",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30261,
+      "m_TabID": 30,
+      "m_RewardGroup": 30261,
+      "m_MaxAttCount": 15,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_OFFICE",
+      "m_OpenTag": "TAG_ATTEND_EVENT_OFFICE",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30262,
+      "m_TabID": 20,
+      "m_RewardGroup": 30262,
+      "m_MaxAttCount": 10,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_AUTUMN_2021",
+      "m_OpenTag": "TAG_ATTEND_EVENT_AUTUMN_2021",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30263,
+      "m_TabID": 30,
+      "m_RewardGroup": 30263,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NEW",
+      "m_DateStrID": "DATE_ATTEND_EVENT_BAM_10",
+      "m_OpenTag": "TAG_ATTEND_EVENT_BAM_10",
+      "m_LimitDayCount": 14
+    },
+    {
+      "IDX": 30264,
+      "m_TabID": 30,
+      "m_RewardGroup": 30264,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_HALLOWEEN_V2",
+      "m_OpenTag": "TAG_ATTEND_EVENT_HALLOWEEN_V2",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30265,
+      "m_TabID": 30,
+      "m_RewardGroup": 30265,
+      "m_MaxAttCount": 10,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_HORIZON",
+      "m_OpenTag": "TAG_ATTEND_EVENT_HORIZON",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30266,
+      "m_TabID": 30,
+      "m_RewardGroup": 30266,
+      "m_MaxAttCount": 15,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_300DAYS_TWN",
+      "m_OpenTag": "TAG_ATTEND_EVENT_300DAYS_TWN",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30267,
+      "m_TabID": 20,
+      "m_RewardGroup": 30267,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_REARMAMENT",
+      "m_OpenTag": "TAG_ATTEND_EVENT_REARMAMENT",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30268,
+      "m_TabID": 30,
+      "m_RewardGroup": 30268,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_BLACK_11",
+      "m_OpenTag": "TAG_ATTEND_EVENT_BLACK_11",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30269,
+      "m_TabID": 20,
+      "m_RewardGroup": 30269,
+      "m_MaxAttCount": 10,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_AUTUMN_SPORTS",
+      "m_OpenTag": "TAG_ATTEND_EVENT_AUTUMN_SPORTS",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30270,
+      "m_TabID": 20,
+      "m_RewardGroup": 30270,
+      "m_MaxAttCount": 30,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_NEW_AWAKEN_CHN",
+      "m_OpenTag": "TAG_ATTEND_EVENT_NEW_AWAKEN_CHN",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30271,
+      "m_TabID": 20,
+      "m_RewardGroup": 30271,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_JAPAN_NANA",
+      "m_OpenTag": "TAG_ATTEND_EVENT_JAPAN_NANA",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30272,
+      "m_TabID": 20,
+      "m_RewardGroup": 30272,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_XMAS_V2",
+      "m_OpenTag": "TAG_ATTEND_EVENT_XMAS_V2",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30273,
+      "m_TabID": 20,
+      "m_RewardGroup": 30273,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_NEWYEAR_2022",
+      "m_OpenTag": "TAG_ATTEND_EVENT_NEWYEAR_2022",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30274,
+      "m_TabID": 30,
+      "m_RewardGroup": 30274,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_7TIER_EQUIP",
+      "m_OpenTag": "TAG_ATTEND_EVENT_7TIER_EQUIP",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30275,
+      "m_TabID": 20,
+      "m_RewardGroup": 30275,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_XMAS_V2_JPN",
+      "m_OpenTag": "TAG_ATTEND_EVENT_XMAS_V2_JPN",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30276,
+      "m_TabID": 30,
+      "m_RewardGroup": 30276,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_WANTED",
+      "m_OpenTag": "TAG_ATTEND_EVENT_WANTED",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30277,
+      "m_TabID": 40,
+      "m_RewardGroup": 30277,
+      "m_MaxAttCount": 10,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_ADMIN",
+      "m_OpenTag": "TAG_ATTEND_EVENT_ADMIN",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30278,
+      "m_TabID": 30,
+      "m_RewardGroup": 30278,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_ENVELOPE",
+      "m_OpenTag": "TAG_ATTEND_EVENT_ENVELOPE",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30279,
+      "m_TabID": 30,
+      "m_RewardGroup": 30279,
+      "m_MaxAttCount": 10,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_LIMIT_FESTIVAL",
+      "m_OpenTag": "TAG_ATTEND_EVENT_LIMIT_FESTIVAL",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30280,
+      "m_TabID": 40,
+      "m_RewardGroup": 30280,
+      "m_MaxAttCount": 15,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_ANNIVERSARY_2YEAR",
+      "m_OpenTag": "TAG_ATTEND_EVENT_ANNIVERSARY_2YEAR",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30281,
+      "m_TabID": 30,
+      "m_RewardGroup": 30281,
+      "m_MaxAttCount": 10,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_VALEN_22",
+      "m_OpenTag": "TAG_ATTEND_EVENT_VALEN_22",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30282,
+      "m_TabID": 20,
+      "m_RewardGroup": 30282,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_REARMAMENT_GLOBAL",
+      "m_OpenTag": "TAG_ATTEND_EVENT_REARMAMENT_GLOBAL",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30283,
+      "m_TabID": 30,
+      "m_RewardGroup": 30283,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_BAM_10_V2",
+      "m_OpenTag": "TAG_ATTEND_EVENT_BAM_10_V2",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30284,
+      "m_TabID": 30,
+      "m_RewardGroup": 30284,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_STREGA",
+      "m_OpenTag": "TAG_ATTEND_EVENT_STREGA",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30285,
+      "m_TabID": 30,
+      "m_RewardGroup": 30285,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_SPRING_BLOSSOM",
+      "m_OpenTag": "TAG_ATTEND_EVENT_SPRING_BLOSSOM",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30286,
+      "m_TabID": 40,
+      "m_RewardGroup": 30286,
+      "m_MaxAttCount": 10,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_FOOLS_2022",
+      "m_OpenTag": "TAG_ATTEND_EVENT_FOOLS_2022",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30287,
+      "m_TabID": 30,
+      "m_RewardGroup": 30287,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_HARMONY",
+      "m_OpenTag": "TAG_ATTEND_EVENT_HARMONY",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30288,
+      "m_TabID": 30,
+      "m_RewardGroup": 30288,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_ANNIVERSARY_0_5YEAR",
+      "m_OpenTag": "TAG_ATTEND_EVENT_ANNIVERSARY_0_5YEAR",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30289,
+      "m_TabID": 30,
+      "m_RewardGroup": 30289,
+      "m_MaxAttCount": 10,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_FAM_05",
+      "m_OpenTag": "TAG_ATTEND_EVENT_FAM_05",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30290,
+      "m_TabID": 30,
+      "m_RewardGroup": 30290,
+      "m_MaxAttCount": 10,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_INTER_06",
+      "m_OpenTag": "TAG_ATTEND_EVENT_INTER_06",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30291,
+      "m_TabID": 30,
+      "m_RewardGroup": 30291,
+      "m_MaxAttCount": 10,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_QLI_EP",
+      "m_OpenTag": "TAG_ATTEND_EVENT_QLI_EP",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30292,
+      "m_TabID": 30,
+      "m_RewardGroup": 30292,
+      "m_MaxAttCount": 10,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_INTER_07",
+      "m_OpenTag": "TAG_ATTEND_EVENT_INTER_07",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30293,
+      "m_TabID": 30,
+      "m_RewardGroup": 30293,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_NIGHTMARE_ES",
+      "m_OpenTag": "TAG_ATTEND_EVENT_NIGHTMARE_ES",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30294,
+      "m_TabID": 30,
+      "m_RewardGroup": 30294,
+      "m_MaxAttCount": 15,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_CASH_15DAY",
+      "m_OpenTag": "TAG_ATTEND_EVENT_CASH_15DAY",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30295,
+      "m_TabID": 30,
+      "m_RewardGroup": 30295,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_ROYAL_SUP",
+      "m_OpenTag": "TAG_ATTEND_EVENT_ROYAL_SUP",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30296,
+      "m_TabID": 30,
+      "m_RewardGroup": 30296,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_INTER_08",
+      "m_OpenTag": "TAG_ATTEND_EVENT_INTER_08",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30297,
+      "m_TabID": 30,
+      "m_RewardGroup": 30297,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_HOLY_DAY_22",
+      "m_OpenTag": "TAG_ATTEND_EVENT_HOLY_DAY_22",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30298,
+      "m_TabID": 20,
+      "m_RewardGroup": 30298,
+      "m_MaxAttCount": 15,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_CLB_002",
+      "m_OpenTag": "TAG_ATTEND_EVENT_CLB_002",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30299,
+      "m_TabID": 20,
+      "m_RewardGroup": 30299,
+      "m_MaxAttCount": 15,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_ANNIVERSARY_1_G",
+      "m_OpenTag": "TAG_ATTEND_EVENT_ANNIVERSARY_1_G",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30300,
+      "m_TabID": 20,
+      "m_RewardGroup": 30300,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_HALLOWEEN_V3",
+      "m_OpenTag": "TAG_ATTEND_EVENT_HALLOWEEN_V3",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30301,
+      "m_TabID": 30,
+      "m_RewardGroup": 30301,
+      "m_MaxAttCount": 15,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_ANNIVERSARY_1_5YEAR_G",
+      "m_OpenTag": "TAG_ATTEND_EVENT_ANNIVERSARY_1_5YEAR_G",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30302,
+      "m_TabID": 30,
+      "m_RewardGroup": 30302,
+      "m_MaxAttCount": 15,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_1000DAYS",
+      "m_OpenTag": "TAG_ATTEND_EVENT_1000DAYS",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30303,
+      "m_TabID": 30,
+      "m_RewardGroup": 30303,
+      "m_MaxAttCount": 15,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_ANNIVERSARY_2YEAR_G",
+      "m_OpenTag": "TAG_ATTEND_EVENT_ANNIVERSARY_2YEAR_G",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30304,
+      "m_TabID": 30,
+      "m_RewardGroup": 30304,
+      "m_MaxAttCount": 10,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30305,
+      "m_TabID": 30,
+      "m_RewardGroup": 30305,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_XMAS_V3",
+      "m_OpenTag": "TAG_ATTEND_EVENT_XMAS_V3",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30306,
+      "m_TabID": 30,
+      "m_RewardGroup": 30306,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_SERVICE_TRANSFER",
+      "m_OpenTag": "TAG_ATTEND_EVENT_SERVICE_TRANSFER",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30307,
+      "m_TabID": 30,
+      "m_RewardGroup": 30307,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "ATTEND_OLD",
+      "m_OpenTag": "ATTEND_OLD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30308,
+      "m_TabID": 30,
+      "m_RewardGroup": 30308,
+      "m_MaxAttCount": 10,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_EVE_3",
+      "m_OpenTag": "TAG_ATTEND_EVENT_EVE_3",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30309,
+      "m_TabID": 20,
+      "m_RewardGroup": 30309,
+      "m_MaxAttCount": 15,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTNED_EVENT_GLOBAL_FIRST",
+      "m_OpenTag": "TAG_ATTNED_EVENT_GLOBAL_FIRST",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30310,
+      "m_TabID": 30,
+      "m_RewardGroup": 30310,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_VALEN_23",
+      "m_OpenTag": "TAG_ATTEND_EVENT_VALEN_23",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30311,
+      "m_TabID": 30,
+      "m_RewardGroup": 30311,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_FOOLS_2023",
+      "m_OpenTag": "TAG_ATTEND_EVENT_FOOLS_2023",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30312,
+      "m_TabID": 30,
+      "m_RewardGroup": 30312,
+      "m_MaxAttCount": 10,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_SPRING_BLOSSOM_V2",
+      "m_OpenTag": "TAG_ATTEND_EVENT_SPRING_BLOSSOM_V2",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30313,
+      "m_TabID": 30,
+      "m_RewardGroup": 30313,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_BONUS",
+      "m_OpenTag": "TAG_ATTEND_EVENT_BONUS",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30314,
+      "m_TabID": 30,
+      "m_RewardGroup": 30314,
+      "m_MaxAttCount": 10,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_FAM_05_V2",
+      "m_OpenTag": "TAG_ATTEND_EVENT_FAM_05_V2",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30315,
+      "m_TabID": 30,
+      "m_RewardGroup": 30315,
+      "m_MaxAttCount": 10,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_CLB_001_V2",
+      "m_OpenTag": "TAG_ATTEND_EVENT_CLB_001_V2",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30316,
+      "m_TabID": 20,
+      "m_RewardGroup": 30316,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_GLOBAL_FIRST_HALF_ANN_EVE",
+      "m_OpenTag": "TAG_ATTEND_EVENT_GLOBAL_FIRST_HALF_ANN_EVE",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30317,
+      "m_TabID": 20,
+      "m_RewardGroup": 30317,
+      "m_MaxAttCount": 15,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_GLOBAL_FIRST_HALF_ANN",
+      "m_OpenTag": "TAG_ATTEND_EVENT_GLOBAL_FIRST_HALF_ANN",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30318,
+      "m_TabID": 20,
+      "m_RewardGroup": 30318,
+      "m_MaxAttCount": 10,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_ZLONG_REACTOR",
+      "m_OpenTag": "TAG_ATTEND_EVENT_ZLONG_REACTOR",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30319,
+      "m_TabID": 20,
+      "m_RewardGroup": 30319,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_HOLY_DAY_23",
+      "m_OpenTag": "TAG_ATTEND_EVENT_HOLY_DAY_23",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30320,
+      "m_TabID": 20,
+      "m_RewardGroup": 30320,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_HALLOWEEN_V4",
+      "m_OpenTag": "TAG_ATTEND_EVENT_HALLOWEEN_V4",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30321,
+      "m_TabID": 20,
+      "m_RewardGroup": 30321,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_XMAS_V4",
+      "m_OpenTag": "TAG_ATTEND_EVENT_XMAS_V4",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30322,
+      "m_TabID": 20,
+      "m_RewardGroup": 30322,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_NEWYEAR_2024",
+      "m_OpenTag": "TAG_ATTEND_EVENT_NEWYEAR_2024",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30323,
+      "m_TabID": 20,
+      "m_RewardGroup": 30323,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_GLOBAL_FIRST_HALF_ANN_EVE_ZL",
+      "m_OpenTag": "TAG_ATTEND_EVENT_GLOBAL_FIRST_HALF_ANN_EVE_ZL",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30324,
+      "m_TabID": 20,
+      "m_RewardGroup": 30324,
+      "m_MaxAttCount": 15,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_GLOBAL_FIRST_HALF_ANN_ZL",
+      "m_OpenTag": "TAG_ATTEND_EVENT_GLOBAL_FIRST_HALF_ANN_ZL",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30325,
+      "m_TabID": 20,
+      "m_RewardGroup": 30325,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_EVE_4",
+      "m_OpenTag": "TAG_ATTEND_EVENT_EVE_4",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30326,
+      "m_TabID": 20,
+      "m_RewardGroup": 30326,
+      "m_MaxAttCount": 15,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_GLOBAL_FIRST_1YEAR",
+      "m_OpenTag": "TAG_ATTEND_EVENT_GLOBAL_FIRST_1YEAR",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30327,
+      "m_TabID": 20,
+      "m_RewardGroup": 30327,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_NEWYEAR_2023",
+      "m_OpenTag": "TAG_ATTEND_EVENT_NEWYEAR_2023",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30328,
+      "m_TabID": 30,
+      "m_RewardGroup": 30328,
+      "m_MaxAttCount": 10,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_CLB_003",
+      "m_OpenTag": "TAG_ATTEND_EVENT_CLB_003",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30329,
+      "m_TabID": 30,
+      "m_RewardGroup": 30329,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_BONUS_V2",
+      "m_OpenTag": "TAG_ATTEND_EVENT_BONUS_V2",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30330,
+      "m_TabID": 30,
+      "m_RewardGroup": 30330,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_BONUS_V3",
+      "m_OpenTag": "TAG_ATTEND_EVENT_BONUS_V3",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30331,
+      "m_TabID": 30,
+      "m_RewardGroup": 30331,
+      "m_MaxAttCount": 10,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_BONUS_V4",
+      "m_OpenTag": "TAG_ATTEND_EVENT_BONUS_V4",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30332,
+      "m_TabID": 30,
+      "m_RewardGroup": 30332,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_EVE_4_5",
+      "m_OpenTag": "TAG_ATTEND_EVENT_EVE_4_5",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30333,
+      "m_TabID": 30,
+      "m_RewardGroup": 30333,
+      "m_MaxAttCount": 15,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_GLOBAL_FIRST_1_5YEAR",
+      "m_OpenTag": "TAG_ATTEND_EVENT_GLOBAL_FIRST_1_5YEAR",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30334,
+      "m_TabID": 30,
+      "m_RewardGroup": 30334,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_ERROR_REWARD",
+      "m_OpenTag": "TAG_ATTEND_EVENT_ERROR_REWARD",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30335,
+      "m_TabID": 30,
+      "m_RewardGroup": 30335,
+      "m_MaxAttCount": 10,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_CLB_004",
+      "m_OpenTag": "TAG_ATTEND_EVENT_CLB_004",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30336,
+      "m_TabID": 30,
+      "m_RewardGroup": 30336,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_EVE_5",
+      "m_OpenTag": "TAG_ATTEND_EVENT_EVE_5",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30337,
+      "m_TabID": 30,
+      "m_RewardGroup": 30337,
+      "m_MaxAttCount": 15,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_GLOBAL_FIRST_2YEAR",
+      "m_OpenTag": "TAG_ATTEND_EVENT_GLOBAL_FIRST_2YEAR",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30338,
+      "m_TabID": 30,
+      "m_RewardGroup": 30338,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_EVE_5_5",
+      "m_OpenTag": "TAG_ATTEND_EVENT_EVE_5_5",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30339,
+      "m_TabID": 30,
+      "m_RewardGroup": 30339,
+      "m_MaxAttCount": 15,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_GLOBAL_FIRST_2_5YEAR",
+      "m_OpenTag": "TAG_ATTEND_EVENT_GLOBAL_FIRST_2_5YEAR",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30340,
+      "m_TabID": 30,
+      "m_RewardGroup": 30340,
+      "m_MaxAttCount": 7,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_EVE_6",
+      "m_OpenTag": "TAG_ATTEND_EVENT_EVE_6",
+      "m_LimitDayCount": 0
+    },
+    {
+      "IDX": 30341,
+      "m_TabID": 30,
+      "m_RewardGroup": 30341,
+      "m_MaxAttCount": 15,
+      "m_EventType": "NORMAL",
+      "m_DateStrID": "DATE_ATTEND_EVENT_GLOBAL_FIRST_3YEAR",
+      "m_OpenTag": "TAG_ATTEND_EVENT_GLOBAL_FIRST_3YEAR",
+      "m_LimitDayCount": 0
+    }
+  ]
+}

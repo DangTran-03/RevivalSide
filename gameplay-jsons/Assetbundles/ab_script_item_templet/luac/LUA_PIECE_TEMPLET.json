@@ -1,0 +1,1309 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_item_templet\\luac\\LUA_PIECE_TEMPLET.lua",
+  "rootName": "PIECE_TEMPLET",
+  "recordCount": 217,
+  "records": [
+    {
+      "m_PieceID": 901026,
+      "m_PieceGetUnitID": 1026,
+      "m_PieceReq": 70,
+      "m_PieceReq_First": 100
+    },
+    {
+      "m_PieceID": 901007,
+      "m_PieceGetUnitID": 1007,
+      "m_PieceReq": 70,
+      "m_PieceReq_First": 100
+    },
+    {
+      "m_PieceID": 901077,
+      "m_PieceGetUnitID": 1077,
+      "m_PieceReq": 70,
+      "m_PieceReq_First": 100
+    },
+    {
+      "m_PieceID": 901055,
+      "m_PieceGetUnitID": 1055,
+      "m_PieceReq": 70,
+      "m_PieceReq_First": 100
+    },
+    {
+      "m_PieceID": 901016,
+      "m_PieceGetUnitID": 1016,
+      "m_PieceReq": 70,
+      "m_PieceReq_First": 100
+    },
+    {
+      "m_PieceID": 901046,
+      "m_PieceGetUnitID": 1046,
+      "m_PieceReq": 70,
+      "m_PieceReq_First": 100
+    },
+    {
+      "m_PieceID": 901030,
+      "m_PieceGetUnitID": 1030,
+      "m_PieceReq": 70,
+      "m_PieceReq_First": 100
+    },
+    {
+      "m_PieceID": 901021,
+      "m_PieceGetUnitID": 1021,
+      "m_PieceReq": 70,
+      "m_PieceReq_First": 100
+    },
+    {
+      "m_PieceID": 901093,
+      "m_PieceGetUnitID": 1093,
+      "m_PieceReq": 70,
+      "m_PieceReq_First": 100
+    },
+    {
+      "m_PieceID": 901089,
+      "m_PieceGetUnitID": 1089,
+      "m_PieceReq": 70,
+      "m_PieceReq_First": 100
+    },
+    {
+      "m_PieceID": 901015,
+      "m_PieceGetUnitID": 1015,
+      "m_PieceReq": 70,
+      "m_PieceReq_First": 100
+    },
+    {
+      "m_PieceID": 901124,
+      "m_PieceGetUnitID": 1124,
+      "m_PieceReq": 70,
+      "m_PieceReq_First": 100
+    },
+    {
+      "m_PieceID": 901119,
+      "m_PieceGetUnitID": 1119,
+      "m_PieceReq": 70,
+      "m_PieceReq_First": 100
+    },
+    {
+      "m_PieceID": 901034,
+      "m_PieceGetUnitID": 1034,
+      "m_PieceReq": 70,
+      "m_PieceReq_First": 100
+    },
+    {
+      "m_PieceID": 901083,
+      "m_PieceGetUnitID": 1083,
+      "m_PieceReq": 70,
+      "m_PieceReq_First": 100
+    },
+    {
+      "m_PieceID": 901087,
+      "m_PieceGetUnitID": 1087,
+      "m_PieceReq": 70,
+      "m_PieceReq_First": 100
+    },
+    {
+      "m_PieceID": 901062,
+      "m_PieceGetUnitID": 1062,
+      "m_PieceReq": 70,
+      "m_PieceReq_First": 100
+    },
+    {
+      "m_PieceID": 901142,
+      "m_PieceGetUnitID": 1142,
+      "m_PieceReq": 70,
+      "m_PieceReq_First": 100
+    },
+    {
+      "m_PieceID": 901018,
+      "m_PieceGetUnitID": 1018,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901097,
+      "m_PieceGetUnitID": 1097,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901096,
+      "m_PieceGetUnitID": 1096,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901060,
+      "m_PieceGetUnitID": 1060,
+      "m_PieceReq": 70,
+      "m_PieceReq_First": 100
+    },
+    {
+      "m_PieceID": 901059,
+      "m_PieceGetUnitID": 1059,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901148,
+      "m_PieceGetUnitID": 1148,
+      "m_PieceReq": 70,
+      "m_PieceReq_First": 100
+    },
+    {
+      "m_PieceID": 901098,
+      "m_PieceGetUnitID": 1098,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901029,
+      "m_PieceGetUnitID": 1029,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901004,
+      "m_PieceGetUnitID": 1004,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901006,
+      "m_PieceGetUnitID": 1006,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901031,
+      "m_PieceGetUnitID": 1031,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901040,
+      "m_PieceGetUnitID": 1040,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901042,
+      "m_PieceGetUnitID": 1042,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901043,
+      "m_PieceGetUnitID": 1043,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901061,
+      "m_PieceGetUnitID": 1061,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901063,
+      "m_PieceGetUnitID": 1063,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901064,
+      "m_PieceGetUnitID": 1064,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901065,
+      "m_PieceGetUnitID": 1065,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901068,
+      "m_PieceGetUnitID": 1068,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901070,
+      "m_PieceGetUnitID": 1070,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901081,
+      "m_PieceGetUnitID": 1081,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901082,
+      "m_PieceGetUnitID": 1082,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901084,
+      "m_PieceGetUnitID": 1084,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901085,
+      "m_PieceGetUnitID": 1085,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901099,
+      "m_PieceGetUnitID": 1099,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901109,
+      "m_PieceGetUnitID": 1109,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901110,
+      "m_PieceGetUnitID": 1110,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901112,
+      "m_PieceGetUnitID": 1112,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901113,
+      "m_PieceGetUnitID": 1113,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901115,
+      "m_PieceGetUnitID": 1115,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901118,
+      "m_PieceGetUnitID": 1118,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901121,
+      "m_PieceGetUnitID": 1121,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901135,
+      "m_PieceGetUnitID": 1135,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901138,
+      "m_PieceGetUnitID": 1138,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901139,
+      "m_PieceGetUnitID": 1139,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901146,
+      "m_PieceGetUnitID": 1146,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901147,
+      "m_PieceGetUnitID": 1147,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901149,
+      "m_PieceGetUnitID": 1149,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901005,
+      "m_PieceGetUnitID": 1005,
+      "m_PieceReq": 70,
+      "m_PieceReq_First": 100
+    },
+    {
+      "m_PieceID": 901028,
+      "m_PieceGetUnitID": 1028,
+      "m_PieceReq": 70,
+      "m_PieceReq_First": 100
+    },
+    {
+      "m_PieceID": 901033,
+      "m_PieceGetUnitID": 1033,
+      "m_PieceReq": 70,
+      "m_PieceReq_First": 100
+    },
+    {
+      "m_PieceID": 901037,
+      "m_PieceGetUnitID": 1037,
+      "m_PieceReq": 70,
+      "m_PieceReq_First": 100
+    },
+    {
+      "m_PieceID": 901039,
+      "m_PieceGetUnitID": 1039,
+      "m_PieceReq": 70,
+      "m_PieceReq_First": 100
+    },
+    {
+      "m_PieceID": 901041,
+      "m_PieceGetUnitID": 1041,
+      "m_PieceReq": 70,
+      "m_PieceReq_First": 100
+    },
+    {
+      "m_PieceID": 901044,
+      "m_PieceGetUnitID": 1044,
+      "m_PieceReq": 70,
+      "m_PieceReq_First": 100
+    },
+    {
+      "m_PieceID": 901066,
+      "m_PieceGetUnitID": 1066,
+      "m_PieceReq": 70,
+      "m_PieceReq_First": 100
+    },
+    {
+      "m_PieceID": 901067,
+      "m_PieceGetUnitID": 1067,
+      "m_PieceReq": 70,
+      "m_PieceReq_First": 100
+    },
+    {
+      "m_PieceID": 901069,
+      "m_PieceGetUnitID": 1069,
+      "m_PieceReq": 70,
+      "m_PieceReq_First": 100
+    },
+    {
+      "m_PieceID": 901080,
+      "m_PieceGetUnitID": 1080,
+      "m_PieceReq": 70,
+      "m_PieceReq_First": 100
+    },
+    {
+      "m_PieceID": 901091,
+      "m_PieceGetUnitID": 1091,
+      "m_PieceReq": 70,
+      "m_PieceReq_First": 100
+    },
+    {
+      "m_PieceID": 901111,
+      "m_PieceGetUnitID": 1111,
+      "m_PieceReq": 70,
+      "m_PieceReq_First": 100
+    },
+    {
+      "m_PieceID": 901114,
+      "m_PieceGetUnitID": 1114,
+      "m_PieceReq": 70,
+      "m_PieceReq_First": 100
+    },
+    {
+      "m_PieceID": 901116,
+      "m_PieceGetUnitID": 1116,
+      "m_PieceReq": 70,
+      "m_PieceReq_First": 100
+    },
+    {
+      "m_PieceID": 901117,
+      "m_PieceGetUnitID": 1117,
+      "m_PieceReq": 70,
+      "m_PieceReq_First": 100
+    },
+    {
+      "m_PieceID": 901123,
+      "m_PieceGetUnitID": 1123,
+      "m_PieceReq": 70,
+      "m_PieceReq_First": 100
+    },
+    {
+      "m_PieceID": 901136,
+      "m_PieceGetUnitID": 1136,
+      "m_PieceReq": 70,
+      "m_PieceReq_First": 100
+    },
+    {
+      "m_PieceID": 901103,
+      "m_PieceGetUnitID": 1103,
+      "m_PieceReq": 70,
+      "m_PieceReq_First": 100
+    },
+    {
+      "m_PieceID": 901104,
+      "m_PieceGetUnitID": 1104,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901105,
+      "m_PieceGetUnitID": 1105,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901151,
+      "m_PieceGetUnitID": 1151,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901152,
+      "m_PieceGetUnitID": 1152,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901158,
+      "m_PieceGetUnitID": 1158,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901157,
+      "m_PieceGetUnitID": 1157,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901160,
+      "m_PieceGetUnitID": 1160,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901162,
+      "m_PieceGetUnitID": 1162,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901165,
+      "m_PieceGetUnitID": 1165,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901164,
+      "m_PieceGetUnitID": 1164,
+      "m_PieceReq": 70,
+      "m_PieceReq_First": 100
+    },
+    {
+      "m_PieceID": 901167,
+      "m_PieceGetUnitID": 1167,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901169,
+      "m_PieceGetUnitID": 1169,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901170,
+      "m_PieceGetUnitID": 1170,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901174,
+      "m_PieceGetUnitID": 1174,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901173,
+      "m_PieceGetUnitID": 1173,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901180,
+      "m_PieceGetUnitID": 1180,
+      "m_PieceReq": 70,
+      "m_PieceReq_First": 100
+    },
+    {
+      "m_PieceID": 901177,
+      "m_PieceGetUnitID": 1177,
+      "m_PieceReq": 70,
+      "m_PieceReq_First": 100
+    },
+    {
+      "m_PieceID": 901190,
+      "m_PieceGetUnitID": 1190,
+      "m_PieceReq": 280,
+      "m_PieceReq_First": 300
+    },
+    {
+      "m_PieceID": 901175,
+      "m_PieceGetUnitID": 1175,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901178,
+      "m_PieceGetUnitID": 1178,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901100,
+      "m_PieceGetUnitID": 1100,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901101,
+      "m_PieceGetUnitID": 1101,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901181,
+      "m_PieceGetUnitID": 1181,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901179,
+      "m_PieceGetUnitID": 1179,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901038,
+      "m_PieceGetUnitID": 1155,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901001,
+      "m_PieceGetUnitID": 1001,
+      "m_PieceReq": 70,
+      "m_PieceReq_First": 100
+    },
+    {
+      "m_PieceID": 901002,
+      "m_PieceGetUnitID": 1002,
+      "m_PieceReq": 70,
+      "m_PieceReq_First": 100
+    },
+    {
+      "m_PieceID": 901003,
+      "m_PieceGetUnitID": 1003,
+      "m_PieceReq": 70,
+      "m_PieceReq_First": 100
+    },
+    {
+      "m_PieceID": 901171,
+      "m_PieceGetUnitID": 1171,
+      "m_PieceReq": 280,
+      "m_PieceReq_First": 300
+    },
+    {
+      "m_PieceID": 901102,
+      "m_PieceGetUnitID": 1102,
+      "m_PieceReq": 70,
+      "m_PieceReq_First": 100
+    },
+    {
+      "m_PieceID": 901071,
+      "m_PieceGetUnitID": 1071,
+      "m_PieceReq": 280,
+      "m_PieceReq_First": 300
+    },
+    {
+      "m_PieceID": 901072,
+      "m_PieceGetUnitID": 1072,
+      "m_PieceReq": 280,
+      "m_PieceReq_First": 300
+    },
+    {
+      "m_PieceID": 901073,
+      "m_PieceGetUnitID": 1073,
+      "m_PieceReq": 280,
+      "m_PieceReq_First": 300
+    },
+    {
+      "m_PieceID": 901172,
+      "m_PieceGetUnitID": 1172,
+      "m_PieceReq": 280,
+      "m_PieceReq_First": 300
+    },
+    {
+      "m_PieceID": 901176,
+      "m_PieceGetUnitID": 1176,
+      "m_PieceReq": 280,
+      "m_PieceReq_First": 300
+    },
+    {
+      "m_PieceID": 901194,
+      "m_PieceGetUnitID": 1194,
+      "m_PieceReq": 280,
+      "m_PieceReq_First": 300
+    },
+    {
+      "m_PieceID": 901150,
+      "m_PieceGetUnitID": 1150,
+      "m_PieceReq": 280,
+      "m_PieceReq_First": 300
+    },
+    {
+      "m_PieceID": 901154,
+      "m_PieceGetUnitID": 1154,
+      "m_PieceReq": 280,
+      "m_PieceReq_First": 300
+    },
+    {
+      "m_PieceID": 901159,
+      "m_PieceGetUnitID": 1159,
+      "m_PieceReq": 280,
+      "m_PieceReq_First": 300
+    },
+    {
+      "m_PieceID": 901161,
+      "m_PieceGetUnitID": 1161,
+      "m_PieceReq": 280,
+      "m_PieceReq_First": 300
+    },
+    {
+      "m_PieceID": 901166,
+      "m_PieceGetUnitID": 1166,
+      "m_PieceReq": 280,
+      "m_PieceReq_First": 300
+    },
+    {
+      "m_PieceID": 901188,
+      "m_PieceGetUnitID": 1188,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901189,
+      "m_PieceGetUnitID": 1189,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901191,
+      "m_PieceGetUnitID": 1191,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901192,
+      "m_PieceGetUnitID": 1192,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901193,
+      "m_PieceGetUnitID": 1193,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901195,
+      "m_PieceGetUnitID": 1195,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901187,
+      "m_PieceGetUnitID": 1187,
+      "m_PieceReq": 70,
+      "m_PieceReq_First": 100
+    },
+    {
+      "m_PieceID": 901198,
+      "m_PieceGetUnitID": 1198,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901196,
+      "m_PieceGetUnitID": 1196,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901197,
+      "m_PieceGetUnitID": 1197,
+      "m_PieceReq": 280,
+      "m_PieceReq_First": 300
+    },
+    {
+      "m_PieceID": 901199,
+      "m_PieceGetUnitID": 1199,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901200,
+      "m_PieceGetUnitID": 1200,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901201,
+      "m_PieceGetUnitID": 1201,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901202,
+      "m_PieceGetUnitID": 1202,
+      "m_PieceReq": 280,
+      "m_PieceReq_First": 300
+    },
+    {
+      "m_PieceID": 901203,
+      "m_PieceGetUnitID": 1203,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901204,
+      "m_PieceGetUnitID": 1204,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901205,
+      "m_PieceGetUnitID": 1205,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901206,
+      "m_PieceGetUnitID": 1206,
+      "m_PieceReq": 280,
+      "m_PieceReq_First": 300
+    },
+    {
+      "m_PieceID": 901207,
+      "m_PieceGetUnitID": 1207,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901208,
+      "m_PieceGetUnitID": 1208,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901210,
+      "m_PieceGetUnitID": 1210,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901211,
+      "m_PieceGetUnitID": 1211,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901212,
+      "m_PieceGetUnitID": 1212,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901213,
+      "m_PieceGetUnitID": 1213,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901214,
+      "m_PieceGetUnitID": 1214,
+      "m_PieceReq": 280,
+      "m_PieceReq_First": 300
+    },
+    {
+      "m_PieceID": 901215,
+      "m_PieceGetUnitID": 1215,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901216,
+      "m_PieceGetUnitID": 1216,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901217,
+      "m_PieceGetUnitID": 1217,
+      "m_PieceReq": 280,
+      "m_PieceReq_First": 300
+    },
+    {
+      "m_PieceID": 901218,
+      "m_PieceGetUnitID": 1218,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901219,
+      "m_PieceGetUnitID": 1219,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901220,
+      "m_PieceGetUnitID": 1220,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901221,
+      "m_PieceGetUnitID": 1221,
+      "m_PieceReq": 280,
+      "m_PieceReq_First": 300
+    },
+    {
+      "m_PieceID": 901222,
+      "m_PieceGetUnitID": 1222,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901223,
+      "m_PieceGetUnitID": 1223,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901224,
+      "m_PieceGetUnitID": 1224,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901225,
+      "m_PieceGetUnitID": 1225,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901226,
+      "m_PieceGetUnitID": 1226,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901227,
+      "m_PieceGetUnitID": 1227,
+      "m_PieceReq": 280,
+      "m_PieceReq_First": 300
+    },
+    {
+      "m_PieceID": 901231,
+      "m_PieceGetUnitID": 1231,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901232,
+      "m_PieceGetUnitID": 1232,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901233,
+      "m_PieceGetUnitID": 1233,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901234,
+      "m_PieceGetUnitID": 1234,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901235,
+      "m_PieceGetUnitID": 1235,
+      "m_PieceReq": 280,
+      "m_PieceReq_First": 300
+    },
+    {
+      "m_PieceID": 901236,
+      "m_PieceGetUnitID": 1236,
+      "m_PieceReq": 280,
+      "m_PieceReq_First": 300
+    },
+    {
+      "m_PieceID": 901237,
+      "m_PieceGetUnitID": 1237,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901238,
+      "m_PieceGetUnitID": 1238,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901239,
+      "m_PieceGetUnitID": 1239,
+      "m_PieceReq": 280,
+      "m_PieceReq_First": 300
+    },
+    {
+      "m_PieceID": 901240,
+      "m_PieceGetUnitID": 1240,
+      "m_PieceReq": 280,
+      "m_PieceReq_First": 300
+    },
+    {
+      "m_PieceID": 901241,
+      "m_PieceGetUnitID": 1241,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901242,
+      "m_PieceGetUnitID": 1242,
+      "m_PieceReq": 280,
+      "m_PieceReq_First": 300
+    },
+    {
+      "m_PieceID": 901243,
+      "m_PieceGetUnitID": 1243,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901244,
+      "m_PieceGetUnitID": 1244,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901245,
+      "m_PieceGetUnitID": 1245,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901247,
+      "m_PieceGetUnitID": 1247,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901246,
+      "m_PieceGetUnitID": 1246,
+      "m_PieceReq": 280,
+      "m_PieceReq_First": 300
+    },
+    {
+      "m_PieceID": 901248,
+      "m_PieceGetUnitID": 1248,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901250,
+      "m_PieceGetUnitID": 1250,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901182,
+      "m_PieceGetUnitID": 1182,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901183,
+      "m_PieceGetUnitID": 1183,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901184,
+      "m_PieceGetUnitID": 1184,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901185,
+      "m_PieceGetUnitID": 1185,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901186,
+      "m_PieceGetUnitID": 1186,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901230,
+      "m_PieceGetUnitID": 2230,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901251,
+      "m_PieceGetUnitID": 1251,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901252,
+      "m_PieceGetUnitID": 1252,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901254,
+      "m_PieceGetUnitID": 1254,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901255,
+      "m_PieceGetUnitID": 1255,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901258,
+      "m_PieceGetUnitID": 1258,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901259,
+      "m_PieceGetUnitID": 1259,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901257,
+      "m_PieceGetUnitID": 1257,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901261,
+      "m_PieceGetUnitID": 1261,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901264,
+      "m_PieceGetUnitID": 1264,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901263,
+      "m_PieceGetUnitID": 1263,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901266,
+      "m_PieceGetUnitID": 1266,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901268,
+      "m_PieceGetUnitID": 1268,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901269,
+      "m_PieceGetUnitID": 1269,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901271,
+      "m_PieceGetUnitID": 1271,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901272,
+      "m_PieceGetUnitID": 1272,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901273,
+      "m_PieceGetUnitID": 1273,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901276,
+      "m_PieceGetUnitID": 1276,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901277,
+      "m_PieceGetUnitID": 1277,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901280,
+      "m_PieceGetUnitID": 1280,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901282,
+      "m_PieceGetUnitID": 1282,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901286,
+      "m_PieceGetUnitID": 1286,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901287,
+      "m_PieceGetUnitID": 1287,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901289,
+      "m_PieceGetUnitID": 1289,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901290,
+      "m_PieceGetUnitID": 1290,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901291,
+      "m_PieceGetUnitID": 1291,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901293,
+      "m_PieceGetUnitID": 1293,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901294,
+      "m_PieceGetUnitID": 1294,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901297,
+      "m_PieceGetUnitID": 1297,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901296,
+      "m_PieceGetUnitID": 1296,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901299,
+      "m_PieceGetUnitID": 1299,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901300,
+      "m_PieceGetUnitID": 1300,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901301,
+      "m_PieceGetUnitID": 1301,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901302,
+      "m_PieceGetUnitID": 1302,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901303,
+      "m_PieceGetUnitID": 1303,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901305,
+      "m_PieceGetUnitID": 1305,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901307,
+      "m_PieceGetUnitID": 1307,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901308,
+      "m_PieceGetUnitID": 1308,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    },
+    {
+      "m_PieceID": 901310,
+      "m_PieceGetUnitID": 1310,
+      "m_PieceReq": 120,
+      "m_PieceReq_First": 150
+    }
+  ]
+}

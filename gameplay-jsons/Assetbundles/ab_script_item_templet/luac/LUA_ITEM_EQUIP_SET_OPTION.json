@@ -1,0 +1,208 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script_item_templet\\luac\\LUA_ITEM_EQUIP_SET_OPTION.lua",
+  "rootName": "ITEM_EQUIP_SET_OPTION",
+  "recordCount": 67,
+  "records": [
+    {
+      "m_EquipSetID": 220800
+    },
+    {
+      "m_EquipSetID": 220700
+    },
+    {
+      "m_EquipSetID": 220900
+    },
+    {
+      "m_EquipSetID": 221000
+    },
+    {
+      "m_EquipSetID": 221200
+    },
+    {
+      "m_EquipSetID": 221100
+    },
+    {
+      "m_EquipSetID": 241700
+    },
+    {
+      "m_EquipSetID": 242100
+    },
+    {
+      "m_EquipSetID": 241900
+    },
+    {
+      "m_EquipSetID": 222600
+    },
+    {
+      "m_EquipSetID": 222800
+    },
+    {
+      "m_EquipSetID": 223000
+    },
+    {
+      "m_EquipSetID": 223200
+    },
+    {
+      "m_EquipSetID": 223400
+    },
+    {
+      "m_EquipSetID": 223800
+    },
+    {
+      "m_EquipSetID": 223600
+    },
+    {
+      "m_EquipSetID": 320100
+    },
+    {
+      "m_EquipSetID": 320200
+    },
+    {
+      "m_EquipSetID": 320300
+    },
+    {
+      "m_EquipSetID": 320400
+    },
+    {
+      "m_EquipSetID": 320500
+    },
+    {
+      "m_EquipSetID": 320600
+    },
+    {
+      "m_EquipSetID": 320700
+    },
+    {
+      "m_EquipSetID": 320800
+    },
+    {
+      "m_EquipSetID": 320900
+    },
+    {
+      "m_EquipSetID": 340100
+    },
+    {
+      "m_EquipSetID": 340200
+    },
+    {
+      "m_EquipSetID": 340300
+    },
+    {
+      "m_EquipSetID": 340400
+    },
+    {
+      "m_EquipSetID": 340500
+    },
+    {
+      "m_EquipSetID": 340600
+    },
+    {
+      "m_EquipSetID": 340700
+    },
+    {
+      "m_EquipSetID": 340800
+    },
+    {
+      "m_EquipSetID": 340900
+    },
+    {
+      "m_EquipSetID": 341000
+    },
+    {
+      "m_EquipSetID": 442200
+    },
+    {
+      "m_EquipSetID": 442400
+    },
+    {
+      "m_EquipSetID": 424000
+    },
+    {
+      "m_EquipSetID": 424200
+    },
+    {
+      "m_EquipSetID": 424400
+    },
+    {
+      "m_EquipSetID": 425700
+    },
+    {
+      "m_EquipSetID": 425900
+    },
+    {
+      "m_EquipSetID": 421500
+    },
+    {
+      "m_EquipSetID": 445400
+    },
+    {
+      "m_EquipSetID": 425500
+    },
+    {
+      "m_EquipSetID": 445000
+    },
+    {
+      "m_EquipSetID": 445200
+    },
+    {
+      "m_EquipSetID": 440800
+    },
+    {
+      "m_EquipSetID": 421300
+    },
+    {
+      "m_EquipSetID": 531001
+    },
+    {
+      "m_EquipSetID": 531002
+    },
+    {
+      "m_EquipSetID": 531003
+    },
+    {
+      "m_EquipSetID": 531004
+    },
+    {
+      "m_EquipSetID": 531005
+    },
+    {
+      "m_EquipSetID": 531006
+    },
+    {
+      "m_EquipSetID": 532001
+    },
+    {
+      "m_EquipSetID": 532002
+    },
+    {
+      "m_EquipSetID": 532003
+    },
+    {
+      "m_EquipSetID": 532004
+    },
+    {
+      "m_EquipSetID": 532005
+    },
+    {
+      "m_EquipSetID": 532006
+    },
+    {
+      "m_EquipSetID": 951001
+    },
+    {
+      "m_EquipSetID": 951002
+    },
+    {
+      "m_EquipSetID": 951003
+    },
+    {
+      "m_EquipSetID": 910001
+    },
+    {
+      "m_EquipSetID": 910101
+    },
+    {
+      "m_EquipSetID": 910201
+    }
+  ]
+}

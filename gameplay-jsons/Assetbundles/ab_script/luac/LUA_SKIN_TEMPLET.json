@@ -1,0 +1,679 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script\\luac\\LUA_SKIN_TEMPLET.lua",
+  "rootName": "SkinTemplet",
+  "recordCount": 224,
+  "records": [
+    {
+      "m_SkinID": 100202
+    },
+    {
+      "m_SkinID": 100102
+    },
+    {
+      "m_SkinID": 100602
+    },
+    {
+      "m_SkinID": 100702
+    },
+    {
+      "m_SkinID": 101802
+    },
+    {
+      "m_SkinID": 100203
+    },
+    {
+      "m_SkinID": 100103
+    },
+    {
+      "m_SkinID": 104403
+    },
+    {
+      "m_SkinID": 113503
+    },
+    {
+      "m_SkinID": 113603
+    },
+    {
+      "m_SkinID": 104203
+    },
+    {
+      "m_SkinID": 111803
+    },
+    {
+      "m_SkinID": 100404
+    },
+    {
+      "m_SkinID": 100405
+    },
+    {
+      "m_SkinID": 100505
+    },
+    {
+      "m_SkinID": 105505
+    },
+    {
+      "m_SkinID": 106105
+    },
+    {
+      "m_SkinID": 108505
+    },
+    {
+      "m_SkinID": 113405
+    },
+    {
+      "m_SkinID": 104206
+    },
+    {
+      "m_SkinID": 104307
+    },
+    {
+      "m_SkinID": 108707
+    },
+    {
+      "m_SkinID": 109807
+    },
+    {
+      "m_SkinID": 112107
+    },
+    {
+      "m_SkinID": 112207
+    },
+    {
+      "m_SkinID": 1001707
+    },
+    {
+      "m_SkinID": 1001307
+    },
+    {
+      "m_SkinID": 106208
+    },
+    {
+      "m_SkinID": 109708
+    },
+    {
+      "m_SkinID": 109908
+    },
+    {
+      "m_SkinID": 114208
+    },
+    {
+      "m_SkinID": 110909
+    },
+    {
+      "m_SkinID": 113809
+    },
+    {
+      "m_SkinID": 113909
+    },
+    {
+      "m_SkinID": 115109
+    },
+    {
+      "m_SkinID": 115209
+    },
+    {
+      "m_SkinID": 115309
+    },
+    {
+      "m_SkinID": 109909
+    },
+    {
+      "m_SkinID": 108909
+    },
+    {
+      "m_SkinID": 107209
+    },
+    {
+      "m_SkinID": 100109
+    },
+    {
+      "m_SkinID": 111309
+    },
+    {
+      "m_SkinID": 114709
+    },
+    {
+      "m_SkinID": 111809
+    },
+    {
+      "m_SkinID": 111209
+    },
+    {
+      "m_SkinID": 100610
+    },
+    {
+      "m_SkinID": 104410
+    },
+    {
+      "m_SkinID": 113310
+    },
+    {
+      "m_SkinID": 116010
+    },
+    {
+      "m_SkinID": 1002610
+    },
+    {
+      "m_SkinID": 109211
+    },
+    {
+      "m_SkinID": 114911
+    },
+    {
+      "m_SkinID": 104711
+    },
+    {
+      "m_SkinID": 115804
+    },
+    {
+      "m_SkinID": 106204
+    },
+    {
+      "m_SkinID": 100304
+    },
+    {
+      "m_SkinID": 113604
+    },
+    {
+      "m_SkinID": 116204
+    },
+    {
+      "m_SkinID": 116404
+    },
+    {
+      "m_SkinID": 115412
+    },
+    {
+      "m_SkinID": 115012
+    },
+    {
+      "m_SkinID": 112112
+    },
+    {
+      "m_SkinID": 101812
+    },
+    {
+      "m_SkinID": 115712
+    },
+    {
+      "m_SkinID": 109612
+    },
+    {
+      "m_SkinID": 1001312
+    },
+    {
+      "m_SkinID": 104213
+    },
+    {
+      "m_SkinID": 100613
+    },
+    {
+      "m_SkinID": 106014
+    },
+    {
+      "m_SkinID": 100215
+    },
+    {
+      "m_SkinID": 100115
+    },
+    {
+      "m_SkinID": 100315
+    },
+    {
+      "m_SkinID": 109915
+    },
+    {
+      "m_SkinID": 109815
+    },
+    {
+      "m_SkinID": 104215
+    },
+    {
+      "m_SkinID": 104315
+    },
+    {
+      "m_SkinID": 113515
+    },
+    {
+      "m_SkinID": 113615
+    },
+    {
+      "m_SkinID": 114715
+    },
+    {
+      "m_SkinID": 110915
+    },
+    {
+      "m_SkinID": 113815
+    },
+    {
+      "m_SkinID": 116616
+    },
+    {
+      "m_SkinID": 115816
+    },
+    {
+      "m_SkinID": 113516
+    },
+    {
+      "m_SkinID": 117816
+    },
+    {
+      "m_SkinID": 110016
+    },
+    {
+      "m_SkinID": 116210
+    },
+    {
+      "m_SkinID": 110910
+    },
+    {
+      "m_SkinID": 119109
+    },
+    {
+      "m_SkinID": 116309
+    },
+    {
+      "m_SkinID": 116509
+    },
+    {
+      "m_SkinID": 105509
+    },
+    {
+      "m_SkinID": 116009
+    },
+    {
+      "m_SkinID": 1002609
+    },
+    {
+      "m_SkinID": 116409
+    },
+    {
+      "m_SkinID": 113417
+    },
+    {
+      "m_SkinID": 109318
+    },
+    {
+      "m_SkinID": 104818
+    },
+    {
+      "m_SkinID": 111318
+    },
+    {
+      "m_SkinID": 116111
+    },
+    {
+      "m_SkinID": 1002911
+    },
+    {
+      "m_SkinID": 117011
+    },
+    {
+      "m_SkinID": 113911
+    },
+    {
+      "m_SkinID": 108718
+    },
+    {
+      "m_SkinID": 108818
+    },
+    {
+      "m_SkinID": 115919
+    },
+    {
+      "m_SkinID": 116619
+    },
+    {
+      "m_SkinID": 116019
+    },
+    {
+      "m_SkinID": 1002619
+    },
+    {
+      "m_SkinID": 100519
+    },
+    {
+      "m_SkinID": 100101
+    },
+    {
+      "m_SkinID": 109720
+    },
+    {
+      "m_SkinID": 117921
+    },
+    {
+      "m_SkinID": 118021
+    },
+    {
+      "m_SkinID": 119621
+    },
+    {
+      "m_SkinID": 107222
+    },
+    {
+      "m_SkinID": 107322
+    },
+    {
+      "m_SkinID": 108522
+    },
+    {
+      "m_SkinID": 107123
+    },
+    {
+      "m_SkinID": 111723
+    },
+    {
+      "m_SkinID": 117823
+    },
+    {
+      "m_SkinID": 111223
+    },
+    {
+      "m_SkinID": 116709
+    },
+    {
+      "m_SkinID": 1003209
+    },
+    {
+      "m_SkinID": 106324
+    },
+    {
+      "m_SkinID": 120324
+    },
+    {
+      "m_SkinID": 119809
+    },
+    {
+      "m_SkinID": 121609
+    },
+    {
+      "m_SkinID": 122009
+    },
+    {
+      "m_SkinID": 117225
+    },
+    {
+      "m_SkinID": 120225
+    },
+    {
+      "m_SkinID": 122826
+    },
+    {
+      "m_SkinID": 123026
+    },
+    {
+      "m_SkinID": 121527
+    },
+    {
+      "m_SkinID": 123427
+    },
+    {
+      "m_SkinID": 116128
+    },
+    {
+      "m_SkinID": 119528
+    },
+    {
+      "m_SkinID": 114728
+    },
+    {
+      "m_SkinID": 110128
+    },
+    {
+      "m_SkinID": 113528
+    },
+    {
+      "m_SkinID": 1002928
+    },
+    {
+      "m_SkinID": 1002528
+    },
+    {
+      "m_SkinID": 109110
+    },
+    {
+      "m_SkinID": 116910
+    },
+    {
+      "m_SkinID": 121410
+    },
+    {
+      "m_SkinID": 1000810
+    },
+    {
+      "m_SkinID": 1004910
+    },
+    {
+      "m_SkinID": 120629
+    },
+    {
+      "m_SkinID": 1004829
+    },
+    {
+      "m_SkinID": 117130
+    },
+    {
+      "m_SkinID": 104214
+    },
+    {
+      "m_SkinID": 122221
+    },
+    {
+      "m_SkinID": 123321
+    },
+    {
+      "m_SkinID": 120821
+    },
+    {
+      "m_SkinID": 120921
+    },
+    {
+      "m_SkinID": 118922
+    },
+    {
+      "m_SkinID": 117322
+    },
+    {
+      "m_SkinID": 120122
+    },
+    {
+      "m_SkinID": 109331
+    },
+    {
+      "m_SkinID": 122621
+    },
+    {
+      "m_SkinID": 124121
+    },
+    {
+      "m_SkinID": 107330
+    },
+    {
+      "m_SkinID": 109809
+    },
+    {
+      "m_SkinID": 120409
+    },
+    {
+      "m_SkinID": 123529
+    },
+    {
+      "m_SkinID": 124309
+    },
+    {
+      "m_SkinID": 120509
+    },
+    {
+      "m_SkinID": 120709
+    },
+    {
+      "m_SkinID": 119932
+    },
+    {
+      "m_SkinID": 123732
+    },
+    {
+      "m_SkinID": 117621
+    },
+    {
+      "m_SkinID": 1004421
+    },
+    {
+      "m_SkinID": 1004321
+    },
+    {
+      "m_SkinID": 124411
+    },
+    {
+      "m_SkinID": 111811
+    },
+    {
+      "m_SkinID": 119430
+    },
+    {
+      "m_SkinID": 109031
+    },
+    {
+      "m_SkinID": 118104
+    },
+    {
+      "m_SkinID": 117804
+    },
+    {
+      "m_SkinID": 123929
+    },
+    {
+      "m_SkinID": 119533
+    },
+    {
+      "m_SkinID": 123633
+    },
+    {
+      "m_SkinID": 117028
+    },
+    {
+      "m_SkinID": 121134
+    },
+    {
+      "m_SkinID": 124334
+    },
+    {
+      "m_SkinID": 117330
+    },
+    {
+      "m_SkinID": 120221
+    },
+    {
+      "m_SkinID": 125629
+    },
+    {
+      "m_SkinID": 124621
+    },
+    {
+      "m_SkinID": 1005821
+    },
+    {
+      "m_SkinID": 126009
+    },
+    {
+      "m_SkinID": 125409
+    },
+    {
+      "m_SkinID": 1006109
+    },
+    {
+      "m_SkinID": 125109
+    },
+    {
+      "m_SkinID": 1005909
+    },
+    {
+      "m_SkinID": 1006009
+    },
+    {
+      "m_SkinID": 124823
+    },
+    {
+      "m_SkinID": 125223
+    },
+    {
+      "m_SkinID": 116129
+    },
+    {
+      "m_SkinID": 1002929
+    },
+    {
+      "m_SkinID": 117430
+    },
+    {
+      "m_SkinID": 123835
+    },
+    {
+      "m_SkinID": 124135
+    },
+    {
+      "m_SkinID": 109236
+    },
+    {
+      "m_SkinID": 104804
+    },
+    {
+      "m_SkinID": 116537
+    },
+    {
+      "m_SkinID": 115429
+    },
+    {
+      "m_SkinID": 117230
+    },
+    {
+      "m_SkinID": 122534
+    },
+    {
+      "m_SkinID": 121234
+    },
+    {
+      "m_SkinID": 127429
+    },
+    {
+      "m_SkinID": 127809
+    },
+    {
+      "m_SkinID": 1006209
+    },
+    {
+      "m_SkinID": 1006309
+    },
+    {
+      "m_SkinID": 1006409
+    },
+    {
+      "m_SkinID": 1006509
+    },
+    {
+      "m_SkinID": 127709
+    },
+    {
+      "m_SkinID": 109131
+    },
+    {
+      "m_SkinID": 119730
+    },
+    {
+      "m_SkinID": 122729
+    },
+    {
+      "m_SkinID": 1005329
+    },
+    {
+      "m_SkinID": 128004
+    },
+    {
+      "m_SkinID": 129504
+    },
+    {
+      "m_SkinID": 130630
+    }
+  ]
+}

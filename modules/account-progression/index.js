@@ -20,8 +20,8 @@ const {
 } = require("../reward");
 
 const CONFIGURED_MAX_USER_LEVEL = Number(process.env.CS_MAX_USER_LEVEL || 0);
-const DEFAULT_MISSION_EXP = Number(process.env.CS_DEFAULT_MISSION_EXP || 50);
-const DEFAULT_STAGE_EXP = Number(process.env.CS_DEFAULT_STAGE_EXP || 75);
+const DEFAULT_MISSION_EXP = Number(process.env.CS_DEFAULT_MISSION_EXP || 0);
+const DEFAULT_STAGE_EXP = Number(process.env.CS_DEFAULT_STAGE_EXP || 0);
 const DEFAULT_ACHIEVEMENT_POINT = Number(process.env.CS_DEFAULT_ACHIEVEMENT_POINT || 10);
 const DEFAULT_PROFILE_EMBLEM_SLOTS = Number(process.env.CS_PROFILE_EMBLEM_SLOTS || 3);
 const ACHIEVEMENT_POINT_ITEM_ID = 202;

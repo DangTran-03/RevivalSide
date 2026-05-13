@@ -1,0 +1,787 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script\\luac\\LUA_LIMITBREAK_SUBSTITUTE_ITEM.lua",
+  "rootName": "m_LBSubstitute",
+  "recordCount": 156,
+  "records": [
+    {
+      "m_TargetLimitbreakLevel": 1,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_COUNTER",
+      "m_NKM_UNIT_GRADE": "NUG_N"
+    },
+    {
+      "m_TargetLimitbreakLevel": 2,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_COUNTER",
+      "m_NKM_UNIT_GRADE": "NUG_N"
+    },
+    {
+      "m_TargetLimitbreakLevel": 3,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_COUNTER",
+      "m_NKM_UNIT_GRADE": "NUG_N"
+    },
+    {
+      "m_TargetLimitbreakLevel": 4,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_COUNTER",
+      "m_NKM_UNIT_GRADE": "NUG_N"
+    },
+    {
+      "m_TargetLimitbreakLevel": 5,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_COUNTER",
+      "m_NKM_UNIT_GRADE": "NUG_N"
+    },
+    {
+      "m_TargetLimitbreakLevel": 6,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_COUNTER",
+      "m_NKM_UNIT_GRADE": "NUG_N"
+    },
+    {
+      "m_TargetLimitbreakLevel": 7,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_COUNTER",
+      "m_NKM_UNIT_GRADE": "NUG_N"
+    },
+    {
+      "m_TargetLimitbreakLevel": 8,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_COUNTER",
+      "m_NKM_UNIT_GRADE": "NUG_N"
+    },
+    {
+      "m_TargetLimitbreakLevel": 9,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_COUNTER",
+      "m_NKM_UNIT_GRADE": "NUG_N"
+    },
+    {
+      "m_TargetLimitbreakLevel": 10,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_COUNTER",
+      "m_NKM_UNIT_GRADE": "NUG_N"
+    },
+    {
+      "m_TargetLimitbreakLevel": 11,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_COUNTER",
+      "m_NKM_UNIT_GRADE": "NUG_N"
+    },
+    {
+      "m_TargetLimitbreakLevel": 12,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_COUNTER",
+      "m_NKM_UNIT_GRADE": "NUG_N"
+    },
+    {
+      "m_TargetLimitbreakLevel": 13,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_COUNTER",
+      "m_NKM_UNIT_GRADE": "NUG_N"
+    },
+    {
+      "m_TargetLimitbreakLevel": 1,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_COUNTER",
+      "m_NKM_UNIT_GRADE": "NUG_R"
+    },
+    {
+      "m_TargetLimitbreakLevel": 2,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_COUNTER",
+      "m_NKM_UNIT_GRADE": "NUG_R"
+    },
+    {
+      "m_TargetLimitbreakLevel": 3,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_COUNTER",
+      "m_NKM_UNIT_GRADE": "NUG_R"
+    },
+    {
+      "m_TargetLimitbreakLevel": 4,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_COUNTER",
+      "m_NKM_UNIT_GRADE": "NUG_R"
+    },
+    {
+      "m_TargetLimitbreakLevel": 5,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_COUNTER",
+      "m_NKM_UNIT_GRADE": "NUG_R"
+    },
+    {
+      "m_TargetLimitbreakLevel": 6,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_COUNTER",
+      "m_NKM_UNIT_GRADE": "NUG_R"
+    },
+    {
+      "m_TargetLimitbreakLevel": 7,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_COUNTER",
+      "m_NKM_UNIT_GRADE": "NUG_R"
+    },
+    {
+      "m_TargetLimitbreakLevel": 8,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_COUNTER",
+      "m_NKM_UNIT_GRADE": "NUG_R"
+    },
+    {
+      "m_TargetLimitbreakLevel": 9,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_COUNTER",
+      "m_NKM_UNIT_GRADE": "NUG_R"
+    },
+    {
+      "m_TargetLimitbreakLevel": 10,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_COUNTER",
+      "m_NKM_UNIT_GRADE": "NUG_R"
+    },
+    {
+      "m_TargetLimitbreakLevel": 11,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_COUNTER",
+      "m_NKM_UNIT_GRADE": "NUG_R"
+    },
+    {
+      "m_TargetLimitbreakLevel": 12,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_COUNTER",
+      "m_NKM_UNIT_GRADE": "NUG_R"
+    },
+    {
+      "m_TargetLimitbreakLevel": 13,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_COUNTER",
+      "m_NKM_UNIT_GRADE": "NUG_R"
+    },
+    {
+      "m_TargetLimitbreakLevel": 1,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_COUNTER",
+      "m_NKM_UNIT_GRADE": "NUG_SR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 2,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_COUNTER",
+      "m_NKM_UNIT_GRADE": "NUG_SR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 3,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_COUNTER",
+      "m_NKM_UNIT_GRADE": "NUG_SR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 4,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_COUNTER",
+      "m_NKM_UNIT_GRADE": "NUG_SR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 5,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_COUNTER",
+      "m_NKM_UNIT_GRADE": "NUG_SR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 6,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_COUNTER",
+      "m_NKM_UNIT_GRADE": "NUG_SR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 7,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_COUNTER",
+      "m_NKM_UNIT_GRADE": "NUG_SR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 8,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_COUNTER",
+      "m_NKM_UNIT_GRADE": "NUG_SR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 9,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_COUNTER",
+      "m_NKM_UNIT_GRADE": "NUG_SR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 10,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_COUNTER",
+      "m_NKM_UNIT_GRADE": "NUG_SR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 11,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_COUNTER",
+      "m_NKM_UNIT_GRADE": "NUG_SR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 12,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_COUNTER",
+      "m_NKM_UNIT_GRADE": "NUG_SR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 13,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_COUNTER",
+      "m_NKM_UNIT_GRADE": "NUG_SR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 1,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_COUNTER",
+      "m_NKM_UNIT_GRADE": "NUG_SSR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 2,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_COUNTER",
+      "m_NKM_UNIT_GRADE": "NUG_SSR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 3,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_COUNTER",
+      "m_NKM_UNIT_GRADE": "NUG_SSR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 4,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_COUNTER",
+      "m_NKM_UNIT_GRADE": "NUG_SSR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 5,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_COUNTER",
+      "m_NKM_UNIT_GRADE": "NUG_SSR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 6,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_COUNTER",
+      "m_NKM_UNIT_GRADE": "NUG_SSR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 7,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_COUNTER",
+      "m_NKM_UNIT_GRADE": "NUG_SSR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 8,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_COUNTER",
+      "m_NKM_UNIT_GRADE": "NUG_SSR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 9,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_COUNTER",
+      "m_NKM_UNIT_GRADE": "NUG_SSR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 10,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_COUNTER",
+      "m_NKM_UNIT_GRADE": "NUG_SSR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 11,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_COUNTER",
+      "m_NKM_UNIT_GRADE": "NUG_SSR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 12,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_COUNTER",
+      "m_NKM_UNIT_GRADE": "NUG_SSR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 13,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_COUNTER",
+      "m_NKM_UNIT_GRADE": "NUG_SSR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 1,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_SOLDIER",
+      "m_NKM_UNIT_GRADE": "NUG_N"
+    },
+    {
+      "m_TargetLimitbreakLevel": 2,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_SOLDIER",
+      "m_NKM_UNIT_GRADE": "NUG_N"
+    },
+    {
+      "m_TargetLimitbreakLevel": 3,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_SOLDIER",
+      "m_NKM_UNIT_GRADE": "NUG_N"
+    },
+    {
+      "m_TargetLimitbreakLevel": 4,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_SOLDIER",
+      "m_NKM_UNIT_GRADE": "NUG_N"
+    },
+    {
+      "m_TargetLimitbreakLevel": 5,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_SOLDIER",
+      "m_NKM_UNIT_GRADE": "NUG_N"
+    },
+    {
+      "m_TargetLimitbreakLevel": 6,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_SOLDIER",
+      "m_NKM_UNIT_GRADE": "NUG_N"
+    },
+    {
+      "m_TargetLimitbreakLevel": 7,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_SOLDIER",
+      "m_NKM_UNIT_GRADE": "NUG_N"
+    },
+    {
+      "m_TargetLimitbreakLevel": 8,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_SOLDIER",
+      "m_NKM_UNIT_GRADE": "NUG_N"
+    },
+    {
+      "m_TargetLimitbreakLevel": 9,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_SOLDIER",
+      "m_NKM_UNIT_GRADE": "NUG_N"
+    },
+    {
+      "m_TargetLimitbreakLevel": 10,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_SOLDIER",
+      "m_NKM_UNIT_GRADE": "NUG_N"
+    },
+    {
+      "m_TargetLimitbreakLevel": 11,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_SOLDIER",
+      "m_NKM_UNIT_GRADE": "NUG_N"
+    },
+    {
+      "m_TargetLimitbreakLevel": 12,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_SOLDIER",
+      "m_NKM_UNIT_GRADE": "NUG_N"
+    },
+    {
+      "m_TargetLimitbreakLevel": 13,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_SOLDIER",
+      "m_NKM_UNIT_GRADE": "NUG_N"
+    },
+    {
+      "m_TargetLimitbreakLevel": 1,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_SOLDIER",
+      "m_NKM_UNIT_GRADE": "NUG_R"
+    },
+    {
+      "m_TargetLimitbreakLevel": 2,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_SOLDIER",
+      "m_NKM_UNIT_GRADE": "NUG_R"
+    },
+    {
+      "m_TargetLimitbreakLevel": 3,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_SOLDIER",
+      "m_NKM_UNIT_GRADE": "NUG_R"
+    },
+    {
+      "m_TargetLimitbreakLevel": 4,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_SOLDIER",
+      "m_NKM_UNIT_GRADE": "NUG_R"
+    },
+    {
+      "m_TargetLimitbreakLevel": 5,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_SOLDIER",
+      "m_NKM_UNIT_GRADE": "NUG_R"
+    },
+    {
+      "m_TargetLimitbreakLevel": 6,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_SOLDIER",
+      "m_NKM_UNIT_GRADE": "NUG_R"
+    },
+    {
+      "m_TargetLimitbreakLevel": 7,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_SOLDIER",
+      "m_NKM_UNIT_GRADE": "NUG_R"
+    },
+    {
+      "m_TargetLimitbreakLevel": 8,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_SOLDIER",
+      "m_NKM_UNIT_GRADE": "NUG_R"
+    },
+    {
+      "m_TargetLimitbreakLevel": 9,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_SOLDIER",
+      "m_NKM_UNIT_GRADE": "NUG_R"
+    },
+    {
+      "m_TargetLimitbreakLevel": 10,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_SOLDIER",
+      "m_NKM_UNIT_GRADE": "NUG_R"
+    },
+    {
+      "m_TargetLimitbreakLevel": 11,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_SOLDIER",
+      "m_NKM_UNIT_GRADE": "NUG_R"
+    },
+    {
+      "m_TargetLimitbreakLevel": 12,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_SOLDIER",
+      "m_NKM_UNIT_GRADE": "NUG_R"
+    },
+    {
+      "m_TargetLimitbreakLevel": 13,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_SOLDIER",
+      "m_NKM_UNIT_GRADE": "NUG_R"
+    },
+    {
+      "m_TargetLimitbreakLevel": 1,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_SOLDIER",
+      "m_NKM_UNIT_GRADE": "NUG_SR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 2,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_SOLDIER",
+      "m_NKM_UNIT_GRADE": "NUG_SR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 3,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_SOLDIER",
+      "m_NKM_UNIT_GRADE": "NUG_SR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 4,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_SOLDIER",
+      "m_NKM_UNIT_GRADE": "NUG_SR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 5,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_SOLDIER",
+      "m_NKM_UNIT_GRADE": "NUG_SR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 6,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_SOLDIER",
+      "m_NKM_UNIT_GRADE": "NUG_SR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 7,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_SOLDIER",
+      "m_NKM_UNIT_GRADE": "NUG_SR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 8,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_SOLDIER",
+      "m_NKM_UNIT_GRADE": "NUG_SR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 9,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_SOLDIER",
+      "m_NKM_UNIT_GRADE": "NUG_SR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 10,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_SOLDIER",
+      "m_NKM_UNIT_GRADE": "NUG_SR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 11,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_SOLDIER",
+      "m_NKM_UNIT_GRADE": "NUG_SR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 12,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_SOLDIER",
+      "m_NKM_UNIT_GRADE": "NUG_SR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 13,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_SOLDIER",
+      "m_NKM_UNIT_GRADE": "NUG_SR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 1,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_SOLDIER",
+      "m_NKM_UNIT_GRADE": "NUG_SSR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 2,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_SOLDIER",
+      "m_NKM_UNIT_GRADE": "NUG_SSR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 3,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_SOLDIER",
+      "m_NKM_UNIT_GRADE": "NUG_SSR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 4,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_SOLDIER",
+      "m_NKM_UNIT_GRADE": "NUG_SSR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 5,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_SOLDIER",
+      "m_NKM_UNIT_GRADE": "NUG_SSR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 6,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_SOLDIER",
+      "m_NKM_UNIT_GRADE": "NUG_SSR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 7,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_SOLDIER",
+      "m_NKM_UNIT_GRADE": "NUG_SSR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 8,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_SOLDIER",
+      "m_NKM_UNIT_GRADE": "NUG_SSR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 9,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_SOLDIER",
+      "m_NKM_UNIT_GRADE": "NUG_SSR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 10,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_SOLDIER",
+      "m_NKM_UNIT_GRADE": "NUG_SSR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 11,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_SOLDIER",
+      "m_NKM_UNIT_GRADE": "NUG_SSR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 12,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_SOLDIER",
+      "m_NKM_UNIT_GRADE": "NUG_SSR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 13,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_SOLDIER",
+      "m_NKM_UNIT_GRADE": "NUG_SSR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 1,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_MECHANIC",
+      "m_NKM_UNIT_GRADE": "NUG_N"
+    },
+    {
+      "m_TargetLimitbreakLevel": 2,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_MECHANIC",
+      "m_NKM_UNIT_GRADE": "NUG_N"
+    },
+    {
+      "m_TargetLimitbreakLevel": 3,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_MECHANIC",
+      "m_NKM_UNIT_GRADE": "NUG_N"
+    },
+    {
+      "m_TargetLimitbreakLevel": 4,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_MECHANIC",
+      "m_NKM_UNIT_GRADE": "NUG_N"
+    },
+    {
+      "m_TargetLimitbreakLevel": 5,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_MECHANIC",
+      "m_NKM_UNIT_GRADE": "NUG_N"
+    },
+    {
+      "m_TargetLimitbreakLevel": 6,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_MECHANIC",
+      "m_NKM_UNIT_GRADE": "NUG_N"
+    },
+    {
+      "m_TargetLimitbreakLevel": 7,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_MECHANIC",
+      "m_NKM_UNIT_GRADE": "NUG_N"
+    },
+    {
+      "m_TargetLimitbreakLevel": 8,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_MECHANIC",
+      "m_NKM_UNIT_GRADE": "NUG_N"
+    },
+    {
+      "m_TargetLimitbreakLevel": 9,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_MECHANIC",
+      "m_NKM_UNIT_GRADE": "NUG_N"
+    },
+    {
+      "m_TargetLimitbreakLevel": 10,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_MECHANIC",
+      "m_NKM_UNIT_GRADE": "NUG_N"
+    },
+    {
+      "m_TargetLimitbreakLevel": 11,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_MECHANIC",
+      "m_NKM_UNIT_GRADE": "NUG_N"
+    },
+    {
+      "m_TargetLimitbreakLevel": 12,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_MECHANIC",
+      "m_NKM_UNIT_GRADE": "NUG_N"
+    },
+    {
+      "m_TargetLimitbreakLevel": 13,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_MECHANIC",
+      "m_NKM_UNIT_GRADE": "NUG_N"
+    },
+    {
+      "m_TargetLimitbreakLevel": 1,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_MECHANIC",
+      "m_NKM_UNIT_GRADE": "NUG_R"
+    },
+    {
+      "m_TargetLimitbreakLevel": 2,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_MECHANIC",
+      "m_NKM_UNIT_GRADE": "NUG_R"
+    },
+    {
+      "m_TargetLimitbreakLevel": 3,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_MECHANIC",
+      "m_NKM_UNIT_GRADE": "NUG_R"
+    },
+    {
+      "m_TargetLimitbreakLevel": 4,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_MECHANIC",
+      "m_NKM_UNIT_GRADE": "NUG_R"
+    },
+    {
+      "m_TargetLimitbreakLevel": 5,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_MECHANIC",
+      "m_NKM_UNIT_GRADE": "NUG_R"
+    },
+    {
+      "m_TargetLimitbreakLevel": 6,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_MECHANIC",
+      "m_NKM_UNIT_GRADE": "NUG_R"
+    },
+    {
+      "m_TargetLimitbreakLevel": 7,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_MECHANIC",
+      "m_NKM_UNIT_GRADE": "NUG_R"
+    },
+    {
+      "m_TargetLimitbreakLevel": 8,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_MECHANIC",
+      "m_NKM_UNIT_GRADE": "NUG_R"
+    },
+    {
+      "m_TargetLimitbreakLevel": 9,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_MECHANIC",
+      "m_NKM_UNIT_GRADE": "NUG_R"
+    },
+    {
+      "m_TargetLimitbreakLevel": 10,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_MECHANIC",
+      "m_NKM_UNIT_GRADE": "NUG_R"
+    },
+    {
+      "m_TargetLimitbreakLevel": 11,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_MECHANIC",
+      "m_NKM_UNIT_GRADE": "NUG_R"
+    },
+    {
+      "m_TargetLimitbreakLevel": 12,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_MECHANIC",
+      "m_NKM_UNIT_GRADE": "NUG_R"
+    },
+    {
+      "m_TargetLimitbreakLevel": 13,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_MECHANIC",
+      "m_NKM_UNIT_GRADE": "NUG_R"
+    },
+    {
+      "m_TargetLimitbreakLevel": 1,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_MECHANIC",
+      "m_NKM_UNIT_GRADE": "NUG_SR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 2,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_MECHANIC",
+      "m_NKM_UNIT_GRADE": "NUG_SR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 3,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_MECHANIC",
+      "m_NKM_UNIT_GRADE": "NUG_SR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 4,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_MECHANIC",
+      "m_NKM_UNIT_GRADE": "NUG_SR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 5,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_MECHANIC",
+      "m_NKM_UNIT_GRADE": "NUG_SR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 6,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_MECHANIC",
+      "m_NKM_UNIT_GRADE": "NUG_SR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 7,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_MECHANIC",
+      "m_NKM_UNIT_GRADE": "NUG_SR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 8,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_MECHANIC",
+      "m_NKM_UNIT_GRADE": "NUG_SR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 9,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_MECHANIC",
+      "m_NKM_UNIT_GRADE": "NUG_SR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 10,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_MECHANIC",
+      "m_NKM_UNIT_GRADE": "NUG_SR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 11,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_MECHANIC",
+      "m_NKM_UNIT_GRADE": "NUG_SR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 12,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_MECHANIC",
+      "m_NKM_UNIT_GRADE": "NUG_SR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 13,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_MECHANIC",
+      "m_NKM_UNIT_GRADE": "NUG_SR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 1,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_MECHANIC",
+      "m_NKM_UNIT_GRADE": "NUG_SSR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 2,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_MECHANIC",
+      "m_NKM_UNIT_GRADE": "NUG_SSR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 3,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_MECHANIC",
+      "m_NKM_UNIT_GRADE": "NUG_SSR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 4,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_MECHANIC",
+      "m_NKM_UNIT_GRADE": "NUG_SSR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 5,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_MECHANIC",
+      "m_NKM_UNIT_GRADE": "NUG_SSR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 6,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_MECHANIC",
+      "m_NKM_UNIT_GRADE": "NUG_SSR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 7,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_MECHANIC",
+      "m_NKM_UNIT_GRADE": "NUG_SSR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 8,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_MECHANIC",
+      "m_NKM_UNIT_GRADE": "NUG_SSR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 9,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_MECHANIC",
+      "m_NKM_UNIT_GRADE": "NUG_SSR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 10,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_MECHANIC",
+      "m_NKM_UNIT_GRADE": "NUG_SSR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 11,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_MECHANIC",
+      "m_NKM_UNIT_GRADE": "NUG_SSR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 12,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_MECHANIC",
+      "m_NKM_UNIT_GRADE": "NUG_SSR"
+    },
+    {
+      "m_TargetLimitbreakLevel": 13,
+      "m_NKM_UNIT_STYLE_TYPE": "NUST_MECHANIC",
+      "m_NKM_UNIT_GRADE": "NUG_SSR"
+    }
+  ]
+}
