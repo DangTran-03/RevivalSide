@@ -10,15 +10,61 @@ const {
   readSignedVarLong,
   toBigInt,
 } = require("../packet-codec");
+const { getArmyUnits, getArmyShips, getArmyTrophies, getArmyOperators } = require("../unit");
+const { getEquipItems } = require("../equipment");
 
+const GAME_OPTION_PLAY_CUTSCENE_REQ = 1634;
+const GAME_OPTION_PLAY_CUTSCENE_ACK = 1635;
+const INVENTORY_EXPAND_REQ = 1638;
+const INVENTORY_EXPAND_ACK = 1639;
 const BACKGROUND_CHANGE_REQ = 1646;
 const BACKGROUND_CHANGE_ACK = 1647;
+const UPDATE_PVP_INVITATION_OPTION_REQ = 1654;
+const UPDATE_PVP_INVITATION_OPTION_ACK = 1655;
 const JUKEBOX_CHANGE_BGM_REQ = 1660;
 const JUKEBOX_CHANGE_BGM_ACK = 1661;
 const MAX_BACKGROUND_UNIT_SLOTS = 8;
+const INVENTORY_EXPAND_COUNTS = Object.freeze({ 1: 5, 2: 5, 3: 1, 4: 5, 5: 10 });
+const INVENTORY_EXPAND_MAX_COUNTS = Object.freeze({ 1: 2200, 2: 1100, 3: 200, 4: 500, 5: 2000 });
 
 function createLobbyCustomizationHandlers() {
   return [
+    {
+      packetId: GAME_OPTION_PLAY_CUTSCENE_REQ,
+      name: "GAME_OPTION_PLAY_CUTSCENE_REQ",
+      handle(ctx, socket, packet) {
+        const user = getSocketUser(ctx, socket);
+        const isPlayCutscene = decodePlayCutsceneReq(ctx, packet.payload);
+        user.options = user.options && typeof user.options === "object" ? user.options : {};
+        user.options.playCutscene = isPlayCutscene;
+        const payload = Buffer.concat([writeSignedVarInt(0), writeBool(isPlayCutscene)]);
+        console.log(`[lobby:GAME_OPTION_PLAY_CUTSCENE_REQ] ACK packetId=${GAME_OPTION_PLAY_CUTSCENE_ACK} play=${isPlayCutscene ? 1 : 0}`);
+        ctx.sendGameResponse(socket, packet, GAME_OPTION_PLAY_CUTSCENE_ACK, payload, "game-option-play-cutscene");
+        saveIfLocal(ctx);
+        return true;
+      },
+    },
+    {
+      packetId: INVENTORY_EXPAND_REQ,
+      name: "INVENTORY_EXPAND_REQ",
+      handle(ctx, socket, packet) {
+        const user = getSocketUser(ctx, socket);
+        const req = decodeInventoryExpandReq(ctx, packet.payload);
+        const expandedCount = applyInventoryExpansion(user, req.inventoryType, req.count);
+        const payload = Buffer.concat([
+          writeSignedVarInt(0),
+          writeSignedVarInt(req.inventoryType),
+          writeSignedVarInt(expandedCount),
+          writeNullableObjectList([]),
+        ]);
+        console.log(
+          `[lobby:INVENTORY_EXPAND_REQ] ACK packetId=${INVENTORY_EXPAND_ACK} type=${req.inventoryType} count=${req.count} expanded=${expandedCount}`
+        );
+        ctx.sendGameResponse(socket, packet, INVENTORY_EXPAND_ACK, payload, "inventory-expand");
+        saveIfLocal(ctx);
+        return true;
+      },
+    },
     {
       packetId: BACKGROUND_CHANGE_REQ,
       name: "BACKGROUND_CHANGE_REQ",
@@ -43,6 +89,21 @@ function createLobbyCustomizationHandlers() {
       },
     },
     {
+      packetId: UPDATE_PVP_INVITATION_OPTION_REQ,
+      name: "UPDATE_PVP_INVITATION_OPTION_REQ",
+      handle(ctx, socket, packet) {
+        const user = getSocketUser(ctx, socket);
+        const value = decodePvpInvitationOptionReq(ctx, packet.payload);
+        user.pvp = user.pvp && typeof user.pvp === "object" ? user.pvp : {};
+        user.pvp.invitationOption = value;
+        const payload = Buffer.concat([writeSignedVarInt(0), writeSignedVarInt(value)]);
+        console.log(`[lobby:UPDATE_PVP_INVITATION_OPTION_REQ] ACK packetId=${UPDATE_PVP_INVITATION_OPTION_ACK} value=${value}`);
+        ctx.sendGameResponse(socket, packet, UPDATE_PVP_INVITATION_OPTION_ACK, payload, "pvp-invitation-option");
+        saveIfLocal(ctx);
+        return true;
+      },
+    },
+    {
       packetId: JUKEBOX_CHANGE_BGM_REQ,
       name: "JUKEBOX_CHANGE_BGM_REQ",
       handle(ctx, socket, packet) {
@@ -58,6 +119,71 @@ function createLobbyCustomizationHandlers() {
       },
     },
   ];
+}
+
+function decodePlayCutsceneReq(ctx, encryptedPayload) {
+  const reader = createReader(decryptPayload(ctx, encryptedPayload));
+  try {
+    return reader.bool();
+  } catch (err) {
+    console.log(`[lobby:GAME_OPTION_PLAY_CUTSCENE_REQ] request decode failed: ${err.message}`);
+    return false;
+  }
+}
+
+function decodeInventoryExpandReq(ctx, encryptedPayload) {
+  const reader = createReader(decryptPayload(ctx, encryptedPayload));
+  try {
+    return {
+      inventoryType: clampInt(reader.int(), 0, 5, 0),
+      count: clampInt(reader.int(), 0, 100, 0),
+    };
+  } catch (err) {
+    console.log(`[lobby:INVENTORY_EXPAND_REQ] request decode failed: ${err.message}`);
+    return { inventoryType: 0, count: 0 };
+  }
+}
+
+function decodePvpInvitationOptionReq(ctx, encryptedPayload) {
+  const reader = createReader(decryptPayload(ctx, encryptedPayload));
+  try {
+    return clampInt(reader.int(), 0, 4, 0);
+  } catch (err) {
+    console.log(`[lobby:UPDATE_PVP_INVITATION_OPTION_REQ] request decode failed: ${err.message}`);
+    return 0;
+  }
+}
+
+function applyInventoryExpansion(user, inventoryType, count) {
+  user.inventoryExpansion = user.inventoryExpansion && typeof user.inventoryExpansion === "object" ? user.inventoryExpansion : {};
+  const type = clampInt(inventoryType, 0, 5, 0);
+  const expandCount = Number(INVENTORY_EXPAND_COUNTS[type] || 0) * Math.max(0, Math.trunc(Number(count || 0) || 0));
+  const current = Math.max(
+    Number(user.inventoryExpansion[String(type)] || 0) || 0,
+    currentInventoryCapacity(user, type)
+  );
+  const max = Number(INVENTORY_EXPAND_MAX_COUNTS[type] || 0) || current + expandCount;
+  const expanded = Math.max(current, Math.min(max, current + expandCount));
+  user.inventoryExpansion[String(type)] = expanded;
+  user.inventoryExpansion.updatedAt = new Date().toISOString();
+  return expanded;
+}
+
+function currentInventoryCapacity(user, inventoryType) {
+  switch (Number(inventoryType || 0)) {
+    case 1:
+      return Math.max(300, getEquipItems(user).length + 100);
+    case 2:
+      return Math.max(200, getArmyUnits(user).length + 100);
+    case 3:
+      return Math.max(200, getArmyShips(user).length + 50);
+    case 4:
+      return Math.max(100, getArmyOperators(user).length + 50);
+    case 5:
+      return Math.max(100, getArmyTrophies(user).length + 50);
+    default:
+      return 0;
+  }
 }
 
 function ensureLobbyCustomization(user) {

@@ -101,6 +101,217 @@ internal static class ManagedCombatBridge
         }
     }
 
+    private static void MergeIntervalData(ManagedRuntime runtime, object localPacket, object officialPacket)
+    {
+        var localIntervalData = runtime.GetField(localPacket, "intervalData");
+        if (localIntervalData == null) return;
+
+        var officialIntervalData = runtime.GetField(officialPacket, "intervalData");
+        if (officialIntervalData == null)
+        {
+            runtime.SetField(officialPacket, "intervalData", localIntervalData);
+            return;
+        }
+
+        if (officialIntervalData is not IList officialList || localIntervalData is not IEnumerable localEnumerable)
+        {
+            runtime.SetField(officialPacket, "intervalData", localIntervalData);
+            return;
+        }
+
+        var indexByStrKey = new Dictionary<string, int>(StringComparer.Ordinal);
+        var usedKeys = new HashSet<int>();
+        for (var index = 0; index < officialList.Count; index += 1)
+        {
+            var item = officialList[index];
+            var strKey = Convert.ToString(item == null ? null : runtime.GetField(item, "strKey"), CultureInfo.InvariantCulture);
+            if (!string.IsNullOrWhiteSpace(strKey) && !indexByStrKey.ContainsKey(strKey))
+            {
+                indexByStrKey[strKey] = index;
+            }
+
+            if (TryGetIntField(runtime, item, "key", out var officialKey))
+            {
+                usedKeys.Add(officialKey);
+            }
+        }
+
+        var nextSyntheticKey = 2_000_000_000;
+        foreach (var localItem in localEnumerable)
+        {
+            var strKey = Convert.ToString(runtime.GetField(localItem, "strKey"), CultureInfo.InvariantCulture);
+            if (string.IsNullOrWhiteSpace(strKey)) continue;
+            if (indexByStrKey.TryGetValue(strKey, out var existingIndex))
+            {
+                if (!IsFallbackIntervalTiming(runtime, localItem))
+                {
+                    CopyIntervalTiming(runtime, localItem, officialList[existingIndex]);
+                }
+                continue;
+            }
+
+            if (!TryGetIntField(runtime, localItem, "key", out var localKey) || usedKeys.Contains(localKey))
+            {
+                while (usedKeys.Contains(nextSyntheticKey)) nextSyntheticKey -= 1;
+                localKey = nextSyntheticKey;
+                runtime.SetField(localItem, "key", localKey);
+                nextSyntheticKey -= 1;
+            }
+
+            usedKeys.Add(localKey);
+            indexByStrKey[strKey] = officialList.Count;
+            officialList.Add(localItem);
+        }
+    }
+
+    private static void DeactivateIntervalsByStrKey(
+        ManagedRuntime runtime,
+        object packet,
+        IEnumerable<string>? strKeys,
+        IEnumerable<string>? preserveStrKeys,
+        bool filterInactiveEventIntervals)
+    {
+        var removeKeys = new HashSet<string>(
+            (strKeys ?? Array.Empty<string>())
+                .Where(key => !string.IsNullOrWhiteSpace(key))
+                .Select(key => key.Trim()),
+            StringComparer.OrdinalIgnoreCase);
+        var preserveKeys = new HashSet<string>(
+            (preserveStrKeys ?? Array.Empty<string>())
+                .Where(key => !string.IsNullOrWhiteSpace(key))
+                .Select(key => key.Trim()),
+            StringComparer.OrdinalIgnoreCase);
+        if (removeKeys.Count == 0 && !filterInactiveEventIntervals) return;
+
+        var intervalData = runtime.GetField(packet, "intervalData");
+        if (intervalData is not IList list) return;
+
+        for (var index = list.Count - 1; index >= 0; index -= 1)
+        {
+            var item = list[index];
+            var strKey = Convert.ToString(item == null ? null : runtime.GetField(item, "strKey"), CultureInfo.InvariantCulture);
+            if (string.IsNullOrWhiteSpace(strKey) || preserveKeys.Contains(strKey)) continue;
+            if (removeKeys.Contains(strKey) || (filterInactiveEventIntervals && IsEventManagedIntervalKey(strKey)))
+            {
+                DeactivateIntervalTiming(runtime, item);
+            }
+        }
+    }
+
+    private static void DeactivateIntervalTiming(ManagedRuntime runtime, object? target)
+    {
+        if (target == null) return;
+        runtime.SetField(target, "startDate", new DateTime(2000, 1, 1, 0, 0, 0, DateTimeKind.Utc));
+        runtime.SetField(target, "endDate", new DateTime(2000, 1, 2, 0, 0, 0, DateTimeKind.Utc));
+        runtime.SetField(target, "repeatStartDate", 0);
+        runtime.SetField(target, "repeatEndDate", 0);
+    }
+
+    private static bool IsEventManagedIntervalKey(string strKey)
+    {
+        var key = strKey.Trim();
+        return key.StartsWith("DATE_COMMON_EVENT_", StringComparison.OrdinalIgnoreCase) ||
+            key.StartsWith("DATE_COMMON_EPISODE_EVENT_", StringComparison.OrdinalIgnoreCase) ||
+            key.StartsWith("DATE_COMMON_MISSION_EVENT_", StringComparison.OrdinalIgnoreCase) ||
+            key.StartsWith("DATE_COMMON_SHOP_EVENT_", StringComparison.OrdinalIgnoreCase) ||
+            key.StartsWith("DATE_GLOBAL_EVENT_", StringComparison.OrdinalIgnoreCase) ||
+            key.StartsWith("DATE_GLBOAL_EVENT_", StringComparison.OrdinalIgnoreCase) ||
+            key.StartsWith("DATE_GLOBAL_FIRST_CONTRACT_", StringComparison.OrdinalIgnoreCase) ||
+            key.StartsWith("DATE_GLOBAL_CUSTOM_PICKUP_", StringComparison.OrdinalIgnoreCase) ||
+            key.StartsWith("DATE_GLOBAL_PICUP_", StringComparison.OrdinalIgnoreCase) ||
+            key.StartsWith("DATE_GLOBAL_PICKUP_", StringComparison.OrdinalIgnoreCase) ||
+            key.StartsWith("SHOP_CASH_PACKAGE_", StringComparison.OrdinalIgnoreCase) ||
+            key.StartsWith("SHOP_TAB_PACKAGE_", StringComparison.OrdinalIgnoreCase) ||
+            key.Contains("_EVENT_PASS_", StringComparison.OrdinalIgnoreCase);
+    }
+
+    private static bool IsFallbackIntervalTiming(ManagedRuntime runtime, object? target)
+    {
+        if (!TryGetDateTimeField(runtime, target, "startDate", out var startDate)) return false;
+        if (!TryGetDateTimeField(runtime, target, "endDate", out var endDate)) return false;
+        return IsUtcMidnightDate(startDate, 2000, 1, 1) && IsUtcMidnightDate(endDate, 2000, 1, 2);
+    }
+
+    private static bool TryGetDateTimeField(ManagedRuntime runtime, object? target, string fieldName, out DateTime value)
+    {
+        value = default;
+        if (target == null) return false;
+        var rawValue = runtime.GetField(target, fieldName);
+        if (rawValue == null) return false;
+        if (rawValue is DateTime dateTime)
+        {
+            value = dateTime;
+            return true;
+        }
+
+        try
+        {
+            value = Convert.ToDateTime(rawValue, CultureInfo.InvariantCulture);
+            return true;
+        }
+        catch
+        {
+            return false;
+        }
+    }
+
+    private static bool IsUtcMidnightDate(DateTime value, int year, int month, int day)
+    {
+        return value.Year == year &&
+            value.Month == month &&
+            value.Day == day &&
+            value.Hour == 0 &&
+            value.Minute == 0 &&
+            value.Second == 0;
+    }
+
+    private static bool TryGetIntField(ManagedRuntime runtime, object? target, string fieldName, out int value)
+    {
+        value = 0;
+        if (target == null) return false;
+        var rawValue = runtime.GetField(target, fieldName);
+        if (rawValue == null) return false;
+        try
+        {
+            value = Convert.ToInt32(rawValue, CultureInfo.InvariantCulture);
+            return true;
+        }
+        catch
+        {
+            return false;
+        }
+    }
+
+    private static void CopyIntervalTiming(ManagedRuntime runtime, object source, object? target)
+    {
+        if (target == null) return;
+        CopyField(runtime, source, target, "startDate");
+        CopyField(runtime, source, target, "endDate");
+        CopyField(runtime, source, target, "repeatStartDate");
+        CopyField(runtime, source, target, "repeatEndDate");
+    }
+
+    private static void EnsureUniqueIntervalKeys(ManagedRuntime runtime, object packet)
+    {
+        var intervalData = runtime.GetField(packet, "intervalData");
+        if (intervalData is not IEnumerable enumerable) return;
+
+        var usedKeys = new HashSet<int>();
+        var nextSyntheticKey = 2_000_000_000;
+        foreach (var item in enumerable)
+        {
+            if (!TryGetIntField(runtime, item, "key", out var key) || key == 0 || usedKeys.Contains(key))
+            {
+                while (usedKeys.Contains(nextSyntheticKey)) nextSyntheticKey -= 1;
+                key = nextSyntheticKey;
+                runtime.SetField(item, "key", key);
+                nextSyntheticKey -= 1;
+            }
+
+            usedKeys.Add(key);
+        }
+    }
+
     public static bool TryWarmup(HostOptions options, out string? error)
     {
         error = null;
@@ -294,6 +505,47 @@ internal static class ManagedCombatBridge
         }
     }
 
+    public static bool TryInspectJoinLobbyAck(
+        HostOptions options,
+        PacketValidationData data,
+        out HostResponse? response,
+        out string? error)
+    {
+        response = null;
+        error = null;
+        if (string.IsNullOrWhiteSpace(options.ManagedDir))
+        {
+            error = "managed dir required";
+            return false;
+        }
+
+        var runtime = ManagedRuntime.TryLoad(options.ManagedDir, options.GameplayTablesDir, out error);
+        if (runtime == null)
+        {
+            return false;
+        }
+
+        try
+        {
+            var payload = Convert.FromBase64String(data.PayloadBase64 ?? "");
+            var packet = runtime.DeserializePacket(data.PacketId == 0 ? JoinLobbyAck : data.PacketId, payload);
+            response = new HostResponse
+            {
+                Ok = true,
+                PacketType = packet.GetType().FullName,
+                SerializedPayloadSize = payload.Length,
+                Summary = runtime.DescribeJoinLobbyAck(packet)
+            };
+            return true;
+        }
+        catch (Exception ex)
+        {
+            error = ex.ToString();
+            response = new HostResponse { Ok = false, Error = error };
+            return false;
+        }
+    }
+
     public static bool TryMergeJoinLobbyAck(
         HostOptions options,
         JoinLobbyMergeData data,
@@ -323,6 +575,21 @@ internal static class ManagedCombatBridge
             {
                 CopyField(runtime, local, official, fieldName);
             }
+            if (data.ReplaceIntervalData)
+            {
+                CopyField(runtime, local, official, "intervalData");
+            }
+            else if (data.CopyIntervalData)
+            {
+                DeactivateIntervalsByStrKey(
+                    runtime,
+                    official,
+                    data.ExcludeIntervalStrKeys,
+                    data.PreserveIntervalStrKeys,
+                    data.FilterInactiveEventIntervals);
+                MergeIntervalData(runtime, local, official);
+            }
+            EnsureUniqueIntervalKeys(runtime, official);
             MergeJoinLobbyUserData(runtime, local, official);
 
             var serialized = runtime.SerializePacket(official, JoinLobbyAck, "merged-join-lobby");
@@ -373,6 +640,8 @@ internal static class ManagedCombatBridge
             {
                 CopyField(runtime, local, normalized, fieldName);
             }
+            CopyField(runtime, local, normalized, "intervalData");
+            EnsureUniqueIntervalKeys(runtime, normalized);
             MergeJoinLobbyUserData(runtime, local, normalized);
 
             var serialized = runtime.SerializePacket(normalized, JoinLobbyAck, "normalized-join-lobby");
@@ -2071,6 +2340,29 @@ internal static class ManagedCombatBridge
             });
         }
 
+        public string DescribeJoinLobbyAck(object packet)
+        {
+            var lines = new List<string>
+            {
+                $"packet={packet.GetType().FullName}",
+                $"errorCode={GetField(packet, "errorCode")} friendCode={GetField(packet, "friendCode")} reconnectKey={GetField(packet, "reconnectKey")}",
+                $"topLevel={DescribeObjectFields(packet, "userData")}",
+                $"userData={DescribeObjectFields(GetField(packet, "userData"))}"
+            };
+
+            var userData = GetField(packet, "userData");
+            if (userData != null)
+            {
+                lines.Add($"inventory={DescribeObjectFields(GetField(userData, "m_InventoryData"))}");
+                lines.Add($"army={DescribeObjectFields(GetField(userData, "m_ArmyData"))}");
+                lines.Add($"mission={DescribeObjectFields(GetField(userData, "m_MissionData"))}");
+                lines.Add($"shop={DescribeObjectFields(GetField(userData, "m_ShopData"))}");
+            }
+
+            lines.Add($"intervalSample={DescribeIntervals(GetField(packet, "intervalData"), 16)}");
+            return string.Join(Environment.NewLine, lines);
+        }
+
         private string DescribeRuntimeData(object? runtimeData)
         {
             if (runtimeData == null) return "runtime=null";
@@ -2240,6 +2532,87 @@ internal static class ManagedCombatBridge
                 return Convert.ToInt32(countProperty.GetValue(collection), CultureInfo.InvariantCulture);
             }
             return collection is IEnumerable enumerable ? enumerable.Cast<object>().Count() : 0;
+        }
+
+        private string DescribeObjectFields(object? target, params string[] excludeFields)
+        {
+            if (target == null) return "null";
+            var exclude = new HashSet<string>(excludeFields ?? [], StringComparer.Ordinal);
+            var fields = GetAllInstanceFields(target.GetType())
+                .Where(field => !exclude.Contains(field.Name))
+                .Select(field => $"{field.Name}={SummarizeValue(field.GetValue(target))}");
+            return string.Join(" ", fields);
+        }
+
+        private static IEnumerable<FieldInfo> GetAllInstanceFields(Type type)
+        {
+            for (var current = type; current != null && current != typeof(object); current = current.BaseType)
+            {
+                foreach (var field in current.GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.DeclaredOnly))
+                {
+                    yield return field;
+                }
+            }
+        }
+
+        private static string SummarizeValue(object? value)
+        {
+            if (value == null) return "null";
+            if (value is string text) return text.Length > 40 ? $"\"{text[..40]}...\"({text.Length})" : $"\"{text}\"";
+            if (value is DateTime date) return date.ToString("O", CultureInfo.InvariantCulture);
+            if (value is bool or byte or sbyte or short or ushort or int or uint or long or ulong or float or double or decimal || value.GetType().IsEnum)
+            {
+                return Convert.ToString(value, CultureInfo.InvariantCulture) ?? "";
+            }
+            if (value is IDictionary dictionary) return $"{value.GetType().Name}[{dictionary.Count}]";
+            if (value is ICollection collection) return $"{value.GetType().Name}[{collection.Count}]";
+            if (value is IEnumerable enumerable) return $"{value.GetType().Name}[{enumerable.Cast<object>().Count()}]";
+            return value.GetType().Name;
+        }
+
+        private string DescribeIntervals(object? intervalData, int limit)
+        {
+            if (intervalData is not IEnumerable enumerable) return "0[]";
+            var intervals = enumerable.Cast<object>().ToList();
+            var values = intervals.Take(Math.Max(0, limit)).Select(interval =>
+                $"{GetField(interval, "strKey")}:{GetField(interval, "startDate")}->{GetField(interval, "endDate")}");
+            var strKeys = intervals
+                .Select(interval => Convert.ToString(GetField(interval, "strKey"), CultureInfo.InvariantCulture) ?? "")
+                .Where(strKey => !string.IsNullOrWhiteSpace(strKey))
+                .ToList();
+            var duplicateStrKeySummary = strKeys
+                .GroupBy(strKey => strKey, StringComparer.Ordinal)
+                .Where(group => group.Count() > 1)
+                .Take(12)
+                .Select(group => $"{group.Key}x{group.Count()}");
+            var duplicateKeySummary = intervals
+                .Select(interval => new
+                {
+                    Key = Convert.ToString(GetField(interval, "key"), CultureInfo.InvariantCulture) ?? "",
+                    StrKey = Convert.ToString(GetField(interval, "strKey"), CultureInfo.InvariantCulture) ?? ""
+                })
+                .Where(interval => !string.IsNullOrWhiteSpace(interval.Key))
+                .GroupBy(interval => interval.Key, StringComparer.Ordinal)
+                .Where(group => group.Count() > 1)
+                .Take(12)
+                .Select(group => $"{group.Key}x{group.Count()}:{string.Join("/", group.Take(4).Select(interval => interval.StrKey))}");
+            var probes = new[]
+            {
+                "DATE_COMMON_EPISODE_EVENT_ADMIN",
+                "DATE_COMMON_EPISODE_EVENT_ADMIN_02",
+                "DATE_COMMON_MISSION_EVENT_XMAS",
+                "DATE_COMMON_EPISODE_EVENT_SHADE_01",
+                "DATE_COMMON_EPISODE_EVENT_SUMMER2021_01"
+            };
+            var probeSummary = probes.Select(probe => $"{probe}={strKeys.Contains(probe)}");
+            var focusedMatches = strKeys
+                .Where(strKey =>
+                    strKey.Contains("EPISODE_EVENT_ADMIN", StringComparison.Ordinal) ||
+                    strKey.Contains("MISSION_EVENT_XMAS", StringComparison.Ordinal) ||
+                    strKey.Contains("EPISODE_EVENT_SHADE", StringComparison.Ordinal) ||
+                    strKey.Contains("EPISODE_EVENT_SUMMER2021", StringComparison.Ordinal))
+                .Take(20);
+            return $"{intervals.Count}[{string.Join(", ", values)}] duplicateKeys=[{string.Join(", ", duplicateKeySummary)}] duplicateStrKeys=[{string.Join(", ", duplicateStrKeySummary)}] probes=[{string.Join(", ", probeSummary)}] focused=[{string.Join(", ", focusedMatches)}]";
         }
 
         private string ZeroCopyToBase64(object zeroCopy)

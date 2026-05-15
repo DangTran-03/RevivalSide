@@ -17,6 +17,7 @@ const {
   buildEquipItemData,
   buildDeckIndexData,
   buildDeckData,
+  buildRewardData,
   buildShipCmdModuleData,
   buildShipModuleCandidateData,
   dateTimeBinaryNow,
@@ -54,6 +55,7 @@ const PACKET_NAMES = Object.freeze({
   1662: "SUPPORT_UNIT_LIST_REQ",
   1664: "SET_MY_SUPPORT_UNIT_REQ",
   1666: "SET_DUNGEON_SUPPORT_UNIT_REQ",
+  1668: "REMAIN_PASS_REWARD_REQ",
   2621: "UPDATE_DEFENCE_DECK_REQ",
   4117: "PRIVATE_PVP_LOBBY_SYNC_DECK_INDEX_REQ",
 });
@@ -123,6 +125,12 @@ function buildResponse(ctx, user, packetId, req) {
       return setMySupportAck(user, req.unitUid);
     case 1666:
       return setDungeonSupportAck(user, req.raw);
+    case 1668:
+      return ack(
+        1669,
+        Buffer.concat([writeSignedVarInt(0), writeSignedVarInt(0), writeNullableObject(buildRewardData({}))]),
+        "reward=empty"
+      );
     case 2621:
       return updateDefenceDeckAck(user, req.raw);
     case 4117:

@@ -3,8 +3,14 @@ module.exports = {
   name: "CONTENTS_VERSION_REQ",
   handle(ctx, socket, packet) {
     const official = ctx.capturedTcpProfiles.contentsVersionAck;
-    const requiredTags = ctx.config.REQUIRED_CONTENTS_TAGS || [];
-    const contentsTags = official ? mergeTags(official.contentsTag, requiredTags) : ctx.config.CONTENTS_TAGS;
+    const requiredTags = ctx.getRequiredContentsTags
+      ? ctx.getRequiredContentsTags()
+      : ctx.config.REQUIRED_CONTENTS_TAGS || [];
+    const contentsTags = ctx.getEffectiveContentsTags
+      ? ctx.getEffectiveContentsTags(official ? official.contentsTag : ctx.config.CONTENTS_TAGS)
+      : official
+        ? mergeTags(official.contentsTag, requiredTags)
+        : ctx.config.CONTENTS_TAGS;
     ctx.setLastAckContents(
       official ? official.contentsVersion : ctx.config.CONTENTS_VERSION,
       contentsTags
@@ -12,9 +18,12 @@ module.exports = {
     ctx.sendResponse(socket, packet.sequence, ctx.constants.CONTENTS_VERSION_ACK, () => {
       const captured = ctx.capturedTcpResponses.get(ctx.constants.CONTENTS_VERSION_ACK);
       if (ctx.config.REPLAY_CAPTURED_CONTENTS_VERSION && captured) {
-        if (official && !hasAllTags(official.contentsTag, requiredTags)) {
-          console.log("[capture-replay] CONTENTS_VERSION_ACK missing required local tags; using local fallback");
-          return ctx.buildContentsVersionAck(packet.sequence);
+        if (
+          official &&
+          (!hasAllTags(official.contentsTag, requiredTags) || !hasSameTags(official.contentsTag, contentsTags))
+        ) {
+          console.log("[capture-replay] CONTENTS_VERSION_ACK using event contents-tag override");
+          return ctx.buildContentsVersionAck(packet.sequence, contentsTags, official.contentsVersion);
         }
         console.log(
           `[capture-replay] packetId=${ctx.constants.CONTENTS_VERSION_ACK} compressed=${captured.compressed ? 1 : 0} payloadSize=${captured.payload.length}`
@@ -22,11 +31,21 @@ module.exports = {
         if (captured.raw && captured.sequence === packet.sequence) return captured.raw;
         return ctx.buildFramedPacket(packet.sequence, ctx.constants.CONTENTS_VERSION_ACK, captured.payload, captured.compressed);
       }
-      return ctx.buildContentsVersionAck(packet.sequence);
+      return ctx.buildContentsVersionAck(packet.sequence, contentsTags, official ? official.contentsVersion : ctx.config.CONTENTS_VERSION);
     });
     return true;
   },
 };
+
+function hasSameTags(left, right) {
+  const leftSet = new Set((Array.isArray(left) ? left : []).map((tag) => String(tag || "").toUpperCase()));
+  const rightSet = new Set((Array.isArray(right) ? right : []).map((tag) => String(tag || "").toUpperCase()));
+  if (leftSet.size !== rightSet.size) return false;
+  for (const tag of leftSet) {
+    if (!rightSet.has(tag)) return false;
+  }
+  return true;
+}
 
 function hasAllTags(tags, requiredTags) {
   const set = new Set((Array.isArray(tags) ? tags : []).map((tag) => String(tag || "").toUpperCase()));

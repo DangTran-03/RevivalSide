@@ -13,6 +13,7 @@ const PREPACKAGED_TABLE_ROOTS = [
 const TABLE_ROOTS = [...EXTRACTED_TABLE_ROOTS, ...PREPACKAGED_TABLE_ROOTS];
 const ENABLE_EXTRACTED_MISSION_TABLES = process.env.CS_ENABLE_EXTRACTED_MISSION_TABLES === "1";
 const MISSION_TABLE_ROOTS = ENABLE_EXTRACTED_MISSION_TABLES ? TABLE_ROOTS : PREPACKAGED_TABLE_ROOTS;
+const DEFAULT_COUNTER_PASS_UNLOCK_DUNGEON_IDS = Object.freeze([1001421]);
 
 let cachedData = null;
 
@@ -35,6 +36,8 @@ function loadGameData() {
 
   const unitById = new Map();
   const unitByStrId = new Map();
+  const collectionUnitById = new Map();
+  const collectionUnitByStrId = new Map();
   for (const fileName of [
     "LUA_UNIT_TEMPLET_BASE.json",
     "LUA_UNIT_TEMPLET_BASE2.json",
@@ -53,6 +56,10 @@ function loadGameData() {
   for (const record of collectionUnits) {
     const unitId = Number(record && record.m_UnitID);
     if (!Number.isInteger(unitId) || unitId <= 0) continue;
+    if (!collectionUnitById.has(unitId)) collectionUnitById.set(unitId, record);
+    if (record.m_UnitStrID && !collectionUnitByStrId.has(String(record.m_UnitStrID))) {
+      collectionUnitByStrId.set(String(record.m_UnitStrID), record);
+    }
     if (!unitById.has(unitId)) unitById.set(unitId, record);
     if (record.m_UnitStrID && !unitByStrId.has(String(record.m_UnitStrID))) {
       unitByStrId.set(String(record.m_UnitStrID), record);
@@ -179,11 +186,16 @@ function loadGameData() {
     if (!limitBreakSubstituteByKey.has(key)) limitBreakSubstituteByKey.set(key, record);
   }
 
-  const contentUnlocksByDungeonId = groupByNumber(
-    readRecords("ab_script", "LUA_CONTENTS_UNLOCK_TEMPLET.json").filter(
-      (record) => String(record && record.m_UnlockReqType) === "SURT_CLEAR_DUNGEON"
-    ),
-    "m_UnlockReqValue"
+  const contentUnlockRecords = readRecords("ab_script", "LUA_CONTENTS_UNLOCK_TEMPLET.json");
+  const hasCounterPassContentUnlock = contentUnlockRecords.some((record) => getContentUnlockType(record) === "COUNTER_PASS");
+  const dungeonContentUnlockRecords = contentUnlockRecords.filter(
+    (record) => String(record && record.m_UnlockReqType) === "SURT_CLEAR_DUNGEON"
+  );
+  const contentUnlocksByDungeonId = groupByNumber(dungeonContentUnlockRecords, "m_UnlockReqValue");
+  const counterPassUnlockDungeonIds = uniquePositiveInts(
+    dungeonContentUnlockRecords
+      .filter((record) => getContentUnlockType(record) === "COUNTER_PASS")
+      .map((record) => record && record.m_UnlockReqValue)
   );
 
   const missions = [];
@@ -227,6 +239,8 @@ function loadGameData() {
     rewardGroups,
     unitById,
     unitByStrId,
+    collectionUnitById,
+    collectionUnitByStrId,
     unitSkillsById,
     unitSkillStrIdById,
     pieceByItemId,
@@ -249,6 +263,8 @@ function loadGameData() {
     limitBreakInfoByRank,
     limitBreakSubstituteByKey,
     contentUnlocksByDungeonId,
+    hasCounterPassContentUnlock,
+    counterPassUnlockDungeonIds,
     missions,
     missionById,
     missionsByTabId,
@@ -273,6 +289,20 @@ function getUnitTemplet(unitIdOrStrId) {
     return data.unitByStrId.get(unitIdOrStrId) || null;
   }
   return data.unitById.get(Number(unitIdOrStrId)) || null;
+}
+
+function getCollectionUnitTemplet(unitIdOrStrId) {
+  const data = loadGameData();
+  if (typeof unitIdOrStrId === "string" && !/^\d+$/.test(unitIdOrStrId)) {
+    return data.collectionUnitByStrId.get(unitIdOrStrId) || null;
+  }
+  return data.collectionUnitById.get(Number(unitIdOrStrId)) || null;
+}
+
+function isCollectionVisibleUnitId(unitIdOrStrId) {
+  const record = getCollectionUnitTemplet(unitIdOrStrId);
+  if (!record) return false;
+  return record.m_bExclude !== true && record.m_bExclude !== "true" && record.m_bExclude !== 1;
 }
 
 function getUnitSkillStrId(skillId) {
@@ -331,6 +361,7 @@ function getPlayableUnitIds(options = {}) {
       if (type === "NUT_SYSTEM" || type === "NUT_SHIP") return false;
       if (type === "NUT_OPERATOR" && !includeOperators) return false;
       if (style === "NUST_TRAINER") return false;
+      if (!isCollectionVisibleUnitId(record.m_UnitID || record.m_UnitStrID)) return false;
       return Number(record.m_UnitID) > 0;
     })
     .map((record) => Number(record.m_UnitID))
@@ -363,7 +394,11 @@ function getPlayableOperatorIds() {
   return Array.from(loadGameData().unitById.values())
     .filter((record) => {
       if (!record || record.m_bMonster === true) return false;
-      return String(record.m_NKM_UNIT_TYPE || "") === "NUT_OPERATOR" && Number(record.m_UnitID) > 0;
+      return (
+        String(record.m_NKM_UNIT_TYPE || "") === "NUT_OPERATOR" &&
+        Number(record.m_UnitID) > 0 &&
+        isCollectionVisibleUnitId(record.m_UnitID || record.m_UnitStrID)
+      );
     })
     .map((record) => Number(record.m_UnitID))
     .sort((a, b) => a - b);
@@ -738,6 +773,13 @@ function getContentUnlocksForDungeon(dungeonId) {
   return (loadGameData().contentUnlocksByDungeonId.get(Number(dungeonId)) || []).slice();
 }
 
+function getCounterPassUnlockDungeonIds() {
+  const data = loadGameData();
+  const ids = data.counterPassUnlockDungeonIds;
+  if ((!ids || ids.length === 0) && data.hasCounterPassContentUnlock) return [];
+  return (ids && ids.length ? ids : DEFAULT_COUNTER_PASS_UNLOCK_DUNGEON_IDS).slice();
+}
+
 function getMissionTemplet(missionId) {
   return loadGameData().missionById.get(Number(missionId)) || null;
 }
@@ -782,6 +824,12 @@ function uniquePositiveInts(values) {
         .filter((value) => Number.isInteger(value) && value > 0)
     )
   );
+}
+
+function getContentUnlockType(record) {
+  return String(
+    (record && (record.eContentsType || record.m_eContentsType || record.m_ContentsType || record.contentsType)) || ""
+  ).trim();
 }
 
 function normalizeOperatorGrade(grade) {
@@ -857,6 +905,8 @@ module.exports = {
   getMiscItemTemplet,
   getAllMiscItemIds,
   getUnitTemplet,
+  getCollectionUnitTemplet,
+  isCollectionVisibleUnitId,
   getUnitSkillStrId,
   getUnitSkillTemplet,
   getUnitSkillMaxLevel,
@@ -918,6 +968,7 @@ module.exports = {
   getOperatorMaxLevel,
   getOperatorLevelByTotalExp,
   getContentUnlocksForDungeon,
+  getCounterPassUnlockDungeonIds,
   getMissionTemplet,
   getMissionTemplets,
   getMissionTempletsByTabId,

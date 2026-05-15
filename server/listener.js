@@ -88,6 +88,7 @@ const {
 loadDotEnv(path.join(ROOT_DIR, ".env"));
 const {
   buildAttendanceData: buildSerializedAttendanceData,
+  buildAttendanceIntervalDataList: buildSerializedAttendanceIntervalDataList,
 } = require("../modules/attendance");
 const { loadShopCatalog, buildSerializedRandomShopData } = require("../modules/shop");
 const { getShopPurchaseHistories } = require("../modules/resource");
@@ -113,6 +114,7 @@ const {
   buildSupportUnitData: buildPersistedSupportUnitData,
   ensureSupportUnit,
 } = require("../modules/combat-roster");
+const { createEventManager } = require("../modules/event-manager");
 
 function envFlag(...keys) {
   return keys.some((key) => {
@@ -372,6 +374,14 @@ const CONTENTS_TAGS = mergeTags(
   REQUIRED_CONTENTS_TAGS
 );
 const OPEN_TAGS = mergeTags(parseTags(process.env.CS_OPEN_TAGS || ""), REQUIRED_STORY_OPEN_TAGS);
+const eventManager = createEventManager({ rootDir: ROOT_DIR, env: process.env });
+const EVENT_MANAGER_DIAGNOSTICS = envFlag("CS_EVENT_DIAGNOSTICS");
+const EVENT_CONTENTS_TAGS_ENABLED = envFlag("CS_EVENT_EMIT_CONTENTS_TAGS", "CS_EVENT_CONTENTS_TAGS");
+const EVENT_COUNTER_PASS_CONTENTS_TAGS_ENABLED = envFlagDefault(
+  true,
+  "CS_EVENT_EMIT_COUNTER_PASS_CONTENTS_TAGS",
+  "CS_COUNTER_PASS_CONTENTS_TAGS"
+);
 
 const CRYPTO_MASKS = [
   14170986657190717782n,
@@ -557,6 +567,21 @@ function logRuntimeConfig() {
   );
   console.log(`[cfg] contentsVersion=${CONTENTS_VERSION}`);
   console.log(`[cfg] contentsTags=${CONTENTS_TAGS.length}`);
+  const eventSummary = eventManager.getSummary();
+  console.log(
+    `[cfg] eventManager=${eventSummary.enabled ? "on" : "off"} date=${
+      eventSummary.dateInput || "(unset)"
+    } profile=${eventSummary.profile} tableScan=${eventSummary.tableScan} tables=${eventSummary.tableCount} entries=${
+      eventSummary.entryCount
+    } active=${eventSummary.activeEntryCount} intervals=${eventSummary.activeIntervalCount} contentsTags=${
+      eventSummary.activeContentsTagCount
+    } emitContentsTags=${EVENT_CONTENTS_TAGS_ENABLED ? "on" : "off"} counterPasses=${
+      eventSummary.activeCounterPassCount
+    } counterPassContentsTags=${EVENT_COUNTER_PASS_CONTENTS_TAGS_ENABLED ? "on" : "off"} openTags=${eventSummary.activeOpenTagCount}`
+  );
+  if (EVENT_MANAGER_DIAGNOSTICS) {
+    process.stdout.write(eventManager.formatDiagnostics(eventManager.config.eventDate, { limit: 12 }));
+  }
   if (capturedTcpProfiles.contentsVersionAck) {
     console.log(
       `[cfg] officialTcpVersion=${capturedTcpProfiles.contentsVersionAck.contentsVersion} tags=${capturedTcpProfiles.contentsVersionAck.contentsTag.length}`
@@ -615,6 +640,7 @@ function startHttpMirror() {
     .createServer(async (req, res) => {
       try {
         if (userManager && (await userManager.handle(req, res))) return;
+        if (serveEventManagerDiagnostics(req, res)) return;
         if (capturedFlowMirror) {
           serveCapturedFlow(req, res, capturedFlowMirror);
           return;
@@ -637,6 +663,45 @@ function startHttpMirror() {
         console.log(`[+] User manager listening on ${MIRROR_PUBLIC_BASE_URL}${userManager.basePath}`);
       }
     });
+}
+
+function serveEventManagerDiagnostics(req, res) {
+  const url = new URL(req.url || "/", MIRROR_PUBLIC_BASE_URL);
+  if (url.pathname !== "/event-manager" && url.pathname !== "/event-manager/diagnostics") return false;
+
+  const date = url.searchParams.get("date") || eventManager.config.dateInput || "";
+  const limit = Number(url.searchParams.get("limit") || 50) || 50;
+  const hasOverrides =
+    url.searchParams.has("date") ||
+    url.searchParams.has("scan") ||
+    url.searchParams.has("roots") ||
+    url.searchParams.has("manager") ||
+    url.searchParams.has("packaged");
+  const manager = hasOverrides ? createEventDiagnosticsManager(url, date) : eventManager;
+  const diagnostics = manager.getDiagnostics(date || manager.config.eventDate, { limit });
+  const format = String(url.searchParams.get("format") || "json").toLowerCase();
+
+  if (format === "text") {
+    res.writeHead(200, { "Content-Type": "text/plain; charset=utf-8", "Cache-Control": "no-store" });
+    res.end(manager.formatDiagnostics(date || manager.config.eventDate, { limit }));
+    return true;
+  }
+
+  res.writeHead(200, { "Content-Type": "application/json; charset=utf-8", "Cache-Control": "no-store" });
+  res.end(`${JSON.stringify(diagnostics, null, 2)}\n`);
+  return true;
+}
+
+function createEventDiagnosticsManager(url, date) {
+  const env = { ...process.env };
+  if (date) env.CS_EVENT_DATE = date;
+  if (url.searchParams.has("scan")) env.CS_EVENT_TABLE_SCAN = url.searchParams.get("scan") || "";
+  if (url.searchParams.has("roots")) env.CS_EVENT_TABLE_ROOTS = url.searchParams.get("roots") || "";
+  if (url.searchParams.has("manager")) env.CS_EVENT_MANAGER = url.searchParams.get("manager") || "";
+  if (url.searchParams.get("packaged") === "1" || url.searchParams.get("packaged") === "true") {
+    env.CS_EVENT_TABLE_ROOTS = "gameplay-jsons/Assetbundles";
+  }
+  return createEventManager({ rootDir: ROOT_DIR, env });
 }
 
 function processReceiveBuffer(socket) {
@@ -801,11 +866,13 @@ function createPacketContext() {
       CONTENTS_VERSION,
       REQUIRED_CONTENTS_TAGS,
       CONTENTS_TAGS,
+      EVENT_MANAGER_CONFIG: eventManager.config,
     },
     capturedTcpResponses,
     capturedTcpProfiles,
     capturedGameFlow,
     userDb,
+    eventManager,
     setLastAckContents(version, tags) {
       lastAckContentsVersion = version || "";
       lastAckContentsTags = Array.isArray(tags) ? tags.slice() : [];
@@ -914,6 +981,9 @@ function createPacketContext() {
     writeSignedVarLong,
     writeInt64LE,
     dateTimeBinaryNow,
+    dateTimeTicksNow,
+    getEffectiveContentsTags,
+    getRequiredContentsTags,
     getOrCreateUserForSteam,
     issueUserTokens,
     saveUserDb,
@@ -4592,6 +4662,111 @@ function recordPersistentCutsceneViewForUser(user, dungeonId, stageId = 0, optio
   return changed;
 }
 
+function repairDungeonClearDataFromProgress(user) {
+  if (!user || typeof user !== "object") return 0;
+  user.dungeonClear = user.dungeonClear && typeof user.dungeonClear === "object" ? user.dungeonClear : {};
+  user.stagePlayData = user.stagePlayData && typeof user.stagePlayData === "object" ? user.stagePlayData : {};
+  user.unlockedStageIds = Array.isArray(user.unlockedStageIds) ? user.unlockedStageIds : [];
+  let repaired = 0;
+
+  const addClear = (dungeonId, source = {}) => {
+    if (source && source.cleared === false) return;
+    const resolvedDungeonId = Number(dungeonId || source.dungeonId || source.dungeonID || source.m_DungeonID || 0);
+    if (!Number.isInteger(resolvedDungeonId) || resolvedDungeonId <= 0) return;
+    const resolvedStageId = Number(
+      source.stageId || source.stageID || source.m_StageID || stageIdForDungeonId(resolvedDungeonId) || 0
+    );
+    const key = String(resolvedDungeonId);
+    const existing = user.dungeonClear[key] && typeof user.dungeonClear[key] === "object" ? user.dungeonClear[key] : {};
+    const nextStageId = resolvedStageId || Number(existing.stageId || 0);
+    const next = {
+      ...existing,
+      dungeonId: resolvedDungeonId,
+      stageId: nextStageId,
+      missionResult1: existing.missionResult1 === true || source.missionResult1 !== false,
+      missionResult2: existing.missionResult2 === true || source.missionResult2 !== false,
+      clearedAt:
+        existing.clearedAt ||
+        source.clearedAt ||
+        source.completedAt ||
+        source.firstClearedAt ||
+        source.firstViewedAt ||
+        new Date().toISOString(),
+    };
+    const changed =
+      user.dungeonClear[key] !== next &&
+      (!user.dungeonClear[key] ||
+        Number(existing.dungeonId || key) !== resolvedDungeonId ||
+        Number(existing.stageId || 0) !== Number(next.stageId || 0) ||
+        existing.missionResult1 !== next.missionResult1 ||
+        existing.missionResult2 !== next.missionResult2 ||
+        !existing.clearedAt);
+    user.dungeonClear[key] = next;
+    if (nextStageId > 0) {
+      if (!user.unlockedStageIds.includes(nextStageId)) {
+        user.unlockedStageIds.push(nextStageId);
+        repaired += 1;
+      }
+      const stageKey = String(nextStageId);
+      if (!user.stagePlayData[stageKey] && source.recordStagePlay !== false) {
+        user.stagePlayData[stageKey] = {
+          stageId: nextStageId,
+          playCount: Math.max(1, Number(source.playCount || 0)),
+          totalPlayCount: Math.max(1, Number(source.totalPlayCount || source.playCount || 0)),
+          bestClearTimeSec: Number(source.bestClearTimeSec || 0),
+        };
+        repaired += 1;
+      }
+    }
+    if (changed) repaired += 1;
+  };
+
+  for (const [key, clear] of Object.entries(user.dungeonClear)) {
+    addClear(Number((clear && clear.dungeonId) || key), { ...clear, recordStagePlay: false });
+  }
+  const clearConditions = user.clearConditions && typeof user.clearConditions === "object" ? user.clearConditions : {};
+  const clearDungeons =
+    clearConditions.dungeons && typeof clearConditions.dungeons === "object" ? clearConditions.dungeons : {};
+  for (const [key, clear] of Object.entries(clearDungeons)) {
+    addClear(Number((clear && clear.dungeonId) || key), clear);
+  }
+  const clearStages = clearConditions.stages && typeof clearConditions.stages === "object" ? clearConditions.stages : {};
+  for (const [key, clear] of Object.entries(clearStages)) {
+    const stageId = Number((clear && clear.stageId) || key);
+    addClear(resolveDungeonIdForStageProgress(stageId, clear), { ...clear, stageId });
+  }
+  for (const [key, play] of Object.entries(user.stagePlayData)) {
+    const stageId = Number((play && play.stageId) || key);
+    addClear(resolveDungeonIdForStageProgress(stageId, play), { ...play, stageId, recordStagePlay: false });
+  }
+  const gameplayUnlocks = user.gameplayUnlocks && typeof user.gameplayUnlocks === "object" ? user.gameplayUnlocks : {};
+  const gameplayByDungeon =
+    gameplayUnlocks.byDungeon && typeof gameplayUnlocks.byDungeon === "object" ? gameplayUnlocks.byDungeon : {};
+  for (const dungeonId of Object.keys(gameplayByDungeon)) addClear(Number(dungeonId), { recordStagePlay: false });
+  const cutsceneViews =
+    user.persistentCutsceneViews && typeof user.persistentCutsceneViews === "object" ? user.persistentCutsceneViews : {};
+  for (const [key, view] of Object.entries(cutsceneViews)) {
+    if (!view || view.viewed === false) continue;
+    const stageId = Number(view.stageId || 0);
+    const dungeonId = Number(view.dungeonId || 0) || Number(key) || resolveDungeonIdForStageProgress(stageId, view);
+    addClear(dungeonId, { ...view, stageId });
+  }
+  return repaired;
+}
+
+function resolveDungeonIdForStageProgress(stageId, source = {}) {
+  const explicit = Number(source && (source.dungeonId || source.dungeonID || source.m_DungeonID));
+  if (Number.isInteger(explicit) && explicit > 0) return explicit;
+  const numericStageId = Number(stageId || 0);
+  if (!Number.isInteger(numericStageId) || numericStageId <= 0) return 0;
+  const mainStoryStage = getMainStoryStageByStageId(numericStageId);
+  if (mainStoryStage && Number(mainStoryStage.dungeonID) > 0) return Number(mainStoryStage.dungeonID);
+  const tutorialStage = TUTORIAL_STAGE_CHAIN.find((stage) => Number(stage.stageId) === numericStageId);
+  if (tutorialStage && Number(tutorialStage.dungeonID) > 0) return Number(tutorialStage.dungeonID);
+  const genericStage = getGenericStageForRequest({ stageID: numericStageId });
+  return Number(genericStage && genericStage.dungeonID) || 0;
+}
+
 function shouldPersistCutsceneView(dungeonId, stageId) {
   const resolvedDungeonId = Number(dungeonId || 0);
   const resolvedStageId = Number(stageId || 0);
@@ -4993,17 +5168,18 @@ function logGameLoadReq(payload) {
   }
 }
 
-function buildContentsVersionAck(sequence) {
+function buildContentsVersionAck(sequence, baseTags = CONTENTS_TAGS, version = CONTENTS_VERSION) {
+  const tags = getEffectiveContentsTags(baseTags);
   const payload = Buffer.concat([
     writeSignedVarInt(0),
-    writeString(CONTENTS_VERSION),
-    writeStringList(CONTENTS_TAGS),
+    writeString(version || CONTENTS_VERSION),
+    writeStringList(tags),
     writeInt64LE(dateTimeBinaryNow()),
     writeInt64LE(0n),
   ]);
 
-  console.log(`[CONTENTS_VERSION_ACK fallback] version=${CONTENTS_VERSION} tags=${CONTENTS_TAGS.length}`);
-  return buildPlainPacket(sequence, CONTENTS_VERSION_ACK, payload);
+  console.log(`[CONTENTS_VERSION_ACK event-contents-tags] version=${version || CONTENTS_VERSION} tags=${tags.length}`);
+  return buildEncryptedPacket(sequence, CONTENTS_VERSION_ACK, payload);
 }
 
 function buildLoginAck(sequence, user) {
@@ -5037,8 +5213,8 @@ function buildCapturedLoginLikeAck(sequence, packetId, user, label, fallbackBuil
     "local-access-token";
   lastEffectiveAccessToken = token;
   if (user && token) user.accessToken = token;
-  const contentsTag = mergeTags(template.contentsTag, REQUIRED_CONTENTS_TAGS);
-  const openTag = mergeTags(template.openTag, REQUIRED_STORY_OPEN_TAGS);
+  const contentsTag = getEffectiveContentsTags(template.contentsTag);
+  const openTag = getEffectiveOpenTags(template.openTag);
 
   const rawPayload = buildLoginAckRaw({
     errorCode: template.errorCode,
@@ -5080,12 +5256,13 @@ function buildLoginLikePayload(user) {
   if (user && token) user.accessToken = token;
 
   const version = (user && user.contentsVersion) || lastAckContentsVersion || CONTENTS_VERSION;
-  const tags = user && user.contentsTags && user.contentsTags.length
+  const baseTags = user && user.contentsTags && user.contentsTags.length
     ? user.contentsTags
     : lastAckContentsTags.length
       ? lastAckContentsTags
       : CONTENTS_TAGS;
-  const openTags = user && user.openTags ? user.openTags : OPEN_TAGS;
+  const tags = getEffectiveContentsTags(baseTags);
+  const openTags = getEffectiveOpenTags(user && user.openTags ? user.openTags : OPEN_TAGS);
 
   console.log(
     `[LOGIN-like payload] uid=${user ? user.userUid : "(none)"} tokenLen=${token.length} gameServer=${GAME_SERVER_IP}:${GAME_SERVER_PORT} version=${version} tags=${tags.length} openTags=${openTags.length}`
@@ -5102,12 +5279,108 @@ function buildLoginLikePayload(user) {
   ]);
 }
 
+function getActiveEventState() {
+  return eventManager.getActiveEventState();
+}
+
+function getEventContentsTagsForContentsVersion() {
+  const state = getActiveEventState();
+  return mergeTags(
+    EVENT_CONTENTS_TAGS_ENABLED ? state.contentsTags : [],
+    EVENT_COUNTER_PASS_CONTENTS_TAGS_ENABLED ? state.counterPassContentsTags : []
+  );
+}
+
+function getEffectiveContentsTags(baseTags) {
+  const eventTags = getEventContentsTagsForContentsVersion();
+  return mergeTags(stripInactiveEventContentsTags(baseTags, eventTags), REQUIRED_CONTENTS_TAGS, eventTags);
+}
+
+function stripInactiveEventContentsTags(baseTags, activeEventTags) {
+  if (!eventManager || !eventManager.config || !eventManager.config.enabled) return Array.isArray(baseTags) ? baseTags : [];
+  if (!eventManager.getKnownContentsTags) return Array.isArray(baseTags) ? baseTags : [];
+  const knownTags = new Set(eventManager.getKnownContentsTags().map((tag) => String(tag || "").toUpperCase()));
+  if (!knownTags.size) return Array.isArray(baseTags) ? baseTags : [];
+  const activeTags = new Set((Array.isArray(activeEventTags) ? activeEventTags : []).map((tag) => String(tag || "").toUpperCase()));
+  return (Array.isArray(baseTags) ? baseTags : []).filter((tag) => {
+    const key = String(tag || "").toUpperCase();
+    return !knownTags.has(key) || activeTags.has(key);
+  });
+}
+
+function getEffectiveOpenTags(baseTags) {
+  return mergeTags(baseTags, REQUIRED_STORY_OPEN_TAGS, getActiveEventState().openTags);
+}
+
+function getRequiredContentsTags() {
+  return mergeTags(REQUIRED_CONTENTS_TAGS, getEventContentsTagsForContentsVersion());
+}
+
+function buildEventIntervalDataList() {
+  const state = getActiveEventState();
+  return state.enabled ? state.intervalData : [];
+}
+
+function buildJoinLobbyIntervalDataList(user) {
+  const byStrKey = new Map();
+  for (const interval of buildEventIntervalDataList()) {
+    const strKey = String((interval && interval.strKey) || "");
+    if (!strKey) continue;
+    byStrKey.set(strKey, buildIntervalData(interval));
+  }
+  for (const payload of buildSerializedAttendanceIntervalDataList(user)) {
+    const strKey = readIntervalDataStrKey(payload) || `__attendance_${byStrKey.size}`;
+    byStrKey.set(strKey, payload);
+  }
+  return Array.from(byStrKey.values());
+}
+
+function getInactiveEventIntervalStrKeys(activeIntervalPayloads = []) {
+  if (!eventManager || !eventManager.config || !eventManager.config.enabled) return [];
+  if (!eventManager.getKnownIntervalStrKeys) return [];
+  const activeKeys = new Set(getIntervalPayloadStrKeys(activeIntervalPayloads).map((key) => key.toUpperCase()));
+  return eventManager
+    .getKnownIntervalStrKeys()
+    .filter((key) => {
+      const text = String(key || "");
+      return text && !activeKeys.has(text.toUpperCase());
+    });
+}
+
+function getIntervalPayloadStrKeys(intervalPayloads = []) {
+  return (Array.isArray(intervalPayloads) ? intervalPayloads : [])
+    .map(readIntervalDataStrKey)
+    .filter(Boolean);
+}
+
+function buildIntervalData(interval) {
+  const data = interval || {};
+  return Buffer.concat([
+    writeSignedVarInt(Number(data.key || 0) || 0),
+    writeString(data.strKey || ""),
+    writeInt64LE(dateTimeBinaryForDate(data.startDate)),
+    writeInt64LE(dateTimeBinaryForDate(data.endDate)),
+    writeSignedVarInt(Number(data.repeatStartDate || 0) || 0),
+    writeSignedVarInt(Number(data.repeatEndDate || 0) || 0),
+  ]);
+}
+
+function readIntervalDataStrKey(payload) {
+  try {
+    let offset = readSignedVarInt(payload, 0).offset;
+    return readString(payload, offset).value || "";
+  } catch (_) {
+    return "";
+  }
+}
+
 function buildMinimalJoinLobbyPayload(user) {
   const scrubbedTutorialClears = scrubTutorialEpisodeClearProgress(user);
   if (scrubbedTutorialClears && USE_LOCAL_USER_DB) saveUserDb();
   ensureMainStoryState(user);
   ensureDefaultLineup(user);
   ensureDefaultLineup(user, { deckType: 3, index: 0 });
+  const intervalData = buildJoinLobbyIntervalDataList(user);
   const lobbyNow = dateTimeBinaryNow();
   const refreshedStamina = stamina.refreshTimedStamina(user, {
     now: lobbyNow,
@@ -5184,7 +5457,7 @@ function buildMinimalJoinLobbyPayload(user) {
     writeObjectList(collection.buildCompletedUnitMissionPayloads(user).map(writeNullableObject)), // completedUnitMissions
     writeObjectList(collection.buildRewardEnableUnitMissionPayloads(user).map(writeNullableObject)), // rewardEnableUnitMissions
     writeNullableObject(buildPvpCastingVoteData()), // pvpCastingVoteData
-    writeObjectList([]), // intervalData
+    writeObjectList(intervalData.map(writeNullableObject)), // intervalData
     writeObjectList([]), // consumerPackages
     writeNullObject(), // npcPvpData
     writeNullableObject(buildTrimIntervalData()), // trimIntervalData
@@ -5207,6 +5480,10 @@ function buildMinimalJoinLobbyPayload(user) {
 function buildJoinLobbyAckPayload(user) {
   const localPayload = buildMinimalJoinLobbyPayload(user);
   const officialPayload = getCapturedServerPayloadTemplate(JOIN_LOBBY_ACK);
+  const localIntervalData = buildJoinLobbyIntervalDataList(user);
+  const hasGeneratedLobbyIntervals = localIntervalData.length > 0;
+  const activeIntervalStrKeys = getIntervalPayloadStrKeys(localIntervalData);
+  const inactiveEventIntervalStrKeys = getInactiveEventIntervalStrKeys(localIntervalData);
   if (officialPayload && Buffer.isBuffer(officialPayload)) {
     const cacheKey = [
       user && user.userUid ? String(user.userUid) : "ephemeral",
@@ -5217,7 +5494,13 @@ function buildJoinLobbyAckPayload(user) {
     if (cached) return cached;
 
     const merged = combatHandler.mergeJoinLobbyAck
-      ? combatHandler.mergeJoinLobbyAck(officialPayload, localPayload)
+      ? combatHandler.mergeJoinLobbyAck(officialPayload, localPayload, {
+          copyIntervalData: hasGeneratedLobbyIntervals,
+          replaceIntervalData: false,
+          excludeIntervalStrKeys: inactiveEventIntervalStrKeys,
+          preserveIntervalStrKeys: activeIntervalStrKeys,
+          filterInactiveEventIntervals: eventManager.config.enabled,
+        })
       : { ok: false, error: "combat handler merge unavailable" };
     if (merged.ok && Buffer.isBuffer(merged.payload)) {
       rememberJoinLobbyAckPayload(cacheKey, merged.payload);
@@ -5356,43 +5639,34 @@ function getCompletedTutorialStageStates(user) {
 }
 
 function buildDungeonClearEntries(user) {
+  repairDungeonClearDataFromProgress(user);
   const dungeonClear = user && user.dungeonClear && typeof user.dungeonClear === "object" ? user.dungeonClear : {};
   const entries = new Map();
+  const addDungeonClearEntry = (dungeonId, options = {}) => {
+    const normalizedDungeonId = Number(dungeonId);
+    if (!Number.isFinite(normalizedDungeonId) || normalizedDungeonId <= 0) return;
+    entries.set(normalizedDungeonId, buildDungeonClearData(normalizedDungeonId, options));
+  };
   for (const [key, clear] of Object.entries(dungeonClear)) {
     const dungeonId = Number((clear && clear.dungeonId) || key);
-    if (Number.isFinite(dungeonId) && dungeonId > 0) {
-      entries.set(
-        dungeonId,
-        buildDungeonClearData(dungeonId, {
-          missionResult1: !clear || clear.missionResult1 !== false,
-          missionResult2: !clear || clear.missionResult2 !== false,
-        })
-      );
-    }
+    addDungeonClearEntry(dungeonId, {
+      missionResult1: !clear || clear.missionResult1 !== false,
+      missionResult2: !clear || clear.missionResult2 !== false,
+    });
   }
   for (const stage of getCompletedTutorialStageStates(user)) {
     const dungeonId = Number(stage.dungeonID || stage.dungeonId || 0);
-    if (Number.isFinite(dungeonId) && dungeonId > 0) {
-      entries.set(
-        dungeonId,
-        buildDungeonClearData(dungeonId, {
-          missionResult1: stage.missionResult1 !== false,
-          missionResult2: stage.missionResult2 !== false,
-        })
-      );
-    }
+    addDungeonClearEntry(dungeonId, {
+      missionResult1: stage.missionResult1 !== false,
+      missionResult2: stage.missionResult2 !== false,
+    });
   }
   for (const stage of getMainStoryCompletedStageStates(user)) {
     const dungeonId = Number(stage.dungeonID || stage.dungeonId || 0);
-    if (Number.isFinite(dungeonId) && dungeonId > 0) {
-      entries.set(
-        dungeonId,
-        buildDungeonClearData(dungeonId, {
-          missionResult1: stage.missionResult1 !== false,
-          missionResult2: stage.missionResult2 !== false,
-        })
-      );
-    }
+    addDungeonClearEntry(dungeonId, {
+      missionResult1: stage.missionResult1 !== false,
+      missionResult2: stage.missionResult2 !== false,
+    });
   }
   return Array.from(entries.entries());
 }
@@ -5974,7 +6248,21 @@ function coerceDateTimeTicks(value) {
 }
 
 function dateTimeTicksNow() {
-  return BigInt(Date.now()) * 10000n + 621355968000000000n;
+  return dateTimeTicksForDate(getServerNowDate());
+}
+
+function getServerNowDate() {
+  const eventDate = eventManager && eventManager.config && eventManager.config.enabled ? eventManager.config.eventDate : null;
+  return eventDate instanceof Date && !Number.isNaN(eventDate.getTime()) ? eventDate : new Date();
+}
+
+function dateTimeTicksForDate(date) {
+  const source = date instanceof Date && !Number.isNaN(date.getTime()) ? date : new Date();
+  return BigInt(source.getTime()) * 10000n + 621355968000000000n;
+}
+
+function dateTimeBinaryForDate(date) {
+  return dateTimeTicksForDate(date) | 0x4000000000000000n;
 }
 
 function loadUserDb(filePath) {
@@ -6239,6 +6527,12 @@ function ensureUserDefaults(user) {
   ensureTutorialState(user);
   scrubTutorialEpisodeClearProgress(user);
   ensureMainStoryState(user);
+  const repairedDungeonClears = repairDungeonClearDataFromProgress(user);
+  if (repairedDungeonClears > 0) {
+    console.log(
+      `[unlock-progress] repaired dungeon clear unlock data uid=${user.userUid || "(ephemeral)"} entries=${repairedDungeonClears}`
+    );
+  }
   if (!CLEAR_ALL_MISSIONS_STATUS) repairPostTutorialGuideMissionCompletions(user);
   return user;
 }
@@ -6991,8 +7285,7 @@ function floatToHalf(value) {
 }
 
 function dateTimeBinaryNow() {
-  const ticks = BigInt(Date.now()) * 10000n + 621355968000000000n;
-  return ticks | 0x4000000000000000n;
+  return dateTimeBinaryForDate(getServerNowDate());
 }
 
 function readVarInt(buffer, offset) {

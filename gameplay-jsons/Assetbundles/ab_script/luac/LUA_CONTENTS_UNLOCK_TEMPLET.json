@@ -4,1045 +4,1527 @@
   "recordCount": 241,
   "records": [
     {
+      "IDX": 1,
+      "eContentsType": "DECKVIEW",
       "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
       "m_UnlockReqValue": 1004,
       "m_ContentsValue": 0
     },
     {
+      "IDX": 2,
+      "eContentsType": "PROFILE_FRAME",
       "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
       "m_UnlockReqValue": 1004,
       "m_ContentsValue": 0
     },
     {
+      "IDX": 5,
+      "eContentsType": "CONTRACT",
       "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
       "m_UnlockReqValue": 1007,
       "m_ContentsValue": 0
     },
     {
+      "IDX": 6,
+      "eContentsType": "BASE",
       "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
       "m_UnlockReqValue": 1007,
       "m_ContentsValue": 0
     },
     {
+      "IDX": 30,
+      "eContentsType": "BASE_PERSONNAL",
       "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
       "m_UnlockReqValue": 1007,
       "m_ContentsValue": 0
     },
     {
+      "IDX": 500,
+      "eContentsType": "TERRA_BRAIN",
       "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
       "m_UnlockReqValue": 1007,
       "m_ContentsValue": 0
     },
     {
+      "IDX": 501,
+      "eContentsType": "CASH_SHOP",
       "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
       "m_UnlockReqValue": 1007,
       "m_ContentsValue": 0
     },
     {
+      "IDX": 502,
+      "eContentsType": "MISSION",
       "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
       "m_UnlockReqValue": 1007,
       "m_ContentsValue": 0
     },
     {
+      "IDX": 506,
+      "eContentsType": "LOBBY_EVENT",
       "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
       "m_UnlockReqValue": 1007,
       "m_ContentsValue": 0
     },
     {
+      "IDX": 11,
+      "eContentsType": "LOBBY_SUBMENU",
       "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
       "m_UnlockReqValue": 1007,
       "m_ContentsValue": 0
     },
     {
+      "IDX": 75,
+      "eContentsType": "RECHARGE_FUND",
       "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
       "m_UnlockReqValue": 1007,
       "m_ContentsValue": 0
     },
     {
+      "IDX": 60,
+      "eContentsType": "BATTLE_2X",
       "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
       "m_UnlockReqValue": 1001231,
       "m_ContentsValue": 0
     },
     {
+      "IDX": 76,
+      "eContentsType": "DECKVIEW_LIST",
       "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
       "m_UnlockReqValue": 1007,
       "m_ContentsValue": 0
     },
     {
+      "IDX": 503,
+      "eContentsType": "PERSONNAL_NEGO",
       "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
       "m_UnlockReqValue": 1001211,
       "m_ContentsValue": 0
     },
     {
+      "IDX": 504,
+      "eContentsType": "ATTENDANCE",
       "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
       "m_UnlockReqValue": 1007,
       "m_ContentsValue": 0
     },
     {
+      "IDX": 17,
+      "eContentsType": "DAILY",
       "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
       "m_UnlockReqValue": 1001241,
       "m_ContentsValue": 0
     },
     {
+      "IDX": 23,
+      "eContentsType": "DAILY_ATTACK",
       "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
       "m_UnlockReqValue": 1001241,
       "m_ContentsValue": 0
     },
     {
+      "IDX": 21,
+      "eContentsType": "DAILY_SEARCH",
       "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
       "m_UnlockReqValue": 1001421,
       "m_ContentsValue": 0
     },
     {
+      "IDX": 24,
+      "eContentsType": "DAILY_DEFENCE",
       "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
       "m_UnlockReqValue": 1001241,
       "m_ContentsValue": 0
     },
     {
+      "IDX": 22,
+      "eContentsType": "DAILY_TACTICAL",
       "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
       "m_ContentsValue": 0
     },
     {
+      "IDX": 29,
+      "eContentsType": "BASE_HANGAR",
       "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
       "m_UnlockReqValue": 10104,
       "m_ContentsValue": 0
     },
     {
+      "IDX": 70,
+      "eContentsType": "HANGER_SHIPYARD",
       "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
       "m_UnlockReqValue": 10104,
       "m_ContentsValue": 0
     },
     {
+      "IDX": 27,
+      "eContentsType": "BASE_LAB",
       "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
       "m_UnlockReqValue": 1001421,
       "m_ContentsValue": 0
     },
     {
+      "IDX": 33,
+      "eContentsType": "LAB_TRAINING",
       "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
       "m_UnlockReqValue": 1001421,
       "m_ContentsValue": 0
     },
     {
+      "IDX": 34,
+      "eContentsType": "LAB_LIMITBREAK",
       "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
       "m_UnlockReqValue": 1001421,
       "m_ContentsValue": 0
     },
     {
+      "IDX": 517,
+      "eContentsType": "LAB_TACTIC_UPDATE",
       "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
       "m_UnlockReqValue": 1001421,
       "m_ContentsValue": 0
     },
     {
+      "IDX": 505,
+      "eContentsType": "COUNTER_PASS",
+      "m_UnlockReqType": "SURT_ALWAYS_UNLOCKED",
+      "m_UnlockReqValue": 0,
+      "m_ContentsValue": 0
+    },
+    {
+      "IDX": 31,
+      "eContentsType": "PERSONNAL_LIFETIME",
       "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
       "m_UnlockReqValue": 1001421,
       "m_ContentsValue": 0
     },
     {
+      "IDX": 32,
+      "eContentsType": "PERSONNAL_SCOUT",
       "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
       "m_UnlockReqValue": 1001421,
       "m_ContentsValue": 0
     },
     {
-      "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
-      "m_UnlockReqValue": 1001421,
-      "m_ContentsValue": 0
-    },
-    {
+      "IDX": 61,
+      "eContentsType": "BATTLE_AUTO_SKILL",
       "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
       "m_UnlockReqValue": 1001231,
       "m_ContentsValue": 0
     },
     {
+      "IDX": 7,
+      "eContentsType": "WORLDMAP",
       "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
       "m_UnlockReqValue": 10105,
       "m_ContentsValue": 0
     },
     {
+      "IDX": 18,
+      "eContentsType": "COUNTERCASE",
       "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
       "m_UnlockReqValue": 10105,
       "m_ContentsValue": 0
     },
     {
+      "IDX": 15,
+      "eContentsType": "FRIENDS",
       "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
       "m_UnlockReqValue": 10105,
       "m_ContentsValue": 0
     },
     {
+      "IDX": 20,
+      "eContentsType": "EVENT",
       "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
       "m_UnlockReqValue": 10105,
       "m_ContentsValue": 0
     },
     {
+      "IDX": 16,
+      "eContentsType": "SIDESTORY",
       "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
       "m_UnlockReqValue": 10105,
       "m_ContentsValue": 0
     },
     {
+      "IDX": 28,
+      "eContentsType": "BASE_FACTORY",
       "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
       "m_UnlockReqValue": 1001421,
       "m_ContentsValue": 0
     },
     {
+      "IDX": 72,
+      "eContentsType": "FACTORY_CRAFT",
       "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
       "m_UnlockReqValue": 1001421,
       "m_ContentsValue": 0
     },
     {
+      "IDX": 73,
+      "eContentsType": "FACTORY_ENCHANT",
       "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
       "m_UnlockReqValue": 1002141,
       "m_ContentsValue": 0
     },
     {
+      "IDX": 10,
+      "eContentsType": "LEADERBOARD",
       "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
       "m_UnlockReqValue": 10105,
       "m_ContentsValue": 0
     },
     {
+      "IDX": 62,
+      "eContentsType": "BATTLE_AUTO_RESPAWN",
       "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
       "m_UnlockReqValue": 10105,
       "m_ContentsValue": 0
     },
     {
+      "IDX": 64,
+      "eContentsType": "OPERATION_REPEAT",
       "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
       "m_ContentsValue": 0
     },
     {
+      "IDX": 88,
+      "eContentsType": "OPERATION_MULTIPLY",
       "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
       "m_UnlockReqValue": 10105,
       "m_ContentsValue": 0
     },
     {
+      "IDX": 88,
+      "eContentsType": "OPERATION_MULTIPLY",
       "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
       "m_UnlockReqValue": 10105,
       "m_ContentsValue": 0
     },
     {
+      "IDX": 71,
+      "eContentsType": "HANGER_SHIPBUILD",
       "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
       "m_UnlockReqValue": 1002121,
       "m_ContentsValue": 0
     },
     {
+      "IDX": 63,
+      "eContentsType": "WARFARE_AUTO_MOVE",
       "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
       "m_ContentsValue": 0
     },
     {
+      "IDX": 102,
+      "eContentsType": "SUPPLY_MISSION",
       "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
       "m_UnlockReqValue": 10105,
       "m_ContentsValue": 0
     },
     {
+      "IDX": 74,
+      "eContentsType": "FACTORY_TUNING",
       "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
       "m_UnlockReqValue": 1002141,
       "m_ContentsValue": 0
     },
     {
+      "IDX": 4,
+      "eContentsType": "PVP",
       "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
       "m_UnlockReqValue": 1002242,
       "m_ContentsValue": 0
     },
     {
+      "IDX": 9,
+      "eContentsType": "OFFICE",
       "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
       "m_UnlockReqValue": 10204,
       "m_ContentsValue": 0
     },
     {
+      "IDX": 69,
+      "eContentsType": "DIVE",
       "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
       "m_UnlockReqValue": 10202,
       "m_ContentsValue": 0
     },
     {
+      "IDX": 19,
+      "eContentsType": "FIELD",
       "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
       "m_ContentsValue": 0
     },
     {
+      "IDX": 90,
+      "eContentsType": "OPERATION_CHALLENGE",
       "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
       "m_UnlockReqValue": 1001241,
       "m_ContentsValue": 0
     },
     {
+      "IDX": 907,
+      "eContentsType": "OPERATION_SUMMARY",
       "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
       "m_UnlockReqValue": 10202,
       "m_ContentsValue": 0
     },
     {
+      "IDX": 200,
+      "eContentsType": "WARFARE_SQUAD",
       "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
       "m_ContentsValue": 0
     },
     {
+      "IDX": 507,
+      "eContentsType": "REARM",
       "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
       "m_UnlockReqValue": 10514,
       "m_ContentsValue": 0
     },
     {
+      "IDX": 508,
+      "eContentsType": "EXTRACT",
       "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
       "m_UnlockReqValue": 10514,
       "m_ContentsValue": 0
     },
     {
+      "IDX": 509,
+      "eContentsType": "FACTORY_UPGRADE",
       "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
       "m_UnlockReqValue": 10514,
       "m_ContentsValue": 0
     },
     {
+      "IDX": 510,
+      "eContentsType": "FACTORY_HIDDEN_OPTION",
       "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
       "m_UnlockReqValue": 10514,
       "m_ContentsValue": 0
     },
     {
+      "IDX": 513,
+      "eContentsType": "CONTRACT",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 11511
     },
     {
+      "IDX": 514,
+      "eContentsType": "CONTRACT",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 11711
     },
     {
+      "IDX": 515,
+      "eContentsType": "CONTRACT",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 11811
     },
     {
+      "IDX": 516,
+      "eContentsType": "CONTRACT",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 11911
     },
     {
+      "IDX": 12,
+      "eContentsType": "GUILD",
       "m_UnlockReqType": "SURT_PLAYER_LEVEL",
       "m_UnlockReqValue": 15,
       "m_ContentsValue": 0
     },
     {
+      "IDX": 14,
+      "eContentsType": "GUILD_SHOP",
       "m_UnlockReqType": "SURT_PLAYER_LEVEL",
       "m_UnlockReqValue": 15,
       "m_ContentsValue": 0
     },
     {
+      "IDX": 25,
+      "eContentsType": "COUNTERCASE_NEW_CHARACTER",
       "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
       "m_ContentsValue": 0
     },
     {
+      "IDX": 26,
+      "eContentsType": "COUNTERCASE_SECRET",
       "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
       "m_ContentsValue": 0
     },
     {
+      "IDX": 35,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 11211
     },
     {
+      "IDX": 36,
+      "eContentsType": "ACT",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 11221
     },
     {
+      "IDX": 37,
+      "eContentsType": "ACT",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 11231
     },
     {
+      "IDX": 38,
+      "eContentsType": "ACT",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 11241
     },
     {
+      "IDX": 39,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 12211
     },
     {
+      "IDX": 40,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 11311
     },
     {
+      "IDX": 41,
+      "eContentsType": "ACT",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 11321
     },
     {
+      "IDX": 42,
+      "eContentsType": "ACT",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 11331
     },
     {
+      "IDX": 43,
+      "eContentsType": "ACT",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 11341
     },
     {
+      "IDX": 44,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 12312
     },
     {
+      "IDX": 45,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 11411
     },
     {
+      "IDX": 46,
+      "eContentsType": "ACT",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 11421
     },
     {
+      "IDX": 47,
+      "eContentsType": "ACT",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 11431
     },
     {
+      "IDX": 48,
+      "eContentsType": "ACT",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 11441
     },
     {
+      "IDX": 49,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 12412
     },
     {
+      "IDX": 50,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 11511
     },
     {
+      "IDX": 51,
+      "eContentsType": "ACT",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 11521
     },
     {
+      "IDX": 52,
+      "eContentsType": "ACT",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 11531
     },
     {
+      "IDX": 53,
+      "eContentsType": "ACT",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 11541
     },
     {
+      "IDX": 54,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 12512
     },
     {
+      "IDX": 55,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 11611
     },
     {
+      "IDX": 56,
+      "eContentsType": "ACT",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 11621
     },
     {
+      "IDX": 57,
+      "eContentsType": "ACT",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 11631
     },
     {
+      "IDX": 58,
+      "eContentsType": "ACT",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 11641
     },
     {
+      "IDX": 59,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 12611
     },
     {
+      "IDX": 300,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 11711
     },
     {
+      "IDX": 301,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 11811
     },
     {
+      "IDX": 65,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 3123711
     },
     {
+      "IDX": 66,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 3123811
     },
     {
+      "IDX": 67,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 3124011
     },
     {
+      "IDX": 68,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 3123911
     },
     {
+      "IDX": 77,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 6220511
     },
     {
+      "IDX": 78,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 6220611
     },
     {
+      "IDX": 79,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 6120845
     },
     {
+      "IDX": 80,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 6120848
     },
     {
+      "IDX": 81,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 6120851
     },
     {
+      "IDX": 82,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 6120939
     },
     {
+      "IDX": 83,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 6120940
     },
     {
+      "IDX": 84,
+      "eContentsType": "SHADOW_PALACE",
       "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
       "m_UnlockReqValue": 10514,
       "m_ContentsValue": 0
     },
     {
+      "IDX": 85,
+      "eContentsType": "SHADOW_PALACE",
       "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
       "m_ContentsValue": 0
     },
     {
+      "IDX": 86,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 6221011
     },
     {
+      "IDX": 87,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 6221021
     },
     {
+      "IDX": 91,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 6221111
     },
     {
+      "IDX": 92,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 6221121
     },
     {
+      "IDX": 93,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 6221131
     },
     {
+      "IDX": 94,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 6221211
     },
     {
+      "IDX": 95,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 6221221
     },
     {
+      "IDX": 96,
+      "eContentsType": "MARKET_REVIEW_REQUEST",
       "m_UnlockReqType": "SURT_UNIT_COLLECTION_RARITY_COUNT",
       "m_UnlockReqValue": 2,
       "m_ContentsValue": 0
     },
     {
+      "IDX": 97,
+      "eContentsType": "MARKET_REVIEW_REQUEST",
       "m_UnlockReqType": "SURT_PVP_RANK_SCORE_RECORD",
       "m_UnlockReqValue": 1000,
       "m_ContentsValue": 0
     },
     {
+      "IDX": 98,
+      "eContentsType": "MARKET_REVIEW_REQUEST",
       "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
       "m_UnlockReqValue": 10105,
       "m_ContentsValue": 0
     },
     {
+      "IDX": 99,
+      "eContentsType": "MARKET_REVIEW_REQUEST",
       "m_UnlockReqType": "SURT_CLEAR_WARFARE",
       "m_UnlockReqValue": 101201,
       "m_ContentsValue": 0
     },
     {
+      "IDX": 100,
+      "eContentsType": "NPC_SUBTITLE",
       "m_UnlockReqType": "SURT_ALWAYS_UNLOCKED",
       "m_ContentsValue": 0
     },
     {
+      "IDX": 100,
+      "eContentsType": "NPC_SUBTITLE",
       "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
       "m_ContentsValue": 0
     },
     {
+      "IDX": 104,
+      "eContentsType": "FIERCE",
       "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
       "m_UnlockReqValue": 10409,
       "m_ContentsValue": 0
     },
     {
+      "IDX": 105,
+      "eContentsType": "FIERCE",
       "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
       "m_ContentsValue": 0
     },
     {
+      "IDX": 106,
+      "eContentsType": "OPERATOR",
       "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
       "m_UnlockReqValue": 10304,
       "m_ContentsValue": 0
     },
     {
+      "IDX": 107,
+      "eContentsType": "OPERATOR",
       "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
       "m_ContentsValue": 0
     },
     {
+      "IDX": 108,
+      "eContentsType": "GUILD_DUNGEON",
       "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
       "m_ContentsValue": 0
     },
     {
+      "IDX": 109,
+      "eContentsType": "GUILD_MISSION",
       "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
       "m_ContentsValue": 0
     },
     {
+      "IDX": 110,
+      "eContentsType": "GUILD_POINT",
       "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
       "m_ContentsValue": 0
     },
     {
+      "IDX": 111,
+      "eContentsType": "GUILD_RANKING",
       "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
       "m_ContentsValue": 0
     },
     {
+      "IDX": 1001,
+      "eContentsType": "DIMENSION_TRIM",
       "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
       "m_UnlockReqValue": 10514,
       "m_ContentsValue": 0
     },
     {
+      "IDX": 112,
+      "eContentsType": "DUNGEON",
       "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
       "m_UnlockReqValue": 4026,
       "m_ContentsValue": 2504022
     },
     {
+      "IDX": 113,
+      "eContentsType": "DUNGEON",
       "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
       "m_ContentsValue": 0
     },
     {
+      "IDX": 114,
+      "eContentsType": "DUNGEON",
       "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
       "m_ContentsValue": 0
     },
     {
+      "IDX": 115,
+      "eContentsType": "DUNGEON",
       "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
       "m_ContentsValue": 0
     },
     {
+      "IDX": 116,
+      "eContentsType": "DUNGEON",
       "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
       "m_ContentsValue": 0
     },
     {
+      "IDX": 117,
+      "eContentsType": "DUNGEON",
       "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
       "m_ContentsValue": 0
     },
     {
+      "IDX": 118,
+      "eContentsType": "DUNGEON",
       "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
       "m_ContentsValue": 0
     },
     {
+      "IDX": 119,
+      "eContentsType": "DUNGEON",
       "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
       "m_UnlockReqValue": 1002242,
       "m_ContentsValue": 2504061
     },
     {
+      "IDX": 120,
+      "eContentsType": "DUNGEON",
       "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
       "m_ContentsValue": 0
     },
     {
+      "IDX": 121,
+      "eContentsType": "DUNGEON",
       "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
       "m_ContentsValue": 0
     },
     {
+      "IDX": 122,
+      "eContentsType": "DUNGEON",
       "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
       "m_ContentsValue": 0
     },
     {
+      "IDX": 123,
+      "eContentsType": "DUNGEON",
       "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
       "m_ContentsValue": 0
     },
     {
+      "IDX": 124,
+      "eContentsType": "DUNGEON",
       "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
       "m_ContentsValue": 0
     },
     {
+      "IDX": 125,
+      "eContentsType": "DUNGEON",
       "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
       "m_ContentsValue": 0
     },
     {
+      "IDX": 126,
+      "eContentsType": "DUNGEON",
       "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
       "m_ContentsValue": 0
     },
     {
+      "IDX": 127,
+      "eContentsType": "DUNGEON",
       "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
       "m_UnlockReqValue": 102104,
       "m_ContentsValue": 2504111
     },
     {
+      "IDX": 128,
+      "eContentsType": "DUNGEON",
       "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
       "m_ContentsValue": 0
     },
     {
+      "IDX": 129,
+      "eContentsType": "DUNGEON",
       "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
       "m_ContentsValue": 0
     },
     {
+      "IDX": 130,
+      "eContentsType": "DUNGEON",
       "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
       "m_ContentsValue": 0
     },
     {
+      "IDX": 131,
+      "eContentsType": "DUNGEON",
       "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
       "m_ContentsValue": 0
     },
     {
+      "IDX": 132,
+      "eContentsType": "DUNGEON",
       "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
       "m_ContentsValue": 0
     },
     {
+      "IDX": 133,
+      "eContentsType": "DUNGEON",
       "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
       "m_ContentsValue": 0
     },
     {
+      "IDX": 134,
+      "eContentsType": "DUNGEON",
       "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
       "m_ContentsValue": 0
     },
     {
+      "IDX": 135,
+      "eContentsType": "DUNGEON",
       "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
       "m_ContentsValue": 0
     },
     {
+      "IDX": 136,
+      "eContentsType": "DUNGEON",
       "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
       "m_ContentsValue": 0
     },
     {
+      "IDX": 137,
+      "eContentsType": "DUNGEON",
       "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
       "m_ContentsValue": 0
     },
     {
+      "IDX": 138,
+      "eContentsType": "DUNGEON",
       "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
       "m_ContentsValue": 0
     },
     {
+      "IDX": 139,
+      "eContentsType": "DUNGEON",
       "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
       "m_ContentsValue": 0
     },
     {
+      "IDX": 140,
+      "eContentsType": "DUNGEON",
       "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
       "m_ContentsValue": 0
     },
     {
+      "IDX": 141,
+      "eContentsType": "DUNGEON",
       "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
       "m_ContentsValue": 0
     },
     {
+      "IDX": 142,
+      "eContentsType": "DUNGEON",
       "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
       "m_ContentsValue": 0
     },
     {
+      "IDX": 143,
+      "eContentsType": "DUNGEON",
       "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
       "m_ContentsValue": 0
     },
     {
+      "IDX": 144,
+      "eContentsType": "DUNGEON",
       "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
       "m_UnlockReqValue": 4211,
       "m_ContentsValue": 2504212
     },
     {
+      "IDX": 145,
+      "eContentsType": "DUNGEON",
       "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
       "m_ContentsValue": 0
     },
     {
+      "IDX": 146,
+      "eContentsType": "DUNGEON",
       "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
       "m_ContentsValue": 0
     },
     {
+      "IDX": 147,
+      "eContentsType": "DUNGEON",
       "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
       "m_ContentsValue": 0
     },
     {
+      "IDX": 148,
+      "eContentsType": "DUNGEON",
       "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
       "m_ContentsValue": 0
     },
     {
+      "IDX": 149,
+      "eContentsType": "DUNGEON",
       "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
       "m_ContentsValue": 0
     },
     {
+      "IDX": 150,
+      "eContentsType": "DUNGEON",
       "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
       "m_UnlockReqValue": 10304,
       "m_ContentsValue": 2504251
     },
     {
+      "IDX": 151,
+      "eContentsType": "DUNGEON",
       "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
       "m_UnlockReqValue": 4251,
       "m_ContentsValue": 2504252
     },
     {
+      "IDX": 152,
+      "eContentsType": "DUNGEON",
       "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
       "m_UnlockReqValue": 10409,
       "m_ContentsValue": 2504256
     },
     {
+      "IDX": 153,
+      "eContentsType": "DUNGEON",
       "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
       "m_UnlockReqValue": 4256,
       "m_ContentsValue": 2504257
     },
     {
+      "IDX": 154,
+      "eContentsType": "DUNGEON",
       "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
       "m_UnlockReqValue": 10514,
       "m_ContentsValue": 2504261
     },
     {
+      "IDX": 155,
+      "eContentsType": "DUNGEON",
       "m_UnlockReqType": "SURT_CLEAR_DUNGEON",
       "m_UnlockReqValue": 4261,
       "m_ContentsValue": 2504262
     },
     {
+      "IDX": 156,
+      "eContentsType": "DUNGEON",
       "m_UnlockReqType": "SURT_DIVE_HISTORY_CLEARED",
       "m_UnlockReqValue": 1500,
       "m_ContentsValue": 2504263
     },
     {
+      "IDX": 157,
+      "eContentsType": "DUNGEON",
       "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
       "m_ContentsValue": 0
     },
     {
+      "IDX": 158,
+      "eContentsType": "DUNGEON",
       "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
       "m_ContentsValue": 0
     },
     {
+      "IDX": 159,
+      "eContentsType": "DUNGEON",
       "m_UnlockReqType": "SURT_ALWAYS_LOCKED",
       "m_ContentsValue": 0
     },
     {
+      "IDX": 160,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 6221311
     },
     {
+      "IDX": 161,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 6221321
     },
     {
+      "IDX": 162,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 6121411
     },
     {
+      "IDX": 163,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 6221511
     },
     {
+      "IDX": 164,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 6221521
     },
     {
+      "IDX": 165,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 6220911
     },
     {
+      "IDX": 166,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 6221711
     },
     {
+      "IDX": 167,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 6221721
     },
     {
+      "IDX": 168,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 6221731
     },
     {
+      "IDX": 169,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 6121811
     },
     {
+      "IDX": 170,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 6222011
     },
     {
+      "IDX": 171,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 6222021
     },
     {
+      "IDX": 172,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 6222031
     },
     {
+      "IDX": 173,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 6122111
     },
     {
+      "IDX": 174,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 6222311
     },
     {
+      "IDX": 175,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 6222321
     },
     {
+      "IDX": 176,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 6122411
     },
     {
+      "IDX": 177,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 6222511
     },
     {
+      "IDX": 178,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 6222512
     },
     {
+      "IDX": 179,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 6222513
     },
     {
+      "IDX": 180,
+      "eContentsType": "ALARM_ONLY",
       "m_UnlockReqType": "SURT_MISSION_TAB_UNLOCKED",
       "m_UnlockReqValue": 920,
       "m_ContentsValue": 920
     },
     {
+      "IDX": 181,
+      "eContentsType": "ALARM_ONLY",
       "m_UnlockReqType": "SURT_MISSION_TAB_UNLOCKED",
       "m_UnlockReqValue": 930,
       "m_ContentsValue": 930
     },
     {
+      "IDX": 182,
+      "eContentsType": "ALARM_ONLY",
       "m_UnlockReqType": "SURT_MISSION_TAB_UNLOCKED",
       "m_UnlockReqValue": 940,
       "m_ContentsValue": 940
     },
     {
+      "IDX": 183,
+      "eContentsType": "ALARM_ONLY",
       "m_UnlockReqType": "SURT_MISSION_TAB_UNLOCKED",
       "m_UnlockReqValue": 950,
       "m_ContentsValue": 950
     },
     {
+      "IDX": 184,
+      "eContentsType": "ALARM_ONLY",
       "m_UnlockReqType": "SURT_MISSION_TAB_UNLOCKED",
       "m_UnlockReqValue": 960,
       "m_ContentsValue": 960
     },
     {
+      "IDX": 185,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 6222611
     },
     {
+      "IDX": 186,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 6222621
     },
     {
+      "IDX": 187,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 6222631
     },
     {
+      "IDX": 188,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 6222641
     },
     {
+      "IDX": 189,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 6122711
     },
     {
+      "IDX": 190,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 6222811
     },
     {
+      "IDX": 191,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 6222821
     },
     {
+      "IDX": 192,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 6122911
     },
     {
+      "IDX": 193,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 3124111
     },
     {
+      "IDX": 194,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 3124211
     },
     {
+      "IDX": 195,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 31100111
     },
     {
+      "IDX": 196,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 31100211
     },
     {
+      "IDX": 197,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 31100311
     },
     {
+      "IDX": 198,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 31100411
     },
     {
+      "IDX": 900,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 31100511
     },
     {
+      "IDX": 901,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 31100611
     },
     {
+      "IDX": 902,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 31100811
     },
     {
+      "IDX": 903,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 31100911
     },
     {
+      "IDX": 904,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 31100711
     },
     {
+      "IDX": 905,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 31101011
     },
     {
+      "IDX": 906,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 31101111
     },
     {
+      "IDX": 10000,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 31101211
     },
     {
+      "IDX": 10001,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 31101311
     },
     {
+      "IDX": 10002,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 31101411
     },
     {
+      "IDX": 10003,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 31101511
     },
     {
+      "IDX": 10004,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 31101611
     },
     {
+      "IDX": 10005,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 31101711
     },
     {
+      "IDX": 10006,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 31101811
     },
     {
+      "IDX": 10007,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 31101911
     },
     {
+      "IDX": 10008,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 31102011
     },
     {
+      "IDX": 10009,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 31102111
     },
     {
+      "IDX": 10010,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 31300111
     },
     {
+      "IDX": 10011,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 31300211
     },
     {
+      "IDX": 10012,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 31300311
     },
     {
+      "IDX": 10013,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 31300411
     },
     {
+      "IDX": 10014,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 31300511
     },
     {
+      "IDX": 10015,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 31300611
     },
     {
+      "IDX": 10016,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 31300711
     },
     {
+      "IDX": 10017,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 31300811
     },
     {
+      "IDX": 10018,
+      "eContentsType": "EPISODE",
       "m_UnlockReqType": "SURT_UNLOCK_STAGE",
       "m_ContentsValue": 31300911
     }

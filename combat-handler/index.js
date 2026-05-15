@@ -316,13 +316,22 @@ function createCombatHandler(options = {}) {
     return buildRespawnAck({ unitUID, assistUnit });
   }
 
-  function mergeJoinLobbyAck(officialPayload, localPayload) {
+  function mergeJoinLobbyAck(officialPayload, localPayload, options = {}) {
     if (!csharpHost.enabled) {
       return { ok: false, error: "C# combat host disabled" };
     }
     const response = csharpHost.request("mergeJoinLobbyAck", {
       officialPayloadBase64: Buffer.from(officialPayload || Buffer.alloc(0)).toString("base64"),
       localPayloadBase64: Buffer.from(localPayload || Buffer.alloc(0)).toString("base64"),
+      copyIntervalData: Boolean(options.copyIntervalData),
+      replaceIntervalData: Boolean(options.replaceIntervalData),
+      excludeIntervalStrKeys: Array.isArray(options.excludeIntervalStrKeys)
+        ? options.excludeIntervalStrKeys.map((key) => String(key || "")).filter(Boolean)
+        : [],
+      preserveIntervalStrKeys: Array.isArray(options.preserveIntervalStrKeys)
+        ? options.preserveIntervalStrKeys.map((key) => String(key || "")).filter(Boolean)
+        : [],
+      filterInactiveEventIntervals: Boolean(options.filterInactiveEventIntervals),
     });
     if (!response.ok || !response.payload) {
       return { ok: false, error: response.error || "managed lobby merge failed" };

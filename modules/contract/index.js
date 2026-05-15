@@ -59,6 +59,11 @@ const CUSTOM_PICKUP_TYPE_ORDER = Object.freeze({
   BASIC: 1,
   OPERATOR: 2,
 });
+const CONTRACT_COST_TYPE = Object.freeze({
+  FREE_CHANCE: 0,
+  TICKET: 1,
+  MONEY: 2,
+});
 
 function createContractHandler(packetId, name) {
   return {
@@ -153,7 +158,7 @@ function buildContractResponse(ctx, user, packetId, request) {
 function buildContractAck(ctx, user, request) {
   const contractId = resolveContractId(request.contractId);
   const count = Math.max(1, Number(request.count || 1));
-  const costItems = spendContractCost(ctx, user, contractId, count);
+  const costItems = spendContractCost(ctx, user, contractId, count, request.costType);
   const reward = rollContract(ctx, user, contractId, count, { fromContract: true });
   applyContractRewards(ctx, user, contractId, count, reward);
 
@@ -177,7 +182,7 @@ function buildCustomPickupAck(ctx, user, request) {
   const pickup = getCustomPickupContractRecords().find((record) => Number(record.customPickupId) === customPickupId) || {};
   const customState = getCustomPickupContractState(user, customPickupId);
   const poolId = pickup.m_UnitPoolID || customPickupId;
-  const costItems = spendCostFromRecord(ctx, user, pickup, count);
+  const costItems = spendCostFromRecord(ctx, user, pickup, count, request.costType);
   const reward = createEmptyReward();
   if (String(pickup.m_ContractType || "") === "OPERATOR") {
     reward.operators.push(
@@ -654,24 +659,46 @@ function normalizeGrade(value) {
   return "";
 }
 
-function spendContractCost(ctx, user, contractId, count) {
-  return spendCostFromRecord(ctx, user, getContractRecord(contractId) || {}, count);
+function spendContractCost(ctx, user, contractId, count, costType) {
+  return spendCostFromRecord(ctx, user, getContractRecord(contractId) || {}, count, costType);
 }
 
-function spendCostFromRecord(ctx, user, record, count) {
-  const prefix = Math.max(1, Number(count) || 1) >= 10 ? "m_MultiTryRequireItem" : "m_SingleTryRequireItem";
-  const valuePrefix = Math.max(1, Number(count) || 1) >= 10 ? "m_MultiTryRequireItemValue" : "m_SingleTryRequireItemValue";
-  const costItems = [];
-  for (let index = 1; index <= 4; index += 1) {
-    const itemId = Number(record[`${prefix}ID_${index}`] || 0);
-    const value = toBigInt(record[`${valuePrefix}_${index}`] || 0, 0n);
-    if (!Number.isInteger(itemId) || itemId <= 0 || value <= 0n) continue;
-    const updated = spendMiscItem(user, itemId, value, { regDate: now(ctx) });
-    if (updated) costItems.push(updated);
-    if (updated) trackResourceSpend(ctx, user, itemId, value);
-    break;
+function spendCostFromRecord(ctx, user, record, count, costType) {
+  const slot = getCostSlot(costType);
+  if (slot <= 0) return [];
+
+  const requestCount = Math.max(1, Math.trunc(Number(count) || 1));
+  const cost = getTryCost(record, slot, requestCount);
+  if (!cost) return [];
+
+  const updated = spendMiscItem(user, cost.itemId, cost.amount, { regDate: now(ctx) });
+  if (!updated) return [];
+  trackResourceSpend(ctx, user, cost.itemId, cost.amount);
+  return [updated];
+}
+
+function getCostSlot(costType) {
+  const value = Number(costType);
+  if (value === CONTRACT_COST_TYPE.FREE_CHANCE) return 0;
+  if (value === CONTRACT_COST_TYPE.TICKET) return 1;
+  if (value === CONTRACT_COST_TYPE.MONEY) return 2;
+  return 0;
+}
+
+function getTryCost(record, slot, count) {
+  const singleItemId = Number(record[`m_SingleTryRequireItemID_${slot}`] || 0);
+  const singleValue = toBigInt(record[`m_SingleTryRequireItemValue_${slot}`] || 0, 0n);
+  if (Number.isInteger(singleItemId) && singleItemId > 0 && singleValue > 0n) {
+    return { itemId: singleItemId, amount: singleValue * BigInt(count) };
   }
-  return costItems;
+
+  const multiItemId = Number(record[`m_MultiTryRequireItemID_${slot}`] || 0);
+  const multiValue = toBigInt(record[`m_MultiTryRequireItemValue_${slot}`] || 0, 0n);
+  if (count >= 10 && Number.isInteger(multiItemId) && multiItemId > 0 && multiValue > 0n) {
+    return { itemId: multiItemId, amount: multiValue };
+  }
+
+  return null;
 }
 
 function buildMiscContractResultData(result) {

@@ -151,7 +151,15 @@ function buildAttendanceIntervalDataList(user, options = {}) {
   const now = getAttendanceNow(options);
   const catalog = loadAttendanceCatalog();
   const state = ensureAttendanceState(user, catalog);
-  return resolveActiveAttendanceTabs(user, state, catalog, now).map(buildAttendanceIntervalData);
+  const seenStrKeys = new Set();
+  return resolveActiveAttendanceTabs(user, state, catalog, now)
+    .filter((tab) => {
+      const strKey = attendanceIntervalStrKey(tab);
+      if (seenStrKeys.has(strKey)) return false;
+      seenStrKeys.add(strKey);
+      return true;
+    })
+    .map(buildAttendanceIntervalData);
 }
 
 function ensureAttendanceState(user, catalog = loadAttendanceCatalog()) {
@@ -360,15 +368,29 @@ function newbieEventInterval(tab, now, user, state) {
 }
 
 function buildAttendanceIntervalData(tab) {
-  const strKey = tab.dateStrId || tab.openTag || `ATTENDANCE_${tab.idx}`;
+  const strKey = attendanceIntervalStrKey(tab);
   return Buffer.concat([
-    writeSignedVarInt(0),
+    writeSignedVarInt(stablePositiveInt(strKey)),
     writeString(strKey),
     writeInt64LE(toBigInt(tab.eventStartDate || 0, 0n)),
     writeInt64LE(toBigInt(tab.eventEndDate || farFutureDateTimeBinary(), farFutureDateTimeBinary())),
     writeSignedVarInt(0),
     writeSignedVarInt(0),
   ]);
+}
+
+function attendanceIntervalStrKey(tab) {
+  return String(tab && (tab.dateStrId || tab.openTag || `ATTENDANCE_${tab.idx}`) || "");
+}
+
+function stablePositiveInt(value) {
+  const text = String(value || "");
+  let hash = 2166136261;
+  for (let index = 0; index < text.length; index += 1) {
+    hash ^= text.charCodeAt(index);
+    hash = Math.imul(hash, 16777619);
+  }
+  return (hash >>> 1) || 1;
 }
 
 function endOfUtcMonthAtReset(year, month) {
@@ -500,6 +522,8 @@ function getLoadEventFromDayDate() {
   const value = firstNonEmptyEnv([
     "loadeventfromday",
     "LOADEVENTFROMDAY",
+    "CS_EVENT_DATE",
+    "CS_EVENT_MANAGER_DATE",
     "CS_LOAD_EVENT_FROM_DAY",
     "CS_ATTENDANCE_LOAD_EVENT_FROM_DAY",
   ]);

@@ -29,15 +29,20 @@ const UNIT_KEYS = [
 ];
 
 const SHOP_KEYS = [
+  "IDX",
   "m_ProductID",
   "m_MarketID",
   "m_TabID",
+  "m_TabSubIndex",
+  "m_OrderList",
   "m_TabName",
   "m_ItemName",
   "m_Item_Desc",
   "m_Item_Desc_Popup",
   "m_TopBannerText",
   "m_CardPrefab",
+  "m_CardImage",
+  "m_TagImage",
   "m_ItemType",
   "m_ItemID",
   "m_Value",
@@ -45,9 +50,119 @@ const SHOP_KEYS = [
   "m_PaidValue",
   "m_PriceItemID",
   "m_Price",
+  "m_PriceSteam",
+  "m_PriceSteamKRW",
   "m_bEnabled",
   "m_bVisible",
   "m_bUnlockBanner",
+  "m_HideWhenSoldOut",
+  "m_QuantityLimitCond",
+  "m_QuantityLimit",
+  "m_LimitShowIndex",
+  "m_ChainIndex",
+  "m_OpenTag",
+  "m_EventDateStrID",
+  "m_DiscountDateStrID",
+  "m_NewbieDate",
+  "m_EventTime",
+  "m_MailTitle",
+  "m_MailDesc",
+  "m_PurchaseEventType",
+  "m_PurchaseEventID",
+  "m_PurchaseEventValue",
+  "m_BuffRewardID",
+  "m_UnlockReqStrID",
+  "m_DiscountRate",
+  "m_ProfitRate",
+  "m_refundMedalCount",
+  "m_ReturningUserType",
+  "m_InstantProductLimit",
+  "m_Reddot",
+  "m_Reddot_Allow",
+  "m_Spoiler",
+  "bPointExchangeSpecial",
+  "m_paidAmountRequired",
+  "m_UnlockReqType",
+  "m_UnlockReqValue",
+  "listContentsTagAllow",
+  "listContentsTagIgnore",
+];
+
+const SHOP_TAB_KEYS = [
+  "m_TabID",
+  "m_TabSubIndex",
+  "m_TabName",
+  "m_ShopDisplay",
+  "m_TabImageSelect",
+  "m_TopBannerText",
+  "m_ImgBGSelected",
+  "m_ImgBGUnSelected",
+  "m_SpecialColorCode",
+  "m_PackageGroupID",
+  "m_HideWhenSoldOut",
+  "m_Visible",
+  "m_MultiBuy",
+  "m_DateStrID",
+  "m_OpenTag",
+  "m_TagImage",
+  "m_bTabChain",
+  "m_bBundlePurchase",
+  "m_ResetDays",
+  ...indexedKeys("m_ResourceTypeID", 5),
+  "listContentsTagAllow",
+  "listContentsTagIgnore",
+];
+
+const SHOP_CATEGORY_KEYS = [
+  "m_ShopTabCategory",
+  "m_TabCategoryName",
+  "m_OrderList",
+  "m_ThumbnailImg",
+  "m_UseTabID",
+  "m_UnusedResourceID",
+  "listContentsTagAllow",
+  "listContentsTagIgnore",
+];
+
+const SHOP_BANNER_KEYS = [
+  "m_ContentsVersionStart",
+  "m_ContentsVersionEnd",
+  "IDX",
+  "m_Enable",
+  "m_ShopHome_BannerImage",
+  "m_ShopHome_BannerPrefab",
+  "m_TabID",
+  "m_TabSubIndex",
+  "m_DateStrID",
+  "m_ProductID",
+  "m_DisplayCond",
+  "m_DisplayCondValue",
+  "m_OpenTag",
+  "listContentsTagAllow",
+  "listContentsTagIgnore",
+];
+
+const SHOP_FEATURED_KEYS = [
+  "m_PackageID",
+  "m_PackageGroupID",
+  "m_OrderList",
+  "m_DisplayCond",
+  "m_DisplayCondValue1",
+  "m_DisplayCondValue2",
+  "m_FeaturedImage",
+  "m_ReddotRequired",
+  "m_OpenTag",
+  "m_DateStrID",
+  "listContentsTagAllow",
+  "listContentsTagIgnore",
+];
+
+const SHOP_RECOMMEND_KEYS = [
+  "m_RecommendID",
+  "m_ProductID",
+  "m_OrderList",
+  "m_OpenTag",
+  "m_DateStrID",
   "listContentsTagAllow",
   "listContentsTagIgnore",
 ];
@@ -84,6 +199,14 @@ const REWARD_KEYS = [
   "m_Order",
   "m_Index",
 ];
+const REWARD_TEMPLET_KEYS = [
+  "m_RewardGroupID",
+  "m_CustomRewardGroupID",
+  "m_DateStrID",
+  "listContentsTagAllow",
+  "listContentsTagIgnore",
+  ...REWARD_KEYS.filter((key) => key !== "m_RewardGroupID" && key !== "m_CustomRewardGroupID"),
+];
 
 const ACQ_PACKAGE_KEYS = ["m_PackageID", ...indexedKeys("m_RewardType", 8), ...indexedKeys("m_RewardID", 8), ...indexedKeys("m_RewardValue", 8), ...indexedKeys("m_FreeValue", 8), ...indexedKeys("m_PaidValue", 8)];
 
@@ -94,14 +217,35 @@ const CONTRACT_KEYS = [
   "m_UnitPoolID",
   "m_RandomGradeID",
   "m_FreeTryCnt",
+  "m_FreeTryEventCnt",
   "m_ContractBonusCountGroupID",
   "ContractBonusCountGroupID",
   "m_ContractBounsItemReqireCount",
   "m_addUnitStrId",
   "m_addUnitRatio",
+  "m_addUnitPickUp",
+  "m_addUnitRatioUp",
   "m_ContractType",
   "m_ContractCategory",
   "m_OpenTag",
+  "m_ContractGetUnitClose",
+  "m_EventDateStart",
+  "m_EventDateEnd",
+  "m_expireDbData",
+  "m_ClassifiedBtnBool",
+  "m_ShortCutType",
+  "m_ShortCut",
+  "m_TotalLimit",
+  "m_DailyLimit",
+  "m_NKM_UNIT_TYPE",
+  "m_resetFreeCount",
+  "m_freeCountDays",
+  "CollectionMergeID",
+  "m_PickUnitLevel",
+  "m_PickUnitLimits",
+  "m_isMaxSkillLevelUnits",
+  "m_triggeredContractTimeLimit",
+  "m_ExtensionCondition",
   ...indexedKeys("m_SingleTryRequireItemID", 4),
   ...indexedKeys("m_SingleTryRequireItemValue", 4),
   ...indexedKeys("m_MultiTryRequireItemID", 4),
@@ -111,7 +255,46 @@ const CONTRACT_KEYS = [
   ...indexedKeys("m_ContractResultRewardValue", 4),
 ];
 
-const CONTRACT_TAB_KEYS = ["m_ContractID", "m_bEnabled", "m_bVisible", "m_Priority"];
+const CONTRACT_TAB_KEYS = [
+  "m_ContractID",
+  "m_bEnabled",
+  "m_OpenTag",
+  "m_bPickUp",
+  "m_Order",
+  "m_ContractStrID",
+  "m_ContractName",
+  "m_ContractDesc",
+  "m_MainBannerFileName",
+  "m_DateStrID",
+  "m_ContractCategory",
+  "m_ContractBannerName",
+  "m_ContractBannerDesc",
+  "m_BannerDescInterval",
+  "m_Image",
+  "m_OpenCond",
+  "m_OpenCondValue",
+  "m_MissionCountIgnore",
+  "m_CheckReturningUser",
+  "m_ReturningUserType",
+  "m_requiredContractClearId",
+  "m_requiredStageClearId",
+  "m_triggerStageClearId",
+  "m_triggerShopProductId",
+  "m_bVisible",
+  "m_Priority",
+  "listContentsTagAllow",
+  "listContentsTagIgnore",
+];
+const CONTRACT_CATEGORY_KEYS = ["m_CategoryID", "IDX", "m_Name", "m_Type", "listContentsTagAllow", "listContentsTagIgnore"];
+const SELECTABLE_CONTRACT_KEYS = [
+  "m_ContractID",
+  "m_UnitPoolChangeCount",
+  "m_SelectableUnitPoolId",
+  "m_RequireItemID",
+  "m_RequireItemValue",
+  "listContentsTagAllow",
+  "listContentsTagIgnore",
+];
 const CONTRACT_POOL_KEYS = ["m_UnitPoolStrId", "m_UnitPoolId", "m_UnitID", "m_UnitId", "m_UnitStrId", "m_Ratio", "m_PickupTarget", "m_CustomPickupTarget"];
 const RANDOM_GRADE_KEYS = ["m_RandomGradeID", "m_RandomGradeStrID", "Rate_SSR", "Rate_Pick_SSR", "Rate_SR", "Rate_Pick_SR", "Rate_R", "Rate_Pick_R", "Rate_N", "Rate_Pick_N"];
 const MISC_CONTRACT_KEYS = ["m_ContractID", "m_UnitPoolID", "m_UnitCount", "m_RandomGradeID", ...CONTRACT_KEYS];
@@ -129,12 +312,13 @@ const EQUIP_SET_OPTION_KEYS = ["m_EquipSetID"];
 const SKIN_KEYS = ["m_SkinID", "m_UnitID"];
 const EMOTICON_KEYS = ["m_EmoticonID"];
 const LIMITBREAK_SUBSTITUTE_KEYS = ["m_TargetLimitbreakLevel", "m_NKM_UNIT_STYLE_TYPE", "m_NKM_UNIT_GRADE", "m_ItemID", "m_ItemCount"];
-const CONTENTS_UNLOCK_KEYS = ["m_UnlockReqType", "m_UnlockReqValue", "m_ContentsType", "m_ContentsValue"];
+const CONTENTS_UNLOCK_KEYS = ["IDX", "eContentsType", "m_eContentsType", "m_UnlockReqType", "m_UnlockReqValue", "m_ContentsType", "m_ContentsValue"];
 
 const MISSION_TAB_KEYS = ["m_TabID", "m_MissionTab", "m_MissionType", "m_OpenTag", "m_Visible", "listContentsTagAllow", "listContentsTagIgnore"];
 const MISSION_KEYS = [
   "m_MissionID",
   "m_OpenTag",
+  "m_DateStrID",
   "m_MissionCounterGroupID",
   "m_GroupId",
   "m_MissionTabId",
@@ -151,6 +335,69 @@ const MISSION_KEYS = [
   ...indexedKeys("m_RewardType", 5),
   ...indexedKeys("m_RewardID", 5),
   ...indexedKeys("m_RewardValue", 5),
+];
+
+const EVENT_PASS_KEYS = [
+  "EventPassID",
+  "OpenTag",
+  "m_OpenTag",
+  "EventPassStartDate",
+  "EventPassEndDate",
+  "EventPassTitleStrID",
+  "EventPassType",
+  "EventPassMainRewardType",
+  "EventPassMainReward",
+  "CorePassStrID",
+  "CorePassDescStrID",
+  "CorePassPriceType",
+  "CorePassPriceID",
+  "CorePassPriceCount",
+  "CorePassPlusStrID",
+  "CorePassPlusDescStrID",
+  "CorePassPlusPriceType",
+  "CorePassPlusPriceID",
+  "CorePassPlusPriceCount",
+  "CorePassPlusExp",
+  "PassMaxLevel",
+  "PassLevelUpExp",
+  "PassLevelUpMiscID",
+  "PassLevelUpMiscCount",
+  "PassRewardGroupID",
+  "DailyMissionGroupID",
+  "DailyMissionMaxSlot",
+  "DailyMissionClearCount",
+  "DailyMissionClearRewardExp",
+  "WeeklyMissionGroupID",
+  "WeeklyMissionMaxSlot",
+  "WeeklyMissionClearCount",
+  "WeeklyMissionClearRewardExp",
+  "CorePassDiscountPercent",
+  "m_DateStrID",
+  "m_RemainEventPassID",
+  "m_ShortCutType",
+  "m_ShortCut",
+  "listContentsTagAllow",
+  "listContentsTagIgnore",
+];
+
+const EVENT_PASS_MISSION_GROUP_KEYS = [
+  "MissionGroupID",
+  "GroupEnum",
+  "EventMissionWeek",
+  "RandomGroupEnum",
+  "MissionSlotIndex",
+  "MissionID",
+];
+
+const EVENT_PASS_REWARD_KEYS = [
+  "PassRewardGroupID",
+  "PassLevel",
+  "NormalRewardItemType",
+  "NormalRewardItemID",
+  "NormalRewardItemCount",
+  "CoreRewardItemType",
+  "CoreRewardItemID",
+  "CoreRewardItemCount",
 ];
 
 const ATTENDANCE_TAB_KEYS = [
@@ -239,7 +486,7 @@ const TABLES = [
   {
     directory: "ab_script",
     fileName: "LUA_REWARD_TEMPLET_CL.json",
-    keys: REWARD_KEYS,
+    keys: REWARD_TEMPLET_KEYS,
   },
   {
     directory: "ab_script_unit_data",
@@ -283,8 +530,18 @@ const TABLES = [
   },
   {
     directory: "ab_script",
+    fileName: "LUA_SELECTABLE_CONTRACT.json",
+    keys: SELECTABLE_CONTRACT_KEYS,
+  },
+  {
+    directory: "ab_script",
     fileName: "LUA_CONTRACT_TAB_TABLE.json",
     keys: CONTRACT_TAB_KEYS,
+  },
+  {
+    directory: "ab_script",
+    fileName: "LUA_CONTRACT_CATEGORY.json",
+    keys: CONTRACT_CATEGORY_KEYS,
   },
   {
     directory: "ab_script",
@@ -385,7 +642,7 @@ const TABLES = [
   {
     directory: "ab_script",
     fileName: "LUA_CONTENTS_UNLOCK_TEMPLET.json",
-    keys: CONTENTS_UNLOCK_KEYS,
+    transform: trimContentsUnlockRecord,
   },
   {
     directory: "ab_script",
@@ -401,6 +658,22 @@ const TABLES = [
     directory: "ab_script",
     fileName: "LUA_EVENTDECK_TEMPLET.json",
     transform: trimEventDeckRecord,
+  },
+  {
+    directory: "ab_script",
+    fileName: "LUA_EVENT_PASS_TEMPLET.json",
+    keys: EVENT_PASS_KEYS,
+    transform: trimEventPassRecord,
+  },
+  {
+    directory: "ab_script",
+    fileName: "LUA_EVENT_PASS_MISSION_GROUP_TEMPLET.json",
+    keys: EVENT_PASS_MISSION_GROUP_KEYS,
+  },
+  {
+    directory: "ab_script",
+    fileName: "LUA_EVENT_PASS_REWARD_TEMPLET.json",
+    keys: EVENT_PASS_REWARD_KEYS,
   },
   {
     directory: "ab_script",
@@ -460,6 +733,45 @@ const TABLES = [
     directory: "ab_script_dungeon_templet",
     fileName: "LUA_DUNGEON_TEMPLET_BASE.json",
     keys: DUNGEON_KEYS,
+  },
+  {
+    directory: "ab_script",
+    fileName: "LUA_SHOP_TAB_TEMPLET_01.json",
+    keys: SHOP_TAB_KEYS,
+  },
+  {
+    directory: "ab_script",
+    fileName: "LUA_SHOP_TAB_TEMPLET_02.json",
+    keys: SHOP_TAB_KEYS,
+  },
+  {
+    directory: "ab_script",
+    fileName: "LUA_SHOP_CATEGORY_TEMPLET_01.json",
+    keys: SHOP_CATEGORY_KEYS,
+  },
+  {
+    directory: "ab_script",
+    fileName: "LUA_SHOP_CATEGORY_TEMPLET_02.json",
+    keys: SHOP_CATEGORY_KEYS,
+  },
+  {
+    directory: "ab_script",
+    fileName: "LUA_SHOP_TAB_CUSTOM_TEMPLET.json",
+  },
+  {
+    directory: "ab_script",
+    fileName: "LUA_SHOP_BANNER_TEMPLET.json",
+    keys: SHOP_BANNER_KEYS,
+  },
+  {
+    directory: "ab_script",
+    fileName: "LUA_SHOP_FEATURED_TEMPLET.json",
+    keys: SHOP_FEATURED_KEYS,
+  },
+  {
+    directory: "ab_script",
+    fileName: "LUA_SHOP_RECOMMEND_TEMPLET.json",
+    keys: SHOP_RECOMMEND_KEYS,
   },
   {
     directory: "ab_script",
@@ -541,6 +853,22 @@ function trimEventDeckRecord(record) {
     for (const key of [`SLOT_TYPE_UNIT_${slot}`, `SLOT_UNIT_ID_${slot}`, `SLOT_UNIT_LEVEL_${slot}`]) {
       if (record && record[key] !== undefined) result[key] = record[key];
     }
+  }
+  return result;
+}
+
+function trimEventPassRecord(record) {
+  const result = pick(record, EVENT_PASS_KEYS);
+  if (result.m_OpenTag === undefined && result.OpenTag !== undefined) result.m_OpenTag = result.OpenTag;
+  return result;
+}
+
+function trimContentsUnlockRecord(record) {
+  const result = pick(record, CONTENTS_UNLOCK_KEYS);
+  const contentsType = String(result.eContentsType || result.m_eContentsType || result.m_ContentsType || "").trim();
+  if (contentsType === "COUNTER_PASS") {
+    result.m_UnlockReqType = "SURT_ALWAYS_UNLOCKED";
+    result.m_UnlockReqValue = 0;
   }
   return result;
 }

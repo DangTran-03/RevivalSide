@@ -1,5 +1,6 @@
 const { ensureLoginRewardPosts } = require("../modules/admin");
 const { buildAttendanceNotifyPayload, ensureAttendanceRewardPosts } = require("../modules/attendance");
+const { sendCounterPassLobbyNotifications } = require("../modules/event-pass");
 
 module.exports = {
   packetId: 204,
@@ -36,25 +37,29 @@ module.exports = {
           joinLobbyPayload,
           "join-lobby-local-progress"
         );
+        sendCounterPassLobbyBootstrap(ctx, socket);
         if (typeof ctx.repairPostTutorialGuideMissionsForSocket === "function") {
           ctx.repairPostTutorialGuideMissionsForSocket(socket, {
-            label: "join-lobby-post-tutorial-guide-mission-complete",
-            notify: true,
+            label: "join-lobby-post-tutorial-guide-mission-repair",
+            notify: false,
           });
         }
+        sendJoinLobbyPostBootStart(ctx, socket, replay);
         ctx.sendStaminaChargeNotifications(socket, "join-lobby-charge-item", { includeUnchanged: true, itemIds: [2, 13] });
+        sendJoinLobbyPostBootRest(ctx, socket, replay);
+        markPostLobbyBootTemplatesHandled(replay);
         replay.localJoinLobbyAckSent = true;
-        sendPostLobbyBootTemplates(ctx, socket, replay);
         ctx.skipCapturedGameThroughPacketId(socket, ctx.constants.JOIN_LOBBY_ACK);
       } else {
         if (ctx.hasTutorialProgress(user)) {
           console.log("[JOIN_LOBBY_REQ] using captured lobby ACK; local account overlay disabled");
         }
         ctx.sendCapturedGameThroughPacketId(socket, ctx.constants.JOIN_LOBBY_ACK, "join-lobby");
+        sendCounterPassLobbyBootstrap(ctx, socket);
         if (typeof ctx.repairPostTutorialGuideMissionsForSocket === "function") {
           ctx.repairPostTutorialGuideMissionsForSocket(socket, {
-            label: "join-lobby-post-tutorial-guide-mission-complete",
-            notify: true,
+            label: "join-lobby-post-tutorial-guide-mission-repair",
+            notify: false,
           });
         }
       }
@@ -73,19 +78,26 @@ module.exports = {
       joinLobbyPayload,
       "join-lobby-local-progress"
     );
+    sendCounterPassLobbyBootstrap(ctx, socket);
     if (typeof ctx.repairPostTutorialGuideMissionsForSocket === "function") {
       ctx.repairPostTutorialGuideMissionsForSocket(socket, {
-        label: "join-lobby-post-tutorial-guide-mission-complete",
-        notify: true,
+        label: "join-lobby-post-tutorial-guide-mission-repair",
+        notify: false,
       });
     }
     replay.nextServerSequence = Math.max(Number(replay.nextServerSequence || 1), Number(packet.sequence || 0) + 1);
+    sendJoinLobbyPostBootStart(ctx, socket, replay);
     ctx.sendStaminaChargeNotifications(socket, "join-lobby-charge-item", { includeUnchanged: true, itemIds: [2, 13] });
+    sendJoinLobbyPostBootRest(ctx, socket, replay);
+    markPostLobbyBootTemplatesHandled(replay);
     replay.localJoinLobbyAckSent = true;
-    sendPostLobbyBootTemplates(ctx, socket, replay);
     return true;
   },
 };
+
+function sendCounterPassLobbyBootstrap(ctx, socket) {
+  sendCounterPassLobbyNotifications(ctx, socket, "join-lobby-counter-pass");
+}
 
 function sendJoinLobbyBootTemplates(ctx, socket, replay, user) {
   ctx.sendCapturedGameTemplateRange(socket, 1, 1, "join-lobby-boot");
@@ -104,7 +116,25 @@ function sendJoinLobbyBootTemplates(ctx, socket, replay, user) {
   replay.bootLobbyTemplateSent = true;
 }
 
-function sendPostLobbyBootTemplates(ctx, socket, replay) {
-  if (replay.bootPostListTemplateSent) return;
+function sendJoinLobbyPostBootStart(ctx, socket, replay) {
+  if (!ctx.config.REPLAY_CAPTURED_GAME_FLOW || !ctx.capturedGameFlow || !replay || replay.postLobbyBootTemplateSent) {
+    return;
+  }
+  ctx.sendCapturedGameTemplateRange(socket, 9, 9, "join-lobby-post-boot");
+}
+
+function sendJoinLobbyPostBootRest(ctx, socket, replay) {
+  if (!ctx.config.REPLAY_CAPTURED_GAME_FLOW || !ctx.capturedGameFlow || !replay || replay.postLobbyBootTemplateSent) {
+    return;
+  }
+  ctx.sendCapturedGameTemplateRange(socket, 12, 13, "join-lobby-post-boot");
+  ctx.sendCapturedGameTemplateRange(socket, 15, 16, "join-lobby-post-boot");
+  replay.postLobbyBootTemplateSent = true;
+  replay.bootPostListTemplateSent = true;
+  replay.nextServerIndex = Math.max(Number(replay.nextServerIndex || 1), 19);
+}
+
+function markPostLobbyBootTemplatesHandled(replay) {
+  if (!replay || replay.bootPostListTemplateSent) return;
   replay.bootPostListTemplateSent = true;
 }

@@ -1,0 +1,4218 @@
+{
+  "source": "<project-root>\\gameplay-tables-decompiled\\Assetbundles\\ab_script\\luac\\LUA_SHOP_TAB_TEMPLET_01.lua",
+  "rootName": "m_ShopTabTable",
+  "recordCount": 243,
+  "records": [
+    {
+      "m_TabID": "TAB_MAIN",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_HOT_AND_NEW",
+      "m_ShopDisplay": "Main",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_HOME",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_HOT_NEW",
+      "m_PackageGroupID": "Main",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_MAIN"
+      ]
+    },
+    {
+      "m_TabID": "TAB_CASH_6_0A",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_CASH",
+      "m_ShopDisplay": "Card",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_RESOURCE",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_CASH",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_CASH_6_0A"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_QUERTZ_6_0A",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_QUERTZ",
+      "m_ShopDisplay": "Card",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_RESOURCE",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_QUERTZ_6_0A"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_FIXED_CHARGE_V3",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_FIXED_CHARGE",
+      "m_ShopDisplay": "Custom",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_FIXED_CHARGE_V2_HOME"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_RECOMMENDED_PACKAGE_6_0A",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_TAB_PACKAGE_FIRST_PURCHASE",
+      "m_ShopDisplay": "FullDisplay",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL3_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL3_OFF",
+      "m_HideWhenSoldOut": true,
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_TIME_DEAL_FIRST_PURCHASE_6_0A"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_CLB_001",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_CLB_001_MAIN",
+      "m_ShopDisplay": "None",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL3_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL3_OFF",
+      "m_Visible": false,
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_CLB_001"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_CLB_001",
+      "m_TabSubIndex": 1,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_UNIT_CLB_001",
+      "m_ShopDisplay": "FullDisplay",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_CLB_001"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_CLB_001",
+      "m_TabSubIndex": 2,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_ACTIVITY_CONTRACT_CLB_001",
+      "m_ShopDisplay": "FullDisplay",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL2_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL2_OFF",
+      "m_Visible": false,
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_CLB_001_ACTIVITY_CONTRACT"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_CLB_001",
+      "m_TabSubIndex": 3,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_CLB_001",
+      "m_ShopDisplay": "Card",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL2_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL2_OFF",
+      "m_Visible": false,
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_CLB_001"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_CLB_001",
+      "m_TabSubIndex": 4,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_TASK_PLANET_PIECE_CLB_001",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EXCHANGE_TASK_PLANET",
+      "m_Visible": false,
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_CLB_001",
+      "m_ResourceTypeID_1": 401,
+      "m_ResourceTypeID_2": 101
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_CLB_001",
+      "m_TabSubIndex": 5,
+      "m_TabName": "SI_SHOP_TAB_EVENT_CLB_001",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_CLB_001",
+      "m_Visible": false,
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_CLB_001",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 629
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_CLB_001",
+      "m_TabSubIndex": 6,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_COMBINI_BACKGROUND_CLB_001",
+      "m_ShopDisplay": "Card",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EXCHANGE_COMBINI",
+      "m_Visible": false,
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_CLB_001",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 629
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_CLB_002",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_CLB_002_MAIN",
+      "m_ShopDisplay": "None",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL3_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL3_OFF",
+      "m_DateStrID": "SHOP_TAB_PACKAGE_CLB_002_TAB",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_CLB_002"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_CLB_002",
+      "m_TabSubIndex": 1,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_ACTIVITY_CONTRACT_CLB_002",
+      "m_ShopDisplay": "FullDisplay",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_DateStrID": "SHOP_TAB_PACKAGE_CLB_002_TAB",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_CLB_002"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_CLB_002",
+      "m_TabSubIndex": 2,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_UNIT_GEASS_MA_SEITEN",
+      "m_ShopDisplay": "FullDisplay",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_DateStrID": "SHOP_TAB_PACKAGE_CLB_002_TAB",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_CLB_002"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_CLB_002",
+      "m_TabSubIndex": 3,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_CLB_002",
+      "m_ShopDisplay": "Card",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_INTERVAL",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_DateStrID": "SHOP_TAB_PACKAGE_CLB_002_TAB",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_CLB_002"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_CLB_002",
+      "m_TabSubIndex": 4,
+      "m_TabName": "SI_SHOP_TAB_SKIN_CLB_002",
+      "m_ShopDisplay": "Skin",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_SKIN",
+      "m_DateStrID": "SHOP_TAB_PACKAGE_CLB_002_TAB",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_CLB_002"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_CLB_002",
+      "m_TabSubIndex": 5,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_CLB_002_INTERIOR",
+      "m_ShopDisplay": "InteriorPackage",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_DateStrID": "SHOP_TAB_PACKAGE_CLB_002_TAB",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_CLB_002"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_CLB_002",
+      "m_TabSubIndex": 6,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_TASK_PLANET_PIECE_CLB_002",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EXCHANGE_TASK_PLANET",
+      "m_DateStrID": "SHOP_TAB_PACKAGE_CLB_002_TAB",
+      "m_ResourceTypeID_1": 401,
+      "m_ResourceTypeID_2": 101
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_CLB_002",
+      "m_TabSubIndex": 7,
+      "m_TabName": "SI_SHOP_TAB_EVENT_CLB_002",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_CLB_002",
+      "m_DateStrID": "SHOP_TAB_PACKAGE_CLB_002_TAB",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 654
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_CLB_003",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_CLB_003_MAIN",
+      "m_ShopDisplay": "None",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL3_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL3_OFF",
+      "m_DateStrID": "SHOP_TAB_PACKAGE_CLB_003",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_CLB_003"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_CLB_003",
+      "m_TabSubIndex": 1,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_ACTIVITY_CONTRACT_CLB_003",
+      "m_ShopDisplay": "FullDisplay",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_DateStrID": "SHOP_TAB_PACKAGE_CLB_003",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_CLB_003"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_CLB_003",
+      "m_TabSubIndex": 2,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_CLB_003",
+      "m_ShopDisplay": "Card",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_INTERVAL",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_DateStrID": "SHOP_TAB_PACKAGE_CLB_003",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_CLB_003"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_CLB_003",
+      "m_TabSubIndex": 3,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_CLB_003_EGG",
+      "m_ShopDisplay": "Card",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_INTERVAL",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_DateStrID": "SHOP_TAB_PACKAGE_CLB_003",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_CLB_003"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_CLB_003",
+      "m_TabSubIndex": 4,
+      "m_TabName": "SI_SHOP_TAB_SKIN_CLB_003",
+      "m_ShopDisplay": "Card",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_SKIN",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_DateStrID": "SHOP_TAB_PACKAGE_CLB_003",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_CLB_003"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_CLB_003",
+      "m_TabSubIndex": 5,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_CLB_003_INTERIOR",
+      "m_ShopDisplay": "InteriorPackage",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_DateStrID": "SHOP_TAB_PACKAGE_CLB_003",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_CLB_003"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_CLB_003",
+      "m_TabSubIndex": 6,
+      "m_TabName": "SI_SHOP_TAB_EVENT_POINTEXCHANGE_CLB_003",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_POINTEXCHANGE_CLB_003",
+      "m_DateStrID": "SHOP_TAB_PACKAGE_CLB_003",
+      "m_ResourceTypeID_1": 659,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_CLB_003"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_CLB_004",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_CLB_004_MAIN",
+      "m_ShopDisplay": "None",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL3_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL3_OFF",
+      "m_DateStrID": "SHOP_TAB_PACKAGE_CLB_004_EVENT",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_CLB_004"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_CLB_004",
+      "m_TabSubIndex": 1,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_ACTIVITY_CONTRACT_CLB_004",
+      "m_ShopDisplay": "FullDisplay",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL3_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL3_OFF",
+      "m_DateStrID": "SHOP_TAB_PACKAGE_CLB_004",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_CLB_004"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_CLB_004",
+      "m_TabSubIndex": 2,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_CLB_004",
+      "m_ShopDisplay": "Card",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL3_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL3_OFF",
+      "m_DateStrID": "SHOP_TAB_PACKAGE_CLB_004",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_CLB_004"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_CLB_004",
+      "m_TabSubIndex": 3,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_EXCHANGE_TASK_PLANET_CLB_004",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EXCHANGE_TASK_PLANET",
+      "m_DateStrID": "SHOP_TAB_PACKAGE_CLB_004",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_CLB_004",
+      "m_ResourceTypeID_1": 401,
+      "m_ResourceTypeID_2": 101
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_CLB_004",
+      "m_TabSubIndex": 4,
+      "m_TabName": "SI_SHOP_TAB_EVENT_CLB_004",
+      "m_ShopDisplay": "Item",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_EVENT_CLB_004",
+      "m_DateStrID": "SHOP_TAB_PACKAGE_CLB_004_EVENT",
+      "m_OpenTag": "TAG_COMMON_SHOP_EVENT_CLB_004",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 723
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_LIMITED",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_LIMITED",
+      "m_ShopDisplay": "None",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_TIME",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL3_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL3_OFF",
+      "m_HideWhenSoldOut": true,
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_LIMIT"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_LIMITED",
+      "m_TabSubIndex": 1,
+      "m_TabName": "SI_DP_MENU_EVENT",
+      "m_ShopDisplay": "FullDisplay",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_TIME",
+      "m_HideWhenSoldOut": true,
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_LIMIT"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_LIMITED",
+      "m_TabSubIndex": 2,
+      "m_TabName": "SI_DP_MENU_EVENT",
+      "m_ShopDisplay": "Card_Special",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_TIME",
+      "m_HideWhenSoldOut": true,
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_LIMIT"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_LIMITED",
+      "m_TabSubIndex": 3,
+      "m_TabName": "SI_DP_MENU_EVENT",
+      "m_ShopDisplay": "Card",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_TIME",
+      "m_HideWhenSoldOut": true,
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_LIMIT"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_LIMITED",
+      "m_TabSubIndex": 4,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_CUSTOM_EVENT",
+      "m_ShopDisplay": "CustomPackage",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_TIME",
+      "m_HideWhenSoldOut": true,
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_LIMIT"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_LIMITED",
+      "m_TabSubIndex": 5,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_NEWBIE_LIMITED",
+      "m_ShopDisplay": "Card_Special",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_TIME",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_NEWBIE",
+      "m_HideWhenSoldOut": true,
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_LIMIT"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_LIMITED",
+      "m_TabSubIndex": 13,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_NEWBIE_LIMITED",
+      "m_ShopDisplay": "Card",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_TIME",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_NEWBIE_V2",
+      "m_HideWhenSoldOut": true,
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_LIMIT"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_LIMITED",
+      "m_TabSubIndex": 6,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_WELCOME_BACK",
+      "m_ShopDisplay": "Custom",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_HideWhenSoldOut": true,
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_LIMIT"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_LIMITED",
+      "m_TabSubIndex": 14,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_WELCOME_BACK",
+      "m_ShopDisplay": "Card",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_COMEBACK",
+      "m_HideWhenSoldOut": true,
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_LIMIT"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_LIMITED",
+      "m_TabSubIndex": 16,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_NEWBIE_STARTER_CUSTOM",
+      "m_ShopDisplay": "CustomPackage",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_STARTER",
+      "m_HideWhenSoldOut": true,
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_LIMIT"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_LIMITED",
+      "m_TabSubIndex": 7,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_LEVELUP_6_0A",
+      "m_ShopDisplay": "FullDisplay",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_HideWhenSoldOut": true,
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_LIMIT"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_LIMITED",
+      "m_TabSubIndex": 15,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_NEWBIE_STARTER_V2",
+      "m_ShopDisplay": "Card",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_STARTER",
+      "m_HideWhenSoldOut": true,
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_LIMIT"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_LIMITED",
+      "m_TabSubIndex": 9,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_EPISODE_CLEAR",
+      "m_ShopDisplay": "Card_Special",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_HideWhenSoldOut": true,
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_LIMIT"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_LIMITED",
+      "m_TabSubIndex": 10,
+      "m_TabName": "SI_SHOP_TAB_PACAKGE_LEVELUP_V2",
+      "m_ShopDisplay": "Card",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_TopBannerText": "SI_SHOP_CASH_ITEM_DESC_170098",
+      "m_HideWhenSoldOut": true,
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_LEVEL_UP_V2"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_LIMITED",
+      "m_TabSubIndex": 11,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_TIME_DEAL",
+      "m_ShopDisplay": "Card",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_TIMEDEAL",
+      "m_HideWhenSoldOut": true,
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_LIMIT_7_9A"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_LIMITED",
+      "m_TabSubIndex": 12,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_TIME_DEAL_CUSTOM",
+      "m_ShopDisplay": "CustomPackage",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_TIMEDEAL",
+      "m_HideWhenSoldOut": true,
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_LIMIT_7_9A"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_CUSTOM_SSR",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_CUSTOM_SSR",
+      "m_ShopDisplay": "CustomPackage",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_DateStrID": "SHOP_CASH_PACKAGE_CUSTOM_SSR_UNIT",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_CUSTOM_SSR_UNIT"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_SPECIAL_6_0A",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_SPECIAL",
+      "m_ShopDisplay": "Card",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_HideWhenSoldOut": true,
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_LIMIT"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_ALWAYS",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_ALWAYS",
+      "m_ShopDisplay": "None",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_ALWAYS"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_ALWAYS",
+      "m_TabSubIndex": 1,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_SUPPORT",
+      "m_ShopDisplay": "Card",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_GROW",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_ALWAYS"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_ALWAYS",
+      "m_TabSubIndex": 2,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_CONTRACT_CLASSIFIED",
+      "m_ShopDisplay": "Card",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_CLASSIFIED",
+      "m_HideWhenSoldOut": true,
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_ALWAYS"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_ALWAYS",
+      "m_TabSubIndex": 3,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_EQUIPMENTS",
+      "m_ShopDisplay": "Card",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_BINARY",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_ALWAYS"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_ALWAYS",
+      "m_TabSubIndex": 4,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_SHIP",
+      "m_ShopDisplay": "Card",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_SHIP",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_ALWAYS_SHIP"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_ALWAYS",
+      "m_TabSubIndex": 5,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_SHIP",
+      "m_ShopDisplay": "Card",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_SHIP",
+      "m_Visible": false,
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_ALWAYS"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_ACTIVITY_CONTRACT",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_ACTIVITY_CONTRACT",
+      "m_ShopDisplay": "FullDisplay",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL2_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL2_OFF",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_ACTIVITY_CONTRACT"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_CUSTOM",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_CUSTOM",
+      "m_ShopDisplay": "CustomPackage",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_CUSTOM",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_CUSTOM_LAUNCHING_V2"
+      ]
+    },
+    {
+      "m_TabID": "TAB_SKIN_NEW",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_SKIN_NEW",
+      "m_ShopDisplay": "Skin",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_SKIN",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_SKIN_NEW",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL2_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL2_OFF",
+      "m_PackageGroupID": "Skin",
+      "m_HideWhenSoldOut": true,
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_NEW"
+      ]
+    },
+    {
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_MAIN_TAB_SKIN",
+      "m_ShopDisplay": "None",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_SKIN",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_KOR"
+      ]
+    },
+    {
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_MAIN_TAB_SKIN",
+      "m_ShopDisplay": "None",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_SKIN",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_TWN"
+      ]
+    },
+    {
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_MAIN_TAB_SKIN",
+      "m_ShopDisplay": "None",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_SKIN",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_SEA"
+      ]
+    },
+    {
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_MAIN_TAB_SKIN",
+      "m_ShopDisplay": "None",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_SKIN",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_CHN"
+      ]
+    },
+    {
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 61,
+      "m_TabName": "SI_SHOP_TAB_SKIN_PARTY",
+      "m_ShopDisplay": "Skin",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_SKIN",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_PARTY_ALWAYS"
+      ]
+    },
+    {
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 62,
+      "m_TabName": "SI_SHOP_TAB_SKIN_CONTEST",
+      "m_ShopDisplay": "Skin",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_SKIN",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_CONTEST_ALWAYS"
+      ]
+    },
+    {
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 63,
+      "m_TabName": "SI_SHOP_TAB_SKIN_MAID",
+      "m_ShopDisplay": "Skin",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_SKIN",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_MAID_ALWAYS"
+      ]
+    },
+    {
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 64,
+      "m_TabName": "SI_SHOP_TAB_SKIN_SPRING_BUNNY",
+      "m_ShopDisplay": "Skin",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_SKIN",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_SPRING_BUNNY_ALWAYS"
+      ]
+    },
+    {
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 65,
+      "m_TabName": "SI_SHOP_TAB_SKIN_PAJAMAS",
+      "m_ShopDisplay": "Skin",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_SKIN",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_PAJAMAS_ALWAYS"
+      ]
+    },
+    {
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 66,
+      "m_TabName": "SI_SHOP_TAB_SKIN_CHUSEOK",
+      "m_ShopDisplay": "Skin",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_SKIN",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_CHUSEOK_ALWAYS"
+      ]
+    },
+    {
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 67,
+      "m_TabName": "SI_SHOP_TAB_SKIN_SCHOOL",
+      "m_ShopDisplay": "Skin",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_SKIN",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_SCHOOL_ALWAYS"
+      ]
+    },
+    {
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 68,
+      "m_TabName": "SI_SHOP_TAB_SKIN_CHANGE",
+      "m_ShopDisplay": "Skin",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_SKIN",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_CHANGE_ALWAYS"
+      ]
+    },
+    {
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 69,
+      "m_TabName": "SI_SHOP_TAB_SKIN_BUNNY",
+      "m_ShopDisplay": "Skin",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_SKIN",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_BUNNY_ALWAYS"
+      ]
+    },
+    {
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 70,
+      "m_TabName": "SI_SHOP_TAB_SKIN_2ND_ANNIVERSARY",
+      "m_ShopDisplay": "Skin",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_SKIN",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_2ND_ANNIVERSARY_ALWAYS"
+      ]
+    },
+    {
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 71,
+      "m_TabName": "SI_SHOP_TAB_SKIN_SPORT",
+      "m_ShopDisplay": "Skin",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_SKIN",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_SPORT_ALWAYS"
+      ]
+    },
+    {
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 72,
+      "m_TabName": "SI_SHOP_TAB_SKIN_FEATURE_NEW_YEAR",
+      "m_ShopDisplay": "Skin",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_SKIN",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_NEW_YEAR_ALWAYS"
+      ]
+    },
+    {
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 73,
+      "m_TabName": "SI_SHOP_TAB_SKIN_1ST_ANNIVERSARY",
+      "m_ShopDisplay": "Skin",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_SKIN",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_1ST_ANNIVERSARY_ALWAYS"
+      ],
+      "listContentsTagIgnore": [
+        "GLOBAL"
+      ]
+    },
+    {
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 73,
+      "m_TabName": "SI_SHOP_TAB_SKIN_1ST_DINNER",
+      "m_ShopDisplay": "Skin",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_SKIN",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_1ST_ANNIVERSARY_ALWAYS"
+      ],
+      "listContentsTagIgnore": [
+        "KOR",
+        "TWN",
+        "SEA",
+        "CHN",
+        "JPN"
+      ]
+    },
+    {
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 74,
+      "m_TabName": "SI_SHOP_TAB_SKIN_CHRISTMAS",
+      "m_ShopDisplay": "Skin",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_SKIN",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_CHRISTMAS_LAUNCHING_ALWAYS"
+      ]
+    },
+    {
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 75,
+      "m_TabName": "SI_SHOP_TAB_SKIN_HALLOWEEN",
+      "m_ShopDisplay": "Skin",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_SKIN",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_HALLOWEEN_ALWAYS"
+      ]
+    },
+    {
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 76,
+      "m_TabName": "SI_SHOP_TAB_SKIN_WEDDING",
+      "m_ShopDisplay": "Skin",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_SKIN",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_WEDDING_ALWAYS"
+      ]
+    },
+    {
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 77,
+      "m_TabName": "SI_SHOP_TAB_SKIN_VACANCE",
+      "m_ShopDisplay": "Skin",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_SKIN",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_VACANCE_LAUNCHING_ALWAYS"
+      ]
+    },
+    {
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 78,
+      "m_TabName": "SI_SHOP_TAB_SKIN_CHILD",
+      "m_ShopDisplay": "Skin",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_SKIN",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_CHILD_ALWAYS"
+      ]
+    },
+    {
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 79,
+      "m_TabName": "SI_SHOP_TAB_SKIN_RACING",
+      "m_ShopDisplay": "Skin",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_SKIN",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_RACING_ALWAYS"
+      ]
+    },
+    {
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 80,
+      "m_TabName": "SI_SHOP_TAB_SKIN_VALEN",
+      "m_ShopDisplay": "Skin",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_SKIN",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_VALEN_ALWAYS"
+      ]
+    },
+    {
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 81,
+      "m_TabName": "SI_SHOP_TAB_SKIN_MEMORIAL",
+      "m_ShopDisplay": "Skin",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_SKIN",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_MEMORIAL_ALWAYS"
+      ]
+    },
+    {
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 98,
+      "m_TabName": "SI_SHOP_TAB_SKIN_FOOLSDAY",
+      "m_ShopDisplay": "Skin",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_SKIN",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_FOOLSDAY"
+      ]
+    },
+    {
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 99,
+      "m_TabName": "SI_SHOP_TAB_SKIN_COMMON",
+      "m_ShopDisplay": "Skin",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_SKIN",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_ALL"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_INTERIOR",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_PLAY_INTERIOR",
+      "m_ShopDisplay": "None",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_INTERIOR"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_INTERIOR",
+      "m_TabSubIndex": 1,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_PLAY_INTERIOR",
+      "m_ShopDisplay": "InteriorPackage",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_INTERIOR"
+      ]
+    },
+    {
+      "m_TabID": "TAB_CASH",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_CASH",
+      "m_ShopDisplay": "None",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_RESOURCE",
+      "m_HideWhenSoldOut": true,
+      "m_Visible": false,
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_CASH"
+      ],
+      "listContentsTagIgnore": [
+        "JPN"
+      ]
+    },
+    {
+      "m_TabID": "TAB_CASH",
+      "m_TabSubIndex": 1,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_CASH_SUB1",
+      "m_ShopDisplay": "Card",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_RESOURCE",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_CASH",
+      "m_HideWhenSoldOut": true,
+      "m_Visible": false,
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_CASH"
+      ],
+      "listContentsTagIgnore": [
+        "JPN"
+      ]
+    },
+    {
+      "m_TabID": "TAB_CASH",
+      "m_TabSubIndex": 2,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_CASH_SUB2",
+      "m_ShopDisplay": "Card",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_RESOURCE",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_CASH",
+      "m_HideWhenSoldOut": true,
+      "m_Visible": false,
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_CASH"
+      ],
+      "listContentsTagIgnore": [
+        "JPN"
+      ]
+    },
+    {
+      "m_TabID": "TAB_CASH",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_CASH",
+      "m_ShopDisplay": "None",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_RESOURCE",
+      "m_HideWhenSoldOut": true,
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_PRETERMINATION",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_CASH"
+      ],
+      "listContentsTagIgnore": [
+        "KOR",
+        "TWN",
+        "SEA",
+        "CHN",
+        "GLOBAL"
+      ]
+    },
+    {
+      "m_TabID": "TAB_CASH",
+      "m_TabSubIndex": 1,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_CASH_SUB1",
+      "m_ShopDisplay": "Card",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_RESOURCE",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_CASH",
+      "m_HideWhenSoldOut": true,
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_PRETERMINATION",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_CASH"
+      ],
+      "listContentsTagIgnore": [
+        "KOR",
+        "TWN",
+        "SEA",
+        "CHN",
+        "GLOBAL"
+      ]
+    },
+    {
+      "m_TabID": "TAB_CASH",
+      "m_TabSubIndex": 2,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_CASH_SUB2",
+      "m_ShopDisplay": "Card",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_RESOURCE",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_CASH",
+      "m_HideWhenSoldOut": true,
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_PRETERMINATION",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_CASH"
+      ],
+      "listContentsTagIgnore": [
+        "KOR",
+        "TWN",
+        "SEA",
+        "CHN",
+        "GLOBAL"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_QUERTZ",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_QUERTZ",
+      "m_ShopDisplay": "None",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_RESOURCE",
+      "m_HideWhenSoldOut": true,
+      "m_Visible": false,
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_QUERTZ"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_QUERTZ",
+      "m_TabSubIndex": 1,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_QUERTZ_ALWAYS",
+      "m_ShopDisplay": "Card",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_RESOURCE",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_QUERTZ",
+      "m_HideWhenSoldOut": true,
+      "m_Visible": false,
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_QUERTZ"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_QUERTZ",
+      "m_TabSubIndex": 2,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_QUERTZ_LIMIT",
+      "m_ShopDisplay": "Card",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_RESOURCE",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_QUERTZ",
+      "m_HideWhenSoldOut": true,
+      "m_Visible": false,
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_QUERTZ"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_FIXED_CHARGE_V2",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_FIXED_CHARGE",
+      "m_ShopDisplay": "None",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_HideWhenSoldOut": true,
+      "m_Visible": false,
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_FIXED_CHARGE_V2_HOME"
+      ],
+      "listContentsTagIgnore": [
+        "KOR",
+        "JPN",
+        "GLOBAL"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_FIXED_CHARGE_V2",
+      "m_TabSubIndex": 1,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_CASH",
+      "m_ShopDisplay": "Custom",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_HideWhenSoldOut": true,
+      "m_Visible": false,
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_FIXED_CHARGE_V2_HOME"
+      ],
+      "listContentsTagIgnore": [
+        "KOR",
+        "JPN",
+        "GLOBAL"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_FIXED_CHARGE_V2",
+      "m_TabSubIndex": 2,
+      "m_TabName": "SI_SHOP_TAB_RESOURCE_2",
+      "m_ShopDisplay": "Custom",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_HideWhenSoldOut": true,
+      "m_Visible": false,
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_FIXED_CHARGE_V2_HOME"
+      ],
+      "listContentsTagIgnore": [
+        "KOR",
+        "JPN",
+        "GLOBAL"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_FIXED_CHARGE_V2",
+      "m_TabSubIndex": 1,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_CASH",
+      "m_ShopDisplay": "Custom",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_HideWhenSoldOut": true,
+      "m_Visible": false,
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_FIXED_CHARGE_V2_HOME"
+      ],
+      "listContentsTagIgnore": [
+        "TWN",
+        "SEA",
+        "CHN"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_FIXED_CHARGE_V2",
+      "m_TabSubIndex": 2,
+      "m_TabName": "SI_SHOP_TAB_RESOURCE_2",
+      "m_ShopDisplay": "Custom",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_HideWhenSoldOut": true,
+      "m_Visible": false,
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_FIXED_CHARGE_V2_HOME"
+      ],
+      "listContentsTagIgnore": [
+        "TWN",
+        "SEA",
+        "CHN",
+        "JPN"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_FIXED_CHARGE_V2",
+      "m_TabSubIndex": 2,
+      "m_TabName": "SI_SHOP_TAB_RESOURCE_2",
+      "m_ShopDisplay": "Custom",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_PRETERMINATION",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_FIXED_CHARGE_V2_HOME"
+      ],
+      "listContentsTagIgnore": [
+        "KOR",
+        "TWN",
+        "SEA",
+        "CHN",
+        "GLOBAL"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_FIXED_CHARGE_V2",
+      "m_TabSubIndex": 3,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_CASH",
+      "m_ShopDisplay": "Custom",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_HideWhenSoldOut": true,
+      "m_Visible": false,
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_FIXED_CHARGE_V2_HOME"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_LAUNCHING_2YEAR_CELEBRATE",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_PACKAGE_LAUNCHING_2YEAR_CELEBRATE",
+      "m_ShopDisplay": "Card_Special",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_TAB_PACKAGE_LAUNCHING_2YEAR",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_LAUNCHING_2YEAR"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_LAUNCHING_2YEAR_SPECIAL",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_PACKAGE_LAUNCHING_2YEAR_SPECIAL",
+      "m_ShopDisplay": "FullDisplay",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_TAB_PACKAGE_LAUNCHING_2YEAR",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_LAUNCHING_2YEAR_STEP_UP"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_BLACK_FRIDAY_2021",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_BLACK_FRIDAY_2021",
+      "m_ShopDisplay": "Card_Special",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_BLACK_FRIDAY_2021",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_BLACK_FRIDAY_2021"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_BLACK_FRIDAY_2021_SKIN",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_BLACK_FRIDAY_2021_SKIN",
+      "m_ShopDisplay": "CustomPackage",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_BLACK_FRIDAY_2021",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_BLACK_FRIDAY_2021_SKIN"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_LAUNCHING_50DAYS_SEA",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_LAUNCHING_50DAYS_SEA",
+      "m_ShopDisplay": "FullDisplay",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_LAUNCHING_50DAYS_SEA",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_LAUNCHING_50DAYS_SEA"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_LAUNCHING_1_5YEAR_STEP_UP_KOR",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_LAUNCHING_1_5YEAR_STEP_UP_KOR",
+      "m_ShopDisplay": "FullDisplay",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_LAUNCHING_1_5YEAR_STEP_UP",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_LAUNCHING_1_5YEAR_STEP_UP_KOR"
+      ],
+      "listContentsTagIgnore": [
+        "GLOBAL"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_LAUNCHING_1_5YEAR_STEP_UP_GLOBAL",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_LAUNCHING_1_5YEAR_STEP_UP_GLOBAL",
+      "m_ShopDisplay": "FullDisplay",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_LAUNCHING_1_5YEAR_STEP_UP",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_LAUNCHING_1_5YEAR_STEP_UP_KOR"
+      ],
+      "listContentsTagIgnore": [
+        "KOR",
+        "TWN",
+        "SEA",
+        "CHN",
+        "JPN"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_LAUNCHING_1_5YEAR_BUILD_SHIP_KOR",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_LAUNCHING_1_5YEAR_BUILD_SHIP_KOR",
+      "m_ShopDisplay": "Card_Special",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_LAUNCHING_1_5YEAR_BUILD_SHIP",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_LAUNCHING_1_5YEAR_BUILD_SHIP_KOR"
+      ],
+      "listContentsTagIgnore": [
+        "GLOBAL"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_LAUNCHING_1_5YEAR_BUILD_SHIP_GLOBAL",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_LAUNCHING_1_5YEAR_BUILD_SHIP_GLOBAL",
+      "m_ShopDisplay": "Card_Special",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_LAUNCHING_1_5YEAR_BUILD_SHIP",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_LAUNCHING_1_5YEAR_BUILD_SHIP_KOR"
+      ],
+      "listContentsTagIgnore": [
+        "KOR",
+        "TWN",
+        "SEA",
+        "CHN",
+        "JPN"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_LAUNCHING_1_5YEAR_CLASSIFIED_KOR",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_LAUNCHING_1_5YEAR_CLASSIFIED_KOR",
+      "m_ShopDisplay": "CustomPackage",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_LAUNCHING_1_5YEAR_CLASSIFIED",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_LAUNCHING_1_5YEAR_CLASSIFIED_KOR"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_LAUNCHING_1YEAR_STARTER",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_LAUNCHING_1YEAR_STARTER",
+      "m_ShopDisplay": "Card",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_INTERVAL",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_HideWhenSoldOut": true,
+      "m_Visible": false,
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_LAUNCHING_1YEAR_STARTER_SEA"
+      ],
+      "listContentsTagIgnore": [
+        "JPN",
+        "GLOBAL"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_LAUNCHING_1YEAR_STARTER",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_STARTER_DINNER",
+      "m_ShopDisplay": "Card",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_INTERVAL",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_HideWhenSoldOut": true,
+      "m_Visible": false,
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_LAUNCHING_1YEAR_STARTER_SEA"
+      ],
+      "listContentsTagIgnore": [
+        "KOR",
+        "TWN",
+        "SEA",
+        "CHN",
+        "JPN"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_LAUNCHING_1YEAR_STARTER",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_LAUNCHING_1YEAR_STARTER",
+      "m_ShopDisplay": "Card",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_INTERVAL",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_HideWhenSoldOut": true,
+      "m_Visible": false,
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_LAUNCHING_1YEAR_SPECIAL_JPN"
+      ],
+      "listContentsTagIgnore": [
+        "KOR",
+        "TWN",
+        "SEA",
+        "CHN",
+        "GLOBAL"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_LAUNCHING_1YEAR_SPECIAL",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_LAUNCHING_1YEAR_SPECIAL",
+      "m_ShopDisplay": "Card",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_INTERVAL",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_LAUNCHING_1YEAR_SPECIAL",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_LAUNCHING_1YEAR_SPECIAL_SEA"
+      ],
+      "listContentsTagIgnore": [
+        "JPN",
+        "GLOBAL"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_LAUNCHING_1YEAR_SPECIAL",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_DINNER",
+      "m_ShopDisplay": "Card",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_INTERVAL",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_LAUNCHING_1YEAR_SPECIAL",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_LAUNCHING_1YEAR_SPECIAL_SEA"
+      ],
+      "listContentsTagIgnore": [
+        "KOR",
+        "TWN",
+        "SEA",
+        "CHN",
+        "JPN"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_LAUNCHING_1YEAR_SPECIAL",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_LAUNCHING_1YEAR_SPECIAL",
+      "m_ShopDisplay": "Card",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_INTERVAL",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_LAUNCHING_1YEAR_SPECIAL",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_LAUNCHING_1YEAR_SPECIAL_JPN"
+      ],
+      "listContentsTagIgnore": [
+        "KOR",
+        "TWN",
+        "SEA",
+        "CHN",
+        "GLOBAL"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_LAUNCHING_2_5YEAR",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_LAUNCHING_2_5YEAR",
+      "m_ShopDisplay": "Card",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_INTERVAL",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_LAUNCHING_2_5YEAR",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_LAUNCHING_2_5YEAR"
+      ],
+      "listContentsTagIgnore": [
+        "GLOBAL"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_LAUNCHING_2_5YEAR",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_LAUNCHING_2_5YEAR_G",
+      "m_ShopDisplay": "Card",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_INTERVAL",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_LAUNCHING_2_5YEAR",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_LAUNCHING_2_5YEAR"
+      ],
+      "listContentsTagIgnore": [
+        "KOR",
+        "TWN",
+        "SEA",
+        "CHN",
+        "JPN"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_100DAYS_ANNIVERSARY",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_100DAYS_ANNIVERSARY_V2",
+      "m_ShopDisplay": "Card",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_100DAYS_ANNIVERSARY_PACKAGE",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_100DAYS_ANNIVERSARY"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_100DAYS_ANNIVERSARY_PREFAB",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_100DAYS_ANNIVERSARY",
+      "m_ShopDisplay": "Card_Special",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_100DAYS_ANNIVERSARY_PACKAGE_PREFAB",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_100DAYS_ANNIVERSARY_PREFAB"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_LAUNCHING_GLOBAL_PC",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_LAUNCHING_GLOBAL_PC",
+      "m_ShopDisplay": "Card",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_INTERVAL",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_LAUNCHING_GLOBAL_PC",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_GLOBAL_PC"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_2022_NEWYEAR",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_2022_NEWYEAR",
+      "m_ShopDisplay": "FullDisplay",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_2022_NEWYEAR",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_2022_NEWYEAR"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_LAUNCHING_500DAYS",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_LAUNCHING_500DAYS",
+      "m_ShopDisplay": "Card_Special",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_KOR_33E_A",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_LAUNCHING_500DAYS"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_CASH_X15_1YEAR",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_CASH_X15_1YEAR",
+      "m_ShopDisplay": "Card_Special",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_CASH_X15_1YEAR_HOME",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_CASH_X15_1YEAR_HOME"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_LAUNCHING_1YEAR_SKIN_PACK",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_LAUNCHING_1YEAR_SKIN_PACK",
+      "m_ShopDisplay": "CustomPackage",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_LAUNCHING_1YEAR_SKIN_PACK",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_LAUNCHING_1YEAR_SKIN_PACK"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_LAUNCHING_100DAYS_SEA",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_LAUNCHING_100DAYS_SEA",
+      "m_ShopDisplay": "FullDisplay",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_LAUNCHING_100DAYS_SEA",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_LAUNCHING_100DAYS_SEA"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_WELCOMING_NEWYEAR_HOME",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_WELCOMING_NEWYEAR",
+      "m_ShopDisplay": "Card_Special",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_WELCOMING_NEWYEAR_HOME",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_WELCOMING_NEWYEAR_HOME"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_UNIT_JAPAN_CA_SENHIME",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_UNIT_JAPAN_CA_SENHIME",
+      "m_ShopDisplay": "FullDisplay",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_UNIT_JAPAN_CA_SENHIME",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_UNIT_JAPAN_CA_SENHIME"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_UNIT_ESPR_CA_FROZEN",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_UNIT_ESPR_CA_FROZEN",
+      "m_ShopDisplay": "FullDisplay",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_UNIT_ESPR_CA_FROZEN",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_UNIT_ESPR_CA_FROZEN"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_UNIT_RAS_MA_TOWER",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_UNIT_RAS_MA_TOWER",
+      "m_ShopDisplay": "FullDisplay",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_UNIT_RAS_MA_TOWER",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_UNIT_RAS_MA_TOWER"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_UNIT_BORDER_SA_HORSE",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_UNIT_BORDER_SA_HORSE",
+      "m_ShopDisplay": "FullDisplay",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_UNIT_BORDER_SA_HORSE",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_UNIT_BORDER_SA_HORSE"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_UNIT_DELTA_CA_MARIA",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_UNIT_DELTA_CA_MARIA",
+      "m_ShopDisplay": "FullDisplay",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_UNIT_DELTA_CA_MARIA",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_UNIT_DELTA_CA_MARIA"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_UNIT_HARMONY_CA_CONDUCT",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_UNIT_CA_CONDUCT",
+      "m_ShopDisplay": "FullDisplay",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_UNIT_HARMONY_CA_CONDUCT",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_UNIT_CA_CONDUCT"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_UNIT_ALPHA_CA_JIA",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_UNIT_ALPHA_CA_JIA",
+      "m_ShopDisplay": "FullDisplay",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_UNIT_ALPHA_CA_JIA",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_UNIT_ALPHA_CA_JIA"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_UNIT_DELTA_CA_JAKE",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_UNIT_DELTA_CA_JAKE",
+      "m_ShopDisplay": "FullDisplay",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_UNIT_DELTA_CA_JAKE",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_UNIT_DELTA_CA_JAKE"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_UNIT_FUTURE_MA_LOAN_V2",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_UNIT_FUTURE_MA_LOAN_V2",
+      "m_ShopDisplay": "FullDisplay",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_UNIT_FUTURE_MA_LOAN_V2",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_UNIT_FUTURE_MA_LOAN_V2"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_UNIT_CA_JOO_SHI_YOON_V2",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_UNIT_CA_JOO_SHI_YOON",
+      "m_ShopDisplay": "FullDisplay",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_UNIT_CA_JOO_SHI_YOON_V2",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_UNIT_CA_JOO_SHI_YOON_V2"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_UNIT_SCAVENGER_MA_EVOLVE_V2",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_VE_PACKAGE_UNIT_SCAVENGER_MA_EVOLVE",
+      "m_ShopDisplay": "FullDisplay",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_UNIT_SCAVENGER_MA_EVOLVE_V2",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_UNIT_SCAVENGER_MA_EVOLVE_V2"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_UNIT_SIXWING_AMY_V2",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_UNIT_SIXWING_AMY",
+      "m_ShopDisplay": "FullDisplay",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_UNIT_SIXWING_AMY_V2",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_UNIT_SIXWING_AMY_V2"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_UNIT_CORRUPTED_CA_MINISTRA_V2",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_UNIT_CORRUPTED_CA_MINISTRA",
+      "m_ShopDisplay": "FullDisplay",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_UNIT_CORRUPTED_CA_MINISTRA_V2",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_UNIT_CORRUPTED_CA_MINISTRA_V2"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_UNIT_REPLACER_CA_V2",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_UNIT_REPLACER_CA",
+      "m_ShopDisplay": "FullDisplay",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_UNIT_REPLACER_CA_V2",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_UNIT_REPLACER_CA_V2"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_UNIT_CA_SEO_YOON_V2",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_VE_PACKAGE_UNIT_CA_SEO_YOON",
+      "m_ShopDisplay": "FullDisplay",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_UNIT_CA_SEO_YOON_V2",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_UNIT_CA_SEO_YOON_V2"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_UNIT_SIXWING_NA_YUBIN",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_UNIT_SIXWING_NA_YUBIN",
+      "m_ShopDisplay": "FullDisplay",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_UNIT_SIXWING_NA_YUBIN",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_UNIT_SIXWING_NA_YUBIN"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_UNIT_CA_STREGA_YOO_NA_V2",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_UNIT_CA_STREGA_YOO_NA",
+      "m_ShopDisplay": "FullDisplay",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_UNIT_CA_STREGA_YOO_NA_V2",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_UNIT_CA_STREGA_YOO_NA_V2"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_UNIT_CA_ADMIN_LEE_SUYEON",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_UNIT_CA_ADMIN_LEE_SUYEON",
+      "m_ShopDisplay": "FullDisplay",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_UNIT_CA_ADMIN_LEE_SUYEON",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_UNIT_CA_ADMIN_LEE_SUYEON"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_UNIT_CA_YOO_MI_NA_V2",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_UNIT_CA_YOO_MI_NA",
+      "m_ShopDisplay": "FullDisplay",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_UNIT_CA_YOO_MI_NA_V2",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_UNIT_CA_YOO_MI_NA_V2"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_UNIT_CA_HILDE",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_TAB_PACKAGE_UNIT_CA_HILDE",
+      "m_ShopDisplay": "FullDisplay",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_UNIT_CA_HILDE",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_UNIT_CA_HILDE"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_NEWBIE",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_NEWBIE",
+      "m_ShopDisplay": "None",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_TIME",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL2_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL2_OFF",
+      "m_HideWhenSoldOut": true,
+      "m_Visible": false,
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_NEWBIE_ONLY_VOL1"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_NEWBIE",
+      "m_TabSubIndex": 1,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_NEWBIE_LIMITED",
+      "m_ShopDisplay": "Card_Special",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_TIME",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_NEWBIE",
+      "m_HideWhenSoldOut": true,
+      "m_Visible": false,
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_NEWBIE_ONLY_VOL1"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_NEWBIE",
+      "m_TabSubIndex": 2,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_NEWBIE_STARTER_V2",
+      "m_ShopDisplay": "Card_Special",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_TIME",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_STARTER",
+      "m_HideWhenSoldOut": true,
+      "m_Visible": false,
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_NEWBIE_STARTER_VOL1_V2"
+      ],
+      "listContentsTagIgnore": [
+        "JPN"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_NEWBIE",
+      "m_TabSubIndex": 2,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_NEWBIE_STARTER_V2",
+      "m_ShopDisplay": "Card_Special",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_TIME",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_STARTER",
+      "m_HideWhenSoldOut": true,
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_PRETERMINATION",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_NEWBIE_STARTER_VOL1_V2"
+      ],
+      "listContentsTagIgnore": [
+        "KOR",
+        "TWN",
+        "SEA",
+        "CHN",
+        "GLOBAL"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_NEWBIE",
+      "m_TabSubIndex": 3,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_NEWBIE_STARTER_V2",
+      "m_ShopDisplay": "Card",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_TIME",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_STARTER",
+      "m_HideWhenSoldOut": true,
+      "m_Visible": false,
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_NEWBIE_STARTER_VER_6_0A"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_TIME_DEAL",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_TIME_DEAL",
+      "m_ShopDisplay": "None",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_TIME",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_HideWhenSoldOut": true,
+      "m_Visible": false,
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_TIME_DEAL"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_TIME_DEAL",
+      "m_TabSubIndex": 1,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_NEWBIE_SPECIAL_PRICE",
+      "m_ShopDisplay": "FullDisplay",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_HideWhenSoldOut": true,
+      "m_Visible": false,
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_TIME_DEAL"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_TIME_DEAL",
+      "m_TabSubIndex": 2,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_NEWBIE_STARTER",
+      "m_ShopDisplay": "FullDisplay",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_HideWhenSoldOut": true,
+      "m_Visible": false,
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_TIME_DEAL"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_TIME_DEAL",
+      "m_TabSubIndex": 3,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_EPISODE_CLEAR",
+      "m_ShopDisplay": "Card_Special",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_HideWhenSoldOut": true,
+      "m_Visible": false,
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_TIME_DEAL"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_TIME_DEAL",
+      "m_TabSubIndex": 4,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_WELCOME_BACK",
+      "m_ShopDisplay": "FullDisplay",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_HideWhenSoldOut": true,
+      "m_Visible": false,
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_TIME_DEAL"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_RECOMMENDED_PACKAGE",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_RECOMMENDED_PACKAGE",
+      "m_ShopDisplay": "None",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_HideWhenSoldOut": true,
+      "m_Visible": false,
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_RECOMMENDED_PACKAGE"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_RECOMMENDED_PACKAGE",
+      "m_TabSubIndex": 1,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_LEVELUP",
+      "m_ShopDisplay": "FullDisplay",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_HideWhenSoldOut": true,
+      "m_Visible": false,
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_RECOMMENDED_PACKAGE"
+      ],
+      "listContentsTagIgnore": [
+        "JPN"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_RECOMMENDED_PACKAGE",
+      "m_TabSubIndex": 1,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_LEVELUP",
+      "m_ShopDisplay": "FullDisplay",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_HideWhenSoldOut": true,
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_PRETERMINATION",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_RECOMMENDED_PACKAGE"
+      ],
+      "listContentsTagIgnore": [
+        "KOR",
+        "TWN",
+        "SEA",
+        "CHN",
+        "GLOBAL"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_RECOMMENDED_PACKAGE",
+      "m_TabSubIndex": 2,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_TAB_PACKAGE_FIRST_PURCHASE",
+      "m_ShopDisplay": "Card_Special",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_TIME",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_FIRST_BUY",
+      "m_HideWhenSoldOut": true,
+      "m_Visible": false,
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_RECOMMENDED_PACKAGE"
+      ],
+      "listContentsTagIgnore": [
+        "KOR",
+        "GLOBAL"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_LAUNCHING",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_LAUNCHING",
+      "m_ShopDisplay": "Card_Special",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_INTERVAL",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_LAUNCHING",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_LAUNCHING_160557"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_SSR_UNIT_CHOICE_2022",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_SSR_UNIT_CHOICE_2022",
+      "m_ShopDisplay": "Card_Special",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_INTERVAL",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_SSR_UNIT_CHOICE_2022",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_SSR_UNIT_CHOICE_2022"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_SSR_UNIT_CHOICE_ALLINONE",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_SSR_UNIT_CHOICE_ALLINONE",
+      "m_ShopDisplay": "Card",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_INTERVAL",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_SSR_UNIT_CHOICE_ALLINONE",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_SSR_UNIT_CHOICE_ALLINONE"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_SKIN_FOOLS_DAY",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_PACKAGE_LIMITED_SKIN_POOLS_DAY",
+      "m_ShopDisplay": "Card",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_INTERVAL",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_KOR_31E_A",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_SKIN_FOOLS_DAY"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_SPECIAL_GROWTH",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_SPECIAL_GROWTH",
+      "m_ShopDisplay": "Card",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_INTERVAL",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TWN_OB23_B",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_SPECIAL_GROWTH"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_LAUNCHING_2YEAR_BASIC",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_LAUNCHING_2YEAR_BASIC",
+      "m_ShopDisplay": "Card",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_INTERVAL",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_LAUNCHING_2YEAR_BASIC",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_LAUNCHING_2YEAR_BASIC"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_EXCEED_TUNER",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_EXCEED_TUNER",
+      "m_ShopDisplay": "Card",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_INTERVAL",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_EXCEED_TUNER",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_EXCEED_TUNER"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_CONTRACT_PKG_MEDAL_V2",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_CONTRACT_PKG_MEDAL_V2",
+      "m_ShopDisplay": "Card_Special",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_INTERVAL",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_CONTRACT_PKG_MEDAL_V2_HOME",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_CONTRACT_PKG_MEDAL_V2_HOME"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_RECRUITMENT",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_RECRUITMENT",
+      "m_ShopDisplay": "Card",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_INTERVAL",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_RECRUITMENT_HOME",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_RECRUITMENT"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_SHIP_SUPPLY",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_SHIP_SUPPLY",
+      "m_ShopDisplay": "Card",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_INTERVAL",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_SHIP_SUPPLY",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_SHIP_SUPPLY"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_LEVEL_UP_202106",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_LEVEL_UP_202106",
+      "m_ShopDisplay": "Card_Special",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_INTERVAL",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_LEVEL_UP_202106_HOME",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_LEVEL_UP_202106"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_SPECIAL",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_SPECIAL",
+      "m_ShopDisplay": "Card_Special",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_INTERVAL",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_TAB_PACKAGE_SPECIAL",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_SPECIAL"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_T5_REPLICA_EQUIP",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_T5_REPLICA_EQUIP",
+      "m_ShopDisplay": "Card_Special",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_INTERVAL",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_T5_REPLICA_EQUIP",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_T5_REPLICA_EQUIP"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_T6_EQUIP_RAID",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_T6_EQUIP_RAID",
+      "m_ShopDisplay": "Card_Special",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_INTERVAL",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_T6_EQUIP_RAID",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_T6_SUPERCONDUCTIVE_EQUIP"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_T6_POLYMER_EQUIP",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_TAB_PACKAGE_T6_POLYMER_EQUIP",
+      "m_ShopDisplay": "Card_Special",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_INTERVAL",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_T6_POLYMER_EQUIP",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_T6_POLYMER_EQUIP"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_ROTATION_V2",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_CASH_ITEM_NAME_TAB_PACKAGE_160279",
+      "m_ShopDisplay": "Card_Special",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_INTERVAL",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_ROTATION_V2_HOME",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_ROTATION_V2"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_UPDATE_NEW_SHIP",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_UPDATE_NEW_SHIP",
+      "m_ShopDisplay": "Card_Special",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_INTERVAL",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_UPDATE_NEW_SHIP",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_UPDATE_NEW_SHIP"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_EQUIP_MANY_UPGRADE",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_EQUIP_MANY_UPGRADE",
+      "m_ShopDisplay": "Card_Special",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_INTERVAL",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_EQUIP_MANY_UPGRADE",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_EQUIP_MANY_UPGRADE"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_EQUIP_MANY_UPGRADE_VOL2",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_EQUIP_MANY_UPGRADE_VOL2",
+      "m_ShopDisplay": "Card_Special",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_INTERVAL",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_EQUIP_MANY_UPGRADE_VOL2_HOME",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_EQUIP_MANY_UPGRADE_VOL2"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_POWER_UP_202108",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_POWER_UP_202108",
+      "m_ShopDisplay": "Card_Special",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_INTERVAL",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_POWER_UP_202108",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_POWER_UP_202108"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_GGST_UNIT_CHOICE_MNM",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_GGST_UNIT_CHOICE_MNM",
+      "m_ShopDisplay": "FullDisplay",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_KOR_33F_A",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_GGST_UNIT_CHOICE_MNM"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_GGST_UNIT_CHOICE_RNI",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_GGST_UNIT_CHOICE_RNI",
+      "m_ShopDisplay": "FullDisplay",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_GGST_UNIT_CHOICE_RNI",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_GGST_UNIT_CHOICE_RNI"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_LAUNCHING_LITE",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_LAUNCHING_LITE",
+      "m_ShopDisplay": "Card_Special",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_ADMIN_LITE",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_LAUNCHING_LITE"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_SPECIAL_QUERTZ",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_SPECIAL_QUERTZ",
+      "m_ShopDisplay": "Card_Special",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_STEPUP_QUERTZ",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_SPECIAL_QUERTZ"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_FIRST_OPERATOR",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_FIRST_OPERATOR",
+      "m_ShopDisplay": "Card",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_FIRST_OPEREATOR",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_FIRST_OPERATOR"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_REMODELING",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_REMODELING",
+      "m_ShopDisplay": "Card_Special",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_KOR_32A_A",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_REMODELING"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_LAUNCHING_NEW_OFFICE",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_LAUNCHING_NEW_OFFICE",
+      "m_ShopDisplay": "FullDisplay",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_LAUNCHING_NEW_OFFICE",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_LAUNCHING_NEW_OFFICE"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_DAILY_SPECIAL_202109",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_TAB_PACKAGE_DAILY_SPECIAL_202109",
+      "m_ShopDisplay": "Card_Special",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_DAILY_SPECIAL_202109",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_DAILY_SPECIAL_202109"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_DAILY_SPECIAL_202110",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_DAILY_SPECIAL_202110",
+      "m_ShopDisplay": "Card_Special",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_DAILY_SPECIAL_202110",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_DAILY_SPECIAL_202110"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_UNIT_CORRUPTED_CA_MINISTRA",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_UNIT_CORRUPTED_CA_MINISTRA",
+      "m_ShopDisplay": "FullDisplay",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_UNIT_CORRUPTED_CA_MINISTRA",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_UNIT_CORRUPTED_CA_MINISTRA"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_UNIT_CA_STREGA_YOO_NA",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_UNIT_CA_STREGA_YOO_NA",
+      "m_ShopDisplay": "FullDisplay",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_UNIT_CA_STREGA_YOO_NA",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_UNIT_CA_STREGA_YOO_NA"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_UNIT_CA_YOO_MI_NA",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_UNIT_CA_YOO_MI_NA",
+      "m_ShopDisplay": "FullDisplay",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_UNIT_CA_YOO_MI_NA"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_UNIT_SIXWING_AMY",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_UNIT_SIXWING_AMY",
+      "m_ShopDisplay": "FullDisplay",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_KOR_33E_A",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_UNIT_SIXWING_AMY"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_UNIT_CA_SEO_YOON",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_VE_PACKAGE_UNIT_CA_SEO_YOON",
+      "m_ShopDisplay": "FullDisplay",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_UNIT_CA_SEO_YOON",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_UNIT_CA_SEO_YOON"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_UNIT_SCAVENGER_MA_EVOLVE",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_VE_PACKAGE_UNIT_SCAVENGER_MA_EVOLVE",
+      "m_ShopDisplay": "FullDisplay",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_UNIT_SCAVENGER_MA_EVOLVE",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_UNIT_SCAVENGER_MA_EVOLVE"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_UNIT_REPLACER_CA",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_UNIT_REPLACER_CA",
+      "m_ShopDisplay": "FullDisplay",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_UNIT_REPLACER_CA",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_UNIT_REPLACER_CA"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_UNIT_CA_JOO_SHI_YOON",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_UNIT_CA_JOO_SHI_YOON",
+      "m_ShopDisplay": "FullDisplay",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_UNIT_CA_JOO_SHI_YOON",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_UNIT_CA_JOO_SHI_YOON"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_CASH_X15",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_CASH_X15",
+      "m_ShopDisplay": "Card_Special",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_CASH_X15_HOME",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_CASH_X15_HOME"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_CONTRACT_202106",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_CONTRACT_202106",
+      "m_ShopDisplay": "Card_Special",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TWN_OB22_A",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_CONTRACT_202106"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_CONTRACT_MAINSTREAM_EP6",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_CONTRACT_MAINSTREAM_EP6",
+      "m_ShopDisplay": "Card_Special",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_CONTRACT_MAINSTREAM_EP6",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_CONTRACT_MAINSTREAM_EP6"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_CONTRACT_STREGA",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_CONTRACT_STREGA",
+      "m_ShopDisplay": "Card_Special",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_CONTRACT_STREGA",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_CONTRACT_STREGA"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_CONTRACT_VACANCE_21",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_CONTRACT_VACANCE_21",
+      "m_ShopDisplay": "Card_Special",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_CONTRACT_VACANCE_21",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_CONTRACT_VACANCE_21"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_CONTRACT_SHADE",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_CONTRACT_SHADE",
+      "m_ShopDisplay": "Card_Special",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_CONTRACT_SHADE",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_CONTRACT_SHADE"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_SPECIAL_MEDAL",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_SPECIAL_MEDAL",
+      "m_ShopDisplay": "Card_Special",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_SPECIAL_MEDAL",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_SPECIAL_MEDAL"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_VALEN_TRAINING",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_VALEN_TRAINING",
+      "m_ShopDisplay": "Card_Special",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_SEA_OB5_B",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_VALEN_TRAINING"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_SPECIAL_TRAINING",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_SPECIAL_TRAINING",
+      "m_ShopDisplay": "Card_Special",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_HideWhenSoldOut": true,
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_SPECIAL_TRAINING",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_SPECIAL_TRAINING"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_OPERATOR_BASIC",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_OPERATOR_BASIC",
+      "m_ShopDisplay": "Card",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_HideWhenSoldOut": true,
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_OPERATOR_BASIC",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_OPERATOR_BASIC"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_POWER_UP_202105",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_POWER_UP_202105",
+      "m_ShopDisplay": "Card_Special",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_HideWhenSoldOut": true,
+      "m_Visible": false,
+      "m_DateStrID": "SHOP_CASH_PACKAGE_TAB_PACKAGE_POWER_UP_202105",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_POWER_UP_202105"
+      ]
+    },
+    {
+      "m_TabID": "TAB_MERGE_CLB",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_MERGE_CLB",
+      "m_ShopDisplay": "Item",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_PackageGroupID": "Item",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_MERGE_CLB"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_ROTATION",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_ROTATION",
+      "m_ShopDisplay": "None",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_HideWhenSoldOut": true,
+      "m_Visible": false,
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_ROTATION"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_ROTATION",
+      "m_TabSubIndex": 1,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_ROTATION",
+      "m_ShopDisplay": "Card",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_HideWhenSoldOut": true,
+      "m_Visible": false,
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_ROTATION"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_ROTATION",
+      "m_TabSubIndex": 2,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_ROTATION_REPEAT",
+      "m_ShopDisplay": "Card_Special",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_HideWhenSoldOut": true,
+      "m_Visible": false,
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_ROTATION_DAILY"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_NEWBIE_SPECIAL_PRICE",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_NEWBIE_SPECIAL_PRICE",
+      "m_ShopDisplay": "FullDisplay",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_HideWhenSoldOut": true,
+      "m_TagImage": "HOT",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_NEWBIE_SPECIAL_PRICE"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_NEWBIE_SPECIAL_PRICE",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_NEWBIE_SPECIAL_PRICE_JPN_ONLY",
+      "m_ShopDisplay": "FullDisplay",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_HideWhenSoldOut": true,
+      "m_TagImage": "HOT",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_NEWBIE_SPECIAL_PRICE_VOL1_JPN_ONLY"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_NEWBIE_STARTER",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_NEWBIE_STARTER",
+      "m_ShopDisplay": "FullDisplay",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_HideWhenSoldOut": true,
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_NEWBIE_STARTER"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_WELCOME_BACK",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_WELCOME_BACK",
+      "m_ShopDisplay": "FullDisplay",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_HideWhenSoldOut": true,
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_WELCOME_BACK"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_MAY_DAY_2021",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_MAY_DAY_2021",
+      "m_ShopDisplay": "FullDisplay",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_DateStrID": "SHOP_CASH_PACKAGE_KOR_33A_A",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_MAY_DAY_2021"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_FIRST_PURCHASE",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_TAB_PACKAGE_FIRST_PURCHASE",
+      "m_ShopDisplay": "Card_Special",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_TIME",
+      "m_HideWhenSoldOut": true,
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_TIME_DEAL_FIRST_PURCHASE_HOME"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_FIXED_CHARGE",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_FIXED_CHARGE",
+      "m_ShopDisplay": "Card",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_FIXED_CHARGE_HOME"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_CONTRACT_CLASSIFIED",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_CONTRACT_CLASSIFIED",
+      "m_ShopDisplay": "Card",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_HideWhenSoldOut": true,
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_CONTRACT_CLASSIFIED"
+      ]
+    },
+    {
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 85,
+      "m_TabName": "SI_SHOP_TAB_SKIN_BUNNY",
+      "m_ShopDisplay": "Skin",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_SKIN",
+      "m_HideWhenSoldOut": true,
+      "m_DateStrID": "SHOP_SKIN_BUNNY",
+      "m_TagImage": "NEW",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_BUNNY"
+      ]
+    },
+    {
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 86,
+      "m_TabName": "SI_SHOP_TAB_SKIN_2ND_ANNIVERSARY",
+      "m_ShopDisplay": "Skin",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_SKIN",
+      "m_HideWhenSoldOut": true,
+      "m_DateStrID": "SHOP_SKIN_2ND_ANNIVERSARY",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_2ND_ANNIVERSARY"
+      ]
+    },
+    {
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 87,
+      "m_TabName": "SI_SHOP_TAB_SKIN_SPORT",
+      "m_ShopDisplay": "Skin",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_SKIN",
+      "m_HideWhenSoldOut": true,
+      "m_DateStrID": "SHOP_SKIN_SPORT",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_SPORT"
+      ]
+    },
+    {
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 88,
+      "m_TabName": "SI_SHOP_TAB_SKIN_FEATURE_NEW_YEAR",
+      "m_ShopDisplay": "Skin",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_SKIN",
+      "m_HideWhenSoldOut": true,
+      "m_DateStrID": "SHOP_SKIN_NEWYEAR_2021",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_NEW_YEAR"
+      ]
+    },
+    {
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 89,
+      "m_TabName": "SI_SHOP_TAB_SKIN_1ST_ANNIVERSARY",
+      "m_ShopDisplay": "Skin",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_SKIN",
+      "m_HideWhenSoldOut": true,
+      "m_DateStrID": "SHOP_SKIN_1ST_ANNIVERSARY",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_1ST_ANNIVERSARY"
+      ]
+    },
+    {
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 90,
+      "m_TabName": "SI_SHOP_TAB_SKIN_CHRISTMAS",
+      "m_ShopDisplay": "Skin",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_SKIN",
+      "m_HideWhenSoldOut": true,
+      "m_DateStrID": "SHOP_SKIN_SPECIAL_CHRISTMAS_HOME",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_CHRISTMAS_home"
+      ]
+    },
+    {
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 91,
+      "m_TabName": "SI_SHOP_TAB_SKIN_HALLOWEEN",
+      "m_ShopDisplay": "Skin",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_SKIN",
+      "m_HideWhenSoldOut": true,
+      "m_DateStrID": "SHOP_SKIN_HALLOWEEN",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_HALLOWEEN"
+      ]
+    },
+    {
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 92,
+      "m_TabName": "SI_SHOP_TAB_SKIN_WEDDING",
+      "m_ShopDisplay": "Skin",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_SKIN",
+      "m_HideWhenSoldOut": true,
+      "m_DateStrID": "SHOP_SKIN_WEDDING_HOME",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_WEDDING"
+      ]
+    },
+    {
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 93,
+      "m_TabName": "SI_SHOP_TAB_SKIN_VACANCE",
+      "m_ShopDisplay": "Skin",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_SKIN",
+      "m_HideWhenSoldOut": true,
+      "m_DateStrID": "SHOP_SKIN_VACENCE_TAB_OPEN",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_VACANCE_LAUNCHING"
+      ]
+    },
+    {
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 94,
+      "m_TabName": "SI_SHOP_TAB_SKIN_CHILD",
+      "m_ShopDisplay": "Skin",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_SKIN",
+      "m_HideWhenSoldOut": true,
+      "m_DateStrID": "SHOP_SKIN_CHILD",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_CHILD"
+      ]
+    },
+    {
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 95,
+      "m_TabName": "SI_SHOP_TAB_SKIN_RACING",
+      "m_ShopDisplay": "Skin",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_SKIN",
+      "m_HideWhenSoldOut": true,
+      "m_DateStrID": "SHOP_SKIN_RACING",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_RACING"
+      ]
+    },
+    {
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 96,
+      "m_TabName": "SI_SHOP_TAB_SKIN_VALEN",
+      "m_ShopDisplay": "Skin",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_SKIN",
+      "m_HideWhenSoldOut": true,
+      "m_DateStrID": "SHOP_SKIN_VALEN",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_VALEN"
+      ]
+    },
+    {
+      "m_TabID": "TAB_SKIN",
+      "m_TabSubIndex": 97,
+      "m_TabName": "SI_SHOP_TAB_SKIN_SPRING",
+      "m_ShopDisplay": "Skin",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_SKIN",
+      "m_HideWhenSoldOut": true,
+      "m_DateStrID": "SHOP_SKIN_SCHOOL",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_SKIN_SPRING"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_LEVELUP",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_LEVELUP",
+      "m_ShopDisplay": "FullDisplay",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_HideWhenSoldOut": true,
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_LEVELUP"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_PLAY",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_PLAY",
+      "m_ShopDisplay": "None",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAB_COMMON_SHOP_TAB_PACKAGE_PLAY"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_PLAY",
+      "m_TabSubIndex": 1,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_PLAY_GROWTH",
+      "m_ShopDisplay": "Card",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_HideWhenSoldOut": true,
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAB_COMMON_SHOP_TAB_PACKAGE_PLAY"
+      ]
+    },
+    {
+      "m_TabID": "TAB_PACKAGE_SHIP_LOCK",
+      "m_TabSubIndex": 0,
+      "m_TabName": "SI_SHOP_TAB_NAME_V3_PACKAGE_SHIP_LOCK",
+      "m_ShopDisplay": "Card",
+      "m_TabImageSelect": "AB_UI_NKM_UI_SHOP_MENU_ICON_PACKAGE",
+      "m_TopBannerText": "SI_SHOP_TOP_BANNER_TAB_PACKAGE_INTERVAL",
+      "m_ImgBGSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_ON",
+      "m_ImgBGUnSelected": "AB_UI_NKM_UI_SHOP_TAB_SPECIAL_OFF",
+      "m_HideWhenSoldOut": true,
+      "m_ResourceTypeID_1": 1,
+      "m_ResourceTypeID_2": 2,
+      "m_ResourceTypeID_3": 101,
+      "m_ResourceTypeID_4": 102,
+      "listContentsTagAllow": [
+        "TAG_COMMON_SHOP_TAB_PACKAGE_SHIP_LOCK"
+      ]
+    }
+  ]
+}

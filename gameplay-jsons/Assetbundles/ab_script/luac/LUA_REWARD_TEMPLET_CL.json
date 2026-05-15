@@ -124,6 +124,10 @@
     },
     {
       "m_RewardGroupID": 10,
+      "m_DateStrID": "DATE_COMMON_EVENT_BINGO_JISOO",
+      "listContentsTagAllow": [
+        "DROP_A_EVENT_BINGO_JISOO"
+      ],
       "m_RewardID": 19013,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "GLOBAL_EVENT_DROP_A",
@@ -131,6 +135,10 @@
     },
     {
       "m_RewardGroupID": 10,
+      "m_DateStrID": "EVENT_BINGO_NEWYEAR",
+      "listContentsTagAllow": [
+        "DROP_A_EVENT_BINGO_NEWYEAR"
+      ],
       "m_RewardID": 19014,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "GLOBAL_EVENT_DROP_A",
@@ -138,6 +146,10 @@
     },
     {
       "m_RewardGroupID": 10,
+      "m_DateStrID": "EVENT_BINGO_AUTUMN",
+      "listContentsTagAllow": [
+        "DROP_A_EVENT_BINGO_AUTUMN"
+      ],
       "m_RewardID": 19018,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "GLOBAL_EVENT_DROP_A",
@@ -145,6 +157,10 @@
     },
     {
       "m_RewardGroupID": 10,
+      "m_DateStrID": "EVENT_BINGO_JAKE",
+      "listContentsTagAllow": [
+        "DROP_A_EVENT_BINGO_JAKE"
+      ],
       "m_RewardID": 19015,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "GLOBAL_EVENT_DROP_A",
@@ -152,6 +168,10 @@
     },
     {
       "m_RewardGroupID": 10,
+      "m_DateStrID": "DATE_COMMON_EVENT_BINGO_LONELY",
+      "listContentsTagAllow": [
+        "DROP_A_EVENT_BINGO_LONELY"
+      ],
       "m_RewardID": 19017,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "GLOBAL_EVENT_DROP_A",
@@ -159,6 +179,10 @@
     },
     {
       "m_RewardGroupID": 10,
+      "m_DateStrID": "DATE_COMMON_EVENT_BINGO_NEWYEAR_2022",
+      "listContentsTagAllow": [
+        "DROP_A_EVENT_BINGO_NEWYEAR_2022"
+      ],
       "m_RewardID": 19019,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "GLOBAL_EVENT_DROP_A",
@@ -166,6 +190,10 @@
     },
     {
       "m_RewardGroupID": 10,
+      "m_DateStrID": "DATE_EVENT_GREMORY_BAR",
+      "listContentsTagAllow": [
+        "DROP_EVENT_GREMORY_BAR"
+      ],
       "m_RewardID": 31073,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "GLOBAL_EVENT_DROP_A",
@@ -173,6 +201,10 @@
     },
     {
       "m_RewardGroupID": 10,
+      "m_DateStrID": "DATE_COMMON_EVENT_BINGO_GAP_2022",
+      "listContentsTagAllow": [
+        "DROP_A_EVENT_BINGO_GAP"
+      ],
       "m_RewardID": 19020,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "GLOBAL_EVENT_DROP_A",
@@ -180,6 +212,10 @@
     },
     {
       "m_RewardGroupID": 10,
+      "m_DateStrID": "DATE_COMMON_EVENT_BINGO_NEWYEAR_2023",
+      "listContentsTagAllow": [
+        "DROP_A_EVENT_BINGO_NEWYEAR_2023"
+      ],
       "m_RewardID": 19023,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "GLOBAL_EVENT_DROP_A",
@@ -187,6 +223,10 @@
     },
     {
       "m_RewardGroupID": 10,
+      "m_DateStrID": "DATE_DROP_EVENT_GLOBAL_EAS_2023",
+      "listContentsTagAllow": [
+        "DROP_A_EVENT_GLOBAL_EAS_2023"
+      ],
       "m_RewardID": 691,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "GLOBAL_EVENT_DROP_A",
@@ -194,6 +234,10 @@
     },
     {
       "m_RewardGroupID": 10,
+      "m_DateStrID": "DATE_COMMON_EVENT_BINGO_FAM_05_2023",
+      "listContentsTagAllow": [
+        "DROP_A_EVENT_BINGO_FAM_05_2023"
+      ],
       "m_RewardID": 19024,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "GLOBAL_EVENT_DROP_A",
@@ -201,6 +245,10 @@
     },
     {
       "m_RewardGroupID": 10,
+      "m_DateStrID": "DATE_DROP_EVENT_GLOBAL_HOLY_DAY_23",
+      "listContentsTagAllow": [
+        "DROP_A_EVENT_GLOBAL_HOLY_DAY_23"
+      ],
       "m_RewardID": 702,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "GLOBAL_EVENT_DROP_A",
@@ -208,6 +256,10 @@
     },
     {
       "m_RewardGroupID": 10,
+      "m_DateStrID": "DATE_COMMON_EVENT_BINGO_NEWYEAR_2024",
+      "listContentsTagAllow": [
+        "DROP_A_EVENT_BINGO_NEWYEAR_2024"
+      ],
       "m_RewardID": 19026,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "GLOBAL_EVENT_DROP_A",
@@ -215,6 +267,10 @@
     },
     {
       "m_RewardGroupID": 10,
+      "m_DateStrID": "DATE_COMMON_EVENT_BINGO_SUMMER_2024",
+      "listContentsTagAllow": [
+        "DROP_A_EVENT_BINGO_SUMMER_2024"
+      ],
       "m_RewardID": 19027,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "GLOBAL_EVENT_DROP_A",
@@ -222,6 +278,10 @@
     },
     {
       "m_RewardGroupID": 10,
+      "m_DateStrID": "DATE_COMMON_EVENT_BINGO_SUMMER_2025",
+      "listContentsTagAllow": [
+        "DROP_A_EVENT_BINGO_SUMMER_2025"
+      ],
       "m_RewardID": 19028,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "GLOBAL_EVENT_DROP_A",
@@ -229,6 +289,10 @@
     },
     {
       "m_RewardGroupID": 11,
+      "m_DateStrID": "DATE_DROP_EVENT_RIBBON",
+      "listContentsTagAllow": [
+        "DROP_B_EVENT_PICNIC"
+      ],
       "m_RewardID": 19004,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "GLOBAL_EVENT_DROP_B",
@@ -236,6 +300,10 @@
     },
     {
       "m_RewardGroupID": 12,
+      "m_DateStrID": "DATE_DROP_EVENT_RIBBON",
+      "listContentsTagAllow": [
+        "DROP_B_EVENT_PICNIC"
+      ],
       "m_RewardID": 19005,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "GLOBAL_EVENT_DROP_C",
@@ -243,6 +311,10 @@
     },
     {
       "m_RewardGroupID": 13,
+      "m_DateStrID": "DATE_DROP_EVENT_RIBBON",
+      "listContentsTagAllow": [
+        "DROP_B_EVENT_PICNIC"
+      ],
       "m_RewardID": 19004,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "GLOBAL_EVENT_DROP_D",
@@ -250,6 +322,10 @@
     },
     {
       "m_RewardGroupID": 13,
+      "m_DateStrID": "DATE_DROP_EVENT_RIBBON",
+      "listContentsTagAllow": [
+        "DROP_B_EVENT_PICNIC"
+      ],
       "m_RewardID": 19005,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "GLOBAL_EVENT_DROP_D",
@@ -257,6 +333,10 @@
     },
     {
       "m_RewardGroupID": 14,
+      "m_DateStrID": "DATE_DROP_EVENT_BALLOON",
+      "listContentsTagAllow": [
+        "DROP_EVENT_BALLOON"
+      ],
       "m_RewardID": 19016,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "GLOBAL_EVENT_DROP_E",
@@ -264,6 +344,10 @@
     },
     {
       "m_RewardGroupID": 111,
+      "m_DateStrID": "DATE_COMMON_MISSION_EVENT_CHUSEOK_2021",
+      "listContentsTagAllow": [
+        "DROP_EVENT_MOON"
+      ],
       "m_RewardID": 633,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "GLOBAL_EVENT_MOON_MAIN_1_N",
@@ -271,6 +355,10 @@
     },
     {
       "m_RewardGroupID": 121,
+      "m_DateStrID": "DATE_COMMON_MISSION_EVENT_CHUSEOK_2021",
+      "listContentsTagAllow": [
+        "DROP_EVENT_MOON"
+      ],
       "m_RewardID": 633,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "GLOBAL_EVENT_MOON_MAIN_2_N",
@@ -278,6 +366,10 @@
     },
     {
       "m_RewardGroupID": 131,
+      "m_DateStrID": "DATE_COMMON_MISSION_EVENT_CHUSEOK_2021",
+      "listContentsTagAllow": [
+        "DROP_EVENT_MOON"
+      ],
       "m_RewardID": 633,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "GLOBAL_EVENT_MOON_MAIN_3_N",
@@ -285,6 +377,10 @@
     },
     {
       "m_RewardGroupID": 141,
+      "m_DateStrID": "DATE_COMMON_MISSION_EVENT_CHUSEOK_2021",
+      "listContentsTagAllow": [
+        "DROP_EVENT_MOON"
+      ],
       "m_RewardID": 633,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "GLOBAL_EVENT_MOON_MAIN_4_N",
@@ -292,6 +388,10 @@
     },
     {
       "m_RewardGroupID": 151,
+      "m_DateStrID": "DATE_COMMON_MISSION_EVENT_CHUSEOK_2021",
+      "listContentsTagAllow": [
+        "DROP_EVENT_MOON"
+      ],
       "m_RewardID": 633,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "GLOBAL_EVENT_MOON_MAIN_5_N",
@@ -299,6 +399,10 @@
     },
     {
       "m_RewardGroupID": 161,
+      "m_DateStrID": "DATE_COMMON_MISSION_EVENT_CHUSEOK_2021",
+      "listContentsTagAllow": [
+        "DROP_EVENT_MOON"
+      ],
       "m_RewardID": 633,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "GLOBAL_EVENT_MOON_MAIN_6_N",
@@ -306,6 +410,10 @@
     },
     {
       "m_RewardGroupID": 171,
+      "m_DateStrID": "DATE_COMMON_MISSION_EVENT_CHUSEOK_2021",
+      "listContentsTagAllow": [
+        "DROP_EVENT_MOON"
+      ],
       "m_RewardID": 633,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "GLOBAL_EVENT_MOON_MAIN_7_N",
@@ -313,6 +421,10 @@
     },
     {
       "m_RewardGroupID": 112,
+      "m_DateStrID": "DATE_COMMON_MISSION_EVENT_CHUSEOK_2021",
+      "listContentsTagAllow": [
+        "DROP_EVENT_MOON"
+      ],
       "m_RewardID": 633,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "GLOBAL_EVENT_MOON_MAIN_1_H",
@@ -320,6 +432,10 @@
     },
     {
       "m_RewardGroupID": 122,
+      "m_DateStrID": "DATE_COMMON_MISSION_EVENT_CHUSEOK_2021",
+      "listContentsTagAllow": [
+        "DROP_EVENT_MOON"
+      ],
       "m_RewardID": 633,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "GLOBAL_EVENT_MOON_MAIN_2_H",
@@ -327,6 +443,10 @@
     },
     {
       "m_RewardGroupID": 132,
+      "m_DateStrID": "DATE_COMMON_MISSION_EVENT_CHUSEOK_2021",
+      "listContentsTagAllow": [
+        "DROP_EVENT_MOON"
+      ],
       "m_RewardID": 633,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "GLOBAL_EVENT_MOON_MAIN_3_H",
@@ -334,6 +454,10 @@
     },
     {
       "m_RewardGroupID": 142,
+      "m_DateStrID": "DATE_COMMON_MISSION_EVENT_CHUSEOK_2021",
+      "listContentsTagAllow": [
+        "DROP_EVENT_MOON"
+      ],
       "m_RewardID": 633,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "GLOBAL_EVENT_MOON_MAIN_4_H",
@@ -341,6 +465,10 @@
     },
     {
       "m_RewardGroupID": 152,
+      "m_DateStrID": "DATE_COMMON_MISSION_EVENT_CHUSEOK_2021",
+      "listContentsTagAllow": [
+        "DROP_EVENT_MOON"
+      ],
       "m_RewardID": 633,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "GLOBAL_EVENT_MOON_MAIN_5_H",
@@ -348,6 +476,10 @@
     },
     {
       "m_RewardGroupID": 211,
+      "m_DateStrID": "DATE_COMMON_MISSION_EVENT_CHUSEOK_2021",
+      "listContentsTagAllow": [
+        "DROP_EVENT_MOON"
+      ],
       "m_RewardID": 633,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "GLOBAL_EVENT_MOON_FIELD_1_N",
@@ -355,6 +487,10 @@
     },
     {
       "m_RewardGroupID": 221,
+      "m_DateStrID": "DATE_COMMON_MISSION_EVENT_CHUSEOK_2021",
+      "listContentsTagAllow": [
+        "DROP_EVENT_MOON"
+      ],
       "m_RewardID": 633,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "GLOBAL_EVENT_MOON_FIELD_2_N",
@@ -362,6 +498,10 @@
     },
     {
       "m_RewardGroupID": 231,
+      "m_DateStrID": "DATE_COMMON_MISSION_EVENT_CHUSEOK_2021",
+      "listContentsTagAllow": [
+        "DROP_EVENT_MOON"
+      ],
       "m_RewardID": 633,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "GLOBAL_EVENT_MOON_FIELD_3_N",
@@ -369,6 +509,10 @@
     },
     {
       "m_RewardGroupID": 241,
+      "m_DateStrID": "DATE_COMMON_MISSION_EVENT_CHUSEOK_2021",
+      "listContentsTagAllow": [
+        "DROP_EVENT_MOON"
+      ],
       "m_RewardID": 633,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "GLOBAL_EVENT_MOON_FIELD_C_N",
@@ -404,6 +548,7 @@
     },
     {
       "m_RewardGroupID": 301,
+      "m_DateStrID": "DATE_DROP_EVENT_NANAHARA",
       "m_RewardID": 675,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_NANAHARA_R_1_1",
@@ -411,6 +556,7 @@
     },
     {
       "m_RewardGroupID": 302,
+      "m_DateStrID": "DATE_DROP_EVENT_NANAHARA",
       "m_RewardID": 675,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_NANAHARA_R_1_2",
@@ -418,6 +564,7 @@
     },
     {
       "m_RewardGroupID": 303,
+      "m_DateStrID": "DATE_DROP_EVENT_NANAHARA",
       "m_RewardID": 675,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_NANAHARA_R_1_3",
@@ -425,6 +572,7 @@
     },
     {
       "m_RewardGroupID": 304,
+      "m_DateStrID": "DATE_DROP_EVENT_NANAHARA",
       "m_RewardID": 675,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_NANAHARA_R_2_1",
@@ -432,6 +580,7 @@
     },
     {
       "m_RewardGroupID": 305,
+      "m_DateStrID": "DATE_DROP_EVENT_NANAHARA",
       "m_RewardID": 675,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_NANAHARA_R_2_2",
@@ -439,6 +588,7 @@
     },
     {
       "m_RewardGroupID": 306,
+      "m_DateStrID": "DATE_DROP_EVENT_NANAHARA",
       "m_RewardID": 675,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_NANAHARA_R_2_3",
@@ -446,6 +596,7 @@
     },
     {
       "m_RewardGroupID": 307,
+      "m_DateStrID": "DATE_DROP_EVENT_NANAHARA",
       "m_RewardID": 675,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_NANAHARA_R_3_1",
@@ -453,6 +604,7 @@
     },
     {
       "m_RewardGroupID": 308,
+      "m_DateStrID": "DATE_DROP_EVENT_NANAHARA",
       "m_RewardID": 675,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_NANAHARA_R_3_2",
@@ -460,6 +612,7 @@
     },
     {
       "m_RewardGroupID": 309,
+      "m_DateStrID": "DATE_DROP_EVENT_NANAHARA",
       "m_RewardID": 675,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_NANAHARA_R_3_3",
@@ -467,6 +620,7 @@
     },
     {
       "m_RewardGroupID": 310,
+      "m_DateStrID": "DATE_DROP_EVENT_NANAHARA",
       "m_RewardID": 675,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_NANAHARA_R_3_4",
@@ -474,6 +628,7 @@
     },
     {
       "m_RewardGroupID": 311,
+      "m_DateStrID": "DATE_DROP_EVENT_NANAHARA",
       "m_RewardID": 675,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_NANAHARA_R_4_1",
@@ -481,6 +636,7 @@
     },
     {
       "m_RewardGroupID": 312,
+      "m_DateStrID": "DATE_DROP_EVENT_NANAHARA",
       "m_RewardID": 675,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_NANAHARA_R_4_2",
@@ -488,6 +644,7 @@
     },
     {
       "m_RewardGroupID": 313,
+      "m_DateStrID": "DATE_DROP_EVENT_NANAHARA",
       "m_RewardID": 675,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_NANAHARA_R_4_3",
@@ -495,6 +652,7 @@
     },
     {
       "m_RewardGroupID": 314,
+      "m_DateStrID": "DATE_DROP_EVENT_NANAHARA",
       "m_RewardID": 675,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_NANAHARA_R_1_1_HM",
@@ -502,6 +660,7 @@
     },
     {
       "m_RewardGroupID": 315,
+      "m_DateStrID": "DATE_DROP_EVENT_CARNIVAL",
       "m_RewardID": 678,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_CARNIVAL_R_1_2",
@@ -509,6 +668,7 @@
     },
     {
       "m_RewardGroupID": 316,
+      "m_DateStrID": "DATE_DROP_EVENT_CARNIVAL",
       "m_RewardID": 678,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_CARNIVAL_R_2_1",
@@ -516,6 +676,7 @@
     },
     {
       "m_RewardGroupID": 317,
+      "m_DateStrID": "DATE_DROP_EVENT_CARNIVAL",
       "m_RewardID": 678,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_CARNIVAL_R_2_2",
@@ -523,6 +684,7 @@
     },
     {
       "m_RewardGroupID": 318,
+      "m_DateStrID": "DATE_DROP_EVENT_CARNIVAL",
       "m_RewardID": 678,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_CARNIVAL_R_3_1",
@@ -530,6 +692,7 @@
     },
     {
       "m_RewardGroupID": 319,
+      "m_DateStrID": "DATE_DROP_EVENT_CARNIVAL",
       "m_RewardID": 678,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_CARNIVAL_R_3_2",
@@ -537,6 +700,7 @@
     },
     {
       "m_RewardGroupID": 320,
+      "m_DateStrID": "DATE_DROP_EVENT_CARNIVAL",
       "m_RewardID": 678,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_CARNIVAL_R_3_3",
@@ -544,6 +708,7 @@
     },
     {
       "m_RewardGroupID": 321,
+      "m_DateStrID": "DATE_DROP_EVENT_CARNIVAL",
       "m_RewardID": 678,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_CARNIVAL_R_3_4",
@@ -551,6 +716,7 @@
     },
     {
       "m_RewardGroupID": 322,
+      "m_DateStrID": "DATE_DROP_EVENT_CARNIVAL",
       "m_RewardID": 678,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_CARNIVAL_R_3_5",
@@ -558,6 +724,7 @@
     },
     {
       "m_RewardGroupID": 323,
+      "m_DateStrID": "DATE_DROP_EVENT_CARNIVAL",
       "m_RewardID": 678,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_CARNIVAL_R_4_1",
@@ -565,6 +732,7 @@
     },
     {
       "m_RewardGroupID": 324,
+      "m_DateStrID": "DATE_DROP_EVENT_CARNIVAL",
       "m_RewardID": 678,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_CARNIVAL_R_4_2",
@@ -572,6 +740,7 @@
     },
     {
       "m_RewardGroupID": 325,
+      "m_DateStrID": "DATE_DROP_EVENT_CARNIVAL",
       "m_RewardID": 678,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_CARNIVAL_R_5_1",
@@ -579,6 +748,7 @@
     },
     {
       "m_RewardGroupID": 326,
+      "m_DateStrID": "DATE_DROP_EVENT_CARNIVAL",
       "m_RewardID": 678,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_CARNIVAL_R_5_2",
@@ -586,6 +756,7 @@
     },
     {
       "m_RewardGroupID": 327,
+      "m_DateStrID": "DATE_DROP_EVENT_CARNIVAL",
       "m_RewardID": 678,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_CARNIVAL_R_6_1",
@@ -593,6 +764,7 @@
     },
     {
       "m_RewardGroupID": 328,
+      "m_DateStrID": "DATE_DROP_EVENT_CARNIVAL",
       "m_RewardID": 678,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_CARNIVAL_R_6_2",
@@ -600,6 +772,7 @@
     },
     {
       "m_RewardGroupID": 329,
+      "m_DateStrID": "DATE_DROP_EVENT_CARNIVAL",
       "m_RewardID": 678,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_CARNIVAL_R_1_1_HM",
@@ -607,6 +780,7 @@
     },
     {
       "m_RewardGroupID": 330,
+      "m_DateStrID": "DATE_DROP_EVENT_ESPR2",
       "m_RewardID": 682,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_ESPR2_R_1_1",
@@ -614,6 +788,7 @@
     },
     {
       "m_RewardGroupID": 331,
+      "m_DateStrID": "DATE_DROP_EVENT_ESPR2",
       "m_RewardID": 682,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_ESPR2_R_1_2",
@@ -621,6 +796,7 @@
     },
     {
       "m_RewardGroupID": 332,
+      "m_DateStrID": "DATE_DROP_EVENT_ESPR2",
       "m_RewardID": 682,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_ESPR2_R_1_3",
@@ -628,6 +804,7 @@
     },
     {
       "m_RewardGroupID": 333,
+      "m_DateStrID": "DATE_DROP_EVENT_ESPR2",
       "m_RewardID": 682,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_ESPR2_R_2_1",
@@ -635,6 +812,7 @@
     },
     {
       "m_RewardGroupID": 334,
+      "m_DateStrID": "DATE_DROP_EVENT_ESPR2",
       "m_RewardID": 682,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_ESPR2_R_2_2",
@@ -642,6 +820,7 @@
     },
     {
       "m_RewardGroupID": 335,
+      "m_DateStrID": "DATE_DROP_EVENT_ESPR2",
       "m_RewardID": 682,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_ESPR2_R_3_1",
@@ -649,6 +828,7 @@
     },
     {
       "m_RewardGroupID": 336,
+      "m_DateStrID": "DATE_DROP_EVENT_ESPR2",
       "m_RewardID": 682,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_ESPR2_R_3_2",
@@ -656,6 +836,7 @@
     },
     {
       "m_RewardGroupID": 337,
+      "m_DateStrID": "DATE_DROP_EVENT_ESPR2",
       "m_RewardID": 682,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_ESPR2_R_4_1",
@@ -663,6 +844,7 @@
     },
     {
       "m_RewardGroupID": 338,
+      "m_DateStrID": "DATE_DROP_EVENT_ESPR2",
       "m_RewardID": 682,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_ESPR2_R_4_2",
@@ -670,6 +852,7 @@
     },
     {
       "m_RewardGroupID": 339,
+      "m_DateStrID": "DATE_DROP_EVENT_ESPR2",
       "m_RewardID": 682,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_ESPR2_R_4_3",
@@ -677,6 +860,7 @@
     },
     {
       "m_RewardGroupID": 340,
+      "m_DateStrID": "DATE_DROP_EVENT_ESPR2",
       "m_RewardID": 682,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_ESPR2_R_5_1",
@@ -684,6 +868,7 @@
     },
     {
       "m_RewardGroupID": 341,
+      "m_DateStrID": "DATE_DROP_EVENT_ESPR2",
       "m_RewardID": 682,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_ESPR2_R_5_2",
@@ -691,6 +876,7 @@
     },
     {
       "m_RewardGroupID": 342,
+      "m_DateStrID": "DATE_DROP_EVENT_ESPR2",
       "m_RewardID": 682,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_ESPR2_R_6_1",
@@ -698,6 +884,7 @@
     },
     {
       "m_RewardGroupID": 343,
+      "m_DateStrID": "DATE_DROP_EVENT_ESPR2",
       "m_RewardID": 682,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_ESPR2_R_6_2",
@@ -705,6 +892,7 @@
     },
     {
       "m_RewardGroupID": 344,
+      "m_DateStrID": "DATE_DROP_EVENT_ESPR2",
       "m_RewardID": 682,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_ESPR2_R_6_3",
@@ -712,6 +900,7 @@
     },
     {
       "m_RewardGroupID": 345,
+      "m_DateStrID": "DATE_DROP_EVENT_ESPR2",
       "m_RewardID": 682,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_ESPR2_R_7_1",
@@ -719,6 +908,7 @@
     },
     {
       "m_RewardGroupID": 346,
+      "m_DateStrID": "DATE_DROP_EVENT_ESPR2",
       "m_RewardID": 682,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_ESPR2_R_7_2",
@@ -726,6 +916,7 @@
     },
     {
       "m_RewardGroupID": 347,
+      "m_DateStrID": "DATE_DROP_EVENT_ESPR2",
       "m_RewardID": 682,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_ESPR2_R_7_3",
@@ -733,6 +924,7 @@
     },
     {
       "m_RewardGroupID": 348,
+      "m_DateStrID": "DATE_DROP_EVENT_ESPR2",
       "m_RewardID": 682,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_ESPR2_R_1_1_HM",
@@ -740,6 +932,7 @@
     },
     {
       "m_RewardGroupID": 349,
+      "m_DateStrID": "DATE_DROP_EVENT_KINGDOM",
       "m_RewardID": 680,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "NKM_DUNGEON_SS_KINGDOM_R_1_1",
@@ -747,6 +940,7 @@
     },
     {
       "m_RewardGroupID": 350,
+      "m_DateStrID": "DATE_DROP_EVENT_KINGDOM",
       "m_RewardID": 680,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "NKM_DUNGEON_SS_KINGDOM_R_1_2",
@@ -754,6 +948,7 @@
     },
     {
       "m_RewardGroupID": 351,
+      "m_DateStrID": "DATE_DROP_EVENT_KINGDOM",
       "m_RewardID": 680,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "NKM_DUNGEON_SS_KINGDOM_R_1_3",
@@ -761,6 +956,7 @@
     },
     {
       "m_RewardGroupID": 352,
+      "m_DateStrID": "DATE_DROP_EVENT_KINGDOM",
       "m_RewardID": 680,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "NKM_DUNGEON_SS_KINGDOM_R_1_4",
@@ -768,6 +964,7 @@
     },
     {
       "m_RewardGroupID": 353,
+      "m_DateStrID": "DATE_DROP_EVENT_KINGDOM",
       "m_RewardID": 680,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "NKM_DUNGEON_SS_KINGDOM_R_2_1",
@@ -775,6 +972,7 @@
     },
     {
       "m_RewardGroupID": 354,
+      "m_DateStrID": "DATE_DROP_EVENT_KINGDOM",
       "m_RewardID": 680,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "NKM_DUNGEON_SS_KINGDOM_R_2_2",
@@ -782,6 +980,7 @@
     },
     {
       "m_RewardGroupID": 355,
+      "m_DateStrID": "DATE_DROP_EVENT_KINGDOM",
       "m_RewardID": 680,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "NKM_DUNGEON_SS_KINGDOM_R_2_3",
@@ -789,6 +988,7 @@
     },
     {
       "m_RewardGroupID": 356,
+      "m_DateStrID": "DATE_DROP_EVENT_KINGDOM",
       "m_RewardID": 680,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "NKM_DUNGEON_SS_KINGDOM_R_3_1",
@@ -796,6 +996,7 @@
     },
     {
       "m_RewardGroupID": 357,
+      "m_DateStrID": "DATE_DROP_EVENT_KINGDOM",
       "m_RewardID": 680,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "NKM_DUNGEON_SS_KINGDOM_R_3_2",
@@ -803,6 +1004,7 @@
     },
     {
       "m_RewardGroupID": 358,
+      "m_DateStrID": "DATE_DROP_EVENT_KINGDOM",
       "m_RewardID": 680,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "NKM_DUNGEON_SS_KINGDOM_R_3_3",
@@ -810,6 +1012,7 @@
     },
     {
       "m_RewardGroupID": 359,
+      "m_DateStrID": "DATE_DROP_EVENT_KINGDOM",
       "m_RewardID": 680,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "NKM_DUNGEON_SS_KINGDOM_R_3_4",
@@ -817,6 +1020,7 @@
     },
     {
       "m_RewardGroupID": 360,
+      "m_DateStrID": "DATE_DROP_EVENT_KINGDOM",
       "m_RewardID": 680,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "NKM_DUNGEON_SS_KINGDOM_R_3_5",
@@ -824,6 +1028,7 @@
     },
     {
       "m_RewardGroupID": 361,
+      "m_DateStrID": "DATE_DROP_EVENT_KINGDOM",
       "m_RewardID": 680,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "NKM_DUNGEON_SS_KINGDOM_R_3_6",
@@ -831,6 +1036,7 @@
     },
     {
       "m_RewardGroupID": 362,
+      "m_DateStrID": "DATE_DROP_EVENT_KINGDOM",
       "m_RewardID": 680,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "NKM_DUNGEON_SS_KINGDOM_R_1_1_HM",
@@ -838,6 +1044,7 @@
     },
     {
       "m_RewardGroupID": 363,
+      "m_DateStrID": "DATE_DROP_EVENT_NEVERLAND",
       "m_RewardID": 681,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_NEVERLAND_R_1_1",
@@ -845,6 +1052,7 @@
     },
     {
       "m_RewardGroupID": 364,
+      "m_DateStrID": "DATE_DROP_EVENT_NEVERLAND",
       "m_RewardID": 681,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_NEVERLAND_R_1_2",
@@ -852,6 +1060,7 @@
     },
     {
       "m_RewardGroupID": 365,
+      "m_DateStrID": "DATE_DROP_EVENT_NEVERLAND",
       "m_RewardID": 681,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_NEVERLAND_R_1_3",
@@ -859,6 +1068,7 @@
     },
     {
       "m_RewardGroupID": 366,
+      "m_DateStrID": "DATE_DROP_EVENT_NEVERLAND",
       "m_RewardID": 681,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_NEVERLAND_R_2_1",
@@ -866,6 +1076,7 @@
     },
     {
       "m_RewardGroupID": 367,
+      "m_DateStrID": "DATE_DROP_EVENT_NEVERLAND",
       "m_RewardID": 681,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_NEVERLAND_R_2_2",
@@ -873,6 +1084,7 @@
     },
     {
       "m_RewardGroupID": 368,
+      "m_DateStrID": "DATE_DROP_EVENT_NEVERLAND",
       "m_RewardID": 681,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_NEVERLAND_R_2_3",
@@ -880,6 +1092,7 @@
     },
     {
       "m_RewardGroupID": 369,
+      "m_DateStrID": "DATE_DROP_EVENT_NEVERLAND",
       "m_RewardID": 681,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_NEVERLAND_3_1",
@@ -887,6 +1100,7 @@
     },
     {
       "m_RewardGroupID": 370,
+      "m_DateStrID": "DATE_DROP_EVENT_NEVERLAND",
       "m_RewardID": 681,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_NEVERLAND_3_2",
@@ -894,6 +1108,7 @@
     },
     {
       "m_RewardGroupID": 371,
+      "m_DateStrID": "DATE_DROP_EVENT_NEVERLAND",
       "m_RewardID": 681,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_NEVERLAND_1_1_HM",
@@ -901,6 +1116,7 @@
     },
     {
       "m_RewardGroupID": 372,
+      "m_DateStrID": "DATE_DROP_EVENT_GAMECIRCLE",
       "m_RewardID": 683,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_GAMECIRCLE_1_1",
@@ -908,6 +1124,7 @@
     },
     {
       "m_RewardGroupID": 373,
+      "m_DateStrID": "DATE_DROP_EVENT_GAMECIRCLE",
       "m_RewardID": 683,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_GAMECIRCLE_1_2",
@@ -915,6 +1132,7 @@
     },
     {
       "m_RewardGroupID": 374,
+      "m_DateStrID": "DATE_DROP_EVENT_GAMECIRCLE",
       "m_RewardID": 683,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_GAMECIRCLE_2_1",
@@ -922,6 +1140,7 @@
     },
     {
       "m_RewardGroupID": 375,
+      "m_DateStrID": "DATE_DROP_EVENT_GAMECIRCLE",
       "m_RewardID": 683,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_GAMECIRCLE_2_2",
@@ -929,6 +1148,7 @@
     },
     {
       "m_RewardGroupID": 376,
+      "m_DateStrID": "DATE_DROP_EVENT_GAMECIRCLE",
       "m_RewardID": 683,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_GAMECIRCLE_2_3",
@@ -936,6 +1156,7 @@
     },
     {
       "m_RewardGroupID": 377,
+      "m_DateStrID": "DATE_DROP_EVENT_GAMECIRCLE",
       "m_RewardID": 683,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_GAMECIRCLE_3_1",
@@ -943,6 +1164,7 @@
     },
     {
       "m_RewardGroupID": 378,
+      "m_DateStrID": "DATE_DROP_EVENT_GAMECIRCLE",
       "m_RewardID": 683,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_GAMECIRCLE_1_1_HM",
@@ -950,6 +1172,7 @@
     },
     {
       "m_RewardGroupID": 379,
+      "m_DateStrID": "DATE_DROP_EVENT_CHARADE",
       "m_RewardID": 690,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_CHARADE_2_1",
@@ -957,6 +1180,7 @@
     },
     {
       "m_RewardGroupID": 380,
+      "m_DateStrID": "DATE_DROP_EVENT_CHARADE",
       "m_RewardID": 690,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_CHARADE_2_2",
@@ -964,6 +1188,7 @@
     },
     {
       "m_RewardGroupID": 381,
+      "m_DateStrID": "DATE_DROP_EVENT_CHARADE",
       "m_RewardID": 690,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_CHARADE_3_1",
@@ -971,6 +1196,7 @@
     },
     {
       "m_RewardGroupID": 382,
+      "m_DateStrID": "DATE_DROP_EVENT_CHARADE",
       "m_RewardID": 690,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_CHARADE_3_2",
@@ -978,6 +1204,7 @@
     },
     {
       "m_RewardGroupID": 383,
+      "m_DateStrID": "DATE_DROP_EVENT_CHARADE",
       "m_RewardID": 690,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_CHARADE_3_3",
@@ -985,6 +1212,7 @@
     },
     {
       "m_RewardGroupID": 384,
+      "m_DateStrID": "DATE_DROP_EVENT_CHARADE",
       "m_RewardID": 690,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_CHARADE_4_1",
@@ -992,6 +1220,7 @@
     },
     {
       "m_RewardGroupID": 385,
+      "m_DateStrID": "DATE_DROP_EVENT_CHARADE",
       "m_RewardID": 690,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_CHARADE_4_2",
@@ -999,6 +1228,7 @@
     },
     {
       "m_RewardGroupID": 386,
+      "m_DateStrID": "DATE_DROP_EVENT_CHARADE",
       "m_RewardID": 690,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_CHARADE_4_3",
@@ -1006,6 +1236,7 @@
     },
     {
       "m_RewardGroupID": 387,
+      "m_DateStrID": "DATE_DROP_EVENT_CHARADE",
       "m_RewardID": 690,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_CHARADE_1_1_HM",
@@ -1013,6 +1244,7 @@
     },
     {
       "m_RewardGroupID": 388,
+      "m_DateStrID": "DATE_DROP_EVENT_EXILER",
       "m_RewardID": 692,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_EXILER_1_1",
@@ -1020,6 +1252,7 @@
     },
     {
       "m_RewardGroupID": 389,
+      "m_DateStrID": "DATE_DROP_EVENT_EXILER",
       "m_RewardID": 692,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_EXILER_1_2",
@@ -1027,6 +1260,7 @@
     },
     {
       "m_RewardGroupID": 390,
+      "m_DateStrID": "DATE_DROP_EVENT_EXILER",
       "m_RewardID": 692,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_EXILER_1_3",
@@ -1034,6 +1268,7 @@
     },
     {
       "m_RewardGroupID": 391,
+      "m_DateStrID": "DATE_DROP_EVENT_EXILER",
       "m_RewardID": 692,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_EXILER_1_4",
@@ -1041,6 +1276,7 @@
     },
     {
       "m_RewardGroupID": 392,
+      "m_DateStrID": "DATE_DROP_EVENT_EXILER",
       "m_RewardID": 692,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_EXILER_2_1",
@@ -1048,6 +1284,7 @@
     },
     {
       "m_RewardGroupID": 393,
+      "m_DateStrID": "DATE_DROP_EVENT_EXILER",
       "m_RewardID": 692,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_EXILER_2_2",
@@ -1055,6 +1292,7 @@
     },
     {
       "m_RewardGroupID": 394,
+      "m_DateStrID": "DATE_DROP_EVENT_EXILER",
       "m_RewardID": 692,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_EXILER_2_3",
@@ -1062,6 +1300,7 @@
     },
     {
       "m_RewardGroupID": 395,
+      "m_DateStrID": "DATE_DROP_EVENT_EXILER",
       "m_RewardID": 692,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_EXILER_2_4",
@@ -1069,6 +1308,7 @@
     },
     {
       "m_RewardGroupID": 396,
+      "m_DateStrID": "DATE_DROP_EVENT_EXILER",
       "m_RewardID": 692,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_EXILER_3_1",
@@ -1076,6 +1316,7 @@
     },
     {
       "m_RewardGroupID": 397,
+      "m_DateStrID": "DATE_DROP_EVENT_EXILER",
       "m_RewardID": 692,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_EXILER_3_2",
@@ -1083,6 +1324,7 @@
     },
     {
       "m_RewardGroupID": 398,
+      "m_DateStrID": "DATE_DROP_EVENT_EXILER",
       "m_RewardID": 692,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_EXILER_3_3",
@@ -1090,6 +1332,7 @@
     },
     {
       "m_RewardGroupID": 399,
+      "m_DateStrID": "DATE_DROP_EVENT_EXILER",
       "m_RewardID": 692,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_EXILER_3_4",
@@ -1097,6 +1340,7 @@
     },
     {
       "m_RewardGroupID": 400,
+      "m_DateStrID": "DATE_DROP_EVENT_EXILER",
       "m_RewardID": 692,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_EXILER_1_1_HM",
@@ -1104,6 +1348,7 @@
     },
     {
       "m_RewardGroupID": 401,
+      "m_DateStrID": "DATE_DROP_EVENT_NANAHARA2",
       "m_RewardID": 684,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_EVENT_NANAHARA2_1_1",
@@ -1111,6 +1356,7 @@
     },
     {
       "m_RewardGroupID": 402,
+      "m_DateStrID": "DATE_DROP_EVENT_NANAHARA2",
       "m_RewardID": 684,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_EVENT_NANAHARA2_1_2",
@@ -1118,6 +1364,7 @@
     },
     {
       "m_RewardGroupID": 403,
+      "m_DateStrID": "DATE_DROP_EVENT_NANAHARA2",
       "m_RewardID": 684,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_EVENT_NANAHARA2_1_3",
@@ -1125,6 +1372,7 @@
     },
     {
       "m_RewardGroupID": 404,
+      "m_DateStrID": "DATE_DROP_EVENT_NANAHARA2",
       "m_RewardID": 684,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_EVENT_NANAHARA2_1_4",
@@ -1132,6 +1380,7 @@
     },
     {
       "m_RewardGroupID": 405,
+      "m_DateStrID": "DATE_DROP_EVENT_NANAHARA2",
       "m_RewardID": 684,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_EVENT_NANAHARA2_1_5",
@@ -1139,6 +1388,7 @@
     },
     {
       "m_RewardGroupID": 406,
+      "m_DateStrID": "DATE_DROP_EVENT_NANAHARA2",
       "m_RewardID": 684,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_EVENT_NANAHARA2_1_6",
@@ -1146,6 +1396,7 @@
     },
     {
       "m_RewardGroupID": 407,
+      "m_DateStrID": "DATE_DROP_EVENT_NANAHARA2",
       "m_RewardID": 684,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_EVENT_NANAHARA2_2_1",
@@ -1153,6 +1404,7 @@
     },
     {
       "m_RewardGroupID": 408,
+      "m_DateStrID": "DATE_DROP_EVENT_NANAHARA2",
       "m_RewardID": 684,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_EVENT_NANAHARA2_2_2",
@@ -1160,6 +1412,7 @@
     },
     {
       "m_RewardGroupID": 409,
+      "m_DateStrID": "DATE_DROP_EVENT_NANAHARA2",
       "m_RewardID": 684,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_EVENT_NANAHARA2_2_3",
@@ -1167,6 +1420,7 @@
     },
     {
       "m_RewardGroupID": 410,
+      "m_DateStrID": "DATE_DROP_EVENT_NANAHARA2",
       "m_RewardID": 684,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_EVENT_NANAHARA2_2_4",
@@ -1174,6 +1428,7 @@
     },
     {
       "m_RewardGroupID": 411,
+      "m_DateStrID": "DATE_DROP_EVENT_NANAHARA2",
       "m_RewardID": 684,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_EVENT_NANAHARA2_2_5",
@@ -1181,6 +1436,7 @@
     },
     {
       "m_RewardGroupID": 412,
+      "m_DateStrID": "DATE_DROP_EVENT_NANAHARA2",
       "m_RewardID": 684,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_EVENT_NANAHARA2_3_1",
@@ -1188,6 +1444,7 @@
     },
     {
       "m_RewardGroupID": 413,
+      "m_DateStrID": "DATE_DROP_EVENT_NANAHARA2",
       "m_RewardID": 684,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_EVENT_NANAHARA2_3_2",
@@ -1195,6 +1452,7 @@
     },
     {
       "m_RewardGroupID": 414,
+      "m_DateStrID": "DATE_DROP_EVENT_NANAHARA2",
       "m_RewardID": 684,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_EVENT_NANAHARA2_3_3",
@@ -1202,6 +1460,7 @@
     },
     {
       "m_RewardGroupID": 415,
+      "m_DateStrID": "DATE_DROP_EVENT_NANAHARA2",
       "m_RewardID": 684,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_EVENT_NANAHARA2_3_4",
@@ -1209,6 +1468,7 @@
     },
     {
       "m_RewardGroupID": 416,
+      "m_DateStrID": "DATE_DROP_EVENT_NANAHARA2",
       "m_RewardID": 684,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_EVENT_NANAHARA2_3_5",
@@ -1216,6 +1476,7 @@
     },
     {
       "m_RewardGroupID": 417,
+      "m_DateStrID": "DATE_DROP_EVENT_NANAHARA2",
       "m_RewardID": 684,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_EVENT_NANAHARA2_3_6",
@@ -1223,6 +1484,7 @@
     },
     {
       "m_RewardGroupID": 418,
+      "m_DateStrID": "DATE_DROP_EVENT_NANAHARA2",
       "m_RewardID": 684,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_EVENT_NANAHARA2_3_7",
@@ -1230,6 +1492,7 @@
     },
     {
       "m_RewardGroupID": 419,
+      "m_DateStrID": "DATE_DROP_EVENT_NANAHARA2",
       "m_RewardID": 684,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_EVENT_NANAHARA2_3_8",
@@ -1237,6 +1500,7 @@
     },
     {
       "m_RewardGroupID": 420,
+      "m_DateStrID": "DATE_DROP_EVENT_NANAHARA2",
       "m_RewardID": 684,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_NANAHARA2_R_1_1_HM",
@@ -1244,6 +1508,7 @@
     },
     {
       "m_RewardGroupID": 421,
+      "m_DateStrID": "DATE_DROP_EVENT_NIGHTMARE",
       "m_RewardID": 679,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_EVENT_NIGHTMARE_1_1",
@@ -1251,6 +1516,7 @@
     },
     {
       "m_RewardGroupID": 422,
+      "m_DateStrID": "DATE_DROP_EVENT_NIGHTMARE",
       "m_RewardID": 679,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_EVENT_NIGHTMARE_1_2",
@@ -1258,6 +1524,7 @@
     },
     {
       "m_RewardGroupID": 423,
+      "m_DateStrID": "DATE_DROP_EVENT_NIGHTMARE",
       "m_RewardID": 679,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_EVENT_NIGHTMARE_2_1",
@@ -1265,6 +1532,7 @@
     },
     {
       "m_RewardGroupID": 424,
+      "m_DateStrID": "DATE_DROP_EVENT_NIGHTMARE",
       "m_RewardID": 679,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_EVENT_NIGHTMARE_2_2",
@@ -1272,6 +1540,7 @@
     },
     {
       "m_RewardGroupID": 425,
+      "m_DateStrID": "DATE_DROP_EVENT_NIGHTMARE",
       "m_RewardID": 679,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_EVENT_NIGHTMARE_3_1",
@@ -1279,6 +1548,7 @@
     },
     {
       "m_RewardGroupID": 426,
+      "m_DateStrID": "DATE_DROP_EVENT_NIGHTMARE",
       "m_RewardID": 679,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_EVENT_NIGHTMARE_3_2",
@@ -1286,6 +1556,7 @@
     },
     {
       "m_RewardGroupID": 427,
+      "m_DateStrID": "DATE_DROP_EVENT_NIGHTMARE",
       "m_RewardID": 679,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_EVENT_NIGHTMARE_3_3",
@@ -1293,6 +1564,7 @@
     },
     {
       "m_RewardGroupID": 428,
+      "m_DateStrID": "DATE_DROP_EVENT_NIGHTMARE",
       "m_RewardID": 679,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_EVENT_NIGHTMARE_1_1_HM",
@@ -1300,6 +1572,7 @@
     },
     {
       "m_RewardGroupID": 429,
+      "m_DateStrID": "DATE_DROP_EVENT_ACADEMY",
       "m_RewardID": 693,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_ACADEMY_1_1",
@@ -1307,6 +1580,7 @@
     },
     {
       "m_RewardGroupID": 430,
+      "m_DateStrID": "DATE_DROP_EVENT_ACADEMY",
       "m_RewardID": 693,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_ACADEMY_1_2",
@@ -1314,6 +1588,7 @@
     },
     {
       "m_RewardGroupID": 431,
+      "m_DateStrID": "DATE_DROP_EVENT_ACADEMY",
       "m_RewardID": 693,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_ACADEMY_2_1",
@@ -1321,6 +1596,7 @@
     },
     {
       "m_RewardGroupID": 432,
+      "m_DateStrID": "DATE_DROP_EVENT_ACADEMY",
       "m_RewardID": 693,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_ACADEMY_2_2",
@@ -1328,6 +1604,7 @@
     },
     {
       "m_RewardGroupID": 433,
+      "m_DateStrID": "DATE_DROP_EVENT_ACADEMY",
       "m_RewardID": 693,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_ACADEMY_3_1",
@@ -1335,6 +1612,7 @@
     },
     {
       "m_RewardGroupID": 434,
+      "m_DateStrID": "DATE_DROP_EVENT_ACADEMY",
       "m_RewardID": 693,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_ACADEMY_3_2",
@@ -1342,6 +1620,7 @@
     },
     {
       "m_RewardGroupID": 435,
+      "m_DateStrID": "DATE_DROP_EVENT_ACADEMY",
       "m_RewardID": 693,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_ACADEMY_3_3",
@@ -1349,6 +1628,7 @@
     },
     {
       "m_RewardGroupID": 436,
+      "m_DateStrID": "DATE_DROP_EVENT_ACADEMY",
       "m_RewardID": 693,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_ACADEMY_3_4",
@@ -1356,6 +1636,7 @@
     },
     {
       "m_RewardGroupID": 437,
+      "m_DateStrID": "DATE_DROP_EVENT_ACADEMY",
       "m_RewardID": 693,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "DROP_SS_ACADEMY_1_1_HM",
@@ -1363,6 +1644,7 @@
     },
     {
       "m_RewardGroupID": 438,
+      "m_DateStrID": "DATE_DROP_EVENT_SPORTS",
       "m_RewardID": 673,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SPORTS_R_EVENT_DROP",
@@ -1370,6 +1652,7 @@
     },
     {
       "m_RewardGroupID": 439,
+      "m_DateStrID": "DATE_DROP_EVENT_SPORTS",
       "m_RewardID": 673,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SPORTS_R_EVENT_DROP",
@@ -1377,6 +1660,7 @@
     },
     {
       "m_RewardGroupID": 440,
+      "m_DateStrID": "DATE_DROP_EVENT_SPORTS",
       "m_RewardID": 673,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SPORTS_R_EVENT_DROP",
@@ -1384,6 +1668,7 @@
     },
     {
       "m_RewardGroupID": 441,
+      "m_DateStrID": "DATE_DROP_EVENT_SPORTS",
       "m_RewardID": 673,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SPORTS_R_EVENT_DROP",
@@ -1391,6 +1676,7 @@
     },
     {
       "m_RewardGroupID": 442,
+      "m_DateStrID": "DATE_DROP_EVENT_SPORTS",
       "m_RewardID": 673,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SPORTS_R_EVENT_DROP",
@@ -1398,6 +1684,7 @@
     },
     {
       "m_RewardGroupID": 443,
+      "m_DateStrID": "DATE_DROP_EVENT_SPORTS",
       "m_RewardID": 673,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SPORTS_R_EVENT_DROP",
@@ -1405,6 +1692,7 @@
     },
     {
       "m_RewardGroupID": 444,
+      "m_DateStrID": "DATE_DROP_EVENT_SPORTS",
       "m_RewardID": 673,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SPORTS_R_EVENT_DROP",
@@ -1412,6 +1700,7 @@
     },
     {
       "m_RewardGroupID": 445,
+      "m_DateStrID": "DATE_DROP_EVENT_SPORTS",
       "m_RewardID": 673,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SPORTS_R_EVENT_DROP",
@@ -1419,6 +1708,7 @@
     },
     {
       "m_RewardGroupID": 446,
+      "m_DateStrID": "DATE_DROP_EVENT_SPORTS",
       "m_RewardID": 673,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SPORTS_R_EVENT_DROP",
@@ -1426,6 +1716,7 @@
     },
     {
       "m_RewardGroupID": 447,
+      "m_DateStrID": "DATE_DROP_EVENT_SPORTS",
       "m_RewardID": 673,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SPORTS_R_EVENT_DROP",
@@ -1433,6 +1724,7 @@
     },
     {
       "m_RewardGroupID": 448,
+      "m_DateStrID": "DATE_DROP_EVENT_SPORTS",
       "m_RewardID": 673,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SPORTS_R_EVENT_DROP",
@@ -1440,6 +1732,7 @@
     },
     {
       "m_RewardGroupID": 449,
+      "m_DateStrID": "DATE_DROP_EVENT_SPORTS",
       "m_RewardID": 673,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SPORTS_R_EVENT_DROP",
@@ -1447,6 +1740,7 @@
     },
     {
       "m_RewardGroupID": 450,
+      "m_DateStrID": "DATE_DROP_EVENT_SPORTS",
       "m_RewardID": 673,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SPORTS_R_EVENT_DROP",
@@ -1454,6 +1748,7 @@
     },
     {
       "m_RewardGroupID": 451,
+      "m_DateStrID": "DATE_DROP_EVENT_SPORTS",
       "m_RewardID": 673,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SPORTS_R_EVENT_DROP",
@@ -1461,6 +1756,7 @@
     },
     {
       "m_RewardGroupID": 452,
+      "m_DateStrID": "DATE_DROP_EVENT_SPORTS",
       "m_RewardID": 673,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SPORTS_R_EVENT_DROP",
@@ -1468,6 +1764,7 @@
     },
     {
       "m_RewardGroupID": 453,
+      "m_DateStrID": "DATE_DROP_EVENT_GREMORY",
       "m_RewardID": 676,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_GREMORY_R_EVENT_DROP",
@@ -1475,6 +1772,7 @@
     },
     {
       "m_RewardGroupID": 454,
+      "m_DateStrID": "DATE_DROP_EVENT_GREMORY",
       "m_RewardID": 676,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_GREMORY_R_EVENT_DROP",
@@ -1482,6 +1780,7 @@
     },
     {
       "m_RewardGroupID": 455,
+      "m_DateStrID": "DATE_DROP_EVENT_GREMORY",
       "m_RewardID": 676,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_GREMORY_R_EVENT_DROP",
@@ -1489,6 +1788,7 @@
     },
     {
       "m_RewardGroupID": 456,
+      "m_DateStrID": "DATE_DROP_EVENT_GREMORY",
       "m_RewardID": 676,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_GREMORY_R_EVENT_DROP",
@@ -1496,6 +1796,7 @@
     },
     {
       "m_RewardGroupID": 457,
+      "m_DateStrID": "DATE_DROP_EVENT_GREMORY",
       "m_RewardID": 676,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_GREMORY_R_EVENT_DROP",
@@ -1503,6 +1804,7 @@
     },
     {
       "m_RewardGroupID": 458,
+      "m_DateStrID": "DATE_DROP_EVENT_GREMORY",
       "m_RewardID": 676,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_GREMORY_R_EVENT_DROP",
@@ -1510,6 +1812,7 @@
     },
     {
       "m_RewardGroupID": 459,
+      "m_DateStrID": "DATE_DROP_EVENT_ALPHA",
       "m_RewardID": 677,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_ALPHA_R_EVENT_DROP",
@@ -1517,6 +1820,7 @@
     },
     {
       "m_RewardGroupID": 460,
+      "m_DateStrID": "DATE_DROP_EVENT_ALPHA",
       "m_RewardID": 677,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_ALPHA_R_EVENT_DROP",
@@ -1524,6 +1828,7 @@
     },
     {
       "m_RewardGroupID": 461,
+      "m_DateStrID": "DATE_DROP_EVENT_ALPHA",
       "m_RewardID": 677,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_ALPHA_R_EVENT_DROP",
@@ -1531,6 +1836,7 @@
     },
     {
       "m_RewardGroupID": 462,
+      "m_DateStrID": "DATE_DROP_EVENT_ALPHA",
       "m_RewardID": 677,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_ALPHA_R_EVENT_DROP",
@@ -1538,6 +1844,7 @@
     },
     {
       "m_RewardGroupID": 463,
+      "m_DateStrID": "DATE_DROP_EVENT_ALPHA",
       "m_RewardID": 677,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_ALPHA_R_EVENT_DROP",
@@ -1545,6 +1852,7 @@
     },
     {
       "m_RewardGroupID": 464,
+      "m_DateStrID": "DATE_DROP_EVENT_ALPHA",
       "m_RewardID": 677,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_ALPHA_R_EVENT_DROP",
@@ -1552,6 +1860,7 @@
     },
     {
       "m_RewardGroupID": 465,
+      "m_DateStrID": "DATE_DROP_EVENT_ALPHA",
       "m_RewardID": 677,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_ALPHA_R_EVENT_DROP",
@@ -1559,6 +1868,7 @@
     },
     {
       "m_RewardGroupID": 466,
+      "m_DateStrID": "DATE_DROP_EVENT_ALPHA",
       "m_RewardID": 677,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_ALPHA_R_EVENT_DROP",
@@ -1566,6 +1876,7 @@
     },
     {
       "m_RewardGroupID": 467,
+      "m_DateStrID": "DATE_DROP_EVENT_ALPHA",
       "m_RewardID": 677,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_ALPHA_R_EVENT_DROP",
@@ -1573,6 +1884,7 @@
     },
     {
       "m_RewardGroupID": 468,
+      "m_DateStrID": "DATE_DROP_EVENT_ALPHA",
       "m_RewardID": 677,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_ALPHA_R_EVENT_DROP",
@@ -1580,6 +1892,7 @@
     },
     {
       "m_RewardGroupID": 469,
+      "m_DateStrID": "DATE_DROP_EVENT_ALPHA",
       "m_RewardID": 677,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_ALPHA_R_EVENT_DROP",
@@ -1587,6 +1900,7 @@
     },
     {
       "m_RewardGroupID": 470,
+      "m_DateStrID": "DATE_DROP_EVENT_ORCA",
       "m_RewardID": 685,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_ORCA_R_EVENT_DROP",
@@ -1594,6 +1908,7 @@
     },
     {
       "m_RewardGroupID": 471,
+      "m_DateStrID": "DATE_DROP_EVENT_ORCA",
       "m_RewardID": 685,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_ORCA_R_EVENT_DROP",
@@ -1601,6 +1916,7 @@
     },
     {
       "m_RewardGroupID": 472,
+      "m_DateStrID": "DATE_DROP_EVENT_ORCA",
       "m_RewardID": 685,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_ORCA_R_EVENT_DROP",
@@ -1608,6 +1924,7 @@
     },
     {
       "m_RewardGroupID": 473,
+      "m_DateStrID": "DATE_DROP_EVENT_ORCA",
       "m_RewardID": 685,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_ORCA_R_EVENT_DROP",
@@ -1615,6 +1932,7 @@
     },
     {
       "m_RewardGroupID": 474,
+      "m_DateStrID": "DATE_DROP_EVENT_ORCA",
       "m_RewardID": 685,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_ORCA_R_EVENT_DROP",
@@ -1622,6 +1940,7 @@
     },
     {
       "m_RewardGroupID": 475,
+      "m_DateStrID": "DATE_DROP_EVENT_ORCA",
       "m_RewardID": 685,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_ORCA_R_EVENT_DROP",
@@ -1629,6 +1948,7 @@
     },
     {
       "m_RewardGroupID": 476,
+      "m_DateStrID": "DATE_DROP_EVENT_ORCA",
       "m_RewardID": 685,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_ORCA_R_EVENT_DROP",
@@ -1636,6 +1956,7 @@
     },
     {
       "m_RewardGroupID": 477,
+      "m_DateStrID": "DATE_DROP_EVENT_ORCA",
       "m_RewardID": 685,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_ORCA_R_EVENT_DROP",
@@ -1643,6 +1964,7 @@
     },
     {
       "m_RewardGroupID": 478,
+      "m_DateStrID": "DATE_DROP_EVENT_ORCA",
       "m_RewardID": 685,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_ORCA_R_EVENT_DROP",
@@ -1650,6 +1972,7 @@
     },
     {
       "m_RewardGroupID": 479,
+      "m_DateStrID": "DATE_DROP_EVENT_ORCA",
       "m_RewardID": 685,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_ORCA_R_EVENT_DROP",
@@ -1657,6 +1980,7 @@
     },
     {
       "m_RewardGroupID": 480,
+      "m_DateStrID": "DATE_DROP_EVENT_ORCA",
       "m_RewardID": 685,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_ORCA_R_EVENT_DROP",
@@ -1664,6 +1988,7 @@
     },
     {
       "m_RewardGroupID": 481,
+      "m_DateStrID": "DATE_DROP_EVENT_ORCA",
       "m_RewardID": 685,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_ORCA_R_EVENT_DROP",
@@ -1671,6 +1996,7 @@
     },
     {
       "m_RewardGroupID": 482,
+      "m_DateStrID": "DATE_DROP_EVENT_SOF",
       "m_RewardID": 686,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SOF_R_EVENT_DROP",
@@ -1678,6 +2004,7 @@
     },
     {
       "m_RewardGroupID": 483,
+      "m_DateStrID": "DATE_DROP_EVENT_SOF",
       "m_RewardID": 686,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SOF_R_EVENT_DROP",
@@ -1685,6 +2012,7 @@
     },
     {
       "m_RewardGroupID": 484,
+      "m_DateStrID": "DATE_DROP_EVENT_SOF",
       "m_RewardID": 686,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SOF_R_EVENT_DROP",
@@ -1692,6 +2020,7 @@
     },
     {
       "m_RewardGroupID": 485,
+      "m_DateStrID": "DATE_DROP_EVENT_SOF",
       "m_RewardID": 686,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SOF_R_EVENT_DROP",
@@ -1699,6 +2028,7 @@
     },
     {
       "m_RewardGroupID": 486,
+      "m_DateStrID": "DATE_DROP_EVENT_SOF",
       "m_RewardID": 686,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SOF_R_EVENT_DROP",
@@ -1706,6 +2036,7 @@
     },
     {
       "m_RewardGroupID": 487,
+      "m_DateStrID": "DATE_DROP_EVENT_SOF",
       "m_RewardID": 686,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SOF_R_EVENT_DROP",
@@ -1713,6 +2044,7 @@
     },
     {
       "m_RewardGroupID": 488,
+      "m_DateStrID": "DATE_DROP_EVENT_SOF",
       "m_RewardID": 686,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SOF_R_EVENT_DROP",
@@ -1720,6 +2052,7 @@
     },
     {
       "m_RewardGroupID": 489,
+      "m_DateStrID": "DATE_DROP_EVENT_SOF",
       "m_RewardID": 686,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SOF_R_EVENT_DROP",
@@ -1727,6 +2060,7 @@
     },
     {
       "m_RewardGroupID": 490,
+      "m_DateStrID": "DATE_DROP_EVENT_SOF",
       "m_RewardID": 686,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SOF_R_EVENT_DROP",
@@ -1734,6 +2068,7 @@
     },
     {
       "m_RewardGroupID": 491,
+      "m_DateStrID": "DATE_DROP_EVENT_SOF",
       "m_RewardID": 686,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SOF_R_EVENT_DROP",
@@ -1741,6 +2076,7 @@
     },
     {
       "m_RewardGroupID": 492,
+      "m_DateStrID": "DATE_DROP_EVENT_SOF",
       "m_RewardID": 686,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SOF_R_EVENT_DROP",
@@ -1748,6 +2084,7 @@
     },
     {
       "m_RewardGroupID": 493,
+      "m_DateStrID": "DATE_DROP_EVENT_POLICE",
       "m_RewardID": 687,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_POLICE_R_EVENT_DROP",
@@ -1755,6 +2092,7 @@
     },
     {
       "m_RewardGroupID": 494,
+      "m_DateStrID": "DATE_DROP_EVENT_POLICE",
       "m_RewardID": 687,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_POLICE_R_EVENT_DROP",
@@ -1762,6 +2100,7 @@
     },
     {
       "m_RewardGroupID": 495,
+      "m_DateStrID": "DATE_DROP_EVENT_POLICE",
       "m_RewardID": 687,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_POLICE_R_EVENT_DROP",
@@ -1769,6 +2108,7 @@
     },
     {
       "m_RewardGroupID": 496,
+      "m_DateStrID": "DATE_DROP_EVENT_POLICE",
       "m_RewardID": 687,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_POLICE_R_EVENT_DROP",
@@ -1776,6 +2116,7 @@
     },
     {
       "m_RewardGroupID": 497,
+      "m_DateStrID": "DATE_DROP_EVENT_POLICE",
       "m_RewardID": 687,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_POLICE_R_EVENT_DROP",
@@ -1783,6 +2124,7 @@
     },
     {
       "m_RewardGroupID": 498,
+      "m_DateStrID": "DATE_DROP_EVENT_POLICE",
       "m_RewardID": 687,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_POLICE_R_EVENT_DROP",
@@ -1790,6 +2132,7 @@
     },
     {
       "m_RewardGroupID": 499,
+      "m_DateStrID": "DATE_DROP_EVENT_POLICE",
       "m_RewardID": 687,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_POLICE_R_EVENT_DROP",
@@ -1797,6 +2140,7 @@
     },
     {
       "m_RewardGroupID": 500,
+      "m_DateStrID": "DATE_DROP_EVENT_POLICE",
       "m_RewardID": 687,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_POLICE_R_EVENT_DROP",
@@ -1804,6 +2148,7 @@
     },
     {
       "m_RewardGroupID": 501,
+      "m_DateStrID": "DATE_DROP_EVENT_POLICE",
       "m_RewardID": 687,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_POLICE_R_EVENT_DROP",
@@ -1811,6 +2156,7 @@
     },
     {
       "m_RewardGroupID": 502,
+      "m_DateStrID": "DATE_DROP_EVENT_POLICE",
       "m_RewardID": 687,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_POLICE_R_EVENT_DROP",
@@ -1818,6 +2164,7 @@
     },
     {
       "m_RewardGroupID": 503,
+      "m_DateStrID": "DATE_DROP_EVENT_DELTA",
       "m_RewardID": 688,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_DELTA_R_EVENT_DROP",
@@ -1825,6 +2172,7 @@
     },
     {
       "m_RewardGroupID": 504,
+      "m_DateStrID": "DATE_DROP_EVENT_DELTA",
       "m_RewardID": 688,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_DELTA_R_EVENT_DROP",
@@ -1832,6 +2180,7 @@
     },
     {
       "m_RewardGroupID": 505,
+      "m_DateStrID": "DATE_DROP_EVENT_DELTA",
       "m_RewardID": 688,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_DELTA_R_EVENT_DROP",
@@ -1839,6 +2188,7 @@
     },
     {
       "m_RewardGroupID": 506,
+      "m_DateStrID": "DATE_DROP_EVENT_DELTA",
       "m_RewardID": 688,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_DELTA_R_EVENT_DROP",
@@ -1846,6 +2196,7 @@
     },
     {
       "m_RewardGroupID": 507,
+      "m_DateStrID": "DATE_DROP_EVENT_DELTA",
       "m_RewardID": 688,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_DELTA_R_EVENT_DROP",
@@ -1853,6 +2204,7 @@
     },
     {
       "m_RewardGroupID": 508,
+      "m_DateStrID": "DATE_DROP_EVENT_DELTA",
       "m_RewardID": 688,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_DELTA_R_EVENT_DROP",
@@ -1860,6 +2212,7 @@
     },
     {
       "m_RewardGroupID": 509,
+      "m_DateStrID": "DATE_DROP_EVENT_DELTA",
       "m_RewardID": 688,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_DELTA_R_EVENT_DROP",
@@ -1867,6 +2220,7 @@
     },
     {
       "m_RewardGroupID": 510,
+      "m_DateStrID": "DATE_DROP_EVENT_DELTA",
       "m_RewardID": 688,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_DELTA_R_EVENT_DROP",
@@ -1874,6 +2228,7 @@
     },
     {
       "m_RewardGroupID": 511,
+      "m_DateStrID": "DATE_DROP_EVENT_DELTA",
       "m_RewardID": 688,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_DELTA_R_EVENT_DROP",
@@ -1881,6 +2236,7 @@
     },
     {
       "m_RewardGroupID": 512,
+      "m_DateStrID": "DATE_DROP_EVENT_FAILURE",
       "m_RewardID": 689,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_FAILURE_R_EVENT_DROP",
@@ -1888,6 +2244,7 @@
     },
     {
       "m_RewardGroupID": 513,
+      "m_DateStrID": "DATE_DROP_EVENT_FAILURE",
       "m_RewardID": 689,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_FAILURE_R_EVENT_DROP",
@@ -1895,6 +2252,7 @@
     },
     {
       "m_RewardGroupID": 514,
+      "m_DateStrID": "DATE_DROP_EVENT_FAILURE",
       "m_RewardID": 689,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_FAILURE_R_EVENT_DROP",
@@ -1902,6 +2260,7 @@
     },
     {
       "m_RewardGroupID": 515,
+      "m_DateStrID": "DATE_DROP_EVENT_CROSSROAD",
       "m_RewardID": 664,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_CROSSROAD_R_EVENT_DROP",
@@ -1909,6 +2268,7 @@
     },
     {
       "m_RewardGroupID": 516,
+      "m_DateStrID": "DATE_DROP_EVENT_CROSSROAD",
       "m_RewardID": 664,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_CROSSROAD_R_EVENT_DROP",
@@ -1916,6 +2276,7 @@
     },
     {
       "m_RewardGroupID": 517,
+      "m_DateStrID": "DATE_DROP_EVENT_CROSSROAD",
       "m_RewardID": 664,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_CROSSROAD_R_EVENT_DROP",
@@ -1923,6 +2284,7 @@
     },
     {
       "m_RewardGroupID": 518,
+      "m_DateStrID": "DATE_DROP_EVENT_CROSSROAD",
       "m_RewardID": 664,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_CROSSROAD_R_EVENT_DROP",
@@ -1930,6 +2292,7 @@
     },
     {
       "m_RewardGroupID": 519,
+      "m_DateStrID": "DATE_DROP_EVENT_CROSSROAD",
       "m_RewardID": 664,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_CROSSROAD_R_EVENT_DROP",
@@ -1937,6 +2300,7 @@
     },
     {
       "m_RewardGroupID": 520,
+      "m_DateStrID": "DATE_DROP_EVENT_CROSSROAD",
       "m_RewardID": 664,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_CROSSROAD_R_EVENT_DROP",
@@ -1944,6 +2308,7 @@
     },
     {
       "m_RewardGroupID": 521,
+      "m_DateStrID": "DATE_DROP_EVENT_ESPR",
       "m_RewardID": 665,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_ESPR_R_EVENT_DROP",
@@ -1951,6 +2316,7 @@
     },
     {
       "m_RewardGroupID": 522,
+      "m_DateStrID": "DATE_DROP_EVENT_ESPR",
       "m_RewardID": 665,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_ESPR_R_EVENT_DROP",
@@ -1958,6 +2324,7 @@
     },
     {
       "m_RewardGroupID": 523,
+      "m_DateStrID": "DATE_DROP_EVENT_ESPR",
       "m_RewardID": 665,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_ESPR_R_EVENT_DROP",
@@ -1965,6 +2332,7 @@
     },
     {
       "m_RewardGroupID": 524,
+      "m_DateStrID": "DATE_DROP_EVENT_ESPR",
       "m_RewardID": 665,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_ESPR_R_EVENT_DROP",
@@ -1972,6 +2340,7 @@
     },
     {
       "m_RewardGroupID": 525,
+      "m_DateStrID": "DATE_DROP_EVENT_ESPR",
       "m_RewardID": 665,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_ESPR_R_EVENT_DROP",
@@ -1979,6 +2348,7 @@
     },
     {
       "m_RewardGroupID": 526,
+      "m_DateStrID": "DATE_DROP_EVENT_ESPR",
       "m_RewardID": 665,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_ESPR_R_EVENT_DROP",
@@ -1986,6 +2356,7 @@
     },
     {
       "m_RewardGroupID": 527,
+      "m_DateStrID": "DATE_DROP_EVENT_ESPR",
       "m_RewardID": 665,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_ESPR_R_EVENT_DROP",
@@ -1993,6 +2364,7 @@
     },
     {
       "m_RewardGroupID": 528,
+      "m_DateStrID": "DATE_DROP_EVENT_ESPR",
       "m_RewardID": 665,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_ESPR_R_EVENT_DROP",
@@ -2000,6 +2372,7 @@
     },
     {
       "m_RewardGroupID": 529,
+      "m_DateStrID": "DATE_DROP_EVENT_ESPR",
       "m_RewardID": 665,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_ESPR_R_EVENT_DROP",
@@ -2007,6 +2380,7 @@
     },
     {
       "m_RewardGroupID": 530,
+      "m_DateStrID": "DATE_DROP_EVENT_ESPR",
       "m_RewardID": 665,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_ESPR_R_EVENT_DROP",
@@ -2014,6 +2388,7 @@
     },
     {
       "m_RewardGroupID": 531,
+      "m_DateStrID": "DATE_DROP_EVENT_ESPR",
       "m_RewardID": 665,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_ESPR_R_EVENT_DROP",
@@ -2021,6 +2396,7 @@
     },
     {
       "m_RewardGroupID": 532,
+      "m_DateStrID": "DATE_DROP_EVENT_ADMIN",
       "m_RewardID": 667,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_ADMIN_R_EVENT_DROP",
@@ -2028,6 +2404,7 @@
     },
     {
       "m_RewardGroupID": 533,
+      "m_DateStrID": "DATE_DROP_EVENT_ADMIN",
       "m_RewardID": 667,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_ADMIN_R_EVENT_DROP",
@@ -2035,6 +2412,7 @@
     },
     {
       "m_RewardGroupID": 534,
+      "m_DateStrID": "DATE_DROP_EVENT_ADMIN",
       "m_RewardID": 667,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_ADMIN_R_EVENT_DROP",
@@ -2042,6 +2420,7 @@
     },
     {
       "m_RewardGroupID": 535,
+      "m_DateStrID": "DATE_DROP_EVENT_ADMIN",
       "m_RewardID": 667,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_ADMIN_R_EVENT_DROP",
@@ -2049,6 +2428,7 @@
     },
     {
       "m_RewardGroupID": 536,
+      "m_DateStrID": "DATE_DROP_EVENT_ADMIN",
       "m_RewardID": 667,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_ADMIN_R_EVENT_DROP",
@@ -2056,6 +2436,7 @@
     },
     {
       "m_RewardGroupID": 537,
+      "m_DateStrID": "DATE_DROP_EVENT_ADMIN",
       "m_RewardID": 667,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_ADMIN_R_EVENT_DROP",
@@ -2063,6 +2444,7 @@
     },
     {
       "m_RewardGroupID": 538,
+      "m_DateStrID": "DATE_DROP_EVENT_ADMIN",
       "m_RewardID": 667,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_ADMIN_R_EVENT_DROP",
@@ -2070,6 +2452,7 @@
     },
     {
       "m_RewardGroupID": 539,
+      "m_DateStrID": "DATE_DROP_EVENT_ADMIN",
       "m_RewardID": 667,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_ADMIN_R_EVENT_DROP",
@@ -2077,6 +2460,7 @@
     },
     {
       "m_RewardGroupID": 540,
+      "m_DateStrID": "DATE_DROP_EVENT_ADMIN",
       "m_RewardID": 667,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_ADMIN_R_EVENT_DROP",
@@ -2084,6 +2468,7 @@
     },
     {
       "m_RewardGroupID": 541,
+      "m_DateStrID": "DATE_DROP_EVENT_ADMIN",
       "m_RewardID": 667,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_ADMIN_R_EVENT_DROP",
@@ -2091,6 +2476,7 @@
     },
     {
       "m_RewardGroupID": 542,
+      "m_DateStrID": "DATE_DROP_EVENT_SIGMA",
       "m_RewardID": 668,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SIGMA_R_EVENT_DROP",
@@ -2098,6 +2484,7 @@
     },
     {
       "m_RewardGroupID": 543,
+      "m_DateStrID": "DATE_DROP_EVENT_SIGMA",
       "m_RewardID": 668,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SIGMA_R_EVENT_DROP",
@@ -2105,6 +2492,7 @@
     },
     {
       "m_RewardGroupID": 544,
+      "m_DateStrID": "DATE_DROP_EVENT_SIGMA",
       "m_RewardID": 668,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SIGMA_R_EVENT_DROP",
@@ -2112,6 +2500,7 @@
     },
     {
       "m_RewardGroupID": 545,
+      "m_DateStrID": "DATE_DROP_EVENT_SIGMA",
       "m_RewardID": 668,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SIGMA_R_EVENT_DROP",
@@ -2119,6 +2508,7 @@
     },
     {
       "m_RewardGroupID": 546,
+      "m_DateStrID": "DATE_DROP_EVENT_SIGMA",
       "m_RewardID": 668,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SIGMA_R_EVENT_DROP",
@@ -2126,6 +2516,7 @@
     },
     {
       "m_RewardGroupID": 547,
+      "m_DateStrID": "DATE_DROP_EVENT_SIGMA",
       "m_RewardID": 668,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SIGMA_R_EVENT_DROP",
@@ -2133,6 +2524,7 @@
     },
     {
       "m_RewardGroupID": 548,
+      "m_DateStrID": "DATE_DROP_EVENT_SIGMA",
       "m_RewardID": 668,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SIGMA_R_EVENT_DROP",
@@ -2140,6 +2532,7 @@
     },
     {
       "m_RewardGroupID": 549,
+      "m_DateStrID": "DATE_DROP_EVENT_SIGMA",
       "m_RewardID": 668,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SIGMA_R_EVENT_DROP",
@@ -2147,6 +2540,7 @@
     },
     {
       "m_RewardGroupID": 550,
+      "m_DateStrID": "DATE_DROP_EVENT_STREGA",
       "m_RewardID": 669,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_STREGA_R_EVENT_DROP",
@@ -2154,6 +2548,7 @@
     },
     {
       "m_RewardGroupID": 551,
+      "m_DateStrID": "DATE_DROP_EVENT_STREGA",
       "m_RewardID": 669,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_STREGA_R_EVENT_DROP",
@@ -2161,6 +2556,7 @@
     },
     {
       "m_RewardGroupID": 552,
+      "m_DateStrID": "DATE_DROP_EVENT_STREGA",
       "m_RewardID": 669,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_STREGA_R_EVENT_DROP",
@@ -2168,6 +2564,7 @@
     },
     {
       "m_RewardGroupID": 553,
+      "m_DateStrID": "DATE_DROP_EVENT_STREGA",
       "m_RewardID": 669,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_STREGA_R_EVENT_DROP",
@@ -2175,6 +2572,7 @@
     },
     {
       "m_RewardGroupID": 554,
+      "m_DateStrID": "DATE_DROP_EVENT_STREGA",
       "m_RewardID": 669,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_STREGA_R_EVENT_DROP",
@@ -2182,6 +2580,7 @@
     },
     {
       "m_RewardGroupID": 555,
+      "m_DateStrID": "DATE_DROP_EVENT_STREGA",
       "m_RewardID": 669,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_STREGA_R_EVENT_DROP",
@@ -2189,6 +2588,7 @@
     },
     {
       "m_RewardGroupID": 556,
+      "m_DateStrID": "DATE_DROP_EVENT_STREGA",
       "m_RewardID": 669,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_STREGA_R_EVENT_DROP",
@@ -2196,6 +2596,7 @@
     },
     {
       "m_RewardGroupID": 557,
+      "m_DateStrID": "DATE_DROP_EVENT_STREGA",
       "m_RewardID": 669,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_STREGA_R_EVENT_DROP",
@@ -2203,6 +2604,7 @@
     },
     {
       "m_RewardGroupID": 558,
+      "m_DateStrID": "DATE_DROP_EVENT_STREGA",
       "m_RewardID": 669,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_STREGA_R_EVENT_DROP",
@@ -2210,6 +2612,7 @@
     },
     {
       "m_RewardGroupID": 559,
+      "m_DateStrID": "DATE_DROP_EVENT_STREGA",
       "m_RewardID": 669,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_STREGA_R_EVENT_DROP",
@@ -2217,6 +2620,7 @@
     },
     {
       "m_RewardGroupID": 560,
+      "m_DateStrID": "DATE_DROP_EVENT_STREGA",
       "m_RewardID": 669,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_STREGA_R_EVENT_DROP",
@@ -2224,6 +2628,7 @@
     },
     {
       "m_RewardGroupID": 561,
+      "m_DateStrID": "DATE_DROP_EVENT_STREGA",
       "m_RewardID": 669,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_STREGA_R_EVENT_DROP",
@@ -2231,6 +2636,7 @@
     },
     {
       "m_RewardGroupID": 562,
+      "m_DateStrID": "DATE_DROP_EVENT_SPRING",
       "m_RewardID": 663,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SPRING_R_EVENT_DROP",
@@ -2238,6 +2644,7 @@
     },
     {
       "m_RewardGroupID": 563,
+      "m_DateStrID": "DATE_DROP_EVENT_SPRING",
       "m_RewardID": 663,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SPRING_R_EVENT_DROP",
@@ -2245,6 +2652,7 @@
     },
     {
       "m_RewardGroupID": 564,
+      "m_DateStrID": "DATE_DROP_EVENT_SPRING",
       "m_RewardID": 663,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SPRING_R_EVENT_DROP",
@@ -2252,6 +2660,7 @@
     },
     {
       "m_RewardGroupID": 565,
+      "m_DateStrID": "DATE_DROP_EVENT_SPRING",
       "m_RewardID": 663,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SPRING_R_EVENT_DROP",
@@ -2259,6 +2668,7 @@
     },
     {
       "m_RewardGroupID": 566,
+      "m_DateStrID": "DATE_DROP_EVENT_SHADE",
       "m_RewardID": 672,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SHADE_R_EVENT_DROP",
@@ -2266,6 +2676,7 @@
     },
     {
       "m_RewardGroupID": 567,
+      "m_DateStrID": "DATE_DROP_EVENT_SHADE",
       "m_RewardID": 672,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SHADE_R_EVENT_DROP",
@@ -2273,6 +2684,7 @@
     },
     {
       "m_RewardGroupID": 568,
+      "m_DateStrID": "DATE_DROP_EVENT_SHADE",
       "m_RewardID": 672,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SHADE_R_EVENT_DROP",
@@ -2280,6 +2692,7 @@
     },
     {
       "m_RewardGroupID": 569,
+      "m_DateStrID": "DATE_DROP_EVENT_SHADE",
       "m_RewardID": 672,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SHADE_R_EVENT_DROP",
@@ -2287,6 +2700,7 @@
     },
     {
       "m_RewardGroupID": 570,
+      "m_DateStrID": "DATE_DROP_EVENT_SHADE",
       "m_RewardID": 672,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SHADE_R_EVENT_DROP",
@@ -2294,6 +2708,7 @@
     },
     {
       "m_RewardGroupID": 571,
+      "m_DateStrID": "DATE_DROP_EVENT_SHADE",
       "m_RewardID": 672,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SHADE_R_EVENT_DROP",
@@ -2301,6 +2716,7 @@
     },
     {
       "m_RewardGroupID": 572,
+      "m_DateStrID": "DATE_DROP_EVENT_SHADE",
       "m_RewardID": 672,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SHADE_R_EVENT_DROP",
@@ -2308,6 +2724,7 @@
     },
     {
       "m_RewardGroupID": 573,
+      "m_DateStrID": "DATE_DROP_EVENT_SHADE",
       "m_RewardID": 672,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SHADE_R_EVENT_DROP",
@@ -2315,6 +2732,7 @@
     },
     {
       "m_RewardGroupID": 574,
+      "m_DateStrID": "DATE_DROP_EVENT_SHADE",
       "m_RewardID": 672,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SHADE_R_EVENT_DROP",
@@ -2322,6 +2740,7 @@
     },
     {
       "m_RewardGroupID": 575,
+      "m_DateStrID": "DATE_DROP_EVENT_SHADE",
       "m_RewardID": 672,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SHADE_R_EVENT_DROP",
@@ -2329,6 +2748,7 @@
     },
     {
       "m_RewardGroupID": 576,
+      "m_DateStrID": "DATE_DROP_EVENT_SHADE",
       "m_RewardID": 672,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SHADE_R_EVENT_DROP",
@@ -2336,6 +2756,7 @@
     },
     {
       "m_RewardGroupID": 577,
+      "m_DateStrID": "DATE_DROP_EVENT_SHADE",
       "m_RewardID": 672,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SHADE_R_EVENT_DROP",
@@ -2343,6 +2764,7 @@
     },
     {
       "m_RewardGroupID": 578,
+      "m_DateStrID": "DATE_DROP_EVENT_SHADE",
       "m_RewardID": 672,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SHADE_R_EVENT_DROP",
@@ -2350,6 +2772,7 @@
     },
     {
       "m_RewardGroupID": 579,
+      "m_DateStrID": "DATE_DROP_EVENT_SHADE",
       "m_RewardID": 672,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SHADE_R_EVENT_DROP",
@@ -2357,6 +2780,7 @@
     },
     {
       "m_RewardGroupID": 580,
+      "m_DateStrID": "DATE_DROP_EVENT_SHADE",
       "m_RewardID": 672,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SHADE_R_EVENT_DROP",
@@ -2364,6 +2788,7 @@
     },
     {
       "m_RewardGroupID": 581,
+      "m_DateStrID": "DATE_DROP_EVENT_SHADE",
       "m_RewardID": 672,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SHADE_R_EVENT_DROP",
@@ -2371,6 +2796,7 @@
     },
     {
       "m_RewardGroupID": 582,
+      "m_DateStrID": "DATE_DROP_EVENT_WANTED",
       "m_RewardID": 666,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_WANTED_R_EVENT_DROP",
@@ -2378,6 +2804,7 @@
     },
     {
       "m_RewardGroupID": 583,
+      "m_DateStrID": "DATE_DROP_EVENT_WANTED",
       "m_RewardID": 666,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_WANTED_R_EVENT_DROP",
@@ -2385,6 +2812,7 @@
     },
     {
       "m_RewardGroupID": 584,
+      "m_DateStrID": "DATE_DROP_EVENT_WANTED",
       "m_RewardID": 666,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_WANTED_R_EVENT_DROP",
@@ -2392,6 +2820,7 @@
     },
     {
       "m_RewardGroupID": 585,
+      "m_DateStrID": "DATE_DROP_EVENT_WANTED",
       "m_RewardID": 666,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_WANTED_R_EVENT_DROP",
@@ -2399,6 +2828,7 @@
     },
     {
       "m_RewardGroupID": 586,
+      "m_DateStrID": "DATE_DROP_EVENT_WANTED",
       "m_RewardID": 666,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_WANTED_R_EVENT_DROP",
@@ -2406,6 +2836,7 @@
     },
     {
       "m_RewardGroupID": 587,
+      "m_DateStrID": "DATE_DROP_EVENT_WANTED",
       "m_RewardID": 666,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_WANTED_R_EVENT_DROP",
@@ -2413,6 +2844,7 @@
     },
     {
       "m_RewardGroupID": 588,
+      "m_DateStrID": "DATE_DROP_EVENT_MILITIA",
       "m_RewardID": 671,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_MILITIA_R_EVENT_DROP",
@@ -2420,6 +2852,7 @@
     },
     {
       "m_RewardGroupID": 589,
+      "m_DateStrID": "DATE_DROP_EVENT_MILITIA",
       "m_RewardID": 671,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_MILITIA_R_EVENT_DROP",
@@ -2427,6 +2860,7 @@
     },
     {
       "m_RewardGroupID": 590,
+      "m_DateStrID": "DATE_DROP_EVENT_MILITIA",
       "m_RewardID": 671,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_MILITIA_R_EVENT_DROP",
@@ -2434,6 +2868,7 @@
     },
     {
       "m_RewardGroupID": 591,
+      "m_DateStrID": "DATE_DROP_EVENT_MILITIA",
       "m_RewardID": 671,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_MILITIA_R_EVENT_DROP",
@@ -2441,6 +2876,7 @@
     },
     {
       "m_RewardGroupID": 592,
+      "m_DateStrID": "DATE_DROP_EVENT_MILITIA",
       "m_RewardID": 671,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_MILITIA_R_EVENT_DROP",
@@ -2448,6 +2884,7 @@
     },
     {
       "m_RewardGroupID": 593,
+      "m_DateStrID": "DATE_DROP_EVENT_MILITIA",
       "m_RewardID": 671,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_MILITIA_R_EVENT_DROP",
@@ -2455,6 +2892,7 @@
     },
     {
       "m_RewardGroupID": 594,
+      "m_DateStrID": "DATE_DROP_EVENT_MILITIA",
       "m_RewardID": 671,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_MILITIA_R_EVENT_DROP",
@@ -2462,6 +2900,7 @@
     },
     {
       "m_RewardGroupID": 595,
+      "m_DateStrID": "DATE_DROP_EVENT_MILITIA",
       "m_RewardID": 671,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_MILITIA_R_EVENT_DROP",
@@ -2469,6 +2908,7 @@
     },
     {
       "m_RewardGroupID": 596,
+      "m_DateStrID": "DATE_DROP_EVENT_MILITIA",
       "m_RewardID": 671,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_MILITIA_R_EVENT_DROP",
@@ -2476,6 +2916,7 @@
     },
     {
       "m_RewardGroupID": 597,
+      "m_DateStrID": "DATE_DROP_EVENT_MAID",
       "m_RewardID": 670,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_MAID_R_EVENT_DROP",
@@ -2483,6 +2924,7 @@
     },
     {
       "m_RewardGroupID": 598,
+      "m_DateStrID": "DATE_DROP_EVENT_MAID",
       "m_RewardID": 670,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_MAID_R_EVENT_DROP",
@@ -2490,6 +2932,7 @@
     },
     {
       "m_RewardGroupID": 599,
+      "m_DateStrID": "DATE_DROP_EVENT_MAID",
       "m_RewardID": 670,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_MAID_R_EVENT_DROP",
@@ -2497,6 +2940,7 @@
     },
     {
       "m_RewardGroupID": 600,
+      "m_DateStrID": "DATE_DROP_EVENT_MAID",
       "m_RewardID": 670,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_MAID_R_EVENT_DROP",
@@ -2504,6 +2948,7 @@
     },
     {
       "m_RewardGroupID": 601,
+      "m_DateStrID": "DATE_DROP_EVENT_MAID",
       "m_RewardID": 670,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_MAID_R_EVENT_DROP",
@@ -2511,6 +2956,7 @@
     },
     {
       "m_RewardGroupID": 602,
+      "m_DateStrID": "DATE_DROP_EVENT_MAID",
       "m_RewardID": 670,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_MAID_R_EVENT_DROP",
@@ -2518,6 +2964,7 @@
     },
     {
       "m_RewardGroupID": 603,
+      "m_DateStrID": "DATE_DROP_EVENT_MAID",
       "m_RewardID": 670,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_MAID_R_EVENT_DROP",
@@ -2525,6 +2972,7 @@
     },
     {
       "m_RewardGroupID": 604,
+      "m_DateStrID": "DATE_DROP_EVENT_MAID",
       "m_RewardID": 670,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_MAID_R_EVENT_DROP",
@@ -2532,6 +2980,7 @@
     },
     {
       "m_RewardGroupID": 605,
+      "m_DateStrID": "DATE_DROP_EVENT_HORIZON",
       "m_RewardID": 674,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_HORIZON_R_EVENT_DROP",
@@ -2539,6 +2988,7 @@
     },
     {
       "m_RewardGroupID": 606,
+      "m_DateStrID": "DATE_DROP_EVENT_HORIZON",
       "m_RewardID": 674,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_HORIZON_R_EVENT_DROP",
@@ -2546,6 +2996,7 @@
     },
     {
       "m_RewardGroupID": 607,
+      "m_DateStrID": "DATE_DROP_EVENT_HORIZON",
       "m_RewardID": 674,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_HORIZON_R_EVENT_DROP",
@@ -2553,6 +3004,7 @@
     },
     {
       "m_RewardGroupID": 608,
+      "m_DateStrID": "DATE_DROP_EVENT_HORIZON",
       "m_RewardID": 674,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_HORIZON_R_EVENT_DROP",
@@ -2560,6 +3012,7 @@
     },
     {
       "m_RewardGroupID": 609,
+      "m_DateStrID": "DATE_DROP_EVENT_HORIZON",
       "m_RewardID": 674,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_HORIZON_R_EVENT_DROP",
@@ -2567,6 +3020,7 @@
     },
     {
       "m_RewardGroupID": 610,
+      "m_DateStrID": "DATE_DROP_EVENT_HORIZON",
       "m_RewardID": 674,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_HORIZON_R_EVENT_DROP",
@@ -2574,6 +3028,7 @@
     },
     {
       "m_RewardGroupID": 611,
+      "m_DateStrID": "DATE_DROP_EVENT_HORIZON",
       "m_RewardID": 674,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_HORIZON_R_EVENT_DROP",
@@ -2581,6 +3036,7 @@
     },
     {
       "m_RewardGroupID": 612,
+      "m_DateStrID": "DATE_DROP_EVENT_HORIZON",
       "m_RewardID": 674,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_HORIZON_R_EVENT_DROP",
@@ -2588,6 +3044,7 @@
     },
     {
       "m_RewardGroupID": 613,
+      "m_DateStrID": "DATE_DROP_EVENT_HORIZON",
       "m_RewardID": 674,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_HORIZON_R_EVENT_DROP",
@@ -2595,6 +3052,7 @@
     },
     {
       "m_RewardGroupID": 614,
+      "m_DateStrID": "DATE_DROP_EVENT_HORIZON",
       "m_RewardID": 674,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_HORIZON_R_EVENT_DROP",
@@ -2602,6 +3060,7 @@
     },
     {
       "m_RewardGroupID": 615,
+      "m_DateStrID": "DATE_DROP_EVENT_HORIZON",
       "m_RewardID": 674,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_HORIZON_R_EVENT_DROP",
@@ -2609,6 +3068,7 @@
     },
     {
       "m_RewardGroupID": 616,
+      "m_DateStrID": "DATE_DROP_EVENT_HORIZON",
       "m_RewardID": 674,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_HORIZON_R_EVENT_DROP",
@@ -2616,6 +3076,7 @@
     },
     {
       "m_RewardGroupID": 617,
+      "m_DateStrID": "DATE_DROP_EVENT_HORIZON",
       "m_RewardID": 674,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_HORIZON_R_EVENT_DROP",
@@ -2623,6 +3084,7 @@
     },
     {
       "m_RewardGroupID": 618,
+      "m_DateStrID": "DATE_DROP_EVENT_HORIZON",
       "m_RewardID": 674,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_HORIZON_R_EVENT_DROP",
@@ -2630,6 +3092,7 @@
     },
     {
       "m_RewardGroupID": 619,
+      "m_DateStrID": "DATE_DROP_EVENT_HORIZON",
       "m_RewardID": 674,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_HORIZON_R_EVENT_DROP",
@@ -2637,6 +3100,7 @@
     },
     {
       "m_RewardGroupID": 620,
+      "m_DateStrID": "DATE_DROP_EVENT_HORIZON",
       "m_RewardID": 674,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_HORIZON_R_EVENT_DROP",
@@ -2644,6 +3108,7 @@
     },
     {
       "m_RewardGroupID": 621,
+      "m_DateStrID": "DATE_DROP_EVENT_HORIZON",
       "m_RewardID": 674,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_HORIZON_R_EVENT_DROP",
@@ -2651,6 +3116,7 @@
     },
     {
       "m_RewardGroupID": 5811,
+      "m_DateStrID": "DATE_DROP_EVENT_SHADE",
       "m_RewardID": 672,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SHADE_R_EVENT_DROP",
@@ -2658,6 +3124,7 @@
     },
     {
       "m_RewardGroupID": 20001,
+      "m_DateStrID": "DATE_DROP_EVENT_CHARADE2",
       "m_RewardID": 699,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_CHARADE2_R_EVENT_DROP",
@@ -2665,6 +3132,7 @@
     },
     {
       "m_RewardGroupID": 20002,
+      "m_DateStrID": "DATE_DROP_EVENT_CHARADE2",
       "m_RewardID": 699,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_CHARADE2_R_EVENT_DROP",
@@ -2672,6 +3140,7 @@
     },
     {
       "m_RewardGroupID": 20003,
+      "m_DateStrID": "DATE_DROP_EVENT_CHARADE2",
       "m_RewardID": 699,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_CHARADE2_R_EVENT_DROP",
@@ -2679,6 +3148,7 @@
     },
     {
       "m_RewardGroupID": 20004,
+      "m_DateStrID": "DATE_DROP_EVENT_CHARADE2",
       "m_RewardID": 699,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_CHARADE2_R_EVENT_DROP",
@@ -2686,6 +3156,7 @@
     },
     {
       "m_RewardGroupID": 20005,
+      "m_DateStrID": "DATE_DROP_EVENT_CHARADE2",
       "m_RewardID": 699,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_CHARADE2_R_EVENT_DROP",
@@ -2693,6 +3164,7 @@
     },
     {
       "m_RewardGroupID": 20006,
+      "m_DateStrID": "DATE_DROP_EVENT_CHARADE2",
       "m_RewardID": 699,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_CHARADE2_R_EVENT_DROP",
@@ -2700,6 +3172,7 @@
     },
     {
       "m_RewardGroupID": 20007,
+      "m_DateStrID": "DATE_DROP_EVENT_CHARADE2",
       "m_RewardID": 699,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_CHARADE2_R_EVENT_DROP",
@@ -2707,6 +3180,7 @@
     },
     {
       "m_RewardGroupID": 20008,
+      "m_DateStrID": "DATE_DROP_EVENT_CHARADE2",
       "m_RewardID": 699,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_CHARADE2_R_EVENT_DROP",
@@ -2714,6 +3188,7 @@
     },
     {
       "m_RewardGroupID": 20009,
+      "m_DateStrID": "DATE_DROP_EVENT_CHARADE2",
       "m_RewardID": 699,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_CHARADE2_R_EVENT_DROP",
@@ -2721,6 +3196,7 @@
     },
     {
       "m_RewardGroupID": 20010,
+      "m_DateStrID": "DATE_DROP_EVENT_CHARADE2",
       "m_RewardID": 699,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_CHARADE2_R_EVENT_DROP",
@@ -2728,6 +3204,7 @@
     },
     {
       "m_RewardGroupID": 20011,
+      "m_DateStrID": "DATE_DROP_EVENT_CARNIVAL2",
       "m_RewardID": 700,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_CARNIVAL2_R_EVENT_DROP",
@@ -2735,6 +3212,7 @@
     },
     {
       "m_RewardGroupID": 20012,
+      "m_DateStrID": "DATE_DROP_EVENT_CARNIVAL2",
       "m_RewardID": 700,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_CARNIVAL2_R_EVENT_DROP",
@@ -2742,6 +3220,7 @@
     },
     {
       "m_RewardGroupID": 20013,
+      "m_DateStrID": "DATE_DROP_EVENT_CARNIVAL2",
       "m_RewardID": 700,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_CARNIVAL2_R_EVENT_DROP",
@@ -2749,6 +3228,7 @@
     },
     {
       "m_RewardGroupID": 20014,
+      "m_DateStrID": "DATE_DROP_EVENT_CARNIVAL2",
       "m_RewardID": 700,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_CARNIVAL2_R_EVENT_DROP",
@@ -2756,6 +3236,7 @@
     },
     {
       "m_RewardGroupID": 20015,
+      "m_DateStrID": "DATE_DROP_EVENT_CARNIVAL2",
       "m_RewardID": 700,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_CARNIVAL2_R_EVENT_DROP",
@@ -2763,6 +3244,7 @@
     },
     {
       "m_RewardGroupID": 20016,
+      "m_DateStrID": "DATE_DROP_EVENT_CARNIVAL2",
       "m_RewardID": 700,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_CARNIVAL2_R_EVENT_DROP",
@@ -2770,6 +3252,7 @@
     },
     {
       "m_RewardGroupID": 20017,
+      "m_DateStrID": "DATE_DROP_EVENT_CARNIVAL2",
       "m_RewardID": 700,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_CARNIVAL2_R_EVENT_DROP",
@@ -2777,6 +3260,7 @@
     },
     {
       "m_RewardGroupID": 20018,
+      "m_DateStrID": "DATE_DROP_EVENT_CARNIVAL2",
       "m_RewardID": 700,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_CARNIVAL2_R_EVENT_DROP",
@@ -2784,6 +3268,7 @@
     },
     {
       "m_RewardGroupID": 20019,
+      "m_DateStrID": "DATE_DROP_EVENT_CARNIVAL2",
       "m_RewardID": 700,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_CARNIVAL2_R_EVENT_DROP",
@@ -2791,6 +3276,7 @@
     },
     {
       "m_RewardGroupID": 20020,
+      "m_DateStrID": "DATE_DROP_EVENT_CARNIVAL2",
       "m_RewardID": 700,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_CARNIVAL2_R_EVENT_DROP",
@@ -2798,6 +3284,7 @@
     },
     {
       "m_RewardGroupID": 20021,
+      "m_DateStrID": "DATE_DROP_EVENT_CARNIVAL2",
       "m_RewardID": 700,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_CARNIVAL2_R_EVENT_DROP",
@@ -2805,6 +3292,7 @@
     },
     {
       "m_RewardGroupID": 20022,
+      "m_DateStrID": "DATE_DROP_EVENT_CARNIVAL2",
       "m_RewardID": 700,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_CARNIVAL2_R_EVENT_DROP",
@@ -2812,6 +3300,7 @@
     },
     {
       "m_RewardGroupID": 20023,
+      "m_DateStrID": "DATE_DROP_EVENT_CARNIVAL2",
       "m_RewardID": 700,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_CARNIVAL2_R_EVENT_DROP",
@@ -2819,6 +3308,7 @@
     },
     {
       "m_RewardGroupID": 20024,
+      "m_DateStrID": "DATE_DROP_EVENT_CARNIVAL2",
       "m_RewardID": 700,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_CARNIVAL2_R_EVENT_DROP",
@@ -2826,6 +3316,7 @@
     },
     {
       "m_RewardGroupID": 20025,
+      "m_DateStrID": "DATE_DROP_EVENT_PRYDWEN",
       "m_RewardID": 707,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_PRYDWEN_R_EVENT_DROP",
@@ -2833,6 +3324,7 @@
     },
     {
       "m_RewardGroupID": 20026,
+      "m_DateStrID": "DATE_DROP_EVENT_PRYDWEN",
       "m_RewardID": 707,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_PRYDWEN_R_EVENT_DROP",
@@ -2840,6 +3332,7 @@
     },
     {
       "m_RewardGroupID": 20027,
+      "m_DateStrID": "DATE_DROP_EVENT_PRYDWEN",
       "m_RewardID": 707,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_PRYDWEN_R_EVENT_DROP",
@@ -2847,6 +3340,7 @@
     },
     {
       "m_RewardGroupID": 20028,
+      "m_DateStrID": "DATE_DROP_EVENT_PRYDWEN",
       "m_RewardID": 707,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_PRYDWEN_R_EVENT_DROP",
@@ -2854,6 +3348,7 @@
     },
     {
       "m_RewardGroupID": 20029,
+      "m_DateStrID": "DATE_DROP_EVENT_PRYDWEN",
       "m_RewardID": 707,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_PRYDWEN_R_EVENT_DROP",
@@ -2861,6 +3356,7 @@
     },
     {
       "m_RewardGroupID": 20030,
+      "m_DateStrID": "DATE_DROP_EVENT_PRYDWEN",
       "m_RewardID": 707,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_PRYDWEN_R_EVENT_DROP",
@@ -2868,6 +3364,7 @@
     },
     {
       "m_RewardGroupID": 20031,
+      "m_DateStrID": "DATE_DROP_EVENT_PRYDWEN",
       "m_RewardID": 707,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_PRYDWEN_R_EVENT_DROP",
@@ -2875,6 +3372,7 @@
     },
     {
       "m_RewardGroupID": 20032,
+      "m_DateStrID": "DATE_DROP_EVENT_PRYDWEN",
       "m_RewardID": 707,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_PRYDWEN_R_EVENT_DROP",
@@ -2882,6 +3380,7 @@
     },
     {
       "m_RewardGroupID": 20033,
+      "m_DateStrID": "DATE_DROP_EVENT_PRYDWEN",
       "m_RewardID": 707,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_PRYDWEN_R_EVENT_DROP",
@@ -2889,6 +3388,7 @@
     },
     {
       "m_RewardGroupID": 20034,
+      "m_DateStrID": "DATE_DROP_EVENT_PRYDWEN",
       "m_RewardID": 707,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_PRYDWEN_R_EVENT_DROP",
@@ -2896,6 +3396,7 @@
     },
     {
       "m_RewardGroupID": 20035,
+      "m_DateStrID": "DATE_DROP_EVENT_PRYDWEN",
       "m_RewardID": 707,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_PRYDWEN_R_EVENT_DROP",
@@ -2903,6 +3404,7 @@
     },
     {
       "m_RewardGroupID": 20036,
+      "m_DateStrID": "DATE_DROP_EVENT_FLOOR",
       "m_RewardID": 709,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_FLOOR_R_EVENT_DROP",
@@ -2910,6 +3412,7 @@
     },
     {
       "m_RewardGroupID": 20037,
+      "m_DateStrID": "DATE_DROP_EVENT_FLOOR",
       "m_RewardID": 709,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_FLOOR_R_EVENT_DROP",
@@ -2917,6 +3420,7 @@
     },
     {
       "m_RewardGroupID": 20038,
+      "m_DateStrID": "DATE_DROP_EVENT_FLOOR",
       "m_RewardID": 709,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_FLOOR_R_EVENT_DROP",
@@ -2924,6 +3428,7 @@
     },
     {
       "m_RewardGroupID": 20039,
+      "m_DateStrID": "DATE_DROP_EVENT_FLOOR",
       "m_RewardID": 709,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_FLOOR_R_EVENT_DROP",
@@ -2931,6 +3436,7 @@
     },
     {
       "m_RewardGroupID": 20040,
+      "m_DateStrID": "DATE_DROP_EVENT_FLOOR",
       "m_RewardID": 709,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_FLOOR_R_EVENT_DROP",
@@ -2938,6 +3444,7 @@
     },
     {
       "m_RewardGroupID": 20041,
+      "m_DateStrID": "DATE_DROP_EVENT_FLOOR",
       "m_RewardID": 709,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_FLOOR_R_EVENT_DROP",
@@ -2945,6 +3452,7 @@
     },
     {
       "m_RewardGroupID": 20042,
+      "m_DateStrID": "DATE_DROP_EVENT_FLOOR",
       "m_RewardID": 709,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_FLOOR_R_EVENT_DROP",
@@ -2952,6 +3460,7 @@
     },
     {
       "m_RewardGroupID": 20043,
+      "m_DateStrID": "DATE_DROP_EVENT_FLOOR",
       "m_RewardID": 709,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_FLOOR_R_EVENT_DROP",
@@ -2959,6 +3468,7 @@
     },
     {
       "m_RewardGroupID": 20044,
+      "m_DateStrID": "DATE_DROP_EVENT_FLOOR",
       "m_RewardID": 709,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_FLOOR_R_EVENT_DROP",
@@ -2966,6 +3476,7 @@
     },
     {
       "m_RewardGroupID": 20045,
+      "m_DateStrID": "DATE_DROP_EVENT_FLOOR",
       "m_RewardID": 709,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_FLOOR_R_EVENT_DROP",
@@ -2973,6 +3484,7 @@
     },
     {
       "m_RewardGroupID": 20046,
+      "m_DateStrID": "DATE_DROP_EVENT_FLOOR",
       "m_RewardID": 709,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_FLOOR_R_EVENT_DROP",
@@ -2980,6 +3492,7 @@
     },
     {
       "m_RewardGroupID": 20047,
+      "m_DateStrID": "DATE_DROP_EVENT_YAKSHA",
       "m_RewardID": 711,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_FLOOR_R_EVENT_DROP",
@@ -2987,6 +3500,7 @@
     },
     {
       "m_RewardGroupID": 20048,
+      "m_DateStrID": "DATE_DROP_EVENT_YAKSHA",
       "m_RewardID": 711,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_FLOOR_R_EVENT_DROP",
@@ -2994,6 +3508,7 @@
     },
     {
       "m_RewardGroupID": 20049,
+      "m_DateStrID": "DATE_DROP_EVENT_YAKSHA",
       "m_RewardID": 711,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_FLOOR_R_EVENT_DROP",
@@ -3001,6 +3516,7 @@
     },
     {
       "m_RewardGroupID": 20050,
+      "m_DateStrID": "DATE_DROP_EVENT_YAKSHA",
       "m_RewardID": 711,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_FLOOR_R_EVENT_DROP",
@@ -3008,6 +3524,7 @@
     },
     {
       "m_RewardGroupID": 20051,
+      "m_DateStrID": "DATE_DROP_EVENT_YAKSHA",
       "m_RewardID": 711,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_FLOOR_R_EVENT_DROP",
@@ -3015,6 +3532,7 @@
     },
     {
       "m_RewardGroupID": 20052,
+      "m_DateStrID": "DATE_DROP_EVENT_YAKSHA",
       "m_RewardID": 711,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_FLOOR_R_EVENT_DROP",
@@ -3022,6 +3540,7 @@
     },
     {
       "m_RewardGroupID": 20053,
+      "m_DateStrID": "DATE_DROP_EVENT_YAKSHA",
       "m_RewardID": 711,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_FLOOR_R_EVENT_DROP",
@@ -3029,6 +3548,7 @@
     },
     {
       "m_RewardGroupID": 20054,
+      "m_DateStrID": "DATE_DROP_EVENT_YAKSHA",
       "m_RewardID": 711,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_FLOOR_R_EVENT_DROP",
@@ -3036,6 +3556,7 @@
     },
     {
       "m_RewardGroupID": 20055,
+      "m_DateStrID": "DATE_DROP_EVENT_YAKSHA",
       "m_RewardID": 711,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_FLOOR_R_EVENT_DROP",
@@ -3043,6 +3564,7 @@
     },
     {
       "m_RewardGroupID": 20056,
+      "m_DateStrID": "DATE_DROP_EVENT_YAKSHA",
       "m_RewardID": 711,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_FLOOR_R_EVENT_DROP",
@@ -3050,6 +3572,7 @@
     },
     {
       "m_RewardGroupID": 20057,
+      "m_DateStrID": "DATE_DROP_EVENT_YAKSHA",
       "m_RewardID": 711,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_FLOOR_R_EVENT_DROP",
@@ -3057,6 +3580,7 @@
     },
     {
       "m_RewardGroupID": 20058,
+      "m_DateStrID": "DATE_DROP_EVENT_YAKSHA",
       "m_RewardID": 711,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_FLOOR_R_EVENT_DROP",
@@ -3064,6 +3588,7 @@
     },
     {
       "m_RewardGroupID": 20059,
+      "m_DateStrID": "DATE_DROP_EVENT_YAKSHA",
       "m_RewardID": 711,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_FLOOR_R_EVENT_DROP",
@@ -3071,6 +3596,7 @@
     },
     {
       "m_RewardGroupID": 20060,
+      "m_DateStrID": "DATE_DROP_EVENT_YAKSHA",
       "m_RewardID": 711,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_FLOOR_R_EVENT_DROP",
@@ -3078,6 +3604,7 @@
     },
     {
       "m_RewardGroupID": 20061,
+      "m_DateStrID": "DATE_DROP_EVENT_DOLL",
       "m_RewardID": 712,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_DOLL_R_EVENT_DROP",
@@ -3085,6 +3612,7 @@
     },
     {
       "m_RewardGroupID": 20062,
+      "m_DateStrID": "DATE_DROP_EVENT_DOLL",
       "m_RewardID": 712,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_DOLL_R_EVENT_DROP",
@@ -3092,6 +3620,7 @@
     },
     {
       "m_RewardGroupID": 20063,
+      "m_DateStrID": "DATE_DROP_EVENT_DOLL",
       "m_RewardID": 712,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_DOLL_R_EVENT_DROP",
@@ -3099,6 +3628,7 @@
     },
     {
       "m_RewardGroupID": 20064,
+      "m_DateStrID": "DATE_DROP_EVENT_DOLL",
       "m_RewardID": 712,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_DOLL_R_EVENT_DROP",
@@ -3106,6 +3636,7 @@
     },
     {
       "m_RewardGroupID": 20065,
+      "m_DateStrID": "DATE_DROP_EVENT_DOLL",
       "m_RewardID": 712,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_DOLL_R_EVENT_DROP",
@@ -3113,6 +3644,7 @@
     },
     {
       "m_RewardGroupID": 20066,
+      "m_DateStrID": "DATE_DROP_EVENT_DOLL",
       "m_RewardID": 712,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_DOLL_R_EVENT_DROP",
@@ -3120,6 +3652,7 @@
     },
     {
       "m_RewardGroupID": 20067,
+      "m_DateStrID": "DATE_DROP_EVENT_DOLL",
       "m_RewardID": 712,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_DOLL_R_EVENT_DROP",
@@ -3127,6 +3660,7 @@
     },
     {
       "m_RewardGroupID": 20068,
+      "m_DateStrID": "DATE_DROP_EVENT_DOLL",
       "m_RewardID": 712,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_DOLL_R_EVENT_DROP",
@@ -3134,6 +3668,7 @@
     },
     {
       "m_RewardGroupID": 20069,
+      "m_DateStrID": "DATE_DROP_EVENT_DOLL",
       "m_RewardID": 712,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_DOLL_R_EVENT_DROP",
@@ -3141,6 +3676,7 @@
     },
     {
       "m_RewardGroupID": 20070,
+      "m_DateStrID": "DATE_DROP_EVENT_DOLL",
       "m_RewardID": 712,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_DOLL_R_EVENT_DROP",
@@ -3148,6 +3684,7 @@
     },
     {
       "m_RewardGroupID": 20071,
+      "m_DateStrID": "DATE_DROP_EVENT_DOLL",
       "m_RewardID": 712,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_DOLL_R_EVENT_DROP",
@@ -3155,6 +3692,7 @@
     },
     {
       "m_RewardGroupID": 20072,
+      "m_DateStrID": "DATE_DROP_EVENT_DOLL",
       "m_RewardID": 712,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_DOLL_R_EVENT_DROP",
@@ -3162,6 +3700,7 @@
     },
     {
       "m_RewardGroupID": 20073,
+      "m_DateStrID": "DATE_DROP_EVENT_AVENGER",
       "m_RewardID": 714,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_AVENGER_R_EVENT_DROP",
@@ -3169,6 +3708,7 @@
     },
     {
       "m_RewardGroupID": 20074,
+      "m_DateStrID": "DATE_DROP_EVENT_AVENGER",
       "m_RewardID": 714,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_AVENGER_R_EVENT_DROP",
@@ -3176,6 +3716,7 @@
     },
     {
       "m_RewardGroupID": 20075,
+      "m_DateStrID": "DATE_DROP_EVENT_AVENGER",
       "m_RewardID": 714,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_AVENGER_R_EVENT_DROP",
@@ -3183,6 +3724,7 @@
     },
     {
       "m_RewardGroupID": 20076,
+      "m_DateStrID": "DATE_DROP_EVENT_AVENGER",
       "m_RewardID": 714,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_AVENGER_R_EVENT_DROP",
@@ -3190,6 +3732,7 @@
     },
     {
       "m_RewardGroupID": 20077,
+      "m_DateStrID": "DATE_DROP_EVENT_AVENGER",
       "m_RewardID": 714,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_AVENGER_R_EVENT_DROP",
@@ -3197,6 +3740,7 @@
     },
     {
       "m_RewardGroupID": 20078,
+      "m_DateStrID": "DATE_DROP_EVENT_AVENGER",
       "m_RewardID": 714,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_AVENGER_R_EVENT_DROP",
@@ -3204,6 +3748,7 @@
     },
     {
       "m_RewardGroupID": 20079,
+      "m_DateStrID": "DATE_DROP_EVENT_AVENGER",
       "m_RewardID": 714,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_AVENGER_R_EVENT_DROP",
@@ -3211,6 +3756,7 @@
     },
     {
       "m_RewardGroupID": 20080,
+      "m_DateStrID": "DATE_DROP_EVENT_AVENGER",
       "m_RewardID": 714,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_AVENGER_R_EVENT_DROP",
@@ -3218,6 +3764,7 @@
     },
     {
       "m_RewardGroupID": 20081,
+      "m_DateStrID": "DATE_DROP_EVENT_AVENGER",
       "m_RewardID": 714,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_AVENGER_R_EVENT_DROP",
@@ -3225,6 +3772,7 @@
     },
     {
       "m_RewardGroupID": 20082,
+      "m_DateStrID": "DATE_DROP_EVENT_AVENGER",
       "m_RewardID": 714,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_AVENGER_R_EVENT_DROP",
@@ -3232,6 +3780,7 @@
     },
     {
       "m_RewardGroupID": 20083,
+      "m_DateStrID": "DATE_DROP_EVENT_AVENGER",
       "m_RewardID": 714,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_AVENGER_R_EVENT_DROP",
@@ -3239,6 +3788,7 @@
     },
     {
       "m_RewardGroupID": 20084,
+      "m_DateStrID": "DATE_DROP_EVENT_AVENGER",
       "m_RewardID": 714,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_AVENGER_R_EVENT_DROP",
@@ -3246,6 +3796,7 @@
     },
     {
       "m_RewardGroupID": 20085,
+      "m_DateStrID": "DATE_DROP_EVENT_AVENGER",
       "m_RewardID": 714,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_AVENGER_R_EVENT_DROP",
@@ -3253,6 +3804,7 @@
     },
     {
       "m_RewardGroupID": 20086,
+      "m_DateStrID": "DATE_DROP_EVENT_SWANSONG",
       "m_RewardID": 716,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SWANSONG_R_EVENT_DROP",
@@ -3260,6 +3812,7 @@
     },
     {
       "m_RewardGroupID": 20087,
+      "m_DateStrID": "DATE_DROP_EVENT_SWANSONG",
       "m_RewardID": 716,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SWANSONG_R_EVENT_DROP",
@@ -3267,6 +3820,7 @@
     },
     {
       "m_RewardGroupID": 20088,
+      "m_DateStrID": "DATE_DROP_EVENT_SWANSONG",
       "m_RewardID": 716,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SWANSONG_R_EVENT_DROP",
@@ -3274,6 +3828,7 @@
     },
     {
       "m_RewardGroupID": 20089,
+      "m_DateStrID": "DATE_DROP_EVENT_SWANSONG",
       "m_RewardID": 716,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SWANSONG_R_EVENT_DROP",
@@ -3281,6 +3836,7 @@
     },
     {
       "m_RewardGroupID": 20090,
+      "m_DateStrID": "DATE_DROP_EVENT_SWANSONG",
       "m_RewardID": 716,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SWANSONG_R_EVENT_DROP",
@@ -3288,6 +3844,7 @@
     },
     {
       "m_RewardGroupID": 20091,
+      "m_DateStrID": "DATE_DROP_EVENT_SWANSONG",
       "m_RewardID": 716,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SWANSONG_R_EVENT_DROP",
@@ -3295,6 +3852,7 @@
     },
     {
       "m_RewardGroupID": 20092,
+      "m_DateStrID": "DATE_DROP_EVENT_SWANSONG",
       "m_RewardID": 716,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SWANSONG_R_EVENT_DROP",
@@ -3302,6 +3860,7 @@
     },
     {
       "m_RewardGroupID": 20093,
+      "m_DateStrID": "DATE_DROP_EVENT_SWANSONG",
       "m_RewardID": 716,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SWANSONG_R_EVENT_DROP",
@@ -3309,6 +3868,7 @@
     },
     {
       "m_RewardGroupID": 20094,
+      "m_DateStrID": "DATE_DROP_EVENT_SWANSONG",
       "m_RewardID": 716,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SWANSONG_R_EVENT_DROP",
@@ -3316,6 +3876,7 @@
     },
     {
       "m_RewardGroupID": 20095,
+      "m_DateStrID": "DATE_DROP_EVENT_SWANSONG",
       "m_RewardID": 716,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SWANSONG_R_EVENT_DROP",
@@ -3323,6 +3884,7 @@
     },
     {
       "m_RewardGroupID": 20096,
+      "m_DateStrID": "DATE_DROP_EVENT_SWANSONG",
       "m_RewardID": 716,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SWANSONG_R_EVENT_DROP",
@@ -3330,6 +3892,7 @@
     },
     {
       "m_RewardGroupID": 20097,
+      "m_DateStrID": "DATE_DROP_EVENT_SWANSONG",
       "m_RewardID": 716,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SWANSONG_R_EVENT_DROP",
@@ -3337,6 +3900,7 @@
     },
     {
       "m_RewardGroupID": 20098,
+      "m_DateStrID": "DATE_DROP_EVENT_SWANSONG",
       "m_RewardID": 716,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SWANSONG_R_EVENT_DROP",
@@ -3344,6 +3908,7 @@
     },
     {
       "m_RewardGroupID": 20099,
+      "m_DateStrID": "DATE_DROP_EVENT_SWANSONG",
       "m_RewardID": 716,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SWANSONG_R_EVENT_DROP",
@@ -3351,6 +3916,7 @@
     },
     {
       "m_RewardGroupID": 20100,
+      "m_DateStrID": "DATE_DROP_EVENT_SWANSONG",
       "m_RewardID": 716,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SWANSONG_R_EVENT_DROP",
@@ -3358,6 +3924,7 @@
     },
     {
       "m_RewardGroupID": 20101,
+      "m_DateStrID": "DATE_DROP_EVENT_SWANSONG",
       "m_RewardID": 716,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SWANSONG_R_EVENT_DROP",
@@ -3365,6 +3932,7 @@
     },
     {
       "m_RewardGroupID": 20102,
+      "m_DateStrID": "DATE_DROP_EVENT_SWANSONG",
       "m_RewardID": 716,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SWANSONG_R_EVENT_DROP",
@@ -3372,6 +3940,7 @@
     },
     {
       "m_RewardGroupID": 20103,
+      "m_DateStrID": "DATE_DROP_EVENT_SWANSONG",
       "m_RewardID": 716,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_SWANSONG_R_EVENT_DROP",
@@ -3379,6 +3948,7 @@
     },
     {
       "m_RewardGroupID": 20104,
+      "m_DateStrID": "DATE_DROP_EVENT_VARUNA",
       "m_RewardID": 717,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_VARUNA_R_EVENT_DROP",
@@ -3386,6 +3956,7 @@
     },
     {
       "m_RewardGroupID": 20105,
+      "m_DateStrID": "DATE_DROP_EVENT_VARUNA",
       "m_RewardID": 717,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_VARUNA_R_EVENT_DROP",
@@ -3393,6 +3964,7 @@
     },
     {
       "m_RewardGroupID": 20106,
+      "m_DateStrID": "DATE_DROP_EVENT_VARUNA",
       "m_RewardID": 717,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_VARUNA_R_EVENT_DROP",
@@ -3400,6 +3972,7 @@
     },
     {
       "m_RewardGroupID": 20107,
+      "m_DateStrID": "DATE_DROP_EVENT_VARUNA",
       "m_RewardID": 717,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_VARUNA_R_EVENT_DROP",
@@ -3407,6 +3980,7 @@
     },
     {
       "m_RewardGroupID": 20108,
+      "m_DateStrID": "DATE_DROP_EVENT_VARUNA",
       "m_RewardID": 717,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_VARUNA_R_EVENT_DROP",
@@ -3414,6 +3988,7 @@
     },
     {
       "m_RewardGroupID": 20109,
+      "m_DateStrID": "DATE_DROP_EVENT_VARUNA",
       "m_RewardID": 717,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_VARUNA_R_EVENT_DROP",
@@ -3421,6 +3996,7 @@
     },
     {
       "m_RewardGroupID": 20110,
+      "m_DateStrID": "DATE_DROP_EVENT_VARUNA",
       "m_RewardID": 717,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_VARUNA_R_EVENT_DROP",
@@ -3428,6 +4004,7 @@
     },
     {
       "m_RewardGroupID": 20111,
+      "m_DateStrID": "DATE_DROP_EVENT_VARUNA",
       "m_RewardID": 717,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_VARUNA_R_EVENT_DROP",
@@ -3435,6 +4012,7 @@
     },
     {
       "m_RewardGroupID": 20112,
+      "m_DateStrID": "DATE_DROP_EVENT_VARUNA",
       "m_RewardID": 717,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_VARUNA_R_EVENT_DROP",
@@ -3442,6 +4020,7 @@
     },
     {
       "m_RewardGroupID": 20113,
+      "m_DateStrID": "DATE_DROP_EVENT_VARUNA",
       "m_RewardID": 717,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_VARUNA_R_EVENT_DROP",
@@ -3449,6 +4028,7 @@
     },
     {
       "m_RewardGroupID": 20114,
+      "m_DateStrID": "DATE_DROP_EVENT_VARUNA",
       "m_RewardID": 717,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_VARUNA_R_EVENT_DROP",
@@ -3456,6 +4036,7 @@
     },
     {
       "m_RewardGroupID": 20115,
+      "m_DateStrID": "DATE_DROP_EVENT_LEGACY",
       "m_RewardID": 722,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_LEGACY_R_EVENT_DROP",
@@ -3463,6 +4044,7 @@
     },
     {
       "m_RewardGroupID": 20116,
+      "m_DateStrID": "DATE_DROP_EVENT_LEGACY",
       "m_RewardID": 722,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_LEGACY_R_EVENT_DROP",
@@ -3470,6 +4052,7 @@
     },
     {
       "m_RewardGroupID": 20117,
+      "m_DateStrID": "DATE_DROP_EVENT_LEGACY",
       "m_RewardID": 722,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_LEGACY_R_EVENT_DROP",
@@ -3477,6 +4060,7 @@
     },
     {
       "m_RewardGroupID": 20118,
+      "m_DateStrID": "DATE_DROP_EVENT_LEGACY",
       "m_RewardID": 722,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_LEGACY_R_EVENT_DROP",
@@ -3484,6 +4068,7 @@
     },
     {
       "m_RewardGroupID": 20119,
+      "m_DateStrID": "DATE_DROP_EVENT_LEGACY",
       "m_RewardID": 722,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_LEGACY_R_EVENT_DROP",
@@ -3491,6 +4076,7 @@
     },
     {
       "m_RewardGroupID": 20120,
+      "m_DateStrID": "DATE_DROP_EVENT_LEGACY",
       "m_RewardID": 722,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_LEGACY_R_EVENT_DROP",
@@ -3498,6 +4084,7 @@
     },
     {
       "m_RewardGroupID": 20121,
+      "m_DateStrID": "DATE_DROP_EVENT_LEGACY",
       "m_RewardID": 722,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_LEGACY_R_EVENT_DROP",
@@ -3505,6 +4092,7 @@
     },
     {
       "m_RewardGroupID": 20122,
+      "m_DateStrID": "DATE_DROP_EVENT_LEGACY",
       "m_RewardID": 722,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_LEGACY_R_EVENT_DROP",
@@ -3512,6 +4100,7 @@
     },
     {
       "m_RewardGroupID": 20123,
+      "m_DateStrID": "DATE_DROP_EVENT_LEGACY",
       "m_RewardID": 722,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_LEGACY_R_EVENT_DROP",
@@ -3519,6 +4108,7 @@
     },
     {
       "m_RewardGroupID": 20124,
+      "m_DateStrID": "DATE_DROP_EVENT_LEGACY",
       "m_RewardID": 722,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_LEGACY_R_EVENT_DROP",
@@ -3526,6 +4116,7 @@
     },
     {
       "m_RewardGroupID": 20125,
+      "m_DateStrID": "DATE_DROP_EVENT_LEGACY",
       "m_RewardID": 722,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_LEGACY_R_EVENT_DROP",
@@ -3533,6 +4124,7 @@
     },
     {
       "m_RewardGroupID": 20126,
+      "m_DateStrID": "DATE_DROP_EVENT_LEGACY",
       "m_RewardID": 722,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_LEGACY_R_EVENT_DROP",
@@ -3540,6 +4132,7 @@
     },
     {
       "m_RewardGroupID": 20127,
+      "m_DateStrID": "DROP_EVENT_WINTERVACATION",
       "m_RewardID": 725,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_WINTERVACATION_R_EVENT_DROP",
@@ -3547,6 +4140,7 @@
     },
     {
       "m_RewardGroupID": 20128,
+      "m_DateStrID": "DROP_EVENT_WINTERVACATION",
       "m_RewardID": 725,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_WINTERVACATION_R_EVENT_DROP",
@@ -3554,6 +4148,7 @@
     },
     {
       "m_RewardGroupID": 20129,
+      "m_DateStrID": "DATE_DROP_EVENT_MOONLIGHT",
       "m_RewardID": 729,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_MOONLIGHT_R_EVENT_DROP",
@@ -3561,6 +4156,7 @@
     },
     {
       "m_RewardGroupID": 20130,
+      "m_DateStrID": "DATE_DROP_EVENT_MOONLIGHT",
       "m_RewardID": 729,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_MOONLIGHT_R_EVENT_DROP",
@@ -3568,6 +4164,7 @@
     },
     {
       "m_RewardGroupID": 20131,
+      "m_DateStrID": "DATE_DROP_EVENT_MOONLIGHT",
       "m_RewardID": 729,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_MOONLIGHT_R_EVENT_DROP",
@@ -3575,6 +4172,7 @@
     },
     {
       "m_RewardGroupID": 20132,
+      "m_DateStrID": "DATE_DROP_EVENT_MOONLIGHT",
       "m_RewardID": 729,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_MOONLIGHT_R_EVENT_DROP",
@@ -3582,6 +4180,7 @@
     },
     {
       "m_RewardGroupID": 20133,
+      "m_DateStrID": "DATE_DROP_EVENT_MOONLIGHT",
       "m_RewardID": 729,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_MOONLIGHT_R_EVENT_DROP",
@@ -3589,6 +4188,7 @@
     },
     {
       "m_RewardGroupID": 20134,
+      "m_DateStrID": "DATE_DROP_EVENT_MOONLIGHT",
       "m_RewardID": 729,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_MOONLIGHT_R_EVENT_DROP",
@@ -3596,6 +4196,7 @@
     },
     {
       "m_RewardGroupID": 20135,
+      "m_DateStrID": "DATE_DROP_EVENT_MOONLIGHT",
       "m_RewardID": 729,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_MOONLIGHT_R_EVENT_DROP",
@@ -3603,6 +4204,7 @@
     },
     {
       "m_RewardGroupID": 20136,
+      "m_DateStrID": "DATE_DROP_EVENT_MOONLIGHT",
       "m_RewardID": 729,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_MOONLIGHT_R_EVENT_DROP",
@@ -3610,6 +4212,7 @@
     },
     {
       "m_RewardGroupID": 20137,
+      "m_DateStrID": "DATE_DROP_EVENT_MOONLIGHT",
       "m_RewardID": 729,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_MOONLIGHT_R_EVENT_DROP",
@@ -3617,6 +4220,7 @@
     },
     {
       "m_RewardGroupID": 20138,
+      "m_DateStrID": "DATE_DROP_EVENT_MOONLIGHT",
       "m_RewardID": 729,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_MOONLIGHT_R_EVENT_DROP",
@@ -3624,6 +4228,7 @@
     },
     {
       "m_RewardGroupID": 20139,
+      "m_DateStrID": "DATE_DROP_EVENT_EPISODE_MAIN_EP5_HARD",
       "m_RewardID": 734,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "EPISODE_MAIN_EP5_HARD_EVENT_DROP",
@@ -3631,6 +4236,7 @@
     },
     {
       "m_RewardGroupID": 20140,
+      "m_DateStrID": "DATE_DROP_EVENT_EPISODE_MAIN_EP13_HARD",
       "m_RewardID": 743,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "EPISODE_MAIN_EP13_HARD_EVENT_DROP",
@@ -3638,6 +4244,7 @@
     },
     {
       "m_RewardGroupID": 20141,
+      "m_DateStrID": "DATE_DROP_EVENT_EPISODE_MAIN_EP14_HARD",
       "m_RewardID": 745,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "EPISODE_MAIN_EP14_HARD_EVENT_DROP",
@@ -3645,6 +4252,7 @@
     },
     {
       "m_RewardGroupID": 20142,
+      "m_DateStrID": "DATE_DROP_EVENT_EPISODE_MAIN_EP7_HARD",
       "m_RewardID": 736,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "EPISODE_MAIN_EP7_HARD_EVENT_DROP",
@@ -3652,6 +4260,7 @@
     },
     {
       "m_RewardGroupID": 20141,
+      "m_DateStrID": "DATE_DROP_EVENT_PRIDE",
       "m_RewardID": 744,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_PRIDE_R_EVENT_DROP",
@@ -3659,6 +4268,7 @@
     },
     {
       "m_RewardGroupID": 20142,
+      "m_DateStrID": "DATE_DROP_EVENT_PRIDE",
       "m_RewardID": 744,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_PRIDE_R_EVENT_DROP",
@@ -3666,6 +4276,7 @@
     },
     {
       "m_RewardGroupID": 20143,
+      "m_DateStrID": "DATE_DROP_EVENT_PRIDE",
       "m_RewardID": 744,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_PRIDE_R_EVENT_DROP",
@@ -3673,6 +4284,7 @@
     },
     {
       "m_RewardGroupID": 20144,
+      "m_DateStrID": "DATE_DROP_EVENT_PRIDE",
       "m_RewardID": 744,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_PRIDE_R_EVENT_DROP",
@@ -3680,6 +4292,7 @@
     },
     {
       "m_RewardGroupID": 20145,
+      "m_DateStrID": "DATE_DROP_EVENT_PRIDE",
       "m_RewardID": 744,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_PRIDE_R_EVENT_DROP",
@@ -3687,6 +4300,7 @@
     },
     {
       "m_RewardGroupID": 20146,
+      "m_DateStrID": "DATE_DROP_EVENT_PRIDE",
       "m_RewardID": 744,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_PRIDE_R_EVENT_DROP",
@@ -3694,6 +4308,7 @@
     },
     {
       "m_RewardGroupID": 20147,
+      "m_DateStrID": "DATE_DROP_EVENT_PRIDE",
       "m_RewardID": 744,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_PRIDE_R_EVENT_DROP",
@@ -3701,6 +4316,7 @@
     },
     {
       "m_RewardGroupID": 20148,
+      "m_DateStrID": "DATE_DROP_EVENT_PRIDE",
       "m_RewardID": 744,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_PRIDE_R_EVENT_DROP",
@@ -3708,6 +4324,7 @@
     },
     {
       "m_RewardGroupID": 20149,
+      "m_DateStrID": "DATE_DROP_EVENT_PRIDE",
       "m_RewardID": 744,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_PRIDE_R_EVENT_DROP",
@@ -3715,6 +4332,7 @@
     },
     {
       "m_RewardGroupID": 20150,
+      "m_DateStrID": "DATE_DROP_EVENT_PRIDE",
       "m_RewardID": 744,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_PRIDE_R_EVENT_DROP",
@@ -3722,6 +4340,7 @@
     },
     {
       "m_RewardGroupID": 20151,
+      "m_DateStrID": "DATE_DROP_EVENT_PRIDE",
       "m_RewardID": 744,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_PRIDE_R_EVENT_DROP",
@@ -3729,6 +4348,7 @@
     },
     {
       "m_RewardGroupID": 20152,
+      "m_DateStrID": "DATE_DROP_EVENT_PRIDE",
       "m_RewardID": 744,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_PRIDE_R_EVENT_DROP",
@@ -3736,6 +4356,7 @@
     },
     {
       "m_RewardGroupID": 20153,
+      "m_DateStrID": "DATE_DROP_EVENT_PRIDE",
       "m_RewardID": 744,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_PRIDE_R_EVENT_DROP",
@@ -3743,6 +4364,7 @@
     },
     {
       "m_RewardGroupID": 20154,
+      "m_DateStrID": "DATE_DROP_EVENT_PRIDE",
       "m_RewardID": 744,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_PRIDE_R_EVENT_DROP",
@@ -3750,6 +4372,7 @@
     },
     {
       "m_RewardGroupID": 20155,
+      "m_DateStrID": "DATE_DROP_EVENT_PRIDE",
       "m_RewardID": 744,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_PRIDE_R_EVENT_DROP",
@@ -3757,6 +4380,7 @@
     },
     {
       "m_RewardGroupID": 20156,
+      "m_DateStrID": "DATE_DROP_EVENT_PRIDE",
       "m_RewardID": 744,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_PRIDE_R_EVENT_DROP",
@@ -3764,6 +4388,7 @@
     },
     {
       "m_RewardGroupID": 20157,
+      "m_DateStrID": "DATE_DROP_EVENT_PRIDE",
       "m_RewardID": 744,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_PRIDE_R_EVENT_DROP",
@@ -3771,6 +4396,7 @@
     },
     {
       "m_RewardGroupID": 20158,
+      "m_DateStrID": "DATE_DROP_EVENT_DELTA",
       "m_RewardID": 688,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "SUBSTREAM_DELTA_R_EVENT_DROP",
@@ -29839,6 +30465,9 @@
     },
     {
       "m_RewardGroupID": 5001122,
+      "listContentsTagAllow": [
+        "TWN"
+      ],
       "m_RewardID": 19013,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "EVENT_MISC_BINGO_RENEWAL",
@@ -29846,6 +30475,11 @@
     },
     {
       "m_RewardGroupID": 5001122,
+      "listContentsTagAllow": [
+        "KOR",
+        "CHN",
+        "SEA"
+      ],
       "m_RewardID": 1,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "EVENT_MISC_BINGO_RENEWAL",
@@ -29853,6 +30487,9 @@
     },
     {
       "m_RewardGroupID": 5001123,
+      "listContentsTagAllow": [
+        "KOR"
+      ],
       "m_RewardID": 19014,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "EVENT_MISC_BINGO_RENEWAL",
@@ -29860,6 +30497,11 @@
     },
     {
       "m_RewardGroupID": 5001123,
+      "listContentsTagAllow": [
+        "CHN",
+        "SEA",
+        "TWN"
+      ],
       "m_RewardID": 1,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "EVENT_MISC_BINGO_RENEWAL",
@@ -30686,6 +31328,9 @@
     },
     {
       "m_RewardGroupID": 5003001,
+      "listContentsTagAllow": [
+        "TAG_EPISODE_NOT_USED"
+      ],
       "m_RewardID": 615,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "EVENT_MISC_CHUSEOK_1",
@@ -30693,6 +31338,9 @@
     },
     {
       "m_RewardGroupID": 5003002,
+      "listContentsTagAllow": [
+        "TAG_EPISODE_NOT_USED"
+      ],
       "m_RewardID": 615,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "EVENT_MISC_CHUSEOK_2",
@@ -30700,6 +31348,9 @@
     },
     {
       "m_RewardGroupID": 5003003,
+      "listContentsTagAllow": [
+        "TAG_EPISODE_NOT_USED"
+      ],
       "m_RewardID": 615,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "EVENT_MISC_CHUSEOK_3",
@@ -30707,6 +31358,9 @@
     },
     {
       "m_RewardGroupID": 5003004,
+      "listContentsTagAllow": [
+        "TAG_EPISODE_NOT_USED"
+      ],
       "m_RewardID": 615,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "EVENT_MISC_CHUSEOK_4",
@@ -30714,6 +31368,9 @@
     },
     {
       "m_RewardGroupID": 5003005,
+      "listContentsTagAllow": [
+        "TAG_EPISODE_NOT_USED"
+      ],
       "m_RewardID": 615,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "EVENT_MISC_CHUSEOK_5",
@@ -30721,6 +31378,9 @@
     },
     {
       "m_RewardGroupID": 5003006,
+      "listContentsTagAllow": [
+        "TAG_EPISODE_NOT_USED"
+      ],
       "m_RewardID": 615,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "EVENT_MISC_CHUSEOK_6",
@@ -30735,6 +31395,9 @@
     },
     {
       "m_RewardGroupID": 5005001,
+      "listContentsTagAllow": [
+        "KOR"
+      ],
       "m_RewardID": 90101,
       "m_RewardType": "RT_EQUIP",
       "m_RewardGroupStrID": "EVENT_MISC_PEPERO_1",
@@ -30742,6 +31405,9 @@
     },
     {
       "m_RewardGroupID": 5005001,
+      "listContentsTagAllow": [
+        "KOR"
+      ],
       "m_RewardID": 90102,
       "m_RewardType": "RT_EQUIP",
       "m_RewardGroupStrID": "EVENT_MISC_PEPERO_1",
@@ -30749,6 +31415,9 @@
     },
     {
       "m_RewardGroupID": 5005002,
+      "listContentsTagAllow": [
+        "KOR"
+      ],
       "m_RewardID": 90101,
       "m_RewardType": "RT_EQUIP",
       "m_RewardGroupStrID": "EVENT_MISC_PEPERO_2",
@@ -30756,6 +31425,9 @@
     },
     {
       "m_RewardGroupID": 5005002,
+      "listContentsTagAllow": [
+        "KOR"
+      ],
       "m_RewardID": 90102,
       "m_RewardType": "RT_EQUIP",
       "m_RewardGroupStrID": "EVENT_MISC_PEPERO_2",
@@ -30763,6 +31435,9 @@
     },
     {
       "m_RewardGroupID": 5005002,
+      "listContentsTagAllow": [
+        "KOR"
+      ],
       "m_RewardID": 90103,
       "m_RewardType": "RT_EQUIP",
       "m_RewardGroupStrID": "EVENT_MISC_PEPERO_2",
@@ -30770,6 +31445,9 @@
     },
     {
       "m_RewardGroupID": 5005003,
+      "listContentsTagAllow": [
+        "KOR"
+      ],
       "m_RewardID": 90102,
       "m_RewardType": "RT_EQUIP",
       "m_RewardGroupStrID": "EVENT_MISC_PEPERO_2",
@@ -30777,6 +31455,9 @@
     },
     {
       "m_RewardGroupID": 5005003,
+      "listContentsTagAllow": [
+        "KOR"
+      ],
       "m_RewardID": 90103,
       "m_RewardType": "RT_EQUIP",
       "m_RewardGroupStrID": "EVENT_MISC_PEPERO_2",
@@ -30784,6 +31465,9 @@
     },
     {
       "m_RewardGroupID": 5005003,
+      "listContentsTagAllow": [
+        "KOR"
+      ],
       "m_RewardID": 90104,
       "m_RewardType": "RT_EQUIP",
       "m_RewardGroupStrID": "EVENT_MISC_PEPERO_2",
@@ -30791,6 +31475,9 @@
     },
     {
       "m_RewardGroupID": 5005004,
+      "listContentsTagAllow": [
+        "KOR"
+      ],
       "m_RewardID": 90103,
       "m_RewardType": "RT_EQUIP",
       "m_RewardGroupStrID": "EVENT_MISC_PEPERO_2",
@@ -30798,6 +31485,9 @@
     },
     {
       "m_RewardGroupID": 5005004,
+      "listContentsTagAllow": [
+        "KOR"
+      ],
       "m_RewardID": 90104,
       "m_RewardType": "RT_EQUIP",
       "m_RewardGroupStrID": "EVENT_MISC_PEPERO_2",
@@ -30805,6 +31495,9 @@
     },
     {
       "m_RewardGroupID": 5005004,
+      "listContentsTagAllow": [
+        "KOR"
+      ],
       "m_RewardID": 90105,
       "m_RewardType": "RT_EQUIP",
       "m_RewardGroupStrID": "EVENT_MISC_PEPERO_2",
@@ -30812,6 +31505,9 @@
     },
     {
       "m_RewardGroupID": 5005005,
+      "listContentsTagAllow": [
+        "KOR"
+      ],
       "m_RewardID": 90104,
       "m_RewardType": "RT_EQUIP",
       "m_RewardGroupStrID": "EVENT_MISC_PEPERO_2",
@@ -30819,6 +31515,9 @@
     },
     {
       "m_RewardGroupID": 5005005,
+      "listContentsTagAllow": [
+        "KOR"
+      ],
       "m_RewardID": 90105,
       "m_RewardType": "RT_EQUIP",
       "m_RewardGroupStrID": "EVENT_MISC_PEPERO_2",
@@ -30826,6 +31525,9 @@
     },
     {
       "m_RewardGroupID": 5005005,
+      "listContentsTagAllow": [
+        "KOR"
+      ],
       "m_RewardID": 90106,
       "m_RewardType": "RT_EQUIP",
       "m_RewardGroupStrID": "EVENT_MISC_PEPERO_2",
@@ -30833,6 +31535,9 @@
     },
     {
       "m_RewardGroupID": 5010001,
+      "listContentsTagAllow": [
+        "KOR"
+      ],
       "m_RewardID": 90101,
       "m_RewardType": "RT_EQUIP",
       "m_RewardGroupStrID": "EVENT_DROP_BINGO",
@@ -30840,6 +31545,9 @@
     },
     {
       "m_RewardGroupID": 5010001,
+      "listContentsTagAllow": [
+        "TWN"
+      ],
       "m_RewardID": 90101,
       "m_RewardType": "RT_EQUIP",
       "m_RewardGroupStrID": "EVENT_DROP_BINGO",
@@ -30847,6 +31555,9 @@
     },
     {
       "m_RewardGroupID": 5010001,
+      "listContentsTagAllow": [
+        "CHN"
+      ],
       "m_RewardID": 90101,
       "m_RewardType": "RT_EQUIP",
       "m_RewardGroupStrID": "EVENT_DROP_BINGO",
@@ -30854,6 +31565,9 @@
     },
     {
       "m_RewardGroupID": 5010002,
+      "listContentsTagAllow": [
+        "KOR"
+      ],
       "m_RewardID": 19010,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "EVENT_DROP_BINGO",
@@ -30861,6 +31575,9 @@
     },
     {
       "m_RewardGroupID": 5010002,
+      "listContentsTagAllow": [
+        "TWN"
+      ],
       "m_RewardID": 19010,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "EVENT_DROP_BINGO",
@@ -30868,6 +31585,9 @@
     },
     {
       "m_RewardGroupID": 5010002,
+      "listContentsTagAllow": [
+        "CHN"
+      ],
       "m_RewardID": 19010,
       "m_RewardType": "RT_MISC",
       "m_RewardGroupStrID": "EVENT_DROP_BINGO",

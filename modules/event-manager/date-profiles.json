@@ -1,0 +1,23 @@
+{
+  "profiles": [
+    {
+      "id": "2026-05-13-anapilis",
+      "name": "Anapilis launch",
+      "startDate": "2026-05-13T00:00:00Z",
+      "endDate": "2026-06-04T00:00:00Z",
+      "openTags": [
+        "TAG_FIRST_UNIT_ANAPILIS_CA_SCYTHE",
+        "TAG_COMMON_MISSION_EVENT_ANAPILIS_CA_SCYTHE_ENGAGE",
+        "TAG_COMMON_EVENT_COLLECTION_ANAPILIS_CA_SCYTHE"
+      ],
+      "intervalTags": [
+        "DATE_KOR_CLASSIFIED_CONTRACT_ANAPILIS_SCYTHE",
+        "DATE_COMMON_MISSION_EVENT_ANAPILIS_CA_SCYTHE_ENGAGE",
+        "DATE_COMMON_EVENT_COLLECTION_ANAPILIS_CA_SCYTHE"
+      ],
+      "counterPassIds": [
+        573
+      ]
+    }
+  ]
+}

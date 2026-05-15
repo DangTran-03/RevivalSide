@@ -72,6 +72,11 @@ public sealed class JoinLobbyMergeData
 {
     public string OfficialPayloadBase64 { get; set; } = "";
     public string LocalPayloadBase64 { get; set; } = "";
+    public bool CopyIntervalData { get; set; }
+    public bool ReplaceIntervalData { get; set; }
+    public List<string> ExcludeIntervalStrKeys { get; set; } = new();
+    public List<string> PreserveIntervalStrKeys { get; set; } = new();
+    public bool FilterInactiveEventIntervals { get; set; }
 }
 
 public sealed class JoinLobbyNormalizeData

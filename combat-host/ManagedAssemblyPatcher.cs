@@ -18,12 +18,38 @@ internal static class ManagedAssemblyPatcher
         Directory.CreateDirectory(outputDir);
         var outputAssembly = Path.Combine(outputDir, "Assembly-CSharp.dll");
 
-        if (!File.Exists(outputAssembly))
+        if (!IsUsableAssembly(outputAssembly))
         {
-            PatchAssembly(sourceAssembly, outputAssembly);
+            var tempAssembly = outputAssembly + ".tmp";
+            if (File.Exists(tempAssembly))
+            {
+                File.Delete(tempAssembly);
+            }
+            PatchAssembly(sourceAssembly, tempAssembly);
+            File.SetLastWriteTimeUtc(tempAssembly, File.GetLastWriteTimeUtc(sourceAssembly));
+            if (File.Exists(outputAssembly))
+            {
+                File.Delete(outputAssembly);
+            }
+            File.Move(tempAssembly, outputAssembly);
             File.SetLastWriteTimeUtc(outputAssembly, File.GetLastWriteTimeUtc(sourceAssembly));
         }
         return outputAssembly;
+    }
+
+    private static bool IsUsableAssembly(string assemblyPath)
+    {
+        try
+        {
+            if (!File.Exists(assemblyPath)) return false;
+            if (new FileInfo(assemblyPath).Length <= 0) return false;
+            using var module = ModuleDefinition.ReadModule(assemblyPath);
+            return module.Types.Count > 0;
+        }
+        catch
+        {
+            return false;
+        }
     }
 
     private static string BuildPatchKey(string sourceAssembly)

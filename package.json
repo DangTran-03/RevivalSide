@@ -10,6 +10,11 @@
     "build:combat-host": "dotnet build combat-host/CombatHost.csproj --nologo",
     "publish:combat-host": "dotnet publish combat-host/CombatHost.csproj -c Release --nologo -o prebuilt/combat-host",
     "build:gameplay-jsons": "node tools/build-prepackaged-gameplay-jsons.js",
+    "patch:counter-pass-client": "dotnet run --project tools/CounterPassClientPatcher/CounterPassClientPatcher.csproj -- --env-switch",
+    "patch:counter-pass-client:restore": "dotnet run --project tools/CounterPassClientPatcher/CounterPassClientPatcher.csproj -- --restore",
+    "patch:counter-pass-client:legacy": "dotnet run --project tools/CounterPassClientPatcher/CounterPassClientPatcher.csproj -- --restore-first --legacy-all",
+    "patch:counter-pass-client:status": "dotnet run --project tools/CounterPassClientPatcher/CounterPassClientPatcher.csproj -- --status",
+    "diag:event": "node tools/event-manager-diagnostics.js",
     "generate:packet-schema": "node tools/generate-packet-schema.js",
     "wiki:build": "node tools/build-revivalside-wiki.js",
     "wiki:serve": "node tools/serve-revivalside-wiki.js"

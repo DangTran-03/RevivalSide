@@ -1,6 +1,7 @@
 const {
   writeSignedVarInt,
   writeSignedVarLong,
+  writeInt64LE,
   writeBool,
   writeNullObject,
   writeNullableObject,
@@ -13,6 +14,7 @@ const {
   readSignedVarLong,
   readSignedVarLongList,
   readBool,
+  dateTimeBinaryNow,
   toBigInt,
 } = require("../packet-codec");
 const {
@@ -78,6 +80,8 @@ const PACKETS = Object.freeze({
   OPERATOR_LOCK_ACK: 1429,
   OPERATOR_REMOVE_REQ: 1430,
   OPERATOR_REMOVE_ACK: 1431,
+  RECALL_UNIT_REQ: 1432,
+  RECALL_UNIT_ACK: 1433,
   EXTRACT_UNIT_REQ: 1434,
   EXTRACT_UNIT_ACK: 1435,
   REARMAMENT_UNIT_REQ: 1436,
@@ -153,6 +157,7 @@ function createUnitGrowthHandlers() {
     handler(PACKETS.OPERATOR_ENHANCE_REQ, "OPERATOR_ENHANCE_REQ", handleOperatorEnhance),
     handler(PACKETS.OPERATOR_LOCK_REQ, "OPERATOR_LOCK_REQ", handleOperatorLock),
     handler(PACKETS.OPERATOR_REMOVE_REQ, "OPERATOR_REMOVE_REQ", handleOperatorRemove),
+    handler(PACKETS.RECALL_UNIT_REQ, "RECALL_UNIT_REQ", handleRecallUnit),
     handler(PACKETS.EXTRACT_UNIT_REQ, "EXTRACT_UNIT_REQ", handleExtractUnit),
     handler(PACKETS.REARMAMENT_UNIT_REQ, "REARMAMENT_UNIT_REQ", handleRearmUnit),
     handler(PACKETS.FAVORITE_UNIT_REQ, "FAVORITE_UNIT_REQ", handleFavoriteUnit),
@@ -369,6 +374,26 @@ function handleOperatorLock(_ctx, user, request) {
 function handleOperatorRemove(_ctx, user, request) {
   const removed = removeOperatorUids(user, request.operatorUids || []);
   return response(PACKETS.OPERATOR_REMOVE_ACK, [ok(), writeSignedVarLongList(removed), emptyItemList()]);
+}
+
+function handleRecallUnit(_ctx, user, request) {
+  const recalled = getArmyUnitByUid(user, request.unitUid);
+  const exchanges = [];
+  for (const exchange of Array.isArray(request.exchangeUnits) ? request.exchangeUnits : []) {
+    const count = Math.min(16, Math.max(1, Math.trunc(Number(exchange.count || 1) || 1)));
+    for (let index = 0; index < count; index += 1) {
+      const unit = grantUnit(user, exchange.unitId, { level: 1, limitBreakLevel: 0, fromContract: false });
+      if (unit) exchanges.push(unit);
+    }
+  }
+  if (recalled) removeArmyUnitUids(user, [request.unitUid]);
+  return response(PACKETS.RECALL_UNIT_ACK, [
+    ok(),
+    writeSignedVarLong(request.unitUid || 0n),
+    writeNullableObjectList(exchanges.map(buildUnitData)),
+    writeNullableObject(buildRecallHistoryInfo((recalled && recalled.unitId) || request.historyUnitId || 0)),
+    emptyItemList(),
+  ]);
 }
 
 function handleExtractUnit(_ctx, user, request) {
@@ -629,6 +654,11 @@ function decodeRequest(ctx, packetId, encryptedPayload) {
     offset = read.offset;
     return read.value.map((value) => value.toString());
   };
+  const nextIntIntDictionary = () => {
+    const read = readIntIntDictionary(payload, offset);
+    offset = read.offset;
+    return read.value;
+  };
   const nextMiscList = () => {
     const read = readMiscItemDataList(payload, offset);
     offset = read.offset;
@@ -667,6 +697,8 @@ function decodeRequest(ctx, packetId, encryptedPayload) {
       case PACKETS.OPERATOR_REMOVE_REQ:
       case PACKETS.OPERATOR_EXTRACT_REQ:
         return { operatorUids: nextLongList() };
+      case PACKETS.RECALL_UNIT_REQ:
+        return { unitUid: nextLong(), exchangeUnits: nextIntIntDictionary() };
       case PACKETS.REARMAMENT_UNIT_REQ:
         return { unitUid: nextLong(), rearmamentId: nextInt() };
       case PACKETS.FAVORITE_UNIT_REQ:
@@ -701,6 +733,20 @@ function readMiscItemDataList(buffer, offset = 0) {
     const itemCount = readSignedVarInt(buffer, offset);
     offset = itemCount.offset;
     values.push({ itemId: itemId.value, count: itemCount.value });
+  }
+  return { value: values, offset };
+}
+
+function readIntIntDictionary(buffer, offset = 0) {
+  const count = readVarInt(buffer, offset);
+  offset = count.offset;
+  const values = [];
+  for (let index = 0; index < count.value; index += 1) {
+    const key = readSignedVarInt(buffer, offset);
+    offset = key.offset;
+    const value = readSignedVarInt(buffer, offset);
+    offset = value.offset;
+    values.push({ unitId: key.value, count: value.value });
   }
   return { value: values, offset };
 }
@@ -740,6 +786,10 @@ function nullableUnit(unit) {
 
 function nullableOperator(operator) {
   return operator ? writeNullableObject(buildOperatorData(operator)) : writeNullObject();
+}
+
+function buildRecallHistoryInfo(unitId) {
+  return Buffer.concat([writeSignedVarInt(Number(unitId || 0) || 0), writeInt64LE(toBigInt(dateTimeBinaryNow()))]);
 }
 
 function emptyItemList() {
@@ -801,6 +851,9 @@ function formatRequest(request) {
   if (request && Array.isArray(request.consumeUnitUids)) fields.push(`consume=${request.consumeUnitUids.length}`);
   if (request && Array.isArray(request.unitUids)) fields.push(`units=${request.unitUids.length}`);
   if (request && Array.isArray(request.operatorUids)) fields.push(`operators=${request.operatorUids.length}`);
+  if (request && Array.isArray(request.exchangeUnits)) {
+    fields.push(`exchange=${request.exchangeUnits.map((unit) => `${unit.unitId}:${unit.count}`).join(",") || "0"}`);
+  }
   if (request && Array.isArray(request.materials)) {
     fields.push(`materials=${request.materials.map((item) => `${item.itemId}:${item.count}`).join(",") || "0"}`);
   }
