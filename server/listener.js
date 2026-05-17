@@ -95,6 +95,7 @@ const { loadShopCatalog, buildSerializedRandomShopData } = require("../modules/s
 const { getShopPurchaseHistories } = require("../modules/resource");
 const {
   getContentUnlocksForDungeon,
+  getContractPoolUnitIds,
   getEventDeckTemplet,
   getMissionTabTemplets,
   getMissionTempletsByTabId,
@@ -352,6 +353,12 @@ const GAME_SERVER_PORT = Number(process.env.CS_GAME_SERVER_PORT || PORT);
 const CONTENTS_VERSION = process.env.CS_CONTENTS_VERSION || "9.2.c";
 const REQUIRED_CONTENTS_TAGS = Object.freeze(["TAG_COMMON_SHOP_TAB_SUPPLY", "SYSTEM_TRANSCENDENCE_LV120"]);
 const REQUIRED_STORY_OPEN_TAGS = Object.freeze(getStoryOpenTags());
+const REQUIRED_INTERVAL_TAGS = Object.freeze([
+  "DATE_GLOBAL_CONTRACT_SELECTABLE",
+  "DATE_GLOBAL_CONTRACT_CUSTOM_SSR_V2",
+  "DATE_GLOBAL_CONTRACT_CUSTOM_OPR",
+  "DATE_GLOBAL_CONTRACT_CUSTOM_AWAKEN",
+]);
 const CONTENTS_TAGS = mergeTags(
   parseTags(
     process.env.CS_CONTENTS_TAGS ||
@@ -5327,6 +5334,21 @@ function buildEventIntervalDataList() {
   return state.enabled ? state.intervalData : [];
 }
 
+function buildRequiredIntervalDataList() {
+  const startDate = new Date(Date.UTC(2000, 0, 1, 0, 0, 0, 0));
+  const endDate = new Date(Date.UTC(2099, 11, 31, 23, 59, 59, 0));
+  return REQUIRED_INTERVAL_TAGS.map((strKey, index) =>
+    buildIntervalData({
+      key: 900000 + index,
+      strKey,
+      startDate,
+      endDate,
+      repeatStartDate: 0,
+      repeatEndDate: 0,
+    })
+  );
+}
+
 function buildJoinLobbyIntervalDataList(user) {
   const byStrKey = new Map();
   for (const interval of buildEventIntervalDataList()) {
@@ -5334,11 +5356,33 @@ function buildJoinLobbyIntervalDataList(user) {
     if (!strKey) continue;
     byStrKey.set(strKey, buildIntervalData(interval));
   }
+  for (const payload of buildRequiredIntervalDataList()) {
+    const strKey = readIntervalDataStrKey(payload);
+    if (strKey) byStrKey.set(strKey, payload);
+  }
   for (const payload of buildSerializedAttendanceIntervalDataList(user)) {
     const strKey = readIntervalDataStrKey(payload) || `__attendance_${byStrKey.size}`;
     byStrKey.set(strKey, payload);
   }
   return Array.from(byStrKey.values());
+}
+
+function getActiveEventMissionTabIds() {
+  const state = getActiveEventState();
+  if (!state || !state.enabled) return [];
+  const activeOpenTags = new Set((state.openTags || []).map((tag) => String(tag || "").toUpperCase()));
+  const activeIntervals = new Set((state.intervalData || []).map((interval) => String(interval && interval.strKey || "").toUpperCase()));
+  if (!activeOpenTags.size && !activeIntervals.size) return [];
+  return uniqueMissionTabs(
+    getMissionTabTemplets()
+      .filter((tab) => {
+        const openTag = String(tab && tab.m_OpenTag || "").toUpperCase();
+        const dateStrId = String(tab && tab.m_DateStrID || "").toUpperCase();
+        if (openTag === "TAG_COMMON_MISSION_EVENT_PASS") return false;
+        return (openTag && activeOpenTags.has(openTag)) || (dateStrId && activeIntervals.has(dateStrId));
+      })
+      .map((tab) => Number(tab && tab.m_TabID) || 0)
+  );
 }
 
 function getInactiveEventIntervalStrKeys(activeIntervalPayloads = []) {
@@ -5941,12 +5985,30 @@ function buildTrimIntervalData() {
 }
 
 function buildSelectableContractStateData() {
+  const state = resolveSelectableContractState();
   return Buffer.concat([
-    writeSignedVarInt(0),
-    writeIntList([]),
-    writeSignedVarInt(0),
-    writeBool(false),
+    writeSignedVarInt(Number(state.contractId || 0)),
+    writeIntList(state.unitIdList || []),
+    writeSignedVarInt(Number(state.unitPoolChangeCount || 0)),
+    writeBool(state.isActive !== false && Number(state.contractId || 0) > 0),
   ]);
+}
+
+function resolveSelectableContractState() {
+  const records = readGameplayTableRecords("ab_script", "LUA_SELECTABLE_CONTRACT.json", {
+    rootDir: ROOT_DIR,
+    logLabel: "gameplay-jsons",
+  });
+  const record = records.find((entry) => Number(entry && entry.m_ContractID) > 0);
+  if (!record) return { contractId: 0, unitIdList: [], unitPoolChangeCount: 0, isActive: false };
+  const contractId = Number(record.m_ContractID) || 0;
+  const poolId = record.m_SelectableUnitPoolId || record.m_UnitPoolID || contractId;
+  return {
+    contractId,
+    unitIdList: getContractPoolUnitIds(poolId).slice(0, 10),
+    unitPoolChangeCount: Math.max(0, Number(record.m_UnitPoolChangeCount || 0) || 0),
+    isActive: true,
+  };
 }
 
 function buildEventInfoData() {
@@ -6173,7 +6235,8 @@ function buildFastLobbyMissionDataEntries(user, options = {}) {
   for (const [groupId, mission] of buildPersistedLobbyMissionEntries(user)) {
     result.set(Number(groupId), [Number(groupId), mission]);
   }
-  for (const tabId of FAST_LOBBY_MISSION_TABS) {
+  const tabIds = uniqueMissionTabs([...FAST_LOBBY_MISSION_TABS, ...getActiveEventMissionTabIds()]);
+  for (const tabId of tabIds) {
     for (const [groupId, mission] of buildAccountMissionDataEntries(user, { ...options, fastLobby: false, tabId })) {
       result.set(Number(groupId), [Number(groupId), mission]);
     }

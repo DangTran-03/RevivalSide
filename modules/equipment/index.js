@@ -8,6 +8,7 @@ const {
   getRandomEquipId,
 } = require("../game-data");
 const { ensureInventory } = require("../inventory");
+const { ensureArmy } = require("../unit");
 
 const DEFAULT_NEXT_EQUIP_UID = 9100000000000001n;
 const DEFAULT_STAT_TYPES = Object.freeze([
