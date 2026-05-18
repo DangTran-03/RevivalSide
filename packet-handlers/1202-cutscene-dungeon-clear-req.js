@@ -3,6 +3,7 @@ module.exports = {
   name: "CUTSCENE_DUNGEON_CLEAR_REQ",
   handle(ctx, socket, packet) {
     const dungeonId = ctx.resolveCutsceneClearDungeonId(socket, ctx.readCutsceneDungeonReq(packet.payload));
+    const user = socket && socket.session && socket.session.user;
     ctx.recordPersistentCutsceneView(socket, dungeonId);
     ctx.recordGameplayUnlockClear(socket, dungeonId);
     ctx.recordTutorialCutsceneClear(socket, dungeonId);
@@ -11,7 +12,7 @@ module.exports = {
       ctx.sendServerGamePacket(
         socket,
         ctx.constants.CUTSCENE_DUNGEON_CLEAR_ACK,
-        ctx.buildCutsceneDungeonClearAckPayload(dungeonId),
+        ctx.buildCutsceneDungeonClearAckPayload(dungeonId, user),
         `cutscene-clear dungeonID=${dungeonId}`
       );
       return true;
@@ -20,7 +21,7 @@ module.exports = {
       socket,
       packet,
       ctx.constants.CUTSCENE_DUNGEON_CLEAR_ACK,
-      ctx.buildCutsceneDungeonClearAckPayload(dungeonId),
+      ctx.buildCutsceneDungeonClearAckPayload(dungeonId, user),
       `cutscene-clear dungeonID=${dungeonId}`
     );
     return true;

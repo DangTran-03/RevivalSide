@@ -68,11 +68,15 @@ internal static class ManagedCombatBridge
         "m_ArmyData",
         "m_UserOption",
         "m_dicNKMDungeonClearData",
+        "m_WorldmapData",
         "m_dicNKMWarfareClearData",
         "m_MissionData",
         "m_ShopData",
         "m_dicNKMCounterCaseData",
         "m_dicEpisodeCompleteData",
+        "m_DiveGameData",
+        "m_DiveClearData",
+        "m_DiveHistoryData",
         "m_companyBuffDataList",
         "backGroundInfo",
         "m_JukeboxData"
@@ -713,7 +717,7 @@ internal static class ManagedCombatBridge
             {
                 runtime.SetField(gameData, "m_MapID", dynamicGame.MapID);
             }
-            runtime.ApplyTutorialGameType(gameData, dynamicGame.DungeonID);
+            runtime.ApplyGameType(gameData, dynamicGame);
             var eventDeckId = data.Stage?.EventDeckId ?? dynamicGame.DungeonID;
             var usesEventDeck = ShouldApplyEventDeck(dynamicGame.StageID, dynamicGame.DungeonID, eventDeckId);
             var usesTutorialEventDeck = ShouldApplyTutorialEventDeckTeamA(dynamicGame.StageID, dynamicGame.DungeonID, eventDeckId);
@@ -732,7 +736,7 @@ internal static class ManagedCombatBridge
                 runtime.ApplyTutorialEventDeckTeamA(gameData, eventDeckId);
             }
             runtime.PrepareGameDataForLocalServer(gameData);
-            runtime.ApplyTutorialGameType(gameData, dynamicGame.DungeonID);
+            runtime.ApplyGameType(gameData, dynamicGame);
             var runtimeData = runtime.Invoke(server, "GetGameRuntimeData");
             if (!runtime.TryApplyDungeonGameTeamData(gameData, runtimeData, out error))
             {
@@ -746,7 +750,7 @@ internal static class ManagedCombatBridge
             }
             runtime.RefreshTutorialTeamADeck(gameData, dynamicGame.StageID, dynamicGame.DungeonID);
             runtime.ApplyPlayerIdentityTeamA(gameData, data.Stage?.PlayerDeck);
-            runtime.ApplyTutorialGameType(gameData, dynamicGame.DungeonID);
+            runtime.ApplyGameType(gameData, dynamicGame);
             runtime.Invoke(server, "SetGameData", gameData);
             if (runtimeData != null)
             {
@@ -756,7 +760,7 @@ internal static class ManagedCombatBridge
             runtime.SuppressPlayerDynamicRespawns(server, gameData);
             runtime.ApplyPlayerIdentityTeamA(gameData, data.Stage?.PlayerDeck);
             runtime.ClearTeamAUnitOwnersForGameLoadAck(gameData, data.Stage?.PlayerDeck);
-            runtime.ApplyTutorialGameType(gameData, dynamicGame.DungeonID);
+            runtime.ApplyGameType(gameData, dynamicGame);
             // The Unity client builds its unit pool from GAME_LOAD_ACK. Send the
             // same gameData that NKCGameServerLocal just mutated so runtime
             // gameUnitUIDs resolve to the same unit/team on both sides.
@@ -1525,13 +1529,29 @@ internal static class ManagedCombatBridge
             }
         }
 
-        public void ApplyTutorialGameType(object gameData, int dungeonId)
+        public void ApplyGameType(object gameData, DynamicGameState dynamicGame)
         {
             // Captured 804 starts as a tutorial payload. Pin the type each time
-            // NKCGameServerLocal mutates gameData so normal Episode 1 stages do
-            // not inherit tutorial result flow.
-            var gameTypeName = IsTutorialDungeon(dungeonId) ? "NGT_TUTORIAL" : "NGT_DUNGEON";
+            // NKCGameServerLocal mutates gameData so normal and special PvE
+            // stages do not inherit stale tutorial result flow.
+            var gameTypeName = ResolveGameTypeName(dynamicGame);
             SetField(gameData, "m_NKM_GAME_TYPE", Enum.Parse(GetType("NKM.NKM_GAME_TYPE"), gameTypeName));
+        }
+
+        private static string ResolveGameTypeName(DynamicGameState dynamicGame)
+        {
+            if (IsTutorialDungeon(dynamicGame.DungeonID)) return "NGT_TUTORIAL";
+            return dynamicGame.GameType switch
+            {
+                9 => "NGT_CUTSCENE",
+                13 => "NGT_SHADOW_PALACE",
+                14 => "NGT_FIERCE",
+                15 => "NGT_PHASE",
+                23 => "NGT_TRIM",
+                26 => "NGT_PVE_DEFENCE",
+                29 => "NGT_EXPLORE",
+                _ => "NGT_DUNGEON"
+            };
         }
 
         private static bool IsTutorialDungeon(int dungeonId)
@@ -1885,7 +1905,7 @@ internal static class ManagedCombatBridge
             SetField(gameData, "m_MapID", dynamicGame.MapID);
             SetField(gameData, "m_TeamASupply", (byte)2);
             SetField(gameData, "m_bBossDungeon", false);
-            ApplyTutorialGameType(gameData, dynamicGame.DungeonID);
+            ApplyGameType(gameData, dynamicGame);
 
             var eventDeckId = data.Stage?.EventDeckId ?? dynamicGame.DungeonID;
             if (ShouldApplyTutorialEventDeckTeamA(dynamicGame.StageID, dynamicGame.DungeonID, eventDeckId))

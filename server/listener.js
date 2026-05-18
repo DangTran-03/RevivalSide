@@ -31,6 +31,9 @@ const {
   recordMainStoryDungeonClearForUser,
   resetMainStoryPostTutorialProgress,
   getStoryOpenTags,
+  normalizeStoryDifficulty,
+  isSuppressedStoryOpenTag,
+  getSuppressedStoryOpenTags,
 } = require("../stages/mainStoryStage");
 const {
   COMMON_RESOURCE_ITEM_IDS,
@@ -112,6 +115,7 @@ const lobbyCustomization = require("../modules/lobby");
 const simulation = require("../modules/simulation");
 const stamina = require("../modules/stamina");
 const collection = require("../modules/collection");
+const worldMap = require("../modules/world-map");
 const {
   buildSupportUnitData: buildPersistedSupportUnitData,
   ensureSupportUnit,
@@ -234,6 +238,13 @@ const DEFENCE_INFO_ACK = 3905;
 const NPT_GAME_SYNC_DATA_PACK_NOT = 822;
 const NGT_DUNGEON = 3;
 const NGT_TUTORIAL = 7;
+const NGT_CUTSCENE = 9;
+const NGT_SHADOW_PALACE = 13;
+const NGT_FIERCE = 14;
+const NGT_PHASE = 15;
+const NGT_TRIM = 23;
+const NGT_PVE_DEFENCE = 26;
+const NGT_EXPLORE = 29;
 const NGS_FINISH = 4;
 const NTT_A1 = 1;
 const NTT_B1 = 3;
@@ -353,6 +364,10 @@ const GAME_SERVER_PORT = Number(process.env.CS_GAME_SERVER_PORT || PORT);
 const CONTENTS_VERSION = process.env.CS_CONTENTS_VERSION || "9.2.c";
 const REQUIRED_CONTENTS_TAGS = Object.freeze(["TAG_COMMON_SHOP_TAB_SUPPLY", "SYSTEM_TRANSCENDENCE_LV120"]);
 const REQUIRED_STORY_OPEN_TAGS = Object.freeze(getStoryOpenTags());
+const SUPPRESSED_STORY_OPEN_TAGS = Object.freeze(getSuppressedStoryOpenTags());
+const SUPPRESSED_STORY_OPEN_TAG_SET = new Set(SUPPRESSED_STORY_OPEN_TAGS.map((tag) => String(tag || "").toUpperCase()));
+const EXPLICIT_OPEN_TAGS = Object.freeze(parseTags(process.env.CS_OPEN_TAGS || ""));
+const EXPLICIT_OPEN_TAG_SET = new Set(EXPLICIT_OPEN_TAGS.map((tag) => String(tag || "").toUpperCase()));
 const REQUIRED_INTERVAL_TAGS = Object.freeze([
   "DATE_GLOBAL_CONTRACT_SELECTABLE",
   "DATE_GLOBAL_CONTRACT_CUSTOM_SSR_V2",
@@ -366,7 +381,7 @@ const CONTENTS_TAGS = mergeTags(
   ),
   REQUIRED_CONTENTS_TAGS
 );
-const OPEN_TAGS = mergeTags(parseTags(process.env.CS_OPEN_TAGS || ""), REQUIRED_STORY_OPEN_TAGS);
+const OPEN_TAGS = mergeTags(EXPLICIT_OPEN_TAGS, REQUIRED_STORY_OPEN_TAGS);
 const eventManager = createEventManager({ rootDir: ROOT_DIR, env: process.env });
 const EVENT_MANAGER_DIAGNOSTICS = envFlag("CS_EVENT_DIAGNOSTICS");
 const EVENT_CONTENTS_TAGS_ENABLED = envFlag("CS_EVENT_EMIT_CONTENTS_TAGS", "CS_EVENT_CONTENTS_TAGS");
@@ -414,6 +429,7 @@ const joinLobbyAckPayloadCache = new Map();
 const localProgressResetUsers = new Set();
 let cachedDungeonCatalog = null;
 let cachedStageCatalog = null;
+let cachedMiscStageCatalog = null;
 let cachedMapIdByStrId = null;
 
 if (process.env.CS_DUMP_JOIN_LOBBY_ACK_PAYLOAD) {
@@ -886,6 +902,7 @@ function createPacketContext() {
     maybeTransitionTutorialReplayToDynamic,
     peekCapturedGamePacketId,
     sendServerGamePacket,
+    buildDynamicGameLoadPayload,
     sendDynamicGameLoadAck,
     startDynamicBattleManager,
     handleDynamicBattleRespawn,
@@ -948,6 +965,15 @@ function createPacketContext() {
     buildGreetingMessageAckPayload,
     buildFavoritesStageAckPayload,
     buildDefenceInfoAckPayload,
+    buildShadowPalaceStartAckPayload,
+    buildPhaseStartAckPayload,
+    buildTrimStartAckPayload,
+    buildFierceDataAckPayload,
+    buildFiercePenaltyAckPayload,
+    buildDefenceGameStartAckPayload,
+    buildExploreInfoAckPayload,
+    buildExploreEnterAckPayload,
+    extractNullableGameDataFromGameLoadAckPayload,
     recordMissionComplete,
     buildCutsceneDungeonStartAckPayload,
     buildCutsceneDungeonClearAckPayload,
@@ -2259,9 +2285,9 @@ function applySavedCombatControls(socket) {
   return applyCombatControls(socket, getSavedCombatControls(user), { persist: false });
 }
 
-function sendDynamicGameLoadAck(socket, req, stage) {
+function buildDynamicGameLoadPayload(socket, req, stage) {
   const replay = socket.session && socket.session.gameReplay;
-  if (!replay || !req) return false;
+  if (!replay || !req) return null;
   const activeStage = stage || {};
   // Every tutorial phase is a new battle load on the same socket/session.
   // Reset per-battle gates here so heartbeats during phase 2+ loading cannot
@@ -2300,9 +2326,21 @@ function sendDynamicGameLoadAck(socket, req, stage) {
       patchStageFields: !replay.dynamicGame.tutorial || Number(replay.dynamicGame.stageID) !== 11211,
     });
   combatHandler.attachGameLoadUnitPools(replay, activeStage, payload);
+  return {
+    replay,
+    payload,
+    managed: Boolean(replay.managedGameLoadAckPayload),
+  };
+}
+
+function sendDynamicGameLoadAck(socket, req, stage) {
+  const result = buildDynamicGameLoadPayload(socket, req, stage);
+  if (!result) return false;
+  const replay = result.replay;
+  const payload = result.payload;
   sendServerGamePacket(socket, GAME_LOAD_ACK, payload, replay.managedGameLoadAckPayload ? "managed-game-load" : "dynamic-game-load");
   console.log(
-    `[dynamic-game-load] stageID=${replay.dynamicGame.stageID} dungeonID=${replay.dynamicGame.dungeonID} mapID=${replay.dynamicGame.mapID} gameUID=${replay.dynamicGame.gameUID} battleUnits=${replay.battleState.units.map((unit) => unit.gameUnitUID).join(",")} deployPools=${combatHandler.describeRuntimeGameUnitPools(replay.dynamicGame.unitPools) || replay.dynamicGame.assignedGameUnitUIDs.join(",")}`
+    `[dynamic-game-load] stageID=${replay.dynamicGame.stageID} dungeonID=${replay.dynamicGame.dungeonID} mapID=${replay.dynamicGame.mapID} gameType=${replay.dynamicGame.gameType || 0} mode=${replay.dynamicGame.miscMode || "dungeon"} gameUID=${replay.dynamicGame.gameUID} battleUnits=${replay.battleState.units.map((unit) => unit.gameUnitUID).join(",")} deployPools=${combatHandler.describeRuntimeGameUnitPools(replay.dynamicGame.unitPools) || replay.dynamicGame.assignedGameUnitUIDs.join(",")}`
   );
   return true;
 }
@@ -2440,7 +2478,7 @@ function maybeSendTutorialCutsceneClear(socket, payload) {
   sendServerGamePacket(
     socket,
     CUTSCENE_DUNGEON_CLEAR_ACK,
-    buildCutsceneDungeonClearAckPayload(req.dungeonID),
+    buildCutsceneDungeonClearAckPayload(req.dungeonID, socket && socket.session && socket.session.user),
     `tutorial-cutscene-clear dungeonID=${req.dungeonID}`
   );
 }
@@ -2682,8 +2720,77 @@ function recordGenericDungeonClearForUser(user, dungeonId, stageId, battleState 
     user.unlockedStageIds = Array.isArray(user.unlockedStageIds) ? user.unlockedStageIds : [];
     if (!user.unlockedStageIds.includes(resolvedStageId)) user.unlockedStageIds.push(resolvedStageId);
   }
+  recordMiscStageClearForUser(user, resolvedDungeonId, resolvedStageId, battleState);
   if (USE_LOCAL_USER_DB && options.save !== false) saveUserDb();
   return true;
+}
+
+function recordMiscStageClearForUser(user, dungeonId, stageId, battleState = {}) {
+  const miscStage = classifyMiscDungeon(dungeonId, null, getDungeonTableEntry(dungeonId)) || {};
+  if (!miscStage.mode) return false;
+  const state = ensureMiscStageState(user);
+  if (!state) return false;
+  const playTime = Math.max(0, Math.round(Number((battleState && (battleState.gameTime || battleState.GameTime)) || 0)));
+  if (miscStage.mode === "shadow") {
+    state.shadow = state.shadow && typeof state.shadow === "object" ? state.shadow : {};
+    state.shadow.currentPalaceId = positiveInt(miscStage.palaceID);
+    state.shadow.life = Math.max(1, positiveInt(state.shadow.life) || 3);
+    state.shadow.rewardMultiply = Math.max(1, positiveInt(state.shadow.rewardMultiply) || 1);
+    state.shadow.palaces = state.shadow.palaces && typeof state.shadow.palaces === "object" ? state.shadow.palaces : {};
+    const palaceKey = String(positiveInt(miscStage.palaceID));
+    const palace = state.shadow.palaces[palaceKey] && typeof state.shadow.palaces[palaceKey] === "object" ? state.shadow.palaces[palaceKey] : {};
+    const dungeonDataList = Array.isArray(palace.dungeonDataList) ? palace.dungeonDataList.slice() : [];
+    const existingIndex = dungeonDataList.findIndex((entry) => positiveInt(entry && entry.dungeonId) === positiveInt(dungeonId));
+    const previous = existingIndex >= 0 ? dungeonDataList[existingIndex] : {};
+    const data = {
+      dungeonId: positiveInt(dungeonId),
+      recentTime: playTime,
+      bestTime: previous.bestTime > 0 && playTime > 0 ? Math.min(previous.bestTime, playTime) : playTime || positiveInt(previous.bestTime),
+    };
+    if (existingIndex >= 0) dungeonDataList[existingIndex] = data;
+    else dungeonDataList.push(data);
+    state.shadow.palaces[palaceKey] = {
+      palaceId: positiveInt(miscStage.palaceID),
+      currentDungeonId: nextShadowDungeonId(miscStage.palaceID, dungeonId),
+      dungeonDataList,
+    };
+    return true;
+  }
+  if (miscStage.mode === "fierce") {
+    state.fierce = state.fierce && typeof state.fierce === "object" ? state.fierce : {};
+    state.fierce.bosses = state.fierce.bosses && typeof state.fierce.bosses === "object" ? state.fierce.bosses : {};
+    const bossId = positiveInt(miscStage.fierceBossId);
+    state.fierce.bosses[String(bossId)] = {
+      ...(state.fierce.bosses[String(bossId)] || {}),
+      bossId,
+      isCleared: true,
+      point: Math.max(1, Number((state.fierce.bosses[String(bossId)] || {}).point || 0)),
+    };
+    return true;
+  }
+  if (miscStage.mode === "trim") {
+    state.trim = state.trim && typeof state.trim === "object" ? state.trim : {};
+    state.trim.lastClear = {
+      trimId: positiveInt(miscStage.trimId),
+      trimLevel: Math.max(1, positiveInt(miscStage.trimLevel) || 1),
+      dungeonId: positiveInt(dungeonId),
+      stageId: positiveInt(stageId),
+      score: Math.max(1, 100000 - playTime),
+    };
+    return true;
+  }
+  if (miscStage.mode === "defence") {
+    state.defence = state.defence && typeof state.defence === "object" ? state.defence : {};
+    const defenceId = positiveInt(miscStage.defenceTempletId);
+    state.defence[String(defenceId)] = {
+      defenceTempletId: defenceId,
+      bestScore: Math.max(Number((state.defence[String(defenceId)] || {}).bestScore || 0), 1),
+      missionResult1: true,
+      missionResult2: true,
+    };
+    return true;
+  }
+  return false;
 }
 
 function buildDungeonSkipAckPayload(socket, req = {}) {
@@ -2790,7 +2897,7 @@ function buildTutorialGameEndNotPayload(replay, override = {}) {
     writeObjectList([]), // updatedUnits
     writeObjectList([]), // costItemDataList
     writeNullableObject(buildStagePlayData(stageId, battleState)),
-    writeNullableObject(buildShadowGameResultData()), // shadowGameResult
+    writeNullableObject(buildShadowGameResultData(dynamicGame, battleState)), // shadowGameResult
     writeNullableObject(buildFierceResultData()), // fierceResultData
     writeNullObject(), // phaseModeState
     writeSignedVarLong(0n), // killCountDelta
@@ -2840,6 +2947,7 @@ function buildDynamicGameEndNotPayload(replay, override = {}) {
   const costItems = spendStageReqItemCostForReplay(replay, override.user, stageId);
   const episodeCompleteData = win ? buildMainStoryEpisodeCompleteDataForStage(override.user, stageId) : null;
   const playTime = getBattlePlayTime(battleState);
+  const isPhaseGame = Number(dynamicGame.gameType || 0) === NGT_PHASE || String(dynamicGame.miscMode || "") === "phase";
   return Buffer.concat([
     writeBool(win), // win
     writeBool(Boolean(override.giveup || false)), // giveup
@@ -2855,7 +2963,14 @@ function buildDynamicGameEndNotPayload(replay, override = {}) {
           })
         )
       : writeNullObject(),
-    writeNullObject(), // phaseClearData
+    isPhaseGame
+      ? writeNullableObject(
+          buildPhaseClearData(stageId, {
+            win,
+            ...missionResults,
+          })
+        )
+      : writeNullObject(), // phaseClearData
     episodeCompleteData ? writeNullableObject(episodeCompleteData) : writeNullObject(), // episodeCompleteData
     writeNullableObject(buildBattleDeckIndexData(replay)), // deckIndex
     writeNullObject(), // warfareSyncData
@@ -2866,9 +2981,19 @@ function buildDynamicGameEndNotPayload(replay, override = {}) {
     writeObjectList([]), // updatedUnits
     writeObjectList(costItems.map((item) => writeNullableObject(buildItemMiscData(item)))), // costItemDataList
     stageId ? writeNullableObject(buildStagePlayData(stageId, { ...battleState, gameTime: playTime })) : writeNullObject(),
-    writeNullableObject(buildShadowGameResultData()), // shadowGameResult
+    writeNullableObject(buildShadowGameResultData(dynamicGame, battleState)), // shadowGameResult
     writeNullableObject(buildFierceResultData()), // fierceResultData
-    writeNullObject(), // phaseModeState
+    isPhaseGame
+      ? writeNullableObject(
+          buildPhaseModeState(
+            stageId,
+            Math.max(0, Number(dynamicGame.phaseIndex || 0) || 0),
+            dungeonId,
+            playTime,
+            0n
+          )
+        )
+      : writeNullObject(), // phaseModeState
     writeSignedVarLong(0n), // killCountDelta
     writeNullObject(), // killCountData
     writeNullObject(), // trimModeState
@@ -2894,23 +3019,35 @@ function buildRaidBossResultData() {
   return Buffer.concat([writeFloatLE(0), writeFloatLE(0), writeFloatLE(0), writeFloatLE(0)]);
 }
 
-function buildShadowGameResultData() {
+function buildShadowGameResultData(dynamicGame = {}, battleState = {}) {
+  const palaceId = positiveInt(dynamicGame.palaceID || dynamicGame.palaceId);
+  const dungeonId = palaceId ? positiveInt(dynamicGame.dungeonID) : 0;
+  const recentTime = Math.max(0, Math.round(Number((battleState && (battleState.gameTime || battleState.GameTime)) || 0)));
   return Buffer.concat([
-    writeSignedVarInt(0), // palaceId
-    writeNullableObject(buildPalaceDungeonData()),
+    writeSignedVarInt(palaceId), // palaceId
+    writeNullableObject(buildPalaceDungeonData(dungeonId, recentTime, recentTime)),
     writeNullObject(), // rewardData
     writeBool(false), // newRecord
-    writeSignedVarInt(0), // currentDungeonId
-    writeSignedVarInt(0), // life
+    writeSignedVarInt(nextShadowDungeonId(palaceId, dungeonId)), // currentDungeonId
+    writeSignedVarInt(3), // life
   ]);
 }
 
-function buildPalaceDungeonData() {
+function buildPalaceDungeonData(dungeonId = 0, recentTime = 0, bestTime = 0) {
   return Buffer.concat([
-    writeSignedVarInt(0), // dungeonId
-    writeSignedVarInt(0), // recentTime
-    writeSignedVarInt(0), // bestTime
+    writeSignedVarInt(positiveInt(dungeonId)), // dungeonId
+    writeSignedVarInt(Math.max(0, Number(recentTime || 0) || 0)), // recentTime
+    writeSignedVarInt(Math.max(0, Number(bestTime || 0) || 0)), // bestTime
   ]);
+}
+
+function nextShadowDungeonId(palaceId, currentDungeonId) {
+  const catalog = loadMiscStageCatalog();
+  const palace = catalog.shadowPalaceById.get(positiveInt(palaceId));
+  const battles = palace ? catalog.shadowBattlesByGroup.get(positiveInt(palace.BATTLE_GROUP_ID)) || [] : [];
+  const currentIndex = battles.findIndex((battle) => positiveInt(battle && battle.DUNGEON_ID) === positiveInt(currentDungeonId));
+  if (currentIndex >= 0 && currentIndex + 1 < battles.length) return positiveInt(battles[currentIndex + 1].DUNGEON_ID);
+  return 0;
 }
 
 function buildFierceResultData() {
@@ -2923,11 +3060,13 @@ function buildFierceResultData() {
   ]);
 }
 
-function buildCutsceneDungeonClearAckPayload(dungeonId) {
+function buildCutsceneDungeonClearAckPayload(dungeonId, user = null) {
+  const stageId = stageIdForDungeonId(dungeonId);
+  const episodeCompleteData = buildMainStoryEpisodeCompleteDataForStage(user, stageId);
   return Buffer.concat([
     writeSignedVarInt(0),
     writeNullableObject(buildDungeonClearData(dungeonId)),
-    writeNullObject(),
+    episodeCompleteData ? writeNullableObject(episodeCompleteData) : writeNullObject(),
   ]);
 }
 
@@ -2945,10 +3084,15 @@ function buildGameLoadAck(data = {}) {
       { ...spans.gameUID, payload: writeSignedVarLong(BigInt(data.gameUID || makeDynamicGameUid())) },
       { ...spans.gameUnitUIDIndex, payload: writeSignedVarInt(Number(data.gameUnitUIDIndex || nextGameUnitUidIndex(data))) },
     ];
-    if (data.tutorial || isTutorialStageId(data.stageID) || isTutorialDungeonId(data.dungeonID)) {
+    if (Number(data.gameType || 0) > 0) {
+      replacements.push({ ...spans.gameType, payload: writeSignedVarInt(Number(data.gameType || 0)) });
+    } else if (data.tutorial || isTutorialStageId(data.stageID) || isTutorialDungeonId(data.dungeonID)) {
       replacements.push({ ...spans.gameType, payload: writeSignedVarInt(NGT_TUTORIAL) });
     } else if (data.stageID || data.dungeonID) {
       replacements.push({ ...spans.gameType, payload: writeSignedVarInt(NGT_DUNGEON) });
+    }
+    if (data.raidUID != null && spans.raidUID) {
+      replacements.push({ ...spans.raidUID, payload: writeSignedVarLong(toBigInt(data.raidUID || 0)) });
     }
     if (data.patchStageFields !== false) {
       replacements.push(
@@ -3054,7 +3198,9 @@ function getGameLoadAckPatchSpans(raw) {
 
   offset += 1; // m_bBossDungeon
   offset = readSignedVarInt(raw, offset).offset; // m_WarfareID
-  offset = readVarLong(raw, offset).offset; // m_RaidUID
+  const raidUID = readVarLong(raw, offset);
+  const raidUIDSpan = { start: offset, end: raidUID.offset };
+  offset = raidUID.offset; // m_RaidUID
   offset += 4; // m_fRespawnCostMinusPercentForTeamA
   offset = readSignedVarInt(raw, offset).offset; // m_TeamASupply
   offset += 4; // m_fTeamAAttackPowerIncRateForWarfare
@@ -3073,6 +3219,7 @@ function getGameLoadAckPatchSpans(raw) {
     gameUnitUIDIndex: gameUnitUIDIndexSpan,
     gameType: gameTypeSpan,
     dungeonID: dungeonIDSpan,
+    raidUID: raidUIDSpan,
     mapID: mapIDSpan,
   };
 }
@@ -3314,12 +3461,384 @@ function findStageRowForDungeonId(dungeonId) {
   const dungeon = getDungeonTableEntry(dungeonId);
   const dungeonStrId = String(dungeon && dungeon.m_DungeonStrID ? dungeon.m_DungeonStrID : "");
   if (!dungeonStrId) return null;
-  return chooseStageRow(getStageTableEntriesForBattleStrId(dungeonStrId));
+  const directStage = chooseStageRow(getStageTableEntriesForBattleStrId(dungeonStrId));
+  if (directStage) return directStage;
+  const phaseOrder = loadMiscStageCatalog().phaseOrderByDungeonId.get(positiveInt(dungeonId));
+  if (!phaseOrder) return null;
+  const phase = Array.from(loadMiscStageCatalog().phaseById.values()).find(
+    (row) => positiveInt(row && row.m_PhaseGroupID) === positiveInt(phaseOrder.m_PhaseGroupID)
+  );
+  return phase ? chooseStageRow(getStageTableEntriesForBattleStrId(String(phase.m_PhaseStrID || ""))) : null;
 }
 
 function findStageIdForDungeonId(dungeonId) {
   const stage = findStageRowForDungeonId(dungeonId);
   return Number(stage && (stage.m_StageID || stage.StageID || stage.stageId || 0)) || 0;
+}
+
+function positiveInt(value) {
+  const numeric = Number(value || 0);
+  return Number.isInteger(numeric) && numeric > 0 ? numeric : 0;
+}
+
+function readMiscStageRecords(fileName) {
+  try {
+    return readGameplayTableRecords("ab_script", fileName, {
+      rootDir: ROOT_DIR,
+      logLabel: "misc-stage-table",
+    });
+  } catch (err) {
+    console.log(`[misc-stage-table] failed to load ${fileName}: ${summarizeErrorLine(err)}`);
+    return [];
+  }
+}
+
+function mapListPush(map, key, value) {
+  const normalizedKey = positiveInt(key);
+  if (!normalizedKey || !value) return;
+  if (!map.has(normalizedKey)) map.set(normalizedKey, []);
+  map.get(normalizedKey).push(value);
+}
+
+function loadMiscStageCatalog() {
+  if (cachedMiscStageCatalog) return cachedMiscStageCatalog;
+  const catalog = {
+    shadowPalaceById: new Map(),
+    shadowPalaceByGroup: new Map(),
+    shadowBattlesByGroup: new Map(),
+    shadowBattleByDungeonId: new Map(),
+    fierceSeasonRows: [],
+    fierceBossById: new Map(),
+    fierceBossByDungeonId: new Map(),
+    fierceBossesByGroup: new Map(),
+    trimById: new Map(),
+    trimDungeonsByTrimId: new Map(),
+    trimDungeonByDungeonId: new Map(),
+    defenceById: new Map(),
+    defenceByDungeonId: new Map(),
+    exploreById: new Map(),
+    exploreZoneById: new Map(),
+    exploreStagesByGroup: new Map(),
+    exploreStageByStageId: new Map(),
+    exploreStageByDungeonId: new Map(),
+    phaseById: new Map(),
+    phaseByStrId: new Map(),
+    phaseOrdersByGroup: new Map(),
+    phaseOrderByDungeonId: new Map(),
+  };
+
+  for (const row of readMiscStageRecords("LUA_SHADOW_PALACE_TEMPLET.json")) {
+    const palaceId = positiveInt(row && row.PALACE_ID);
+    if (!palaceId) continue;
+    catalog.shadowPalaceById.set(palaceId, row);
+    const groupId = positiveInt(row.BATTLE_GROUP_ID);
+    if (groupId) catalog.shadowPalaceByGroup.set(groupId, row);
+  }
+  for (const row of readMiscStageRecords("LUA_SHADOW_BATTLE_TEMPLET.json")) {
+    const groupId = positiveInt(row && row.BATTLE_GROUP);
+    const dungeonId = positiveInt(row && row.DUNGEON_ID);
+    if (!groupId || !dungeonId) continue;
+    mapListPush(catalog.shadowBattlesByGroup, groupId, row);
+    catalog.shadowBattleByDungeonId.set(dungeonId, row);
+  }
+  for (const battles of catalog.shadowBattlesByGroup.values()) {
+    battles.sort((left, right) => positiveInt(left.BATTLE_ORDER) - positiveInt(right.BATTLE_ORDER) || positiveInt(left.DUNGEON_ID) - positiveInt(right.DUNGEON_ID));
+  }
+
+  catalog.fierceSeasonRows = readMiscStageRecords("LUA_FIERCE_TEMPLET.json")
+    .filter((row) => positiveInt(row && row.FierceID))
+    .sort((left, right) => positiveInt(right.FierceID) - positiveInt(left.FierceID));
+  const fierceBossRows = readMiscStageRecords("LUA_FIERCE_BOSS_GROUP_TEMPLET.json")
+    .filter((row) => positiveInt(row && row.FierceBossID) && positiveInt(row && row.DungeonID))
+    .sort(
+      (left, right) =>
+        positiveInt(left.Level) - positiveInt(right.Level) ||
+        positiveInt(left.FierceBossID) - positiveInt(right.FierceBossID)
+    );
+  for (const row of fierceBossRows) {
+    const bossId = positiveInt(row.FierceBossID);
+    const groupId = positiveInt(row.FierceBossGroupID);
+    const dungeonId = positiveInt(row.DungeonID);
+    if (!catalog.fierceBossById.has(bossId)) catalog.fierceBossById.set(bossId, row);
+    if (!catalog.fierceBossByDungeonId.has(dungeonId)) catalog.fierceBossByDungeonId.set(dungeonId, row);
+    mapListPush(catalog.fierceBossesByGroup, groupId, row);
+  }
+
+  for (const row of readMiscStageRecords("LUA_TRIM_TEMPLET.json")) {
+    const trimId = positiveInt(row && row.TrimID);
+    if (trimId) catalog.trimById.set(trimId, row);
+  }
+  for (const row of readMiscStageRecords("LUA_TRIM_DUNGEON.json")) {
+    const trimId = positiveInt(row && row.TrimID);
+    const dungeonId = positiveInt(row && row.DungeonID);
+    if (!trimId || !dungeonId) continue;
+    mapListPush(catalog.trimDungeonsByTrimId, trimId, row);
+    catalog.trimDungeonByDungeonId.set(dungeonId, row);
+  }
+  for (const rows of catalog.trimDungeonsByTrimId.values()) {
+    rows.sort((left, right) => positiveInt(left.TrimDungeonID) - positiveInt(right.TrimDungeonID) || positiveInt(left.DungeonID) - positiveInt(right.DungeonID));
+  }
+
+  for (const row of readMiscStageRecords("LUA_DEFENCE_TEMPLET.json")) {
+    const defenceId = positiveInt(row && row.m_Id);
+    const dungeonId = positiveInt(row && row.m_DungeonID);
+    if (defenceId) catalog.defenceById.set(defenceId, row);
+    if (dungeonId) catalog.defenceByDungeonId.set(dungeonId, row);
+  }
+
+  for (const row of readMiscStageRecords("LUA_EXPLORE_TEMPLET.json")) {
+    const exploreId = positiveInt(row && row.ExploreID);
+    if (exploreId) catalog.exploreById.set(exploreId, row);
+  }
+  for (const row of readMiscStageRecords("LUA_EXPLORE_ZONE_TEMPLET.json")) {
+    const zoneId = positiveInt(row && row.Zone);
+    if (zoneId) catalog.exploreZoneById.set(zoneId, row);
+  }
+  for (const row of readMiscStageRecords("LUA_EXPLORE_STAGE_TEMPLET.json")) {
+    const stageId = positiveInt(row && row.StageID);
+    const groupId = positiveInt(row && row.StageGroupID);
+    const dungeonId = String(row && row.StageType || "").toUpperCase() === "DUNGEON" ? positiveInt(row && row.EventValue) : 0;
+    mapListPush(catalog.exploreStagesByGroup, groupId, row);
+    if (stageId) catalog.exploreStageByStageId.set(stageId, row);
+    if (dungeonId) catalog.exploreStageByDungeonId.set(dungeonId, row);
+  }
+  for (const rows of catalog.exploreStagesByGroup.values()) {
+    rows.sort((left, right) => positiveInt(left.StageID) - positiveInt(right.StageID));
+  }
+
+  for (const row of readMiscStageRecords("LUA_PHASE_TEMPLET.json")) {
+    const phaseId = positiveInt(row && row.m_PhaseID);
+    const phaseStrId = String(row && row.m_PhaseStrID || "");
+    if (phaseId) catalog.phaseById.set(phaseId, row);
+    if (phaseStrId) catalog.phaseByStrId.set(phaseStrId, row);
+  }
+  for (const row of readMiscStageRecords("LUA_PHASE_ORDER_TEMPLET.json")) {
+    const groupId = positiveInt(row && row.m_PhaseGroupID);
+    const dungeonStrId = String(row && row.m_DungeonStrID || "");
+    if (!groupId || !dungeonStrId) continue;
+    mapListPush(catalog.phaseOrdersByGroup, groupId, row);
+    const dungeon = getDungeonTableEntryByStrId(dungeonStrId);
+    const dungeonId = positiveInt(dungeon && dungeon.m_DungeonID);
+    if (dungeonId) catalog.phaseOrderByDungeonId.set(dungeonId, row);
+  }
+  for (const orders of catalog.phaseOrdersByGroup.values()) {
+    orders.sort((left, right) => positiveInt(left.m_PhaseOrder) - positiveInt(right.m_PhaseOrder));
+  }
+
+  cachedMiscStageCatalog = catalog;
+  return cachedMiscStageCatalog;
+}
+
+function chooseShadowBattleForPalace(palaceId) {
+  const catalog = loadMiscStageCatalog();
+  const palace = catalog.shadowPalaceById.get(positiveInt(palaceId));
+  const groupId = positiveInt(palace && palace.BATTLE_GROUP_ID);
+  const battles = groupId ? catalog.shadowBattlesByGroup.get(groupId) : null;
+  return battles && battles.length ? battles[0] : null;
+}
+
+function chooseTrimDungeon(trimId, trimLevel) {
+  const catalog = loadMiscStageCatalog();
+  const rows = catalog.trimDungeonsByTrimId.get(positiveInt(trimId)) || [];
+  const level = Math.max(1, positiveInt(trimLevel) || 1);
+  return (
+    rows.find((row) => level >= Math.max(1, positiveInt(row.TrimLevel_Low) || 1) && level <= Math.max(1, positiveInt(row.TrimLevel_High) || level)) ||
+    rows[0] ||
+    null
+  );
+}
+
+function choosePhaseOrder(phase, phaseIndex = 0) {
+  const catalog = loadMiscStageCatalog();
+  const orders = catalog.phaseOrdersByGroup.get(positiveInt(phase && phase.m_PhaseGroupID)) || [];
+  return orders[Math.max(0, Number(phaseIndex || 0) || 0)] || orders[0] || null;
+}
+
+function getFierceSeasonBossRows(seasonRow = null) {
+  const catalog = loadMiscStageCatalog();
+  const season = seasonRow || catalog.fierceSeasonRows[0] || null;
+  if (!season) return Array.from(catalog.fierceBossById.values()).slice(0, 3);
+  const seen = new Set();
+  const rows = [];
+  for (const key of Object.keys(season).filter((name) => /^FierceBossGroupID_\d+$/.test(name)).sort()) {
+    const groupRows = catalog.fierceBossesByGroup.get(positiveInt(season[key])) || [];
+    const row = groupRows.find((entry) => positiveInt(entry.Level) <= 1) || groupRows[0];
+    const bossId = positiveInt(row && row.FierceBossID);
+    if (row && bossId && !seen.has(bossId)) {
+      seen.add(bossId);
+      rows.push(row);
+    }
+  }
+  return rows.length ? rows : Array.from(catalog.fierceBossById.values()).slice(0, 3);
+}
+
+function resolveMiscStageRequest(req = {}) {
+  const catalog = loadMiscStageCatalog();
+  const palaceId = positiveInt(req.palaceID || req.palaceId);
+  if (palaceId) {
+    const palace = catalog.shadowPalaceById.get(palaceId);
+    const battle = chooseShadowBattleForPalace(palaceId);
+    const dungeonID = positiveInt(battle && battle.DUNGEON_ID);
+    return {
+      mode: "shadow",
+      gameType: NGT_SHADOW_PALACE,
+      palaceID: palaceId,
+      dungeonID,
+      stageID: dungeonID,
+      shadowBattleOrder: positiveInt(battle && battle.BATTLE_ORDER) || 1,
+      stageReqItemId: positiveInt(palace && palace.STAGE_REQ_ITEM_ID),
+      stageReqItemCount: Math.max(0, Number(palace && palace.STAGE_REQ_ITEM_COUNT) || 0),
+    };
+  }
+
+  const fierceBossId = positiveInt(req.fierceBossId || req.fierceBossID || req.bossId);
+  if (fierceBossId) {
+    const boss = catalog.fierceBossById.get(fierceBossId);
+    const dungeonID = positiveInt(boss && boss.DungeonID);
+    return {
+      mode: "fierce",
+      gameType: NGT_FIERCE,
+      fierceBossId,
+      dungeonID,
+      stageID: dungeonID,
+    };
+  }
+
+  const trimId = positiveInt(req.trimId || req.TrimID);
+  if (trimId) {
+    const trimLevel = Math.max(1, positiveInt(req.trimLevel || req.TrimLevel) || 1);
+    const trim = catalog.trimById.get(trimId);
+    const trimDungeon = chooseTrimDungeon(trimId, trimLevel);
+    const dungeonID = positiveInt(trimDungeon && trimDungeon.DungeonID);
+    return {
+      mode: "trim",
+      gameType: NGT_TRIM,
+      trimId,
+      trimLevel,
+      dungeonID,
+      stageID: dungeonID,
+      stageReqItemId: positiveInt(trim && trim.m_StageReqItemID),
+      stageReqItemCount: Math.max(0, Number(trim && trim.m_StageReqItemCount) || 0),
+      trimStageList: catalog.trimDungeonsByTrimId.get(trimId) || [],
+    };
+  }
+
+  const defenceTempletId = positiveInt(req.defenceTempletId || req.defenceId || req.defenceID);
+  if (defenceTempletId) {
+    const defence = catalog.defenceById.get(defenceTempletId);
+    const dungeonID = positiveInt(defence && defence.m_DungeonID);
+    return {
+      mode: "defence",
+      gameType: NGT_PVE_DEFENCE,
+      defenceTempletId,
+      dungeonID,
+      stageID: dungeonID,
+    };
+  }
+
+  const exploreStageId = positiveInt(req.exploreStageId || req.exploreStageID || req.exploreStage);
+  if (exploreStageId) {
+    const exploreStage = catalog.exploreStageByStageId.get(exploreStageId);
+    const dungeonID = String(exploreStage && exploreStage.StageType || "").toUpperCase() === "DUNGEON" ? positiveInt(exploreStage && exploreStage.EventValue) : 0;
+    return {
+      mode: "explore",
+      gameType: NGT_EXPLORE,
+      exploreID: positiveInt(req.exploreID || req.exploreId),
+      exploreStageId,
+      dungeonID,
+      stageID: dungeonID || exploreStageId,
+    };
+  }
+
+  const phaseId = positiveInt(req.phaseId || req.phaseID);
+  if (phaseId) {
+    const phase = catalog.phaseById.get(phaseId);
+    const order = choosePhaseOrder(phase, positiveInt(req.phaseIndex || req.phaseOrder) - 1);
+    const dungeon = order && order.m_DungeonStrID ? getDungeonTableEntryByStrId(order.m_DungeonStrID) : null;
+    const dungeonID = positiveInt(dungeon && dungeon.m_DungeonID);
+    return {
+      mode: "phase",
+      gameType: NGT_PHASE,
+      phaseId,
+      dungeonID,
+      stageID: positiveInt(req.stageID) || findStageIdForDungeonId(dungeonID) || dungeonID,
+      phaseIndex: Math.max(0, positiveInt(order && order.m_PhaseOrder) - 1),
+      eventDeckId: positiveInt(phase && phase.m_UseEventDeck),
+    };
+  }
+
+  return null;
+}
+
+function classifyMiscDungeon(dungeonID, stageRow = null, dungeon = null) {
+  const resolvedDungeonId = positiveInt(dungeonID);
+  const catalog = loadMiscStageCatalog();
+  if (resolvedDungeonId && catalog.shadowBattleByDungeonId.has(resolvedDungeonId)) {
+    const battle = catalog.shadowBattleByDungeonId.get(resolvedDungeonId);
+    const palace = catalog.shadowPalaceByGroup.get(positiveInt(battle && battle.BATTLE_GROUP));
+    return {
+      mode: "shadow",
+      gameType: NGT_SHADOW_PALACE,
+      palaceID: positiveInt(palace && palace.PALACE_ID),
+      shadowBattleOrder: positiveInt(battle && battle.BATTLE_ORDER) || 1,
+      stageReqItemId: positiveInt(palace && palace.STAGE_REQ_ITEM_ID),
+      stageReqItemCount: Math.max(0, Number(palace && palace.STAGE_REQ_ITEM_COUNT) || 0),
+    };
+  }
+  if (resolvedDungeonId && catalog.fierceBossByDungeonId.has(resolvedDungeonId)) {
+    const boss = catalog.fierceBossByDungeonId.get(resolvedDungeonId);
+    return { mode: "fierce", gameType: NGT_FIERCE, fierceBossId: positiveInt(boss && boss.FierceBossID) };
+  }
+  if (resolvedDungeonId && catalog.trimDungeonByDungeonId.has(resolvedDungeonId)) {
+    const trimDungeon = catalog.trimDungeonByDungeonId.get(resolvedDungeonId);
+    const trimId = positiveInt(trimDungeon && trimDungeon.TrimID);
+    const trim = catalog.trimById.get(trimId);
+    return {
+      mode: "trim",
+      gameType: NGT_TRIM,
+      trimId,
+      trimLevel: Math.max(1, positiveInt(trimDungeon && trimDungeon.TrimLevel_Low) || 1),
+      trimStageList: catalog.trimDungeonsByTrimId.get(trimId) || [],
+      stageReqItemId: positiveInt(trim && trim.m_StageReqItemID),
+      stageReqItemCount: Math.max(0, Number(trim && trim.m_StageReqItemCount) || 0),
+    };
+  }
+  if (resolvedDungeonId && catalog.defenceByDungeonId.has(resolvedDungeonId)) {
+    const defence = catalog.defenceByDungeonId.get(resolvedDungeonId);
+    return { mode: "defence", gameType: NGT_PVE_DEFENCE, defenceTempletId: positiveInt(defence && defence.m_Id) };
+  }
+  if (resolvedDungeonId && catalog.exploreStageByDungeonId.has(resolvedDungeonId)) {
+    const exploreStage = catalog.exploreStageByDungeonId.get(resolvedDungeonId);
+    return { mode: "explore", gameType: NGT_EXPLORE, exploreStageId: positiveInt(exploreStage && exploreStage.StageID) };
+  }
+  if (resolvedDungeonId && catalog.phaseOrderByDungeonId.has(resolvedDungeonId)) {
+    const order = catalog.phaseOrderByDungeonId.get(resolvedDungeonId);
+    const phase = Array.from(catalog.phaseById.values()).find((row) => positiveInt(row && row.m_PhaseGroupID) === positiveInt(order && order.m_PhaseGroupID));
+    return {
+      mode: "phase",
+      gameType: NGT_PHASE,
+      phaseId: positiveInt(phase && phase.m_PhaseID),
+      phaseIndex: Math.max(0, positiveInt(order && order.m_PhaseOrder) - 1),
+      eventDeckId: positiveInt(phase && phase.m_UseEventDeck),
+    };
+  }
+
+  const stageType = String(stageRow && stageRow.m_StageType || "");
+  const stageBattleStrId = String(stageRow && stageRow.m_StageBattleStrID || "");
+  if (stageType === "ST_PHASE" || (stageBattleStrId && catalog.phaseByStrId.has(stageBattleStrId))) {
+    const phase = catalog.phaseByStrId.get(stageBattleStrId);
+    return {
+      mode: "phase",
+      gameType: NGT_PHASE,
+      phaseId: positiveInt(phase && phase.m_PhaseID),
+      eventDeckId: positiveInt(phase && phase.m_UseEventDeck),
+    };
+  }
+
+  const dungeonType = String(dungeon && dungeon.m_DungeonType || "");
+  if (dungeonType === "NDT_TRIM") return { mode: "trim", gameType: NGT_TRIM };
+  if (dungeonType === "NDT_FIERCE") return { mode: "fierce", gameType: NGT_FIERCE };
+  return null;
 }
 
 function chooseStageRow(rows) {
@@ -3338,44 +3857,87 @@ function chooseStageRow(rows) {
 }
 
 function getGenericStageForRequest(req = {}) {
-  const requestedStageId = Number((req && req.stageID) || 0);
-  const requestedDungeonId = Number((req && req.dungeonID) || 0);
+  const requestedStageId = positiveInt(req && req.stageID);
+  let requestedDungeonId = positiveInt(req && req.dungeonID);
+  const requestedMiscStage = resolveMiscStageRequest(req);
+  if (!requestedDungeonId && requestedMiscStage && requestedMiscStage.dungeonID) {
+    requestedDungeonId = positiveInt(requestedMiscStage.dungeonID);
+  }
   let stageRow = requestedStageId > 0 ? getStageTableEntry(requestedStageId) : null;
   let dungeon = null;
 
   if (stageRow && stageRow.m_StageBattleStrID) {
     dungeon = getDungeonTableEntryByStrId(stageRow.m_StageBattleStrID);
   }
+  if (!dungeon && stageRow && String(stageRow.m_StageType || "") === "ST_PHASE") {
+    const phase = loadMiscStageCatalog().phaseByStrId.get(String(stageRow.m_StageBattleStrID || ""));
+    const order = choosePhaseOrder(phase, 0);
+    if (order && order.m_DungeonStrID) dungeon = getDungeonTableEntryByStrId(order.m_DungeonStrID);
+  }
   if (!dungeon && requestedDungeonId > 0) {
     dungeon = getDungeonTableEntry(requestedDungeonId);
+  }
+  if (!dungeon && !stageRow && requestedStageId > 0) {
+    const dungeonByStageId = getDungeonTableEntry(requestedStageId);
+    if (dungeonByStageId) {
+      dungeon = dungeonByStageId;
+      requestedDungeonId = requestedStageId;
+    }
   }
   if (!stageRow && dungeon) {
     stageRow = findStageRowForDungeonId(Number(dungeon.m_DungeonID || requestedDungeonId || 0));
   }
-  if (!dungeon || !stageRow) return null;
+  if (!dungeon) return null;
 
-  const stageId = Number(stageRow.m_StageID || stageRow.StageID || requestedStageId || 0);
   const dungeonID = Number(dungeon.m_DungeonID || requestedDungeonId || 0);
+  const miscStage = requestedMiscStage || classifyMiscDungeon(dungeonID, stageRow, dungeon) || {};
+  const stageId = Number(
+    (stageRow && (stageRow.m_StageID || stageRow.StageID)) ||
+      requestedStageId ||
+      miscStage.stageID ||
+      findStageIdForDungeonId(dungeonID) ||
+      dungeonID ||
+      0
+  );
   if (!stageId || !dungeonID) return null;
 
   const dungeonType = String(dungeon.m_DungeonType || "");
   const cutsceneOnly = dungeonType === "NDT_CUTSCENE";
   const mapStrID = String(dungeon.m_DungeonMapStrID || "");
+  const stageType = String((stageRow && stageRow.m_StageType) || "");
+  const gameType = cutsceneOnly
+    ? NGT_CUTSCENE
+    : positiveInt(miscStage.gameType) || (stageType === "ST_PHASE" ? NGT_PHASE : NGT_DUNGEON);
   return {
     stageId,
-    stageStrID: String(stageRow.m_StageStrID || ""),
+    stageStrID: String((stageRow && stageRow.m_StageStrID) || miscStage.stageStrID || ""),
     dungeonID,
-    dungeonStrID: String(dungeon.m_DungeonStrID || stageRow.m_StageBattleStrID || ""),
+    dungeonStrID: String(dungeon.m_DungeonStrID || (stageRow && stageRow.m_StageBattleStrID) || ""),
     mapID: cutsceneOnly ? 0 : mapIdForMapStrId(mapStrID),
     mapStrID,
-    episodeId: Number(stageRow.m_EpisodeID || 0),
-    actId: Number(stageRow.m_ActID || 0),
-    stageIndex: Number(stageRow.m_StageIndex || 0),
-    stageUINum: Number(stageRow.m_StageUINum || stageRow.m_StageIndex || 0),
-    stageType: String(stageRow.m_StageType || ""),
-    stageSubType: String(stageRow.m_StageSubType || ""),
+    episodeId: Number((stageRow && stageRow.m_EpisodeID) || 0),
+    actId: Number((stageRow && stageRow.m_ActID) || 0),
+    stageIndex: Number((stageRow && stageRow.m_StageIndex) || 0),
+    stageUINum: Number((stageRow && (stageRow.m_StageUINum || stageRow.m_StageIndex)) || 0),
+    stageType,
+    stageSubType: String((stageRow && stageRow.m_StageSubType) || ""),
     dungeonType,
-    eventDeckId: cutsceneOnly ? 0 : resolveGenericEventDeckId(stageRow, dungeon),
+    gameType,
+    miscMode: String(miscStage.mode || ""),
+    eventDeckId: cutsceneOnly ? 0 : resolveGenericEventDeckId(stageRow, dungeon, miscStage),
+    palaceID: positiveInt(miscStage.palaceID),
+    fierceBossId: positiveInt(miscStage.fierceBossId),
+    trimId: positiveInt(miscStage.trimId),
+    trimLevel: positiveInt(miscStage.trimLevel),
+    defenceTempletId: positiveInt(miscStage.defenceTempletId),
+    exploreID: positiveInt(miscStage.exploreID),
+    exploreStageId: positiveInt(miscStage.exploreStageId),
+    phaseId: positiveInt(miscStage.phaseId),
+    phaseIndex: Math.max(0, Number(miscStage.phaseIndex || 0) || 0),
+    shadowBattleOrder: positiveInt(miscStage.shadowBattleOrder),
+    trimStageList: Array.isArray(miscStage.trimStageList) ? miscStage.trimStageList : [],
+    stageReqItemId: positiveInt(miscStage.stageReqItemId),
+    stageReqItemCount: Math.max(0, Number(miscStage.stageReqItemCount || 0) || 0),
     tutorial: false,
     cutsceneOnly,
     initialUnits: [],
@@ -3383,7 +3945,9 @@ function getGenericStageForRequest(req = {}) {
   };
 }
 
-function resolveGenericEventDeckId(stageRow, dungeon) {
+function resolveGenericEventDeckId(stageRow, dungeon, miscStage = null) {
+  const miscEventDeckId = positiveInt(miscStage && miscStage.eventDeckId);
+  if (miscEventDeckId) return miscEventDeckId;
   const explicit = Number(dungeon && dungeon.m_UseEventDeck);
   if (Number.isInteger(explicit) && explicit > 0) return explicit;
   const dungeonId = Number(dungeon && dungeon.m_DungeonID);
@@ -3967,17 +4531,22 @@ function getStageEterniumCost(stageId) {
   return Math.max(0, Number(stage && (stage.m_StageReqItemCount || stage.StageReqItemCount || 0)) || 0);
 }
 
-function getStageReqItemCost(stageId) {
+function getStageReqItemCost(stageId, options = {}) {
   const stage = getStageTableEntry(stageId);
   const itemId = Number(stage && (stage.m_StageReqItemID || stage.StageReqItemID || 0));
   const count = Math.max(0, Number(stage && (stage.m_StageReqItemCount || stage.StageReqItemCount || 0)) || 0);
-  if (!Number.isInteger(itemId) || itemId <= 0 || count <= 0) return null;
-  return { itemId, count };
+  if (Number.isInteger(itemId) && itemId > 0 && count > 0) return { itemId, count };
+  const dungeonId = positiveInt(options.dungeonID || options.dungeonId) || positiveInt(stageId);
+  const genericStage = dungeonId ? getGenericStageForRequest({ dungeonID: dungeonId }) : null;
+  const miscItemId = positiveInt(genericStage && genericStage.stageReqItemId);
+  const miscCount = Math.max(0, Number(genericStage && genericStage.stageReqItemCount) || 0);
+  if (!miscItemId || miscCount <= 0) return null;
+  return { itemId: miscItemId, count: miscCount };
 }
 
 function spendStageReqItemCost(user, stageId, options = {}) {
   if (!user || typeof user !== "object") return [];
-  const cost = getStageReqItemCost(stageId);
+  const cost = getStageReqItemCost(stageId, options);
   if (!cost) return [];
   const multiplier = Math.max(1, Number(options.multiplier || 1) || 1);
   const totalCount = cost.count * multiplier;
@@ -3996,7 +4565,7 @@ function spendStageReqItemCostForReplay(replay, user, stageId) {
   const key = `${Number(stageId || 0)}:${String(dynamicGame.gameUID || dynamicGame.gameUid || "")}`;
   replay.spentStageReqItemCosts = replay.spentStageReqItemCosts && typeof replay.spentStageReqItemCosts === "object" ? replay.spentStageReqItemCosts : {};
   if (replay.spentStageReqItemCosts[key]) return [];
-  const costItems = spendStageReqItemCost(user, stageId);
+  const costItems = spendStageReqItemCost(user, stageId, { dungeonID: dynamicGame.dungeonID });
   replay.spentStageReqItemCosts[key] = true;
   return costItems;
 }
@@ -4044,22 +4613,29 @@ function buildEpisodeCompleteData(episodeId, difficulty, completeCount, rewardFl
   ]);
 }
 
-function mainStoryStageMedalValue(stage) {
+function mainStoryStageMedalValue(stage, state = null) {
   if (!stage) return 0;
-  if (stage.cutsceneOnly) return 0;
-  return stage.tutorial ? 1 : 3;
+  if (stage.cutsceneOnly || stage.tutorial) return 1;
+  if (state && state.completed === true) {
+    return 1 + (state.missionResult1 !== false ? 1 : 0) + (state.missionResult2 !== false ? 1 : 0);
+  }
+  return 3;
 }
 
-function getMainStoryCompletedStageStates(user, extraStageIds = []) {
+function getMainStoryCompletedStageStates(user, extraStageIds = [], options = {}) {
   if (!user || typeof user !== "object") return [];
   const mainStory = ensureMainStoryState(user);
   const states = mainStory && mainStory.stages && typeof mainStory.stages === "object" ? mainStory.stages : {};
+  const difficulty =
+    options && options.difficulty != null ? normalizeStoryDifficulty(options.difficulty) : null;
   const forcedStageIds = new Set(
     (Array.isArray(extraStageIds) ? extraStageIds : [extraStageIds])
       .map(Number)
       .filter((stageId) => Number.isInteger(stageId) && stageId > 0)
   );
   return MAIN_STORY_STAGE_CHAIN.map((stage) => {
+    if (difficulty != null && Number(stage.difficulty || 0) !== difficulty) return null;
+    if (isSuppressedStoryOpenTag(stage.openTag) && !EXPLICIT_OPEN_TAG_SET.has(String(stage.openTag || "").toUpperCase())) return null;
     const stageId = Number(stage.stageId || 0);
     const state = states[String(stageId)] || {};
     if (state.completed !== true && !forcedStageIds.has(stageId)) return null;
@@ -4074,22 +4650,33 @@ function getMainStoryCompletedStageStates(user, extraStageIds = []) {
 }
 
 function getMainStoryEpisodeCompleteMedalCount(user, episodeId, extraStageIds = []) {
-  return getMainStoryCompletedStageStates(user, extraStageIds).reduce(
-    (total, stage) => (Number(stage.episodeId || 0) === Number(episodeId || 0) ? total + mainStoryStageMedalValue(stage) : total),
+  const options = extraStageIds && typeof extraStageIds === "object" && !Array.isArray(extraStageIds) ? extraStageIds : {};
+  const forcedIds = options.extraStageIds || extraStageIds;
+  return getMainStoryCompletedStageStates(user, forcedIds, options).reduce(
+    (total, stage) => (Number(stage.episodeId || 0) === Number(episodeId || 0) ? total + mainStoryStageMedalValue(stage, stage) : total),
     0
   );
 }
 
-function buildMainStoryEpisodeCompleteData(user, episodeId, extraStageIds = []) {
-  const completeCount = getMainStoryEpisodeCompleteMedalCount(user, episodeId, extraStageIds);
+function buildMainStoryEpisodeCompleteData(user, episodeId, difficulty = 0, extraStageIds = []) {
+  const numericDifficulty = normalizeStoryDifficulty(difficulty);
+  const completeCount = getMainStoryEpisodeCompleteMedalCount(user, episodeId, {
+    difficulty: numericDifficulty,
+    extraStageIds,
+  });
   if (completeCount <= 0) return null;
-  return buildEpisodeCompleteData(episodeId, 0, completeCount, collection.getEpisodeRewardFlags(user, episodeId, 0));
+  return buildEpisodeCompleteData(
+    episodeId,
+    numericDifficulty,
+    completeCount,
+    collection.getEpisodeRewardFlags(user, episodeId, numericDifficulty)
+  );
 }
 
 function buildMainStoryEpisodeCompleteDataForStage(user, stageId) {
   const stage = getMainStoryStageByStageId(stageId);
   if (!stage) return null;
-  return buildMainStoryEpisodeCompleteData(user, stage.episodeId, [stage.stageId]);
+  return buildMainStoryEpisodeCompleteData(user, stage.episodeId, stage.difficulty, [stage.stageId]);
 }
 
 function recordTutorialDungeonClear(socket, replay) {
@@ -4682,6 +5269,13 @@ function repairDungeonClearDataFromProgress(user) {
   user.unlockedStageIds = Array.isArray(user.unlockedStageIds) ? user.unlockedStageIds : [];
   let repaired = 0;
 
+  const mergeMissionResult = (existingValue, sourceValue) => {
+    if (existingValue === true) return true;
+    if (typeof sourceValue === "boolean") return sourceValue;
+    if (typeof existingValue === "boolean") return existingValue;
+    return true;
+  };
+
   const addClear = (dungeonId, source = {}) => {
     if (source && source.cleared === false) return;
     const resolvedDungeonId = Number(dungeonId || source.dungeonId || source.dungeonID || source.m_DungeonID || 0);
@@ -4692,12 +5286,14 @@ function repairDungeonClearDataFromProgress(user) {
     const key = String(resolvedDungeonId);
     const existing = user.dungeonClear[key] && typeof user.dungeonClear[key] === "object" ? user.dungeonClear[key] : {};
     const nextStageId = resolvedStageId || Number(existing.stageId || 0);
+    const missionResult1 = mergeMissionResult(existing.missionResult1, source.missionResult1);
+    const missionResult2 = mergeMissionResult(existing.missionResult2, source.missionResult2);
     const next = {
       ...existing,
       dungeonId: resolvedDungeonId,
       stageId: nextStageId,
-      missionResult1: existing.missionResult1 === true || source.missionResult1 !== false,
-      missionResult2: existing.missionResult2 === true || source.missionResult2 !== false,
+      missionResult1,
+      missionResult2,
       clearedAt:
         existing.clearedAt ||
         source.clearedAt ||
@@ -4993,10 +5589,10 @@ function buildFavoritesStageAckPayload() {
   return Buffer.concat([writeSignedVarInt(0), writeObjectMapInt([])]);
 }
 
-function buildDefenceInfoAckPayload() {
+function buildDefenceInfoAckPayload(defenceTempletId = 0) {
   return Buffer.concat([
     writeSignedVarInt(0), // errorCode
-    writeSignedVarInt(0), // defenceTempletId
+    writeSignedVarInt(Number(defenceTempletId || 0)), // defenceTempletId
     writeSignedVarInt(0), // bestScore
     writeBool(false), // m_MissionResult1
     writeBool(false), // m_MissionResult2
@@ -5010,6 +5606,304 @@ function buildDefenceInfoAckPayload() {
     ])), // topRankProfile
     writeIntList([]), // scoreRewardIds
   ]);
+}
+
+function ensureMiscStageState(user) {
+  if (!user || typeof user !== "object") return null;
+  user.miscStages = user.miscStages && typeof user.miscStages === "object" ? user.miscStages : {};
+  return user.miscStages;
+}
+
+function buildShadowPalaceStartAckPayload(req = {}, user = null) {
+  const palaceId = positiveInt(req.palaceId || req.palaceID);
+  const stage = getGenericStageForRequest({ palaceID: palaceId });
+  const state = ensureMiscStageState(user);
+  if (state && palaceId) {
+    state.shadow = state.shadow && typeof state.shadow === "object" ? state.shadow : {};
+    state.shadow.currentPalaceId = palaceId;
+    state.shadow.life = Math.max(1, positiveInt(state.shadow.life) || 3);
+    state.shadow.rewardMultiply = 1;
+    const palaceKey = String(palaceId);
+    state.shadow.palaces = state.shadow.palaces && typeof state.shadow.palaces === "object" ? state.shadow.palaces : {};
+    state.shadow.palaces[palaceKey] = {
+      ...(state.shadow.palaces[palaceKey] || {}),
+      palaceId,
+      currentDungeonId: positiveInt(stage && stage.dungeonID),
+    };
+    if (USE_LOCAL_USER_DB) saveUserDb();
+  }
+  return Buffer.concat([
+    writeSignedVarInt(0),
+    writeSignedVarInt(palaceId),
+    writeObjectList([]),
+    writeSignedVarInt(1),
+  ]);
+}
+
+function buildPhaseStartAckPayload(req = {}, user = null) {
+  const stageId = positiveInt(req.stageId || req.stageID);
+  const stage = getGenericStageForRequest({ stageID: stageId });
+  const dungeonId = positiveInt(stage && stage.dungeonID);
+  const phaseIndex = Math.max(0, Number(stage && stage.phaseIndex) || 0);
+  const supportingUserUid = toBigInt(req.supportingUserUid || 0);
+  const state = ensureMiscStageState(user);
+  if (state && stageId) {
+    state.phase = {
+      stageId,
+      phaseIndex,
+      dungeonId,
+      supportingUserUid: supportingUserUid.toString(),
+    };
+    if (USE_LOCAL_USER_DB) saveUserDb();
+  }
+  return Buffer.concat([
+    writeSignedVarInt(0),
+    writeNullableObject(buildPhaseModeState(stageId, phaseIndex, dungeonId, 0, supportingUserUid)),
+  ]);
+}
+
+function buildPhaseModeState(stageId, phaseIndex, dungeonId, totalPlayTime, supportingUserUid) {
+  return Buffer.concat([
+    writeSignedVarInt(positiveInt(stageId)),
+    writeSignedVarInt(Math.max(0, Number(phaseIndex || 0) || 0)),
+    writeSignedVarInt(positiveInt(dungeonId)),
+    writeFloatLE(Number(totalPlayTime || 0)),
+    writeSignedVarLong(toBigInt(supportingUserUid || 0)),
+  ]);
+}
+
+function buildTrimStartAckPayload(req = {}, user = null) {
+  const trimId = positiveInt(req.trimId || req.TrimID);
+  const trimLevel = Math.max(1, positiveInt(req.trimLevel || req.TrimLevel) || 1);
+  const stage = getGenericStageForRequest({ trimId, trimLevel });
+  const state = ensureMiscStageState(user);
+  if (state && trimId) {
+    state.trim = state.trim && typeof state.trim === "object" ? state.trim : {};
+    state.trim.current = {
+      trimId,
+      trimLevel,
+      nextDungeonId: positiveInt(stage && stage.dungeonID),
+    };
+    if (USE_LOCAL_USER_DB) saveUserDb();
+  }
+  return Buffer.concat([
+    writeSignedVarInt(0),
+    writeNullableObject(buildTrimModeState(stage || { trimId, trimLevel })),
+  ]);
+}
+
+function buildTrimModeState(stage = {}) {
+  const trimId = positiveInt(stage.trimId);
+  const trimLevel = Math.max(1, positiveInt(stage.trimLevel) || 1);
+  const stageRows = Array.isArray(stage.trimStageList) && stage.trimStageList.length
+    ? stage.trimStageList
+    : loadMiscStageCatalog().trimDungeonsByTrimId.get(trimId) || [];
+  const nextDungeonId = positiveInt(stage.dungeonID) || positiveInt((stageRows[0] || {}).DungeonID);
+  return Buffer.concat([
+    writeSignedVarInt(trimId),
+    writeSignedVarInt(trimLevel),
+    writeSignedVarInt(nextDungeonId),
+    writeNullableObject(buildTrimStageData(0, 0, 0, false)),
+    writeObjectList(
+      stageRows.map((row, index) =>
+        writeNullableObject(buildTrimStageData(index, positiveInt(row && row.DungeonID), 0, false))
+      )
+    ),
+  ]);
+}
+
+function buildTrimStageData(index, dungeonId, score, isWin) {
+  return Buffer.concat([
+    writeSignedVarInt(Math.max(0, Number(index || 0) || 0)),
+    writeSignedVarInt(positiveInt(dungeonId)),
+    writeSignedVarInt(Math.max(0, Number(score || 0) || 0)),
+    writeBool(Boolean(isWin)),
+  ]);
+}
+
+function buildFierceDataAckPayload(user = null) {
+  const state = user && user.miscStages && user.miscStages.fierce && typeof user.miscStages.fierce === "object" ? user.miscStages.fierce : {};
+  const bosses = getFierceSeasonBossRows().map((row) => {
+    const bossId = positiveInt(row && row.FierceBossID);
+    const saved = state.bosses && state.bosses[String(bossId)] ? state.bosses[String(bossId)] : {};
+    return buildFierceBossData({
+      bossId,
+      point: Math.max(0, Number(saved.point || 0) || 0),
+      rankNumber: Math.max(0, Number(saved.rankNumber || 0) || 0),
+      rankPercent: Math.max(0, Number(saved.rankPercent || 0) || 0),
+      isCleared: Boolean(saved.isCleared),
+    });
+  });
+  return Buffer.concat([
+    writeSignedVarInt(0),
+    writeSignedVarInt(Math.max(0, Number(state.rankNumber || 0) || 0)),
+    writeSignedVarInt(Math.max(0, Number(state.rankPercent || 0) || 0)),
+    writeIntList(Array.isArray(state.pointRewardHistory) ? state.pointRewardHistory : []),
+    writeBool(Boolean(state.isRankRewardGotten)),
+    writeObjectList(bosses.map((boss) => writeNullableObject(boss))),
+  ]);
+}
+
+function buildFierceBossData(data = {}) {
+  return Buffer.concat([
+    writeSignedVarInt(positiveInt(data.bossId)),
+    writeSignedVarInt(Math.max(0, Number(data.point || 0) || 0)),
+    writeSignedVarInt(Math.max(0, Number(data.rankNumber || 0) || 0)),
+    writeSignedVarInt(Math.max(0, Number(data.rankPercent || 0) || 0)),
+    writeNullObject(),
+    writeBool(Boolean(data.isCleared)),
+  ]);
+}
+
+function buildFiercePenaltyAckPayload(req = {}) {
+  return Buffer.concat([
+    writeSignedVarInt(0),
+    writeSignedVarInt(positiveInt(req.fierceBossId || req.fierceBossID || req.bossId)),
+    writeIntList(Array.isArray(req.penaltyIds) ? req.penaltyIds : []),
+  ]);
+}
+
+function buildDefenceGameStartAckPayload(socket, req = {}, options = {}) {
+  const stage =
+    options.stage ||
+    getGenericStageForRequest({ defenceTempletId: positiveInt(req.defenceTempletId || req.defenceID || req.defenceId) });
+  if (!stage || !stage.dungeonID) {
+    return Buffer.concat([writeSignedVarInt(1), writeNullObject(), writeObjectList([])]);
+  }
+  const loadReq = {
+    isDev: false,
+    selectDeckIndex: Number(req.selectDeckIndex || 0) || 0,
+    stageID: stage.stageId,
+    dungeonID: stage.dungeonID,
+    eventDeckData: req.eventDeckData || null,
+    gameType: stage.gameType,
+    rewardMultiply: 1,
+  };
+  const result = buildDynamicGameLoadPayload(socket, loadReq, stage);
+  const gameData = extractNullableGameDataFromGameLoadAckPayload(result && result.payload);
+  return Buffer.concat([writeSignedVarInt(0), gameData, writeObjectList([])]);
+}
+
+function buildExploreInfoAckPayload(req = {}, user = null) {
+  const templetId = positiveInt(req.templetId || req.exploreID || req.exploreId) || firstExploreId();
+  return Buffer.concat([
+    writeSignedVarInt(0),
+    writeNullableObject(buildExploreData(templetId, 1)),
+    writeIntList([]),
+    writeVarInt(0),
+    writeSignedVarInt(0),
+  ]);
+}
+
+function buildExploreEnterAckPayload(req = {}, user = null) {
+  const templetId = positiveInt(req.templetId || req.exploreID || req.exploreId) || firstExploreId();
+  const explore = loadMiscStageCatalog().exploreById.get(templetId) || {};
+  const zoneId = positiveInt(explore.ZONE_ID_1) || firstExploreZoneId();
+  const state = ensureMiscStageState(user);
+  if (state && templetId) {
+    state.explore = {
+      templetId,
+      currentZone: zoneId,
+      currentStep: 0,
+      currentSlotIndex: 0,
+      state: 20,
+    };
+    if (USE_LOCAL_USER_DB) saveUserDb();
+  }
+  return Buffer.concat([
+    writeSignedVarInt(0),
+    writeNullableObject(buildExploreData(templetId, 20, { currentZone: zoneId, currentStep: 0, currentSlotIndex: 0 })),
+    writeNullableObject(buildExploreZoneData(zoneId)),
+    writeNullObject(),
+    writeNullObject(),
+  ]);
+}
+
+function firstExploreId() {
+  const first = Array.from(loadMiscStageCatalog().exploreById.keys()).sort((left, right) => left - right)[0];
+  return positiveInt(first) || 1;
+}
+
+function firstExploreZoneId() {
+  const first = Array.from(loadMiscStageCatalog().exploreZoneById.keys()).sort((left, right) => left - right)[0];
+  return positiveInt(first) || 1;
+}
+
+function buildExploreData(templetId, stateValue = 1, options = {}) {
+  return Buffer.concat([
+    writeSignedVarInt(positiveInt(templetId)),
+    writeFloatLE(100),
+    writeFloatLE(100),
+    writeSignedVarLong(0n),
+    writeSignedVarLong(0n),
+    writeSignedVarInt(options.currentZone == null ? -1 : Number(options.currentZone)),
+    writeSignedVarInt(options.currentStep == null ? -1 : Number(options.currentStep)),
+    writeSignedVarInt(options.currentSlotIndex == null ? -1 : Number(options.currentSlotIndex)),
+    writeIntList([]),
+    writeObjectList([]),
+    writeSignedVarInt(0),
+    writeNullableObject(buildExploreSelectableItem(0, 0)),
+    writeIntList([]),
+    writeSignedVarInt(Number(stateValue || 0)),
+    writeSignedVarInt(0),
+    writeSignedVarLong(0n),
+  ]);
+}
+
+function buildExploreSelectableItem(id, value) {
+  return Buffer.concat([writeSignedVarInt(Number(id || 0)), writeSignedVarInt(Number(value || 0))]);
+}
+
+function buildExploreZoneData(zoneId) {
+  const catalog = loadMiscStageCatalog();
+  const zone = catalog.exploreZoneById.get(positiveInt(zoneId)) || {};
+  const stageCount = Math.max(1, positiveInt(zone.ZoneStageCount) || 1);
+  const steps = [];
+  for (let index = 1; index <= stageCount; index += 1) {
+    const groupId = positiveInt(zone[`StageGroupID_${index}`]);
+    const slotCount = Math.max(1, positiveInt(zone[`StageSlotCount_${index}`]) || 1);
+    const groupStages = catalog.exploreStagesByGroup.get(groupId) || [];
+    steps.push(buildExploreStepData(index - 1, groupStages.slice(0, slotCount)));
+  }
+  return Buffer.concat([
+    writeSignedVarInt(positiveInt(zoneId)),
+    writeObjectList(steps.map((step) => writeNullableObject(step))),
+  ]);
+}
+
+function buildExploreStepData(stepIndex, stageRows) {
+  const stages = (Array.isArray(stageRows) ? stageRows : []).map((row, slotIndex) =>
+    buildExploreStageData(positiveInt(row && row.StageID), slotIndex, 0, false)
+  );
+  return Buffer.concat([
+    writeSignedVarInt(Math.max(0, Number(stepIndex || 0) || 0)),
+    writeObjectList(stages.map((stage) => writeNullableObject(stage))),
+  ]);
+}
+
+function buildExploreStageData(stageId, slotIndex, pathId, isClear) {
+  return Buffer.concat([
+    writeSignedVarInt(positiveInt(stageId)),
+    writeSignedVarInt(Math.max(0, Number(slotIndex || 0) || 0)),
+    writeSignedVarInt(Math.max(0, Number(pathId || 0) || 0)),
+    writeBool(Boolean(isClear)),
+  ]);
+}
+
+function extractNullableGameDataFromGameLoadAckPayload(payload) {
+  const raw = Buffer.isBuffer(payload) ? payload : Buffer.from(payload || []);
+  if (!raw.length) return writeNullObject();
+  try {
+    const errorCode = readSignedVarInt(raw, 0);
+    let start = errorCode.offset;
+    if (start >= raw.length || raw.readUInt8(start) === 0) return writeNullObject();
+    let end = raw.length;
+    if (end > start + 1 && raw.readUInt8(end - 1) === 0) end -= 1;
+    return raw.subarray(start, end);
+  } catch (err) {
+    console.log(`[dynamic-game-load] failed to extract NKMGameData from 804 payload: ${summarizeErrorLine(err)}`);
+    return writeNullObject();
+  }
 }
 
 function decodeGameLoadReq(payload) {
@@ -5322,7 +6216,14 @@ function stripInactiveEventContentsTags(baseTags, activeEventTags) {
 }
 
 function getEffectiveOpenTags(baseTags) {
-  return mergeTags(baseTags, REQUIRED_STORY_OPEN_TAGS, getActiveEventState().openTags);
+  return filterSuppressedOpenTags(mergeTags(baseTags, EXPLICIT_OPEN_TAGS, REQUIRED_STORY_OPEN_TAGS, getActiveEventState().openTags));
+}
+
+function filterSuppressedOpenTags(tags) {
+  return (Array.isArray(tags) ? tags : []).filter((tag) => {
+    const key = String(tag || "").toUpperCase();
+    return !SUPPRESSED_STORY_OPEN_TAG_SET.has(key) || EXPLICIT_OPEN_TAG_SET.has(key);
+  });
 }
 
 function getRequiredContentsTags() {
@@ -5451,13 +6352,16 @@ function buildMinimalJoinLobbyPayload(user) {
   const unitCount = getArmyUnits(user).length;
   const shipCount = getArmyShips(user).length;
   const operatorCount = getArmyOperators(user).length;
+  const worldMapCityIds = worldMap.getWorldMapCityIds(user, { includeDefaults: true, now: lobbyNow });
 
   console.log(
     `[JOIN_LOBBY_ACK fallback] uid=${userUid} friendCode=${friendCode} nickname=${JSON.stringify(
       nickname
     )} level=${user.level || 1} reconnectKey=${JSON.stringify(
       user.reconnectKey || ""
-    )} inventoryMisc=${miscCount} units=${unitCount} ships=${shipCount} operators=${operatorCount}`
+    )} inventoryMisc=${miscCount} units=${unitCount} ships=${shipCount} operators=${operatorCount} worldMapCities=${
+      worldMapCityIds.join(",") || "-"
+    }`
   );
 
   return Buffer.concat([
@@ -5667,6 +6571,7 @@ function hasLocalAccountState(user) {
   if (simulation.hasSimulationState(user)) return true;
   if (stamina.hasStaminaState(user)) return true;
   if (collection.hasCollectionState(user)) return true;
+  if (worldMap.hasWorldMapProgress(user)) return true;
   return Boolean(user.nickname && user.nickname !== "LocalAdmin");
 }
 
@@ -5746,11 +6651,26 @@ function buildStagePlayDataList(user) {
 }
 
 function buildPhaseClearDataList(user) {
+  repairDungeonClearDataFromProgress(user);
+  ensureMainStoryState(user);
   const stages = new Map();
   for (const stage of getCompletedTutorialStageStates(user)) stages.set(Number(stage.stageId || 0), stage);
   for (const stage of getMainStoryCompletedStageStates(user)) stages.set(Number(stage.stageId || 0), stage);
+  const stagePlayData = user && user.stagePlayData && typeof user.stagePlayData === "object" ? Object.values(user.stagePlayData) : [];
+  for (const data of stagePlayData) {
+    const stageId = positiveInt(data && data.stageId);
+    if (!stageId || stages.has(stageId)) continue;
+    const stage = getGenericStageForRequest({ stageID: stageId });
+    if (stage && Number(stage.gameType || 0) === NGT_PHASE) {
+      stages.set(stageId, {
+        stageId,
+        missionResult1: true,
+        missionResult2: true,
+      });
+    }
+  }
   return Array.from(stages.values())
-    .filter((stage) => Number(stage.stageId || 0) > 0 && !stage.cutsceneOnly)
+    .filter((stage) => Number(stage.stageId || 0) > 0)
     .map((stage) =>
       writeNullableObject(
         buildPhaseClearData(stage.stageId, {
@@ -5762,11 +6682,20 @@ function buildPhaseClearDataList(user) {
 }
 
 function buildEpisodeCompleteEntries(user) {
+  repairDungeonClearDataFromProgress(user);
+  ensureMainStoryState(user);
   const entries = [];
-  const episodeIds = new Set(getMainStoryCompletedStageStates(user).map((stage) => Number(stage.episodeId || 0)).filter((id) => id > 0));
-  for (const episodeId of Array.from(episodeIds).sort((a, b) => a - b)) {
-    const episodeCompleteData = buildMainStoryEpisodeCompleteData(user, episodeId);
-    if (episodeCompleteData) entries.push([episodeCompleteKey(episodeId, 0), episodeCompleteData]);
+  const episodeKeys = new Map();
+  for (const stage of getMainStoryCompletedStageStates(user)) {
+    const episodeId = Number(stage.episodeId || 0);
+    if (episodeId <= 0) continue;
+    const difficulty = normalizeStoryDifficulty(stage.difficulty);
+    episodeKeys.set(`${episodeId}:${difficulty}`, { episodeId, difficulty });
+  }
+  const groups = Array.from(episodeKeys.values()).sort((left, right) => left.episodeId - right.episodeId || left.difficulty - right.difficulty);
+  for (const group of groups) {
+    const episodeCompleteData = buildMainStoryEpisodeCompleteData(user, group.episodeId, group.difficulty);
+    if (episodeCompleteData) entries.push([episodeCompleteKey(group.episodeId, group.difficulty), episodeCompleteData]);
   }
   return entries;
 }
@@ -5775,6 +6704,7 @@ function buildMinimalUserData(user, userUid, friendCode, nickname) {
   const userLevel = getJoinLobbyUserLevel(user);
   const userLevelExp = Number(user && user.exp ? user.exp : 0) || 0;
   const now = dateTimeBinaryNow();
+  const activeDiveGameData = worldMap.buildActiveDiveGameData(user, { now });
   return Buffer.concat([
     writeSignedVarLong(userUid),
     writeSignedVarLong(friendCode),
@@ -5787,7 +6717,7 @@ function buildMinimalUserData(user, userUid, friendCode, nickname) {
     writeNullableObject(buildMinimalArmyData(user)),
     writeNullableObject(buildMinimalUserOption(user)),
     writeObjectMapInt(buildDungeonClearEntries(user)), // m_dicNKMDungeonClearData
-    writeNullableObject(buildWorldMapData()), // m_WorldmapData
+    writeNullableObject(worldMap.buildWorldMapData(user, { now })), // m_WorldmapData
     writeObjectMapInt([]), // m_dicNKMWarfareClearData
     writeNullableObject(buildMinimalShopData(user)),
     writeNullableObject(buildMinimalMissionData(user)),
@@ -5798,13 +6728,13 @@ function buildMinimalUserData(user, userUid, friendCode, nickname) {
     writeNullObject(), // m_SyncPvpHistory
     writeNullObject(), // m_AsyncPvpHistory
     writeNullObject(), // m_EventPvpHistory
-    writeNullObject(), // m_DiveGameData
-    writeObjectList([]), // m_DiveClearData
-    writeObjectList([]), // m_DiveHistoryData
+    activeDiveGameData ? writeNullableObject(activeDiveGameData) : writeNullObject(), // m_DiveGameData
+    worldMap.buildDiveClearData(user, { now }), // m_DiveClearData
+    worldMap.buildDiveHistoryData(user, { now }), // m_DiveHistoryData
     writeNullableObject(buildAttendanceData(user)), // m_AttendanceData
     writeSignedVarInt(0), // UserState
     writeObjectList([]), // m_companyBuffDataList
-    writeNullableObject(buildShadowPalaceData()), // m_ShadowPalace
+    writeNullableObject(buildShadowPalaceDataForUser(user)), // m_ShadowPalace
     writeNullableObject(buildBackgroundInfoData(user)), // backGroundInfo
     writeNullObject(), // m_RecallHistoryData
     writeNullObject(), // m_BirthDayData
@@ -5960,11 +6890,43 @@ function buildAttendanceData(user) {
 }
 
 function buildShadowPalaceData() {
+  return buildShadowPalaceDataForUser(null);
+}
+
+function buildShadowPalaceDataForUser(user) {
+  const shadow = user && user.miscStages && user.miscStages.shadow && typeof user.miscStages.shadow === "object" ? user.miscStages.shadow : {};
+  const palaces = shadow.palaces && typeof shadow.palaces === "object" ? Object.values(shadow.palaces) : [];
+  const currentPalaceId = positiveInt(shadow.currentPalaceId);
+  const currentStage = currentPalaceId ? getGenericStageForRequest({ palaceID: currentPalaceId }) : null;
+  const palaceList = palaces.length
+    ? palaces
+    : currentPalaceId
+      ? [{ palaceId: currentPalaceId, currentDungeonId: positiveInt(currentStage && currentStage.dungeonID), dungeonDataList: [] }]
+      : [];
   return Buffer.concat([
-    writeSignedVarInt(0), // currentPalaceId
-    writeSignedVarInt(0), // life
-    writeObjectList([]), // palaceDataList
-    writeSignedVarInt(1), // rewardMultiply
+    writeSignedVarInt(currentPalaceId), // currentPalaceId
+    writeSignedVarInt(Math.max(0, positiveInt(shadow.life))), // life
+    writeObjectList(palaceList.map((palace) => writeNullableObject(buildPalaceProgressData(palace)))), // palaceDataList
+    writeSignedVarInt(Math.max(1, positiveInt(shadow.rewardMultiply) || 1)), // rewardMultiply
+  ]);
+}
+
+function buildPalaceProgressData(palace = {}) {
+  const dungeonDataList = Array.isArray(palace.dungeonDataList) ? palace.dungeonDataList : [];
+  return Buffer.concat([
+    writeSignedVarInt(positiveInt(palace.palaceId)),
+    writeSignedVarInt(positiveInt(palace.currentDungeonId)),
+    writeObjectList(
+      dungeonDataList.map((data) =>
+        writeNullableObject(
+          buildPalaceDungeonData(
+            positiveInt(data && data.dungeonId),
+            Math.max(0, Number(data && data.recentTime) || 0),
+            Math.max(0, Number(data && data.bestTime) || 0)
+          )
+        )
+      )
+    ),
   ]);
 }
 
@@ -6614,7 +7576,9 @@ function ensureUserDefaults(user) {
     Array.isArray(user.contentsTags) && user.contentsTags.length ? user.contentsTags : CONTENTS_TAGS,
     REQUIRED_CONTENTS_TAGS
   );
-  user.openTags = mergeTags(Array.isArray(user.openTags) && user.openTags.length ? user.openTags : OPEN_TAGS, REQUIRED_STORY_OPEN_TAGS);
+  user.openTags = filterSuppressedOpenTags(
+    mergeTags(Array.isArray(user.openTags) && user.openTags.length ? user.openTags : OPEN_TAGS, EXPLICIT_OPEN_TAGS, REQUIRED_STORY_OPEN_TAGS)
+  );
   user.dungeonClear = user.dungeonClear && typeof user.dungeonClear === "object" ? user.dungeonClear : {};
   user.completedMissions =
     user.completedMissions && typeof user.completedMissions === "object" ? user.completedMissions : {};

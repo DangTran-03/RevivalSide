@@ -54,6 +54,32 @@ const STORY_CATEGORY_SORT = Object.freeze({
   EC_SEASONAL: 3,
   EC_COUNTERCASE: 4,
 });
+const STORY_DIFFICULTY_NORMAL = 0;
+const STORY_DIFFICULTY_HARD = 1;
+const SUPPRESSED_STORY_OPEN_TAGS = Object.freeze(["TAG_COMMON_EPISODE_SIDE_FAILURE_R_V2"]);
+const SUPPRESSED_STORY_OPEN_TAG_SET = new Set(SUPPRESSED_STORY_OPEN_TAGS.map((tag) => tag.toUpperCase()));
+const STORY_STAGE_PROGRESS_ALIASES = Object.freeze([
+  Object.freeze({ fromStageId: 3224112, fromDungeonId: 211202, toStageId: 3224111, toDungeonId: 211201 }),
+]);
+
+function normalizeStoryDifficulty(value) {
+  if (String(value || "").toUpperCase() === "HARD") return STORY_DIFFICULTY_HARD;
+  const numeric = Number(value || 0);
+  return numeric === STORY_DIFFICULTY_HARD ? STORY_DIFFICULTY_HARD : STORY_DIFFICULTY_NORMAL;
+}
+
+function storyDifficultyName(value) {
+  return normalizeStoryDifficulty(value) === STORY_DIFFICULTY_HARD ? "HARD" : "NORMAL";
+}
+
+function storyEpisodeKey(episodeId, difficulty = STORY_DIFFICULTY_NORMAL) {
+  return `${Number(episodeId || 0)}:${normalizeStoryDifficulty(difficulty)}`;
+}
+
+function isSuppressedStoryOpenTag(value) {
+  const tag = String(value || "").trim().toUpperCase();
+  return tag.length > 0 && SUPPRESSED_STORY_OPEN_TAG_SET.has(tag);
+}
 
 function readTable(relativePath) {
   for (const root of TABLE_ROOTS) {
@@ -96,8 +122,10 @@ const MAP_ROWS = readTable(["ab_script", "luac", "LUA_MAP_TEMPLET.json"]);
 const EVENT_DECK_ROWS = readTable(["ab_script", "luac", "LUA_EVENTDECK_TEMPLET.json"]);
 
 const MAIN_STORY_EPISODE_BY_ID = new Map();
+const MAIN_STORY_EPISODE_BY_KEY = new Map();
 for (const row of EPISODE_ROWS) {
-  if (!row || row.m_Difficulty !== "NORMAL") continue;
+  if (!row) continue;
+  const difficulty = normalizeStoryDifficulty(row.m_Difficulty);
   const episodeCategory = String(row.m_EPCategory || "");
   const groupId = Number(row.GroupID || 0);
   if (!STORY_EPISODE_CATEGORY_SET.has(episodeCategory)) continue;
@@ -108,8 +136,10 @@ for (const row of EPISODE_ROWS) {
     ? parseMainStoryEpisodeNumber(row.m_EpisodeStrID || row.m_OpenTag)
     : Number(row.m_SortIndex || row.m_EpisodeID || 0);
   if (isMainstream && (episodeNumber <= 0 || episodeNumber > 15)) continue;
-  MAIN_STORY_EPISODE_BY_ID.set(Number(row.m_EpisodeID), {
+  const episode = {
     episodeId: Number(row.m_EpisodeID),
+    difficulty,
+    difficultyName: storyDifficultyName(difficulty),
     episodeNumber,
     episodeStrID: String(row.m_EpisodeStrID || ""),
     episodeCategory,
@@ -119,7 +149,9 @@ for (const row of EPISODE_ROWS) {
     collectionOpenTag: String(row.m_CollectionOpenTag || ""),
     isMainstream,
     isSubstream,
-  });
+  };
+  MAIN_STORY_EPISODE_BY_KEY.set(storyEpisodeKey(row.m_EpisodeID, difficulty), episode);
+  if (difficulty === STORY_DIFFICULTY_NORMAL) MAIN_STORY_EPISODE_BY_ID.set(Number(row.m_EpisodeID), episode);
 }
 
 const DUNGEON_BY_STR_ID = new Map();
@@ -152,7 +184,10 @@ function resolveEventDeckId(stageRow, dungeonRow) {
 
 function buildStageFromTable(stageRow) {
   const stageId = Number(stageRow && stageRow.m_StageID);
-  const episode = MAIN_STORY_EPISODE_BY_ID.get(Number(stageRow && stageRow.m_EpisodeID));
+  const difficulty = normalizeStoryDifficulty(stageRow && stageRow.m_Difficulty);
+  const episode =
+    MAIN_STORY_EPISODE_BY_KEY.get(storyEpisodeKey(stageRow && stageRow.m_EpisodeID, difficulty)) ||
+    MAIN_STORY_EPISODE_BY_ID.get(Number(stageRow && stageRow.m_EpisodeID));
   if (!stageId || !episode) return null;
   const dungeon = DUNGEON_BY_STR_ID.get(String(stageRow.m_StageBattleStrID || "")) || null;
   const dungeonID = Number(dungeon && dungeon.m_DungeonID);
@@ -174,6 +209,8 @@ function buildStageFromTable(stageRow) {
   return Object.freeze({
     ...base,
     episodeId: episode.episodeId,
+    difficulty,
+    difficultyName: storyDifficultyName(difficulty),
     episodeNumber: episode.episodeNumber,
     episodeStrID: episode.episodeStrID,
     episodeCategory: episode.episodeCategory,
@@ -209,6 +246,7 @@ function compareMainStoryStages(a, b) {
     Number(a.episodeSortIndex || a.episodeNumber || 0) - Number(b.episodeSortIndex || b.episodeNumber || 0) ||
     Number(a.episodeNumber || 0) - Number(b.episodeNumber || 0) ||
     Number(a.episodeId || 0) - Number(b.episodeId || 0) ||
+    Number(a.difficulty || 0) - Number(b.difficulty || 0) ||
     Number(a.actId || 0) - Number(b.actId || 0) ||
     Number(a.stageIndex || 0) - Number(b.stageIndex || 0) ||
     Number(a.stageId || 0) - Number(b.stageId || 0)
@@ -219,8 +257,11 @@ function buildMainStoryStageChain() {
   const stages = [];
   const seenStageIds = new Set();
   for (const row of STAGE_ROWS) {
-    if (!row || row.m_Difficulty !== "NORMAL") continue;
-    const episode = MAIN_STORY_EPISODE_BY_ID.get(Number(row.m_EpisodeID));
+    if (!row) continue;
+    const difficulty = normalizeStoryDifficulty(row.m_Difficulty);
+    const episode =
+      MAIN_STORY_EPISODE_BY_KEY.get(storyEpisodeKey(row.m_EpisodeID, difficulty)) ||
+      MAIN_STORY_EPISODE_BY_ID.get(Number(row.m_EpisodeID));
     if (!episode) continue;
     if (episode.isMainstream && !String(row.m_StageStrID || "").startsWith("STAGE_MAINSTREAM_")) continue;
     const stage = buildStageFromTable(row);
@@ -234,8 +275,13 @@ function buildMainStoryStageChain() {
 
 const MAIN_STORY_STAGE_CHAIN = buildMainStoryStageChain();
 const MAINSTREAM_STAGE_CHAIN = Object.freeze(MAIN_STORY_STAGE_CHAIN.filter((stage) => stage.isMainstreamStory));
+const MAINSTREAM_NORMAL_STAGE_CHAIN = Object.freeze(
+  MAINSTREAM_STAGE_CHAIN.filter((stage) => Number(stage.difficulty || 0) === STORY_DIFFICULTY_NORMAL)
+);
 const SUBSTREAM_STAGE_CHAIN = Object.freeze(MAIN_STORY_STAGE_CHAIN.filter((stage) => stage.isSubstreamStory));
-const EPISODE1_STAGE_CHAIN = Object.freeze(MAIN_STORY_STAGE_CHAIN.filter((stage) => Number(stage.episodeId) === 2));
+const EPISODE1_STAGE_CHAIN = Object.freeze(
+  MAIN_STORY_STAGE_CHAIN.filter((stage) => Number(stage.episodeId) === 2 && Number(stage.difficulty || 0) === STORY_DIFFICULTY_NORMAL)
+);
 const MAIN_STORY_STAGE_BY_STAGE_ID = new Map(MAIN_STORY_STAGE_CHAIN.map((stage) => [stage.stageId, stage]));
 const MAIN_STORY_STAGE_BY_DUNGEON_ID = new Map(MAIN_STORY_STAGE_CHAIN.map((stage) => [stage.dungeonID, stage]));
 const EPISODE1_STAGE_BY_STAGE_ID = new Map(EPISODE1_STAGE_CHAIN.map((stage) => [stage.stageId, stage]));
@@ -249,7 +295,9 @@ function buildStoryOpenTags() {
   }
   for (const stage of MAIN_STORY_STAGE_CHAIN) {
     if (!stage.isSubstreamStory) continue;
-    for (const tag of normalizeTagList(stage.openTag, stage.collectionOpenTag)) tags.add(tag);
+    for (const tag of normalizeTagList(stage.openTag, stage.collectionOpenTag)) {
+      if (!isSuppressedStoryOpenTag(tag)) tags.add(tag);
+    }
   }
   return Object.freeze(Array.from(tags).sort());
 }
@@ -479,12 +527,24 @@ function repairRewardedMainStoryClears(user) {
     if (!previousClear && !previousPlay && existing.completed !== true && rewardClearCount <= 0) continue;
 
     const completedAt = existing.completedAt || new Date().toISOString();
+    const missionResult1 =
+      previousClear && typeof previousClear.missionResult1 === "boolean"
+        ? previousClear.missionResult1
+        : typeof existing.missionResult1 === "boolean"
+          ? existing.missionResult1
+          : true;
+    const missionResult2 =
+      previousClear && typeof previousClear.missionResult2 === "boolean"
+        ? previousClear.missionResult2
+        : typeof existing.missionResult2 === "boolean"
+          ? existing.missionResult2
+          : true;
     user.dungeonClear[dungeonKey] = {
       ...(previousClear || {}),
       dungeonId: stage.dungeonID,
       stageId: stage.stageId,
-      missionResult1: true,
-      missionResult2: true,
+      missionResult1,
+      missionResult2,
       clearedAt: completedAt,
     };
 
@@ -497,6 +557,67 @@ function repairRewardedMainStoryClears(user) {
       bestClearTimeSec: Number((previousPlay && previousPlay.bestClearTimeSec) || existing.bestClearTimeSec || 0),
     };
   }
+}
+
+function copyStoryProgressAlias(user, alias) {
+  const fromStage = MAIN_STORY_STAGE_BY_STAGE_ID.get(Number(alias && alias.fromStageId));
+  const toStage = MAIN_STORY_STAGE_BY_STAGE_ID.get(Number(alias && alias.toStageId));
+  if (!fromStage || !toStage) return false;
+  const fromDungeonKey = String(alias.fromDungeonId || fromStage.dungeonID);
+  const toDungeonKey = String(alias.toDungeonId || toStage.dungeonID);
+  const fromStageKey = String(fromStage.stageId);
+  const toStageKey = String(toStage.stageId);
+  const fromClear = user.dungeonClear[fromDungeonKey] || null;
+  const fromPlay = user.stagePlayData[fromStageKey] || null;
+  const fromState = user.mainStory.stages[fromStageKey] || null;
+  const hasProgress = Boolean(fromClear) || Boolean(fromPlay) || Boolean(fromState && fromState.completed === true);
+  if (!hasProgress) return false;
+
+  const toClear = user.dungeonClear[toDungeonKey] || {};
+  const toPlay = user.stagePlayData[toStageKey] || {};
+  const completedAt =
+    toClear.clearedAt ||
+    (fromClear && fromClear.clearedAt) ||
+    (fromState && fromState.completedAt) ||
+    new Date().toISOString();
+  const mergeAliasMissionResult = (...values) => {
+    if (values.some((value) => value === true)) return true;
+    if (values.some((value) => value === false)) return false;
+    return true;
+  };
+  const missionResult1 = mergeAliasMissionResult(
+    toClear.missionResult1,
+    fromClear && fromClear.missionResult1,
+    fromState && fromState.missionResult1
+  );
+  const missionResult2 = mergeAliasMissionResult(
+    toClear.missionResult2,
+    fromClear && fromClear.missionResult2,
+    fromState && fromState.missionResult2
+  );
+
+  user.dungeonClear[toDungeonKey] = {
+    ...toClear,
+    dungeonId: toStage.dungeonID,
+    stageId: toStage.stageId,
+    missionResult1,
+    missionResult2,
+    clearedAt: completedAt,
+  };
+  user.stagePlayData[toStageKey] = {
+    ...toPlay,
+    stageId: toStage.stageId,
+    playCount: Math.max(1, Number(toPlay.playCount || 0), Number((fromPlay && fromPlay.playCount) || 0)),
+    totalPlayCount: Math.max(1, Number(toPlay.totalPlayCount || 0), Number((fromPlay && fromPlay.totalPlayCount) || 0)),
+    bestClearTimeSec: Number(
+      toPlay.bestClearTimeSec || (fromPlay && fromPlay.bestClearTimeSec) || (fromState && fromState.bestClearTimeSec) || 0
+    ),
+  };
+  return true;
+}
+
+function repairSuppressedStoryStageProgress(user) {
+  for (const alias of STORY_STAGE_PROGRESS_ALIASES) copyStoryProgressAlias(user, alias);
 }
 
 function backfillCompletedMainStoryStageState(user, stage, state) {
@@ -530,6 +651,7 @@ function ensureMainStoryState(user) {
   const existingUnlocked = new Set(user.unlockedStageIds.map(Number).filter((id) => Number.isInteger(id) && id > 0));
   const unlocked = new Set([...existingUnlocked].filter((id) => !MAIN_STORY_STAGE_BY_STAGE_ID.has(id)));
   repairRewardedMainStoryClears(user);
+  repairSuppressedStoryStageProgress(user);
   const dungeonClear = user.dungeonClear;
   const stagePlayData = user.stagePlayData;
   const tutorialComplete = isTutorialCompleteForMainStory(user);
@@ -548,16 +670,18 @@ function ensureMainStoryState(user) {
     const hasLocalProgress = Boolean(clear) || Boolean(play) || completed;
     const stageUnlocked = stage.tutorial
       ? previousTutorialPhaseComplete || completed
-      : stage.isMainstreamStory
+      : stage.isMainstreamStory && Number(stage.difficulty || 0) === STORY_DIFFICULTY_NORMAL
         ? nextMainStoryStageUnlocked || hasLocalProgress
         : hasLocalProgress || isStoryStageRequirementSatisfied(user, stage);
 
     if (stageUnlocked) unlocked.add(stage.stageId);
     if (stage.tutorial) previousTutorialPhaseComplete = completed;
-    else if (stage.isMainstreamStory) nextMainStoryStageUnlocked = completed;
+    else if (stage.isMainstreamStory && Number(stage.difficulty || 0) === STORY_DIFFICULTY_NORMAL) nextMainStoryStageUnlocked = completed;
 
     const stageState = {
       episodeId: stage.episodeId,
+      difficulty: Number(stage.difficulty || 0),
+      difficultyName: storyDifficultyName(stage.difficulty),
       episodeNumber: stage.episodeNumber,
       episodeStrID: stage.episodeStrID,
       episodeCategory: stage.episodeCategory,
@@ -584,7 +708,7 @@ function ensureMainStoryState(user) {
 
   user.unlockedStageIds = Array.from(unlocked).sort((a, b) => a - b);
   user.mainStory.unlocked = true;
-  user.mainStory.completed = MAINSTREAM_STAGE_CHAIN.every((stage) => {
+  user.mainStory.completed = MAINSTREAM_NORMAL_STAGE_CHAIN.every((stage) => {
     const state = user.mainStory.stages[String(stage.stageId)];
     return state && state.completed === true;
   });
@@ -792,8 +916,15 @@ function resetMainStoryPostTutorialProgress(user) {
 module.exports = {
   MAIN_STORY_STAGE_CHAIN,
   MAINSTREAM_STAGE_CHAIN,
+  MAINSTREAM_NORMAL_STAGE_CHAIN,
   SUBSTREAM_STAGE_CHAIN,
   MAIN_STORY_EPISODE_BY_ID,
+  MAIN_STORY_EPISODE_BY_KEY,
+  STORY_DIFFICULTY_NORMAL,
+  STORY_DIFFICULTY_HARD,
+  normalizeStoryDifficulty,
+  isSuppressedStoryOpenTag,
+  getSuppressedStoryOpenTags: () => SUPPRESSED_STORY_OPEN_TAGS.slice(),
   STORY_OPEN_TAGS,
   getMainStoryStageByStageId,
   getMainStoryStageByDungeonId,

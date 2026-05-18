@@ -15,7 +15,7 @@ const { createEmptyReward, mergeReward, grantRewardByType } = require("../reward
 const { getMiscItem, getSkinIds, toBigInt } = require("../inventory");
 const { getArmyUnits, getArmyShips, getArmyTrophies, getArmyOperators } = require("../unit");
 const { getUnitTemplet } = require("../game-data");
-const { MAIN_STORY_STAGE_CHAIN, ensureMainStoryState } = require("../../stages/mainStoryStage");
+const { MAIN_STORY_STAGE_CHAIN, ensureMainStoryState, isSuppressedStoryOpenTag } = require("../../stages/mainStoryStage");
 
 const ROOT_DIR = path.resolve(__dirname, "..", "..");
 
@@ -418,7 +418,7 @@ function getEpisodeRewardFlags(user, episodeID, difficulty = 0) {
 function buildEpisodeCompleteState(user, episodeID, difficulty = 0) {
   const episodeId = Number(episodeID || 0);
   const numericDifficulty = normalizeEpisodeDifficulty(difficulty);
-  const completeCount = getMainStoryEpisodeCompleteMedalCount(user, episodeId);
+  const completeCount = getMainStoryEpisodeCompleteMedalCount(user, episodeId, numericDifficulty);
   if (completeCount <= 0) {
     return {
       episodeID: episodeId,
@@ -448,30 +448,40 @@ function buildEpisodeCompleteData(dataOrEpisodeId, difficulty = 0, completeCount
   ]);
 }
 
-function getMainStoryEpisodeCompleteMedalCount(user, episodeID) {
+function getMainStoryEpisodeCompleteMedalCount(user, episodeID, difficulty = 0) {
   if (!user || typeof user !== "object") return 0;
   const mainStory = ensureMainStoryState(user);
   const states = mainStory && mainStory.stages && typeof mainStory.stages === "object" ? mainStory.stages : {};
+  const numericDifficulty = normalizeEpisodeDifficulty(difficulty);
   return MAIN_STORY_STAGE_CHAIN.reduce((total, stage) => {
     if (Number(stage.episodeId || 0) !== Number(episodeID || 0)) return total;
+    if (Number(stage.difficulty || 0) !== numericDifficulty) return total;
+    if (isSuppressedStoryOpenTag(stage.openTag)) return total;
     const state = states[String(stage.stageId)] || {};
     if (state.completed !== true) return total;
     return total + mainStoryStageMedalValue(stage, state);
   }, 0);
 }
 
-function getMainStoryEpisodeTotalMedalCount(episodeID) {
+function getMainStoryEpisodeTotalMedalCount(episodeID, difficulty = 0) {
+  const numericDifficulty = normalizeEpisodeDifficulty(difficulty);
   return MAIN_STORY_STAGE_CHAIN.reduce(
-    (total, stage) => (Number(stage.episodeId || 0) === Number(episodeID || 0) ? total + mainStoryStageMedalValue(stage) : total),
+    (total, stage) =>
+      Number(stage.episodeId || 0) === Number(episodeID || 0) &&
+      Number(stage.difficulty || 0) === numericDifficulty &&
+      !isSuppressedStoryOpenTag(stage.openTag)
+        ? total + mainStoryStageMedalValue(stage)
+        : total,
     0
   );
 }
 
 function mainStoryStageMedalValue(stage, state = {}) {
   if (!stage) return 0;
-  if (stage.cutsceneOnly) return 0;
-  if (stage.tutorial) return 1;
-  if (state && state.completed === true) return 3;
+  if (stage.cutsceneOnly || stage.tutorial) return 1;
+  if (state && state.completed === true) {
+    return 1 + (state.missionResult1 !== false ? 1 : 0) + (state.missionResult2 !== false ? 1 : 0);
+  }
   return 3;
 }
 
@@ -481,9 +491,9 @@ function isEpisodeRewardEligible(user, row, rewardIndex) {
   if (!reward || !reward.type || !reward.id || !reward.value) return false;
   const requiredRate = Number(row.completeRates[rewardIndex] || 0);
   if (requiredRate <= 0) return false;
-  const total = getMainStoryEpisodeTotalMedalCount(row.episodeID);
+  const total = getMainStoryEpisodeTotalMedalCount(row.episodeID, row.difficulty);
   if (total <= 0) return false;
-  const complete = getMainStoryEpisodeCompleteMedalCount(user, row.episodeID);
+  const complete = getMainStoryEpisodeCompleteMedalCount(user, row.episodeID, row.difficulty);
   return Math.floor((complete * 100) / total) >= requiredRate;
 }
 
