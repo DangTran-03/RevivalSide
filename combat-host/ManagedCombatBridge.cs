@@ -2370,8 +2370,8 @@ internal static class ManagedCombatBridge
                     shipUid,
                     Math.Max(1, playerDeck.ShipLevel),
                     playerDeck.ShipSkinId,
-                    playerDeck.ShipTacticLevel,
-                    playerDeck.ShipLimitBreakLevel,
+                    0,
+                    0,
                     userUid,
                     null,
                     null));
@@ -2443,8 +2443,8 @@ internal static class ManagedCombatBridge
                     shipUid,
                     Math.Max(1, playerDeck.ShipLevel),
                     playerDeck.ShipSkinId,
-                    playerDeck.ShipTacticLevel,
-                    playerDeck.ShipLimitBreakLevel,
+                    0,
+                    0,
                     userUid,
                     null,
                     null));
