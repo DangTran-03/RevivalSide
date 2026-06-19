@@ -719,7 +719,7 @@ function buildUserManagerHtml(basePath) {
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>RevivalSide User Manager</title>
   <style>
     :root {
@@ -738,7 +738,12 @@ function buildUserManagerHtml(basePath) {
     }
 
     * { box-sizing: border-box; }
-    html, body { height: 100%; }
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
     body {
       margin: 0;
       min-width: 320px;
@@ -756,8 +761,10 @@ function buildUserManagerHtml(basePath) {
       background: #20262a;
       color: var(--text);
       min-height: 34px;
+      min-width: 0;
       padding: 0 12px;
       cursor: pointer;
+      white-space: nowrap;
     }
 
     button:hover { border-color: #53616a; background: #283036; }
@@ -772,6 +779,7 @@ function buildUserManagerHtml(basePath) {
 
     .shell {
       height: 100vh;
+      height: 100dvh;
       display: grid;
       grid-template-rows: 54px minmax(0, 1fr);
     }
@@ -1068,6 +1076,199 @@ function buildUserManagerHtml(basePath) {
       .summary { grid-template-columns: repeat(2, minmax(120px, 1fr)); }
       header { align-items: flex-start; height: auto; min-height: 54px; padding: 10px 12px; }
       .shell { grid-template-rows: auto minmax(0, 1fr); }
+    }
+
+    @media (max-width: 900px), (pointer: coarse) {
+      html,
+      body {
+        height: auto;
+        min-height: 100%;
+        overflow: auto;
+      }
+
+      body {
+        min-width: 0;
+      }
+
+      button,
+      .search > input,
+      .field input {
+        min-height: 42px;
+      }
+
+      button {
+        padding: 0 10px;
+      }
+
+      .shell {
+        display: block;
+        height: auto;
+        min-height: 100vh;
+        min-height: 100dvh;
+      }
+
+      header {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        align-items: start;
+        gap: 8px;
+        min-height: 0;
+        padding: calc(10px + env(safe-area-inset-top)) 12px 10px;
+      }
+
+      h1 {
+        font-size: 15px;
+      }
+
+      .header-meta {
+        font-size: 11px;
+        white-space: normal;
+        line-height: 1.35;
+      }
+
+      .header-actions {
+        margin-left: 0;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .header-actions button {
+        width: 100%;
+        white-space: normal;
+        line-height: 1.1;
+      }
+
+      #importJsonBtn {
+        grid-column: span 2;
+      }
+
+      .main {
+        display: block;
+        min-width: 0;
+      }
+
+      aside {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+        display: block;
+      }
+
+      .search {
+        padding: 10px;
+        gap: 7px;
+      }
+
+      .selection-tools,
+      .counts {
+        gap: 6px;
+      }
+
+      .counts {
+        flex-wrap: wrap;
+      }
+
+      .user-list {
+        max-height: 24vh;
+        max-height: 24dvh;
+        padding: 6px 8px 8px;
+      }
+
+      .user-row {
+        min-height: 58px;
+        padding: 8px;
+      }
+
+      .delete-check {
+        margin-top: 21px;
+      }
+
+      .workspace {
+        display: block;
+        min-height: 0;
+      }
+
+      .summary {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+        padding: 10px;
+      }
+
+      .field {
+        gap: 4px;
+      }
+
+      .field label {
+        font-size: 10px;
+      }
+
+      .tabs {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+        padding: 8px 10px;
+      }
+
+      .tabs button {
+        width: 100%;
+      }
+
+      .state {
+        grid-column: 1 / -1;
+        margin-left: 0;
+        white-space: normal;
+        line-height: 1.3;
+      }
+
+      .editor-wrap {
+        height: 46vh;
+        height: 46dvh;
+        min-height: 260px;
+        padding: 10px;
+      }
+
+      textarea {
+        height: 100%;
+        min-height: 230px;
+        font-size: 13px;
+        line-height: 1.42;
+      }
+
+      .footer {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+        padding: 10px 10px calc(10px + env(safe-area-inset-bottom));
+      }
+
+      .footer button {
+        width: 100%;
+      }
+
+      .footer .spacer {
+        display: none;
+      }
+
+      .export-actions {
+        grid-column: 1 / -1;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .status {
+        grid-column: 1 / -1;
+        order: -1;
+        min-width: 0;
+        line-height: 1.3;
+        white-space: normal;
+      }
+    }
+
+    @media (max-width: 520px), (pointer: coarse) and (max-width: 1440px) {
+      .summary {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>

@@ -47,6 +47,7 @@ class MainActivity : Activity() {
     private lateinit var stopButton: Button
     private lateinit var captureButton: Button
     private lateinit var extractButton: Button
+    private lateinit var userManagerOpenButton: Button
     private val timeFormat = DateTimeFormatter.ofPattern("HH:mm:ss")
     private val handler = Handler(Looper.getMainLooper())
     private var pendingVpnMode = CounterSideVpnService.MODE_CAPTURE
@@ -146,6 +147,9 @@ class MainActivity : Activity() {
                 chip("Target", settings.targetPackage.substringAfterLast('.')),
                 chip("Port", settings.gamePort.toString()),
             ))
+            addView(userManagerButton(), LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, dp(54)).apply {
+                topMargin = dp(12)
+            })
         }
         content.addView(statusPanel, fillWrapWithBottom(dp(14)))
 
@@ -297,6 +301,7 @@ class MainActivity : Activity() {
     private fun startOperation() {
         val settings = saveSettingsFromInputs()
         val token = ++startFlowToken
+        setUserManagerButtonBusy(false)
         startButton.isEnabled = false
         startButton.text = "STARTING"
         launchAfterStart = true
@@ -313,6 +318,7 @@ class MainActivity : Activity() {
         launchAfterCapture = true
         listenerReadyForLaunch = false
         vpnReadyForLaunch = false
+        setUserManagerButtonBusy(false)
         if (::startButton.isInitialized) {
             startButton.isEnabled = true
             startButton.text = "START"
@@ -328,6 +334,7 @@ class MainActivity : Activity() {
         launchAfterCapture = false
         listenerReadyForLaunch = false
         vpnReadyForLaunch = false
+        setUserManagerButtonBusy(false)
         setExtractButtonBusy(true)
         appendLog("Extract + copy requested")
         Thread {
@@ -357,6 +364,7 @@ class MainActivity : Activity() {
         launchAfterCapture = false
         listenerReadyForLaunch = false
         vpnReadyForLaunch = false
+        setUserManagerButtonBusy(false)
         if (::startButton.isInitialized) {
             startButton.isEnabled = true
             startButton.text = "START"
@@ -643,7 +651,43 @@ class MainActivity : Activity() {
 
     private fun openUserManager() {
         val settings = saveSettingsFromInputs()
-        openUrl("http://127.0.0.1:${settings.httpPort}/user-manager")
+        val token = ++startFlowToken
+        val url = userManagerUrl(settings)
+        launchAfterStart = false
+        launchAfterCapture = false
+        setUserManagerButtonBusy(true)
+        appendLog("Opening user manager")
+        startListener(settings)
+        waitForUserManager(settings, token, url, attempt = 0)
+    }
+
+    private fun waitForUserManager(settings: RevivalSideSettings, token: Int, url: String, attempt: Int) {
+        if (token != startFlowToken) return
+        if (attempt == 0) listenerStatusText.text = "Opening user manager"
+        Thread {
+            val ready = isListenerHealthReady(settings)
+            runOnUiThread {
+                if (token != startFlowToken) return@runOnUiThread
+                if (ready) {
+                    listenerStatusText.text = "Listener ready"
+                    appendLog("User manager ready")
+                    setUserManagerButtonBusy(false)
+                    openUrl(url)
+                    return@runOnUiThread
+                }
+                if (attempt >= LISTENER_HEALTH_MAX_ATTEMPTS) {
+                    appendLog("User manager timed out")
+                    setUserManagerButtonBusy(false)
+                    return@runOnUiThread
+                }
+                if (attempt > 0 && attempt % 10 == 0) {
+                    appendLog("Still waiting for user manager (${attempt}s)")
+                }
+                handler.postDelayed({
+                    waitForUserManager(settings, token, url, attempt + 1)
+                }, LISTENER_HEALTH_INTERVAL_MS)
+            }
+        }.start()
     }
 
     private fun launchCounterSide() {
@@ -682,9 +726,18 @@ class MainActivity : Activity() {
         startActivity(Intent.createChooser(share, "Share RevivalSide capture bundle"))
     }
 
+    private fun userManagerUrl(settings: RevivalSideSettings): String {
+        return "http://127.0.0.1:${settings.httpPort}/user-manager"
+    }
+
     private fun openUrl(url: String) {
+        val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url)).apply {
+            addCategory(Intent.CATEGORY_BROWSABLE)
+            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
+        }
         runCatching {
-            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
+            startActivity(browserIntent)
+            appendLog("Browser open intent sent")
         }.onFailure {
             appendLog("Could not open $url: ${it.message}")
         }
@@ -778,6 +831,28 @@ class MainActivity : Activity() {
                 maxLines = 2
             })
         }
+    }
+
+    private fun userManagerButton(): Button {
+        return Button(this).apply {
+            text = "USER MANAGER"
+            textSize = 15f
+            typeface = Typeface.create(Typeface.DEFAULT, Typeface.BOLD)
+            setTextColor(0xfff8fafc.toInt())
+            background = rounded(0xff102033.toInt(), dp(10), 0xff38bdf8.toInt())
+            setPadding(dp(14), 0, dp(14), 0)
+            minHeight = dp(54)
+            setOnClickListener { openUserManager() }
+        }.also {
+            userManagerOpenButton = it
+        }
+    }
+
+    private fun setUserManagerButtonBusy(busy: Boolean) {
+        if (!::userManagerOpenButton.isInitialized) return
+        userManagerOpenButton.isEnabled = !busy
+        userManagerOpenButton.alpha = if (busy) 0.72f else 1f
+        userManagerOpenButton.text = if (busy) "OPENING..." else "USER MANAGER"
     }
 
     private fun mutedText(text: String, size: Float): TextView {
