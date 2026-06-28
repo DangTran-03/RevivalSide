@@ -656,6 +656,15 @@ function rollPotentialOption(user, equipUid, socketIndex, options = {}) {
   if (!equip) return null;
   const index = Math.max(0, Math.min(2, Number(socketIndex || 0)));
   const templet = getEquipTemplet(equip.itemEquipId) || {};
+  
+  // Check if the socket exists before proceeding
+  const existingOption = (Array.isArray(equip.potentialOptions) ? equip.potentialOptions : [])[0];
+  const existingSocket = existingOption && Array.isArray(existingOption.sockets)
+    ? existingOption.sockets[index]
+    : null;
+  if (!existingSocket) return null;
+
+
   const costItems = spendMiscCosts(user, getPotentialRerollCosts(templet, equip, index), options);
   const cursor = Number(user.localEquipPotentialCursor || 0);
   user.localEquipPotentialCursor = cursor + 1;
@@ -671,11 +680,18 @@ function rollPotentialOption(user, equipUid, socketIndex, options = {}) {
     "potential"
   );
   const optionRecord = pickPotentialOptionRecord(templet, equip, index, cursor, precision) || optionSeed;
+   
+  // Fix the accumulateCount logic to increment only if the previous candidate was for the same socket index
+  const prevCandidate = equip.potentialCandidate;
+  const prevAccumulate = prevCandidate && prevCandidate.socketIndex === index
+    ? Number(prevCandidate.accumulateCount || 0)
+    
+    : 0;
   equip.potentialCandidate = {
     equipUid: equip.equipUid,
     precision,
     socketIndex: index,
-    accumulateCount: 0,
+    accumulateCount: prevAccumulate + 1,  // Increment the accumulateCount for this socket
     statType: optionRecord && optionRecord.statType,
     statValue: optionRecord && optionRecord.statValue,
   };
@@ -694,7 +710,20 @@ function confirmPotentialOption(user, equipUid, socketIndex) {
     if (!equip.potentialOptions.length) equip.potentialOptions.push(buildDefaultPotentialOption(equip));
     const option = equip.potentialOptions[0];
     option.sockets = normalizeFixedArray(option.sockets, 3, null);
-    if (candidate.statType) option.statType = candidate.statType;
+
+    // Fix the statValue to be the candidate's statValue if it exists, otherwise keep the existing statValue or default to 0.
+    const existingSocketValue = option.sockets[index] && option.sockets[index].statValue;
+    const resolvedStatValue = candidate.statValue != null
+      ? Number(candidate.statValue)
+      : existingSocketValue != null
+        ? Number(existingSocketValue)
+        : 0;
+
+    // Fix the precision to be the candidate's precision if it exists, otherwise keep the existing precision or default to 0.
+    if (candidate.statType && !option.statType) {
+      option.statType = candidate.statType;
+    }
+
     option.sockets[index] = {
       statValue: Number(candidate.statValue != null ? candidate.statValue : Number(candidate.precision || 0) / 10000),
       precision: Number(candidate.precision || 0),

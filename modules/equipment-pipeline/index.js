@@ -60,11 +60,12 @@ const {
   applyEquipPreset,
   clearEquipPresets,
   changeEquipPresetIndices,
+  ensureEquipInventory, // Added to ensure inventory exists
 } = require("../equipment");
 const { grantMiscItem, spendMiscItem } = require("../inventory");
 const { grantRewardByType, createEmptyReward, grantChoiceItemReward } = require("../reward");
 const { addMissionTrackingCondition, completeMissionTracking, makeMissionTracking } = require("../mission-tracking");
-
+const { markInventoryTouched } = require("../equipment"); // Added to mark inventory as touched
 const EQUIP_PACKET_IDS = [
   1000, 1002, 1004, 1006, 1008, 1010, 1012, 1014, 1016, 1018,
   1020, 1022, 1024, 1026, 1028, 1030, 1032, 1034, 1036, 1040,
@@ -700,12 +701,32 @@ function potentialConfirmAck(user, req) {
   };
 }
 
+// function potentialCancelAck(user) {
+//   const equip = getEquipItems(user).find((item) => item.potentialCandidate) || null;
+//   if (equip) equip.potentialCandidate = null;
+//   return {
+//     packetId: 1073,
+//     payload: Buffer.concat([writeSignedVarInt(0), writeNullableObjectOrNull(equip ? buildEquipItemData(equip) : null)]),
+//   };
+// }
+
+// Fixed potentialCancelAck to mark inventory as touched when equip is cancelled
 function potentialCancelAck(user) {
-  const equip = getEquipItems(user).find((item) => item.potentialCandidate) || null;
-  if (equip) equip.potentialCandidate = null;
+  const inventory = ensureEquipInventory(user);  // Fix: Ensure inventory exists
+  for (const equip of Object.values(inventory.equips)) {
+    if (equip && equip.potentialCandidate) {
+      equip.potentialCandidate = null;
+      cancelledEquip = equip;
+      // Mark inventory as touched when an equip is cancelled
+    }
+  }
+  if (cancelledEquip) markInventoryTouched(inventory);  // Fix to mark inventory as touched
   return {
     packetId: 1073,
-    payload: Buffer.concat([writeSignedVarInt(0), writeNullableObjectOrNull(equip ? buildEquipItemData(equip) : null)]),
+    payload: Buffer.concat([
+      writeSignedVarInt(0),
+      writeNullableObjectOrNull(cancelledEquip ? buildEquipItemData(cancelledEquip) : null)
+    ]),
   };
 }
 
